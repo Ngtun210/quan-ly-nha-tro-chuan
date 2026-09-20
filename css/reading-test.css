@@ -1,0 +1,347 @@
+:root {
+    --primary-color: #d9534f;
+    --secondary-color: #f0f2f5;
+    --border-color: #e0e0e0;
+    --text-color: #333;
+    --light-grey-bg: #f8f9fa;
+    --correct-color: #28a745;
+    --incorrect-color: #dc3545;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.test-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #fff;
+    border-top: 4px solid var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left,
+.header-right {
+    font-weight: 500;
+}
+
+.header-left .fa-home {
+    margin-right: 8px;
+}
+
+.header-center {
+    font-weight: 700;
+}
+
+.test-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 24px 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    min-height: 70vh;
+}
+
+.test-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#question-title {
+    font-size: 2em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+#question-instruction {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+/* Part 1 */
+.gap-fill-item {
+    background-color: var(--light-grey-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.gap-fill-item select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin: 0 10px;
+    font-size: 1em;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+/* Part 2 & 3 */
+.drag-and-drop-container {
+    display: flex;
+    gap: 30px;
+}
+
+.drop-zones,
+.draggable-items {
+    flex: 1;
+}
+
+.drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    min-height: 60px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+}
+
+.draggable {
+    background-color: var(--light-grey-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: grab;
+    user-select: none;
+}
+
+/* === CSS ĐÃ SỬA LẠI CHO PART 4 === */
+.opinion-matching-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.opinions,
+.questions-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.opinion-item {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.opinion-item b {
+    color: var(--primary-color);
+}
+
+.question-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: var(--light-grey-bg);
+    border: 1px solid var(--border-color);
+}
+
+.question-item select {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+
+.headings-list {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0 0 30px 0;
+    background-color: var(--light-grey-bg);
+    border-radius: 8px;
+}
+
+.headings-list li {
+    margin-bottom: 10px;
+}
+
+.paragraphs-list .paragraph-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: var(--light-grey-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.paragraphs-list select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.paragraphs-list p {
+    margin: 0;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.nav-btn {
+    padding: 10px 35px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+}
+
+.back-btn {
+    background-color: #ffc107;
+}
+
+.next-btn {
+    background-color: #28a745;
+}
+
+.submit-btn {
+    background-color: #007bff;
+}
+
+#results-screen {
+    text-align: center;
+    padding: 50px 0;
+}
+
+#results-summary {
+    text-align: left;
+    max-width: 400px;
+    margin: 30px auto;
+    font-size: 1.2em;
+}
+
+#disclaimer-text {
+    font-style: italic;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+.review-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.review-summary {
+    margin: 15px 0;
+    font-size: 1.5em;
+}
+
+#review-total-score {
+    color: var(--correct-color);
+    font-weight: bold;
+}
+
+#review-grade {
+    color: #007bff;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.review-pagination button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.review-pagination button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.review-content h3 {
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+
+.review-content .part-score {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.review-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.review-table th,
+.review-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.review-table th {
+    background-color: var(--light-grey-bg);
+}
+
+.review-table tr:last-child td {
+    border-bottom: none;
+}
+
+.review-answer-correct {
+    color: var(--correct-color);
+    font-weight: bold;
+}
+
+.review-answer-incorrect {
+    color: var(--incorrect-color);
+    text-decoration: line-through;
+}
+
+/* === STYLE MỚI CHO CÁC NÚT BẤM Ở MÀN HÌNH KẾT QUẢ === */
+#results-screen-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Tạo khoảng cách giữa 2 nút */
+}
+
+.home-btn {
+    background-color: #6c757d; /* Màu xám */
+    text-decoration: none; /* Bỏ gạch chân của thẻ a */
+    display: inline-flex; /* Để căn giữa text và có padding */
+    align-items: center;
+}
+.home-btn:hover {
+    background-color: #5a6268;
+}

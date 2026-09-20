@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta name="description" content="Trang bị kiến thức và luyện tập Giới Thiệu & Hướng Dẫn Sử Dụng cho kỳ thi Aptis. Tài liệu hướng dẫn chi tiết, bài tập thực hành hiệu quả và mẹo thi đạt điểm cao miễn phí.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu & Hướng Dẫn Sử Dụng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+</head>
+<style>
+    .about-content {
+        max-width: 1200px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 8px;
+        line-height: 1.8;
+    }
+
+    .about-content h2 {
+        color: var(--primary-blue);
+        border-bottom: 2px solid var(--primary-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .about-content .section {
+        margin-bottom: 30px;
+    }
+
+    .about-content code {
+        background-color: #e9ecef;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+
+    about-content {
+        overflow: hidden;
+        /* Fix lỗi float */
+    }
+
+    .float-right {
+        float: right;
+        margin-left: 25px;
+    }
+
+    .float-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .about-image {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dee2e6;
+    }
+
+    /* Responsive cho màn hình nhỏ */
+    @media (max-width: 768px) {
+        .about-image-container {
+            float: none;
+            width: 90%;
+            max-width: 400px;
+            /* Tăng max-width trên mobile cho đẹp hơn */
+            margin: 20px auto;
+        }
+    }
+
+    /* === CSS MỚI CHO LAYOUT TRANG ABOUT (DÙNG GRID) === */
+    .about-content .section {
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+
+    .about-content .section:first-of-type {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Chia 2 cột 50/50 */
+        gap: 40px;
+        /* Khoảng cách giữa văn bản và hình ảnh */
+        align-items: center;
+        /* Căn giữa các item theo chiều dọc */
+        margin-bottom: 40px;
+    }
+
+    /* Đảo ngược thứ tự cho các hàng chẵn */
+    .about-grid.reverse {
+        direction: rtl;
+        /* Mẹo để đảo ngược thứ tự cột */
+    }
+
+    .about-grid.reverse>* {
+        direction: ltr;
+        /* Reset lại hướng chữ cho nội dung bên trong */
+    }
+
+    .about-text ul {
+        padding-left: 20px;
+    }
+
+    .about-text li {
+        margin-bottom: 10px;
+    }
+
+    .about-image-container {
+        width: 100%;
+    }
+
+    .about-image {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dee2e6;
+    }
+
+    /* Responsive cho màn hình nhỏ */
+    @media (max-width: 768px) {
+
+        .about-grid,
+        .about-grid.reverse {
+            grid-template-columns: 1fr;
+            /* Chuyển thành 1 cột */
+            direction: ltr;
+            /* Reset lại hướng trên mobile */
+        }
+
+        .about-grid.reverse .about-image-container {
+            grid-row: 1;
+            /* Đảm bảo ảnh luôn nằm trên chữ trên mobile */
+        }
+    }
+</style>
+
+<body>
+    <header id="header-placeholder"></header>
+    <div class="content-pusher">
+        <div class="container">
+            <div class="page-intro">
+                <h1>Giới Thiệu & Hướng Dẫn Sử Dụng</h1>
+                <p>Khám phá bố cục và cách tận dụng tối đa các công cụ trên Aptis của Tú.</p>
+            </div>
+
+            <div class="about-content">
+                <div class="section">
+                    <h2>Mục Tiêu Của Trang Web</h2>
+                    <p><strong>Aptis của Tú</strong> được xây dựng với mục tiêu cung cấp một môi trường luyện tập
+                        tương tác, bám sát phương pháp học "key" và "câu chuyện gợi nhớ". Trang web này không chỉ là nơi
+                        bạn làm bài, mà còn là nơi bạn hệ thống hóa kiến thức và rèn luyện các kỹ năng cần thiết để tự
+                        tin bước vào phòng thi.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Bố Cục và Lộ Trình Ôn Tập Đề Xuất</h2>
+                    <p>Trang web được chia thành 5 khu vực chính, tương ứng với 5 tab trên trang chủ:</p>
+
+                    <!-- Hướng dẫn chung -->
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h4>1. 📖 Hướng dẫn chung</h4>
+                            <p>Đây là điểm khởi đầu của bạn. Hãy dành thời gian đọc kỹ các mục trong phần này để nắm
+                                vững cấu trúc bài thi, các mẹo làm bài quan trọng và các lỗi sai cần tránh. Đặc biệt,
+                                các trang <code>Ngân hàng ý tưởng Speaking</code> và <code>Phương pháp PEEL</code> là
+                                nền tảng cốt lõi cho kỹ năng Nói.</p>
+                        </div>
+                        <div class="about-image-container">
+                            <img src="screenshot/peel.png" alt="Hướng dẫn chung" class="about-image">
+                        </div>
+                    </div>
+
+                    <!-- Listening & Reading -->
+                    <div class="about-grid reverse">
+                        <div class="about-text">
+                            <h4>2. 🎧 Listening & 📖 Reading</h4>
+                            <p>Hai kỹ năng này có cấu trúc học tương tự:</p>
+                            <ul>
+                                <li><strong>Các trang học "Key":</strong> Nơi bạn học và ghi nhớ đáp án.</li>
+                                <li><strong>Trang Cheatsheet:</strong> Hệ thống hóa các key dễ nhầm lẫn.</li>
+                                <li><strong>Trang "Làm bài Part X":</strong> Kiểm tra trí nhớ của bạn.</li>
+                                <li><strong>Thi thử Reading:</strong> Mô phỏng bài thi đầy đủ 5 phần.</li>
+                            </ul>
+                        </div>
+                        <div class="about-image-container">
+                            <img src="screenshot/reading4.png" alt="Giao diện thi thử Reading" class="about-image">
+                        </div>
+                    </div>
+
+                    <!-- Speaking -->
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h4>3. 🗣️ Speaking</h4>
+                            <ul>
+                                <li><strong>Các trang luyện tập:</strong> Cung cấp chủ đề, câu hỏi, và câu trả lời mẫu
+                                    có kèm audio.</li>
+                                <li><strong>Prepare to Test:</strong> Quiz ngắn củng cố kiến thức về sườn bài.</li>
+                                <li><strong>Thi thử Speaking:</strong> Giao diện mô phỏng phòng thi thật với đồng hồ đếm
+                                    ngược.</li>
+                            </ul>
+                        </div>
+                        <div class="about-image-container">
+                            <img src="screenshot/speaking3.png" alt="Giao diện thi thử Speaking" class="about-image">
+                        </div>
+                    </div>
+
+                    <!-- Writing -->
+                    <div class="about-grid reverse">
+                        <div class="about-text">
+                            <h4>4. ✍️ Writing</h4>
+                            <ul>
+                                <li><strong>Các trang luyện tập:</strong> Cung cấp đề bài và các công cụ hỗ trợ như bộ
+                                    đếm từ, tự động lưu bài.</li>
+                                <li><strong>Part 4 Structure Quiz:</strong> Trắc nghiệm giúp bạn thuộc lòng cấu trúc câu
+                                    mẫu.</li>
+                                <li><strong>Phân Tích Đề Bài:</strong> Công cụ giúp bạn đọc hiểu đúng yêu cầu đề bài.
+                                </li>
+                                <li><strong>Luyện Gõ Chính Tả:</strong> Luyện gõ các câu mẫu để tăng tốc độ và độ chính
+                                    xác.</li>
+                            </ul>
+                        </div>
+                        <div class="about-image-container">
+                            <img src="screenshot/writing.png" alt="Giao diện luyện tập Writing" class="about-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>Chúc Bạn Học Tốt!</h2>
+                    <p>Hy vọng rằng với cấu trúc rõ ràng và các công cụ đa dạng, trang web này sẽ là một người bạn đồng
+                        hành hữu ích trên con đường chinh phục Aptis của bạn.</p>
+                </div>
+            </div>
+        </div>
+        <footer id="footer-placeholder"></footer>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

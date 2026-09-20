@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta name="description" content="Luyện tập kỹ năng Reading Aptis: Reading - Part 5. Tổng hợp các bài đọc hiểu, mẹo làm bài và phân tích đáp án chi tiết.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading - Part 5</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- 1. Tích hợp Driver.js (Tour) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
+    <style>
+        /* CSS cho bài tập sắp xếp (Tái sử dụng từ Part 2/3) */
+        .quiz-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .card-header h2 { margin: 0; font-size: 1.2em; color: #333; }
+        
+        .heading-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        .heading-list li {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 4px;
+            cursor: move; /* Con trỏ kéo thả */
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .heading-list li:hover { 
+            background: #f1f3f5; 
+            border-color: #ced4da;
+        }
+        /* Số thứ tự đoạn văn (cố định bên trái để người dùng biết mình đang xếp cho đoạn nào) */
+        .paragraph-number {
+            font-weight: bold;
+            color: #007bff;
+            background: #e7f1ff;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .sortable-ghost { opacity: 0.4; background: #cce5ff; border: 2px dashed #007bff; }
+
+        .feedback-message {
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .correct { color: #28a745; }
+        .incorrect { color: #dc3545; }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .answer-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f1f8e9;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+        }
+        
+        /* Style cho danh sách đáp án tiếng Anh */
+        .english-key-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .english-key-list li {
+            margin-bottom: 5px;
+            color: #2e7d32;
+        }
+        .english-key-list strong {
+            color: #1b5e20;
+            margin-right: 5px;
+        }
+
+        /* CSS cho nút Help/Tour */
+        .tour-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-size: 24px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .tour-btn:hover {
+            transform: scale(1.1);
+            background-color: #f8f9fa;
+        }
+
+        /* Tùy chỉnh giao diện Driver.js */
+        .driver-popover.driverjs-theme {
+            background-color: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-width: 350px;
+        }
+        .driver-popover.driverjs-theme .driver-popover-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-blue, #007bff);
+        }
+        .driver-popover.driverjs-theme .driver-popover-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .driver-popover.driverjs-theme button {
+            background-color: var(--primary-blue, #007bff);
+            color: #fff;
+            text-shadow: none;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+
+        /* === STYLES CHO ĐỀ MỚI MOUNTAIN (VERSION 2) THEO ẢNH CHUẨN THI === */
+        .part5-tab-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .part5-tab-btn {
+            padding: 12px 24px;
+            font-size: 1.05em;
+            font-weight: bold;
+            border-radius: 30px;
+            border: 2px solid var(--primary-blue, #007bff);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .part5-tab-btn.active {
+            background-color: var(--primary-blue, #007bff);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,123,255,0.25);
+        }
+
+        .part5-tab-btn:not(.active) {
+            background-color: #fff;
+            color: var(--primary-blue, #007bff);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .part5-view-section {
+            display: none;
+        }
+
+        .part5-view-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* Giao diện chuẩn phòng thi Mountain */
+        .mountain-exam-wrapper {
+            background-color: #f3f3f3;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+        }
+
+        .mountain-top-purple-bar {
+            background-color: #24085a;
+            height: 38px;
+            width: 100%;
+        }
+
+        .mountain-exam-header {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mountain-exam-header-left h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .mountain-exam-header-left .sub-info {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .mountain-exam-header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .mountain-pill-btn {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .mountain-pill-btn:hover {
+            background: #f9fafb;
+        }
+
+        .mountain-pill-btn.bookmarked {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #b45309;
+        }
+
+        .mountain-circle-btn {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: #4b5563;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .mountain-circle-btn:hover {
+            background: #f9fafb;
+        }
+
+        .mountain-timer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 95px;
+        }
+
+        .mountain-timer-display {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111827;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            line-height: 1.1;
+        }
+
+        .mountain-timer-label {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+
+        .mountain-timer-bar {
+            width: 100%;
+            height: 3px;
+            background-color: #5b21b6;
+            margin-top: 4px;
+            border-radius: 2px;
+        }
+
+        .mountain-content-body {
+            padding: 25px 35px 35px 35px;
+        }
+
+        .mountain-instruction-box {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 22px;
+            color: #374151;
+            font-size: 14.5px;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .mountain-passage-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 22px;
+        }
+
+        .mountain-para-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .mountain-para-index {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+            min-width: 24px;
+            padding-top: 6px;
+        }
+
+        .mountain-para-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .m-custom-select-wrapper {
+            position: relative;
+            width: fit-content;
+            max-width: 100%;
+            min-width: 320px;
+            margin-bottom: 6px;
+        }
+
+        .m-select-trigger {
+            border: 1.5px solid #d1d5db;
+            border-radius: 22px;
+            padding: 9px 18px;
+            background: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            gap: 16px;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+
+        .m-select-trigger:hover {
+            border-color: #9ca3af;
+        }
+
+        .m-select-trigger .chevron-icon {
+            font-size: 12px;
+            color: #6b7280;
+            transition: transform 0.2s;
+        }
+
+        .m-custom-select-wrapper.open .m-select-trigger {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        .m-custom-select-wrapper.open .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .m-options-list {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            min-width: 350px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            overflow: hidden;
+            display: none;
+        }
+
+        .m-custom-select-wrapper.open .m-options-list {
+            display: block;
+        }
+
+        .m-option-item {
+            padding: 11px 18px;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .m-option-item:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .m-option-item.selected {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 600;
+        }
+
+        /* Đúng / Sai khớp với ảnh của user */
+        .m-custom-select-wrapper.is-correct .m-select-trigger {
+            border-color: #10b981 !important;
+            color: #047857 !important;
+            font-weight: 600;
+            background-color: #f0fdf4;
+        }
+
+        .m-custom-select-wrapper.is-correct .chevron-icon {
+            color: #10b981 !important;
+        }
+
+        .m-custom-select-wrapper.is-incorrect .m-select-trigger {
+            border-color: #ef4444 !important;
+            color: #b91c1c !important;
+            font-weight: 600;
+            background-color: #fef2f2;
+        }
+
+        .m-custom-select-wrapper.is-incorrect .chevron-icon {
+            color: #ef4444 !important;
+        }
+
+        .m-correct-hint {
+            display: none;
+            color: #059669;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin: 8px 0 4px 4px;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .m-correct-hint.visible {
+            display: flex;
+        }
+
+        .m-explanation-box {
+            display: none;
+            background-color: #eff6ff;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0 12px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #1d4ed8;
+        }
+
+        .m-explanation-box.visible {
+            display: block;
+        }
+
+        .m-para-text {
+            font-size: 15px;
+            line-height: 1.75;
+            color: #374151;
+            margin-top: 10px;
+        }
+
+        .m-footer-actions {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .m-score-box {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .m-score-tag {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 15px;
+        }
+
+        .m-btn-primary {
+            background-color: #24085a;
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .m-btn-primary:hover {
+            background-color: #3b1285;
+        }
+
+        .m-btn-secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+            border: 1px solid #d1d5db;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .m-btn-secondary:hover {
+            background-color: #e5e7eb;
+            color: #111827;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header-placeholder"></header>
+    
+    <!-- 2. Nút kích hoạt lại Tour -->
+    <div class="tour-btn" id="restart-tour" title="Hướng dẫn sử dụng">❓</div>
+
+    <div class="content-pusher">
+        <div class="container">
+            <h1 style="text-align: center;" id="page-title">Reading - Part 5</h1>
+            <p style="text-align: center;" id="page-description">Matching Headings (Nối tiêu đề)</p>
+
+            <!-- THANH TÍNH NĂNG CHUYỂN ĐỔI CHẾ ĐỘ LÀM BÀI (ĐỀ 1 / ĐỀ 2 / ĐỀ 3 / ĐỀ 4 / KÉO THẢ) -->
+            <div class="part5-tab-bar">
+                <button class="part5-tab-btn active" data-target="mountain-view" data-exam="v2">
+                    🏔️ Đề 1 (v2)
+                </button>
+                <button class="part5-tab-btn" data-target="mountain-view" data-exam="v3">
+                    🏔️ Đề 2 (v3) ✨
+                </button>
+                <button class="part5-tab-btn" data-target="mountain-view" data-exam="v4">
+                    🏔️ Đề 3 (v4) ✨
+                </button>
+                <button class="part5-tab-btn" data-target="mountain-view" data-exam="v5">
+                    🏔️ Đề 4 (v5)
+                </button>
+                <button class="part5-tab-btn" data-target="dragdrop-view">
+                    📚 Luyện Kéo Thả (20 Đề Tổng Hợp)
+                </button>
+            </div>
+
+            <!-- VIEW 1: ĐỀ MỚI MOUNTAIN - GIAO DIỆN CHUẨN PHÒNG THI DROP-DOWN -->
+            <div id="mountain-view" class="part5-view-section active">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                    <div id="exam-toggle-subnav" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button class="m-btn-secondary" id="btn-switch-v2" style="font-size: 13px; padding: 6px 14px; font-weight: bold; background-color: #24085a; color: #fff;">Đề 1 (Version 2)</button>
+                        <button class="m-btn-secondary" id="btn-switch-v3" style="font-size: 13px; padding: 6px 14px; font-weight: bold;">Đề 2 (Version 3)</button>
+                        <button class="m-btn-secondary" id="btn-switch-v4" style="font-size: 13px; padding: 6px 14px; font-weight: bold;">Đề 3 (Version 4)</button>
+                        <button class="m-btn-secondary" id="btn-switch-v5" style="font-size: 13px; padding: 6px 14px; font-weight: bold;">Đề 4 (Version 5)</button>
+                    </div>
+                    <a id="fullscreen-exam-link" href="reading_part5_mountain.html" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background-color: #24085a; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 13.5px; box-shadow: 0 2px 6px rgba(36,8,90,0.25);">
+                        <i class="fas fa-external-link-alt"></i> Mở phòng thi toàn màn hình (Full Exam)
+                    </a>
+                </div>
+
+                <div class="mountain-exam-wrapper">
+                    <!-- Dải tím trên cùng -->
+                    <div class="mountain-top-purple-bar"></div>
+
+                    <!-- Thanh thông tin bài thi -->
+                    <div class="mountain-exam-header">
+                        <div class="mountain-exam-header-left">
+                            <h2>Reading</h2>
+                            <div class="sub-info">7 paragraphs · 7 headings</div>
+                        </div>
+
+                        <div class="mountain-exam-header-right">
+                            <button class="mountain-pill-btn" id="m-bookmark-btn">
+                                <i class="far fa-bookmark" id="m-bookmark-icon"></i> Bookmark
+                            </button>
+
+                            <button class="mountain-circle-btn" id="m-pause-btn" title="Tạm dừng">
+                                <i class="fas fa-pause" id="m-pause-icon"></i>
+                            </button>
+
+                            <div class="mountain-timer-container">
+                                <div class="mountain-timer-display" id="m-timer-display">00:08:03</div>
+                                <div class="mountain-timer-label">Time remaining</div>
+                                <div class="mountain-timer-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mountain-content-body">
+                        <!-- Hướng dẫn -->
+                        <div class="mountain-instruction-box">
+                            Read the passage quickly. Choose a heading for each numbered paragraph from the drop-down list.
+                        </div>
+
+                        <!-- Tiêu đề đề bài -->
+                        <h2 class="mountain-passage-title" id="m-passage-title">Mountain (Version 2)</h2>
+
+                        <!-- Danh sách 7 đoạn văn sẽ được render -->
+                        <div id="mountain-paragraphs-container"></div>
+
+                        <!-- Thanh điều khiển và kết quả -->
+                        <div class="m-footer-actions">
+                            <div class="m-score-box" id="m-score-box" style="display: none;">
+                                <span>Điểm số:</span>
+                                <span class="m-score-tag" id="m-score-text">0 / 7</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <button class="m-btn-primary" id="m-check-btn">
+                                    <i class="fas fa-check-circle"></i> Kiểm tra đáp án
+                                </button>
+                                <button class="m-btn-secondary" id="m-show-btn">
+                                    <i class="fas fa-lightbulb"></i> Xem đáp án & Giải thích
+                                </button>
+                                <button class="m-btn-secondary" id="m-reset-btn">
+                                    <i class="fas fa-redo"></i> Làm lại
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: CHẾ ĐỘ LUYỆN KÉO THẢ TRUYỀN THỐNG (CÁC ĐỀ KHÁC) -->
+            <div id="dragdrop-view" class="part5-view-section">
+                <!-- HỘP GIẢI THÍCH -->
+                <div class="explanation-box">
+                    <h3>💡 Phương pháp học Part 5</h3>
+                    <p>
+                        <strong>Nhiệm vụ:</strong> Có 7 đoạn văn và 8 tiêu đề (1 tiêu đề thừa). Bạn cần nối tiêu đề đúng vào đoạn văn tương ứng.
+                    </p>
+                    <p>
+                        <strong>Cách luyện tập tại đây:</strong> Các tiêu đề đúng (7 tiêu đề) đã được chọn lọc nhưng bị <strong>xáo trộn thứ tự</strong>. Bạn hãy kéo thả chúng để sắp xếp lại theo đúng trình tự từ Đoạn 1 đến Đoạn 7.
+                    </p>
+                </div>
+                
+                <main id="quiz-container">
+                    <!-- Các câu hỏi sẽ được tự động chèn vào đây -->
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer-placeholder"></footer>
+    </div>
+    
+    <!-- SCRIPTS -->
+    <script src="js/main.js"></script>
+    <script src="js/data-reading-part5.js?v=20260921"></script>
+    
+    <!-- 2. SortableJS (Kéo thả) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    
+    <!-- 3. Driver.js (Tour) -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <script>
+        // Danh sách 2 bộ đề chuẩn phòng thi
+        const examsData = {
+            "v2": {
+                title: "Mountain (Version 2)",
+                fullscreenLink: "reading_part5_mountain.html",
+                headings: [
+                    "Changing the perspective towards mountain",
+                    "A disturbing revelation",
+                    "A more intimate relationship",
+                    "The wrong priority",
+                    "Publicity of achievement",
+                    "Unique sense of achievement",
+                    "Focus on sustainability"
+                ],
+                paragraphs: [
+                    {
+                        number: 1,
+                        correctHeading: "Changing the perspective towards mountain",
+                        meaningVN: "Thay đổi góc nhìn về núi",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói khái niệm \"mountain\" đã thay đổi theo thời gian: trước thế kỷ 19 người ta ngại chinh phục, nay công nghệ giúp việc leo núi dễ hơn và núi mang ý nghĩa biểu tượng cho thử thách, phiêu lưu.",
+                        text: "The term \"mountain\" has evolved over time, reflecting not only physical characteristics but also cultural significance. Before the 19th century, people were quite shy when it came to conquering mountains. Today, with the development of technology, reaching the highest peaks has become easier. In contemporary discussions, mountains may symbolize challenges to overcome or destinations for adventure, transcending their geographical attributes."
+                    },
+                    {
+                        number: 2,
+                        correctHeading: "Unique sense of achievement",
+                        meaningVN: "Cảm giác thành tựu độc đáo",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nhấn mạnh cảm giác thành tựu rất riêng khi leo núi: vượt qua nỗi sợ, đẩy giới hạn bản thân, và adrenaline tạo cảm giác hưng phấn như các môn thể thao mạo hiểm khác.",
+                        text: "Climbing a mountain often leads to a profound sense of accomplishment. It represents not just reaching a physical summit but also conquering personal fears and pushing one's limits, creating memories that last a lifetime. Besides, mountain climbing also creates Adrenaline - a hormone that creates a feeling of excitement like when playing other adventure sports."
+                    },
+                    {
+                        number: 3,
+                        correctHeading: "Publicity of achievement",
+                        meaningVN: "Công khai thành tích lên mạng xã hội",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói trong thời đại số, thành tích leo núi được chia sẻ rộng rãi trên mạng xã hội, biến cột mốc cá nhân thành sự kiện công khai (public spectacles).",
+                        text: "In today's digital age, sharing achievements has become prevalent. Climbing a mountain is frequently documented on social media, turning personal milestones into public spectacles that inspire others while also raising questions about authenticity."
+                    },
+                    {
+                        number: 4,
+                        correctHeading: "The wrong priority",
+                        meaningVN: "Ưu tiên sai lầm",
+                        explanation: "Chọn tiêu đề này vì đoạn văn chỉ ra người leo núi đặt sai thứ tự ưu tiên: quan tâm chụp ảnh cho mạng xã hội hơn là tôn trọng núi, bỏ qua cảnh báo thời tiết và an toàn, dẫn tới tai nạn.",
+                        text: "In recent years, some climbers have become more focused on taking photos for social media than respecting the mountains they visit. Long lines form near popular summits as people wait for the perfect picture, often ignoring weather warnings or safety advice. In some cases, this obsession with online fame has led to serious accidents. It shows how personal image is sometimes valued more than safety or responsibility."
+                    },
+                    {
+                        number: 5,
+                        correctHeading: "A disturbing revelation",
+                        meaningVN: "Một sự thật đáng lo ngại",
+                        explanation: "Chọn tiêu đề này vì đoạn văn phơi bày sự thật đáng lo ở Everest: dòng người chen chúc, rác thải và ô nhiễm, thử thách cá nhân biến thành cuộc đua thương mại — tác giả dùng chính từ \"disturbing\".",
+                        text: "Mount Everest, once a symbol of human courage, has now become a worrying example of how adventure can harm nature. Every climbing season, long lines of climbers crowd the narrow paths to the summit, leaving behind waste and pollution on the fragile slopes. What used to be a personal challenge has turned into a commercial race, where success is measured by photos and fame rather than respect for the mountain. This situation is disturbing because it shows how our desire to conquer the world's highest peak has created serious environmental and moral concerns."
+                    },
+                    {
+                        number: 6,
+                        correctHeading: "Focus on sustainability",
+                        meaningVN: "Tập trung vào tính bền vững",
+                        explanation: "Chọn tiêu đề này vì đoạn văn tập trung vào tính bền vững: quy định quản lý rác nghiêm hơn, giới hạn số đoàn leo, các chuyến \"clean-up climbs\" để dọn rác trên núi.",
+                        text: "As the number of climbers on Mount Everest continues to rise, the need to focus on sustainability has become urgent. Local authorities and environmental groups are now introducing stricter waste management rules, encouraging climbers to bring back what they carry, and limiting the number of expeditions each season. Some teams have even started \"clean-up climbs\" to remove rubbish left behind on the slopes. These efforts remind us that protecting the mountain is just as important as reaching its peak. True success on Everest should mean leaving the mountain cleaner and safer for future generations."
+                    },
+                    {
+                        number: 7,
+                        correctHeading: "A more intimate relationship",
+                        meaningVN: "Một mối quan hệ gắn bó hơn",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói trải nghiệm cùng nhau trong môi trường thử thách giúp các cặp đôi hoặc bạn bè gắn bó thân thiết hơn nhờ hỗ trợ và hiểu nhau.",
+                        text: "Shared experiences in challenging environments, like mountains, can deepen intimacy in relationships. Couples or friends who navigate the challenges of climbing together often find their bonds strengthened through mutual support and understanding."
+                    }
+                ]
+            },
+            "v5": {
+                title: "Mountain (Version 5)",
+                fullscreenLink: "reading_part5_mountain_v5.html",
+                headings: [
+                    "Our changing perspective towards mountains",
+                    "A unique sense of achievement",
+                    "Publicising one's achievements",
+                    "The wrong priority",
+                    "A disturbing revelation",
+                    "A focus on sustainability",
+                    "A more intimate relationship"
+                ],
+                paragraphs: [
+                    {
+                        number: 1,
+                        correctHeading: "Our changing perspective towards mountains",
+                        meaningVN: "Cách nhìn nhận của chúng ta về núi thay đổi",
+                        explanation: "Chọn \"Our changing perspective towards mountains\" vì đoạn văn so sánh xưa – nay: người ta từng nghĩ leo núi là thú chơi hẹp, nhưng có bằng chứng leo núi đã là môn thể thao nghiêm túc từ lâu; điều KHÁC biệt bây giờ là định nghĩa \"chinh phục\" = đứng trên đỉnh, tự mình nhìn xuống thay vì nhờ ảnh và lời kể của người khác.",
+                        text: "It's often thought that mountaineering has never attracted much serious attention - a niche pursuit that only became popular once modern equipment made the peaks accessible. There is clear evidence, however, that people were treating climbing as a demanding sport long before the era of social media. What is different in modern times is that many people now define conquering a mountain as standing on its summit - the particular thrill of being on top of the very thing you have just overcome, with the whole landscape spread out below, rather than relying on the photographs and accounts that other climbers have provided."
+                    },
+                    {
+                        number: 2,
+                        correctHeading: "A unique sense of achievement",
+                        meaningVN: "Cảm giác thành tựu độc đáo",
+                        explanation: "Chọn \"A unique sense of achievement\" vì đoạn văn nói về cảm giác thành tựu sâu sắc (profound sense of accomplishment): hình dáng núi tượng trưng cho chinh phục, vượt nỗi sợ, đẩy giới hạn, cộng thêm adrenaline khiến người leo quay lại mãi.",
+                        text: "Climbing a mountain often leads to a profound sense of accomplishment. Because of their very shape, rising steeply to a single point, mountains stand for conquest and struggle, and reaching the top of one carries that meaning with it. But there is more to it than that: it represents not just reaching a physical summit but also conquering personal fears and pushing one's limits, creating memories that last a lifetime. There is also the adrenaline rush that comes with it - the same surge of excitement that draws people to other adventure sports, and one reason why so many climbers return to the mountains long after they have proved whatever they set out to prove."
+                    },
+                    {
+                        number: 3,
+                        correctHeading: "Publicising one's achievements",
+                        meaningVN: "Công bố thành tích của bản thân",
+                        explanation: "Chọn \"Publicising one's achievements\" vì đoạn văn nói selfie trên đỉnh gần như bắt buộc — bằng chứng và cách để mọi người biết; sự thoả mãn riêng tư giờ được đăng, gắn giờ, chia sẻ (posted, timestamped and shared).",
+                        text: "Reaching the summit is no longer enough on its own. Taking a selfie at the top has become almost obligatory - the proof that the climb actually happened, and the means by which everyone else gets to hear about it. What was once a private satisfaction is now something to be posted, timestamped and shared within hours of the descent. This turns personal milestones into public spectacles that can inspire others, though it also raises awkward questions about authenticity: whether the climb was made for its own sake, or for the picture at the end of it."
+                    },
+                    {
+                        number: 4,
+                        correctHeading: "The wrong priority",
+                        meaningVN: "Ưu tiên sai lầm",
+                        explanation: "Chọn \"The wrong priority\" vì đoạn văn chỉ ra người leo tập trung vào bức ảnh hơn ngọn núi, coi hành trình chỉ là chướng ngại, bỏ qua cảnh báo → tai nạn; \"personal image ends up mattering more than safety or responsibility\" = đặt sai ưu tiên.",
+                        text: "In recent years, some climbers have become more focused on the photograph than on the mountain itself. Only the summit seems to count, as if there were nothing beautiful about the journey up, as if the hours of effort and the shifting landscape were merely an obstacle between the climber and the picture. Warnings go unheeded because nobody wants to turn back empty-handed, and in some cases this obsession with online fame has led to serious accidents. Reaching a major peak now also demands complicated organisation - permits, guides, bottled oxygen, a support team booked months in advance - and all of this can detract from the enjoyment of the climb. Personal image ends up mattering more than safety or responsibility."
+                    },
+                    {
+                        number: 5,
+                        correctHeading: "A disturbing revelation",
+                        meaningVN: "Một sự thật đáng lo ngại",
+                        explanation: "Chọn \"A disturbing revelation\" vì đoạn văn mở bằng kỳ vọng Everest vắng vẻ rồi lật lại \"The reality is startling\": ảnh \"traffic jam\" trên death zone, rác mỗi mùa, thử thách cá nhân thành cuộc đua thương mại. Bẫy: đoạn 4 cũng nói tai nạn nhưng không \"hé lộ\" sự thật gây sốc.",
+                        text: "You might expect the world's highest mountain to be an empty place - so hostile, so far beyond ordinary human endurance that hardly anyone would set foot there. The reality is startling. Photographs from recent seasons show a \"traffic jam\" of climbers on Everest, queuing along a single fixed rope in the death zone, waiting hours for their turn at the top. When a weather window opens, the ascent effectively becomes a race between them, the other climbers and the weather itself. Meanwhile the slopes carry the waste of every season, and what was once a personal challenge has become a commercial race measured in photographs and fame rather than respect for the mountain."
+                    },
+                    {
+                        number: 6,
+                        correctHeading: "A focus on sustainability",
+                        meaningVN: "Tập trung vào sự bền vững",
+                        explanation: "Chọn \"A focus on sustainability\" vì đoạn văn nói về cách vận hành expedition đổi theo hướng bảo vệ môi trường: giới hạn permit, đặt cọc trả lại khi mang rác xuống, clean-up climbs, \"a mountain should be left cleaner than it was found\".",
+                        text: "The pressure on high-altitude environments has forced a change in how expeditions are run. Authorities in several climbing regions now issue only a limited number of permits each season, and operators are required to lodge a deposit that is returned only once they bring their rubbish back down with them. Some teams organise clean-up climbs, whose purpose is not the summit at all but the removal of equipment and waste abandoned by earlier parties. Behind these measures lies a shift in what counts as a successful trip: protecting the slopes now matters as much as standing on top of them, and a mountain should be left cleaner than it was found."
+                    },
+                    {
+                        number: 7,
+                        correctHeading: "A more intimate relationship",
+                        meaningVN: "Một mối quan hệ gắn bó hơn",
+                        explanation: "Chọn \"A more intimate relationship\" vì đoạn văn kể Nan Shepherd đi \"into the hills rather than up them\", biết núi như biết một người bạn — \"one visits a friend with no intention but to be with him\".<br><br>👉 <em>Mẹo: đọc câu đầu + câu cuối mỗi đoạn; các cặp dễ nhầm là đoạn 3/4 (đăng ảnh vs ưu tiên sai) và đoạn 4/5 (tai nạn vs sự thật gây sốc ở Everest).</em>",
+                        text: "For most people a mountain is something to be conquered - a summit to be reached, a target to be ticked off. The Scottish writer Nan Shepherd saw it differently. She grew up within sight of the Cairngorms and spent a lifetime walking the same range, setting down what she found there in The Living Mountain. She went into the hills rather than up them, returning to the same corries and burns until she knew them the way one comes to know a person rather than a place: to be with the mountain as “one visits a friend with no intention but to be with him”."
+                    }
+                ]
+            },
+            "v3": {
+                title: "Mountain (Version 3)",
+                fullscreenLink: "reading_part5_mountain_v3.html",
+                headings: [
+                    "Our changing definition of mountains",
+                    "A sense of achievement",
+                    "Publicising one's achievements",
+                    "A disturbing revelation",
+                    "The wrong priority",
+                    "A focus on substantiality",
+                    "A more intimate relationship"
+                ],
+                paragraphs: [
+                    {
+                        number: 1,
+                        correctHeading: "Our changing definition of mountains",
+                        meaningVN: "Định nghĩa ngày càng thay đổi của chúng ta về núi non",
+                        explanation: "Chọn tiêu đề này vì đoạn văn so sánh cách hiểu về núi xưa và nay: người xưa leo núi vì vẻ đẹp và sự thích thú, còn ngày nay đỉnh núi trở thành đích đến mang tính biểu tượng cho thành công và sức bền.",
+                        text: "Even before the nineteenth century, mountains had always exerted a powerful attraction on travellers. They captivated visitors largely because of their natural beauty and the sense of awe inspired by dramatic landscapes. For early explorers, climbing to the summit was primarily about enjoyment and wonder, rather than proving personal strength. In contrast, today the peak is no longer seen merely as a scenic viewpoint but as a highly symbolic destination. Reaching the top has increasingly come to represent success, endurance, and a once-in-a-lifetime accomplishment that many people aspire to achieve."
+                    },
+                    {
+                        number: 2,
+                        correctHeading: "A sense of achievement",
+                        meaningVN: "Cảm giác hoàn thành/đạt được",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói việc chinh phục đỉnh núi mang ý nghĩa cá nhân sâu sắc — là ẩn dụ cho thành công, vượt rào cản, khiến cảm giác đạt được rất đáng giá.",
+                        text: "For a large number of climbers, conquering a mountain summit embodies profound personal significance. The \"summit\" is often interpreted as a metaphor for success in life, a clear representation of overcoming barriers and pushing human limits. The physical obstacles encountered on the climb mirror psychological struggles, which makes the achievement deeply rewarding. Over time, mountaineering has evolved into a cultural practice where people challenge themselves for adventure, resilience, and self-affirmation. Consequently, the scenery or encounters along the trail have become secondary to the psychological triumph of standing at the very top."
+                    },
+                    {
+                        number: 3,
+                        correctHeading: "Publicising one's achievements",
+                        meaningVN: "Công khai thành tích cá nhân",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói về hiện tượng \"summit selfie\": ảnh ở đỉnh từ chỗ để lưu niệm đã thành cách công bố thành tích với người khác, càng mạnh hơn nhờ mạng xã hội.",
+                        text: "Mountaineering as a celebrated \"achievement\" has been amplified by the phenomenon of the \"summit selfie.\" Even in the pre-digital era, photographs at the summit were considered valuable mementoes, proof of the effort invested. What began as a way to preserve memories gradually turned into an opportunity to broadcast one's success to others. The rise of social media has intensified this trend, as climbers are often more concerned with curating a perfect image than immersing themselves in the experience. In many cases, the journey itself becomes overshadowed by the simple desire to showcase the fact of having reached the summit."
+                    },
+                    {
+                        number: 4,
+                        correctHeading: "A disturbing revelation",
+                        meaningVN: "Một sự thật đáng lo ngại được tiết lộ",
+                        explanation: "Chọn tiêu đề này vì đoạn văn kể bức ảnh của Thomas năm 1993 phơi bày \"the unsettling reality\" — hàng trăm người xếp hàng một chờ lên đỉnh, gương mặt kiệt sức và bức xúc. Cụm \"unsettling reality\" chính là \"a disturbing revelation\".",
+                        text: "The photograph captured by Thomas in 1993 exposed the unsettling reality of contemporary mountaineering. It depicted hundreds of people queuing in a single file line to reach the summit - an image that contrasts starkly with the solitude once associated with genuine exploration. The climbers' expressions reflected exhaustion and frustration rather than determination or joy, suggesting that the climb had lost its authenticity. Once published online, the image provoked widespread debate about whether the meaning of summiting had been reduced to mere spectacle. For many critics, it illustrated how the essence of mountaineering has been compromised by mass participation and social validation."
+                    },
+                    {
+                        number: 5,
+                        correctHeading: "The wrong priority",
+                        meaningVN: "Ưu tiên sai lầm",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói giới phê bình kết luận đỉnh núi đã thành mục đích tự thân, người leo coi nhẹ quá trình và khâu chuẩn bị, chạy theo danh tiếng — tức đặt sai thứ tự ưu tiên.",
+                        text: "From this picture, critics conclude that the summit has become an end in itself, often detached from the original spirit of exploration. Many people now seem to disregard the multifaceted nature of mountaineering, treating it simply as a fashionable objective. For some, neither the genuine process of climbing nor the authentic arrival at the peak matters, as their motivation is largely external. Furthermore, the preparation that should accompany such an endeavour - rigorous physical training, budgeting, and logistical planning - is frequently underestimated. As a result, the experience risks being superficial, emphasising prestige rather than true engagement with the mountain."
+                    },
+                    {
+                        number: 6,
+                        correctHeading: "A focus on substantiality",
+                        meaningVN: "Tập trung vào tính bền vững",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói trực tiếp về trách nhiệm và tính bền vững: rác thải, suy thoái môi trường, thiếu tôn trọng hệ sinh thái địa phương.",
+                        text: "One of the most urgent debates surrounding contemporary mountaineering concerns sustainability. Popular climbing destinations often suffer from waste accumulation, environmental degradation, and disrespect for local ecosystems. Many activists argue that this trend-driven approach to climbing must be reconsidered in order to preserve fragile landscapes. Responsibility, they emphasise, should be integral to every stage of the climbing journey, from preparation to leaving the site clean. Ultimately, they believe that the summit can only be considered \"worthwhile\" if the path toward it contributes positively to both the environment and the climber's personal growth."
+                    },
+                    {
+                        number: 7,
+                        correctHeading: "A more intimate relationship",
+                        meaningVN: "Một mối quan hệ gắn bó mật thiết hơn",
+                        explanation: "Chọn tiêu đề này vì đoạn văn kêu gọi quay về gốc rễ đích thực: tận hưởng việc đi bộ, quan sát, chậm lại; tự truyện của Cherke cho thấy leo núi đem lại mối liên hệ gần gũi hơn với thiên nhiên.",
+                        text: "Perhaps the time has come to reassess our perspective on climbing and return to its more authentic roots. Instead of pursuing mountains solely for recognition, individuals could rediscover the joy of walking, observing, and slowing down. In her autobiography, Cherke described how hiking offered her moments of reflection and a deeper connection with the natural world. Such experiences remind us that mountains provide not only physical challenges but also opportunities for serenity and contemplation. By cultivating a more intimate relationship with nature, climbing may once again regain its balance between personal fulfilment and environmental respect."
+                    }
+                ]
+            },
+            "v4": {
+                title: "Mountain (Version 4)",
+                fullscreenLink: "reading_part5_mountain_v4.html",
+                headings: [
+                    "Changing the perspective towards mountains",
+                    "Unique sense of achievement",
+                    "Publicising of achievement",
+                    "A worrying priority",
+                    "The disturbing revelation",
+                    "More focus on sustainability",
+                    "A new intimate relationship"
+                ],
+                paragraphs: [
+                    {
+                        number: 1,
+                        correctHeading: "Changing the perspective towards mountains",
+                        meaningVN: "Thay đổi góc nhìn về núi non",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói cách nhìn về núi đã thay đổi: đầu những năm 1800 người ta cho là không thích leo núi, nay ai cũng tập trung lên đỉnh để ngắm cảnh hùng vĩ thay vì khám phá cả ngọn núi.",
+                        text: "In the early 1800s, people were believed not to enjoy climbing mountains. Later, as mountain climbing became a popular trend, interest grew rapidly. However, there is evidence that humans have always been fascinated by mountains. The difference now is that people focus mainly on reaching the summit to admire the majestic views rather than simply exploring the mountain itself."
+                    },
+                    {
+                        number: 2,
+                        correctHeading: "Unique sense of achievement",
+                        meaningVN: "Cảm giác thành tựu độc đáo",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói leo núi tạo cảm giác adrenaline như thể thao mạo hiểm nhưng còn hơn thế — trở thành ẩn dụ mạnh mẽ, gây cảm hứng sâu sắc và thậm chí gây \"nghiện\" muốn lên đỉnh mãi.",
+                        text: "Climbing to the top of a mountain creates the same adrenaline rush as other extreme sports. But it goes far beyond that. Because of the sheer size and grandeur of the mountains, the experience becomes a powerful metaphor, making climbers feel deeply inspired. This intense feeling can even become addictive, as people unconsciously develop a strong desire to keep reaching the peak."
+                    },
+                    {
+                        number: 3,
+                        correctHeading: "Publicising of achievement",
+                        meaningVN: "Công khai thành tích",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói việc ghi lại và chia sẻ khoảnh khắc trên đỉnh núi đã có từ trước mạng xã hội, và nay gần như ai cũng chụp selfie rồi đăng cho bạn bè, gia đình xem.",
+                        text: "People have always enjoyed capturing and sharing the moment of standing on a mountaintop. This practice existed even before social media, as climbers admired the view or described their experiences to others. With the rise of social media, this trend has become even more common. Now, almost everyone takes selfies and posts them online for friends and family to see after reaching the summit."
+                    },
+                    {
+                        number: 4,
+                        correctHeading: "A worrying priority",
+                        meaningVN: "Một ưu tiên đáng lo ngại",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nêu lo ngại về ưu tiên: một số người bắt đầu tự hỏi việc chỉ chú trọng lên đỉnh có thực sự ý nghĩa, vì cảnh đẹp nhất có thể không ở đỉnh và cách này loại nhiều người ra khỏi trải nghiệm.",
+                        text: "Recently, some climbers have begun questioning whether this focus on the summit is truly meaningful. The most beautiful views might not be from the peak itself, and the path to the summit is often exhausting, requiring great physical strength. This approach excludes many people and overlooks the beauty found all along the mountain, not just at the top."
+                    },
+                    {
+                        number: 5,
+                        correctHeading: "The disturbing revelation",
+                        meaningVN: "Tiết lộ gây xôn xao",
+                        explanation: "Chọn tiêu đề này vì đoạn văn kể bức ảnh \"traffic jam\" trên Everest năm 2020 gây sốc toàn thế giới — hé lộ tình trạng quá tải và áp lực môi trường ở nơi từng được coi là đỉnh núi xa xôi.",
+                        text: "A photo taken on Mount Everest in 2020, showing a \"traffic jam\" of climbers, shocked the world. It revealed how many climbers were rushing to reach the summit during the short window of good weather. This image raised concerns about overcrowding and highlighted how Everest, once seen as a remote and unreachable peak, has now become a site of intense competition and environmental strain."
+                    },
+                    {
+                        number: 6,
+                        correctHeading: "More focus on sustainability",
+                        meaningVN: "Tập trung hơn vào sự bền vững",
+                        explanation: "Chọn tiêu đề này vì đoạn văn nói người leo cần suy nghĩ lại mục tiêu và thói quen, bảo đảm du lịch toàn cầu trong tương lai không gây hại môi trường — tức chú trọng hơn vào tính bền vững.",
+                        text: "The viral photo made some people feel that climbing Everest had lost its charm. However, mountain climbing itself is not the problem. Instead, climbers must carefully reflect on their goals and habits, ensuring that future global tourism does not negatively impact the environment. A more mindful approach can protect mountains for generations to come."
+                    },
+                    {
+                        number: 7,
+                        correctHeading: "A new intimate relationship",
+                        meaningVN: "Mối quan hệ thân mật mới",
+                        explanation: "Chọn tiêu đề này vì đoạn văn đề xuất tiếp cận núi bằng tâm thế nhẹ nhàng, coi núi là người đồng hành; dẫn sách The Living Mountain (Shepherd, 1940) khi tác giả lang thang trên núi như đến thăm những người bạn cũ.",
+                        text: "Perhaps we should approach mountains with a gentle mindset, seeing them as companions rather than challenges to conquer. In the 1940 book The Living Mountain by Shepherd, the author describes climbing near her family farm. She wandered the mountains without specific goals, treating each climb as a visit to old friends instead of a mission to claim victory over nature."
+                    }
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentExamKey = "v2";
+            let mUserSelections = {};
+
+            const tabButtons = document.querySelectorAll('.part5-tab-btn');
+            const viewSections = document.querySelectorAll('.part5-view-section');
+            const mContainer = document.getElementById('mountain-paragraphs-container');
+            const passageTitle = document.getElementById('m-passage-title');
+            const fullscreenLink = document.getElementById('fullscreen-exam-link');
+            const btnSwitchV2 = document.getElementById('btn-switch-v2');
+            const btnSwitchV3 = document.getElementById('btn-switch-v3');
+            const btnSwitchV4 = document.getElementById('btn-switch-v4');
+            const btnSwitchV5 = document.getElementById('btn-switch-v5');
+            const subnavBtns = {
+                'v2': btnSwitchV2,
+                'v3': btnSwitchV3,
+                'v4': btnSwitchV4,
+                'v5': btnSwitchV5
+            };
+
+            function renderCurrentExam(key) {
+                currentExamKey = key;
+                mUserSelections = {};
+                const data = examsData[key];
+
+                passageTitle.textContent = data.title;
+                fullscreenLink.href = data.fullscreenLink;
+
+                Object.keys(subnavBtns).forEach(k => {
+                    const b = subnavBtns[k];
+                    if (!b) return;
+                    if (k === key) {
+                        b.style.backgroundColor = '#24085a';
+                        b.style.color = '#fff';
+                    } else {
+                        b.style.backgroundColor = '#f3f4f6';
+                        b.style.color = '#374151';
+                    }
+                });
+
+                tabButtons.forEach(b => {
+                    if (b.dataset.target === 'mountain-view') {
+                        if (b.dataset.exam === key) {
+                            b.classList.add('active');
+                            b.style.backgroundColor = 'var(--primary-blue, #007bff)';
+                            b.style.color = '#fff';
+                            b.style.boxShadow = '0 4px 10px rgba(0,123,255,0.25)';
+                        } else {
+                            b.classList.remove('active');
+                            b.style.backgroundColor = '#fff';
+                            b.style.color = 'var(--primary-blue, #007bff)';
+                            b.style.boxShadow = '0 2px 6px rgba(0,0,0,0.05)';
+                        }
+                    }
+                });
+
+                mContainer.innerHTML = '';
+                document.getElementById('m-score-box').style.display = 'none';
+
+                data.paragraphs.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'mountain-para-card';
+                    card.id = `m-card-${p.number}`;
+
+                    let optionsHtml = '';
+                    data.headings.forEach(h => {
+                        optionsHtml += `<div class="m-option-item" data-value="${h}">${h}</div>`;
+                    });
+
+                    card.innerHTML = `
+                        <div class="mountain-para-index">${p.number}.</div>
+                        <div class="mountain-para-content">
+                            <div class="m-custom-select-wrapper" id="m-select-${p.number}">
+                                <div class="m-select-trigger">
+                                    <span class="selected-text">Choose a heading...</span>
+                                    <i class="fas fa-chevron-down chevron-icon"></i>
+                                </div>
+                                <div class="m-options-list">
+                                    ${optionsHtml}
+                                </div>
+                            </div>
+
+                            <!-- Gợi ý đáp án đúng khi sai -->
+                            <div class="m-correct-hint" id="m-hint-${p.number}">
+                                <i class="fas fa-check-circle"></i>
+                                <span>${p.correctHeading} ${p.meaningVN ? `(${p.meaningVN})` : ''}</span>
+                            </div>
+
+                            <!-- Khung giải thích chi tiết -->
+                            <div class="m-explanation-box" id="m-exp-${p.number}">
+                                ${p.meaningVN ? `<div style="font-weight: bold; margin-bottom: 4px;">💡 ${p.meaningVN}</div>` : ''}
+                                ${p.explanation}
+                            </div>
+
+                            <!-- Nội dung đoạn văn -->
+                            <div class="m-para-text">
+                                ${p.text}
+                            </div>
+                        </div>
+                    `;
+
+                    mContainer.appendChild(card);
+                });
+
+                // Gán sự kiện Dropdown
+                setupDropdowns();
+                mResetTimer();
+            }
+
+            function setupDropdowns() {
+                document.querySelectorAll('.m-select-trigger').forEach(trigger => {
+                    trigger.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const wrapper = this.closest('.m-custom-select-wrapper');
+                        const isOpen = wrapper.classList.contains('open');
+
+                        document.querySelectorAll('.m-custom-select-wrapper.open').forEach(w => {
+                            if (w !== wrapper) w.classList.remove('open');
+                        });
+
+                        wrapper.classList.toggle('open', !isOpen);
+                    });
+                });
+
+                document.querySelectorAll('.m-option-item').forEach(item => {
+                    item.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const wrapper = this.closest('.m-custom-select-wrapper');
+                        const paraNum = wrapper.id.replace('m-select-', '');
+                        const selectedVal = this.dataset.value;
+
+                        wrapper.querySelector('.selected-text').textContent = selectedVal;
+                        wrapper.querySelectorAll('.m-option-item').forEach(opt => opt.classList.remove('selected'));
+                        this.classList.add('selected');
+
+                        mUserSelections[paraNum] = selectedVal;
+                        wrapper.classList.remove('open');
+
+                        wrapper.classList.remove('is-correct', 'is-incorrect');
+                        document.getElementById(`m-hint-${paraNum}`).classList.remove('visible');
+                        document.getElementById(`m-exp-${paraNum}`).classList.remove('visible');
+                    });
+                });
+            }
+
+            document.addEventListener('click', function () {
+                document.querySelectorAll('.m-custom-select-wrapper.open').forEach(w => {
+                    w.classList.remove('open');
+                });
+            });
+
+            // Subnav switchers
+            if (btnSwitchV2) btnSwitchV2.addEventListener('click', () => renderCurrentExam('v2'));
+            if (btnSwitchV3) btnSwitchV3.addEventListener('click', () => renderCurrentExam('v3'));
+            if (btnSwitchV4) btnSwitchV4.addEventListener('click', () => renderCurrentExam('v4'));
+            if (btnSwitchV5) btnSwitchV5.addEventListener('click', () => renderCurrentExam('v5'));
+
+            // Tab Buttons
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const targetId = this.dataset.target;
+                    const examMode = this.dataset.exam;
+
+                    tabButtons.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.backgroundColor = '#fff';
+                        b.style.color = 'var(--primary-blue, #007bff)';
+                        b.style.boxShadow = '0 2px 6px rgba(0,0,0,0.05)';
+                    });
+                    this.classList.add('active');
+                    this.style.backgroundColor = 'var(--primary-blue, #007bff)';
+                    this.style.color = '#fff';
+                    this.style.boxShadow = '0 4px 10px rgba(0,123,255,0.25)';
+
+                    viewSections.forEach(sec => {
+                        sec.classList.remove('active');
+                        if (sec.id === targetId) sec.classList.add('active');
+                    });
+
+                    if (targetId === 'mountain-view' && examMode) {
+                        renderCurrentExam(examMode);
+                    }
+                });
+            });
+
+            // Nút kiểm tra đáp án Mountain
+            document.getElementById('m-check-btn').addEventListener('click', function () {
+                let correctCount = 0;
+                const data = examsData[currentExamKey];
+
+                data.paragraphs.forEach(p => {
+                    const wrapper = document.getElementById(`m-select-${p.number}`);
+                    const hintDiv = document.getElementById(`m-hint-${p.number}`);
+                    const expDiv = document.getElementById(`m-exp-${p.number}`);
+                    const userVal = mUserSelections[p.number];
+
+                    wrapper.classList.remove('is-correct', 'is-incorrect');
+                    hintDiv.classList.remove('visible');
+                    expDiv.classList.remove('visible');
+
+                    if (userVal === p.correctHeading) {
+                        correctCount++;
+                        wrapper.classList.add('is-correct');
+                        expDiv.classList.add('visible');
+                    } else {
+                        wrapper.classList.add('is-incorrect');
+                        hintDiv.classList.add('visible');
+                        expDiv.classList.add('visible');
+                    }
+                });
+
+                const scoreBox = document.getElementById('m-score-box');
+                scoreBox.style.display = 'flex';
+                document.getElementById('m-score-text').textContent = `${correctCount} / 7`;
+            });
+
+            // Nút xem đáp án & giải thích
+            document.getElementById('m-show-btn').addEventListener('click', function () {
+                const data = examsData[currentExamKey];
+                data.paragraphs.forEach(p => {
+                    const wrapper = document.getElementById(`m-select-${p.number}`);
+                    const hintDiv = document.getElementById(`m-hint-${p.number}`);
+                    const expDiv = document.getElementById(`m-exp-${p.number}`);
+
+                    wrapper.querySelector('.selected-text').textContent = p.correctHeading;
+                    wrapper.classList.remove('is-incorrect');
+                    wrapper.classList.add('is-correct');
+                    hintDiv.classList.remove('visible');
+                    expDiv.classList.add('visible');
+                    mUserSelections[p.number] = p.correctHeading;
+                });
+
+                document.getElementById('m-score-box').style.display = 'flex';
+                document.getElementById('m-score-text').textContent = `7 / 7 (Đã mở đáp án)`;
+            });
+
+            // Nút làm lại
+            document.getElementById('m-reset-btn').addEventListener('click', function () {
+                const data = examsData[currentExamKey];
+                data.paragraphs.forEach(p => {
+                    const wrapper = document.getElementById(`m-select-${p.number}`);
+                    wrapper.querySelector('.selected-text').textContent = "Choose a heading...";
+                    wrapper.classList.remove('is-correct', 'is-incorrect', 'open');
+                    wrapper.querySelectorAll('.m-option-item').forEach(opt => opt.classList.remove('selected'));
+                    document.getElementById(`m-hint-${p.number}`).classList.remove('visible');
+                    document.getElementById(`m-exp-${p.number}`).classList.remove('visible');
+                    delete mUserSelections[p.number];
+                });
+
+                document.getElementById('m-score-box').style.display = 'none';
+                mResetTimer();
+            });
+
+            // Timer Mountain
+            let mTotalSeconds = 8 * 60 + 3;
+            let mIsPaused = false;
+            let mTimerInterval;
+
+            const mTimerDisplay = document.getElementById('m-timer-display');
+            const mPauseBtn = document.getElementById('m-pause-btn');
+            const mPauseIcon = document.getElementById('m-pause-icon');
+            const mBookmarkBtn = document.getElementById('m-bookmark-btn');
+            const mBookmarkIcon = document.getElementById('m-bookmark-icon');
+
+            function mFormatTime(sec) {
+                const m = Math.floor(sec / 60);
+                const s = sec % 60;
+                return `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }
+
+            function mStartTimer() {
+                if (mTimerInterval) clearInterval(mTimerInterval);
+                mTimerInterval = setInterval(() => {
+                    if (!mIsPaused && mTotalSeconds > 0) {
+                        mTotalSeconds--;
+                        mTimerDisplay.textContent = mFormatTime(mTotalSeconds);
+                        if (mTotalSeconds <= 0) {
+                            clearInterval(mTimerInterval);
+                            alert('Hết giờ làm bài!');
+                            document.getElementById('m-check-btn').click();
+                        }
+                    }
+                }, 1000);
+            }
+
+            function mResetTimer() {
+                mTotalSeconds = 8 * 60 + 3;
+                mIsPaused = false;
+                mPauseIcon.className = 'fas fa-pause';
+                mTimerDisplay.textContent = mFormatTime(mTotalSeconds);
+                mStartTimer();
+            }
+
+            mPauseBtn.addEventListener('click', () => {
+                mIsPaused = !mIsPaused;
+                mPauseIcon.className = mIsPaused ? 'fas fa-play' : 'fas fa-pause';
+            });
+
+            mBookmarkBtn.addEventListener('click', () => {
+                mBookmarkBtn.classList.toggle('bookmarked');
+                mBookmarkIcon.className = mBookmarkBtn.classList.contains('bookmarked') ? 'fas fa-bookmark' : 'far fa-bookmark';
+            });
+
+            // Khởi tạo đề 1 ban đầu
+            renderCurrentExam('v2');
+
+            // --- DRAG AND DROP PRACTICE SETUP (17 ĐỀ CŨ) ---
+            const quizContainer = document.getElementById('quiz-container');
+            if (typeof readingPart5Data !== 'undefined' && quizContainer) {
+                const questions = readingPart5Data;
+
+                function shuffleArray(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
+                    }
+                    return array;
+                }
+
+                questions.forEach((item, index) => {
+                    const originalFragmentsWithIndex = item.fragments.map((frag, i) => ({ text: frag, originalIndex: i + 1 }));
+                    const shuffledFragments = shuffleArray([...originalFragmentsWithIndex]);
+                    
+                    const card = document.createElement('div');
+                    card.className = 'quiz-card';
+                    card.dataset.correctKey = Array.from({length: 7}, (_, i) => i + 1).join('-');
+
+                    let listItems = '';
+                    shuffledFragments.forEach((frag) => {
+                        listItems += `<li data-original-index="${frag.originalIndex}">
+                                        <div class="paragraph-number">?</div>
+                                        <div class="heading-content">${frag.text}</div>
+                                      </li>`;
+                    });
+
+                    let englishKeyList = '<ul class="english-key-list">';
+                    item.fragments.forEach((frag, i) => {
+                        englishKeyList += `<li><strong>${i + 1}.</strong> ${frag}</li>`;
+                    });
+                    englishKeyList += '</ul>';
+
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <h2>Đề bài ${index + 1}: ${item.title}</h2>
+                        </div>
+                        <p class="instructions">Kéo các tiêu đề bên dưới để khớp với thứ tự <strong>Đoạn 1 &rarr; Đoạn 7</strong>.</p>
+                        
+                        <div class="list-container">
+                            <ul class="heading-list sortable-list">
+                                ${listItems}
+                            </ul>
+                        </div>
+
+                        <div class="feedback-message"></div>
+                        <div class="card-actions">
+                            <button class="action-btn check-answer-btn">Kiểm tra đáp án</button>
+                            <button class="action-btn show-story-btn">Xem Đáp án & Mẹo</button>
+                        </div>
+                        <div class="answer-section" style="display: none;">
+                            <h4>Đáp án đúng:</h4>
+                            ${englishKeyList}
+                            <p style="margin-top:15px;"><strong>Câu chuyện gợi nhớ / Gợi ý:</strong> ${item.story}</p>
+                        </div>
+                    `;
+                    quizContainer.appendChild(card);
+
+                    const sortableList = card.querySelector('.sortable-list');
+                    new Sortable(sortableList, {
+                        animation: 150, 
+                        ghostClass: 'sortable-ghost',
+                        onEnd: function () {
+                            updateParagraphNumbers(sortableList);
+                        }
+                    });
+                    
+                    updateParagraphNumbers(sortableList);
+                });
+
+                function updateParagraphNumbers(list) {
+                    const items = list.querySelectorAll('li');
+                    items.forEach((item, idx) => {
+                        item.querySelector('.paragraph-number').textContent = idx + 1;
+                    });
+                }
+
+                quizContainer.addEventListener('click', function (e) {
+                    if (e.target.classList.contains('check-answer-btn')) {
+                        const card = e.target.closest('.quiz-card');
+                        const list = card.querySelector('.sortable-list');
+                        const feedbackDiv = card.querySelector('.feedback-message');
+                        const correctKey = card.dataset.correctKey;
+                        const currentOrder = Array.from(list.querySelectorAll('li')).map(li => li.dataset.originalIndex).join('-');
+                        
+                        card.classList.remove('correct', 'incorrect');
+                        if (currentOrder === correctKey) {
+                            card.classList.add('correct');
+                            feedbackDiv.innerHTML = '🎉 Chính xác! Bạn đã sắp xếp đúng toàn bộ.';
+                            feedbackDiv.className = 'feedback-message correct';
+                        } else {
+                            card.classList.add('incorrect');
+                            feedbackDiv.innerHTML = '❌ Sai rồi! Hãy thử sắp xếp lại.';
+                            feedbackDiv.className = 'feedback-message incorrect';
+                        }
+                    }
+                    if (e.target.classList.contains('show-story-btn')) {
+                        const answerSection = e.target.closest('.card-actions').nextElementSibling;
+                        const isVisible = answerSection.style.display === 'block';
+                        answerSection.style.display = isVisible ? 'none' : 'block';
+                    }
+                });
+            }
+
+            // --- KÍCH HOẠT TOUR HƯỚNG DẪN ---
+            setTimeout(initReadingPart5Tour, 800);
+        });
+
+        function initReadingPart5Tour() {
+            const driver = window.driver.js.driver;
+            const driverObj = driver({
+                showProgress: true,
+                animate: true,
+                doneBtnText: 'Đã hiểu',
+                nextBtnText: 'Tiếp theo',
+                prevBtnText: 'Quay lại',
+                popoverClass: 'driverjs-theme',
+                steps: [
+                    { 
+                        element: '.part5-tab-bar', 
+                        popover: { 
+                            title: 'Chọn chế độ học Part 5', 
+                            description: 'Bạn có thể chọn làm <strong>Đề Mới (chuẩn thi drop-down)</strong> hoặc <strong>Luyện kéo thả</strong>.', 
+                            side: "bottom", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#restart-tour', 
+                        popover: { 
+                            title: 'Hỗ trợ', 
+                            description: 'Bấm vào đây để xem lại hướng dẫn.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    }
+                ]
+            });
+
+            showTourHint('hasSeenReadingPart5Tour', () => driverObj.drive());
+            document.getElementById('restart-tour').addEventListener('click', () => {
+                driverObj.drive();
+            });
+        }
+    </script>
+</body>
+</html>

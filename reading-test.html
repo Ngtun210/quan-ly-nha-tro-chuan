@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta name="description" content="Luyện tập kỹ năng Reading Aptis: Aptis Reading Test. Tổng hợp các bài đọc hiểu, mẹo làm bài và phân tích đáp án chi tiết.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptis Reading Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/reading-test.css">
+</head>
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    /* === STYLE MỚI CHO DÒNG CHÚ THÍCH === */
+#disclaimer-text {
+    font-style: italic;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+</style>
+<body>
+    <header class="test-header">
+        <a href="index.html">
+        <div class="header-left"><i class="fas fa-home"></i> Aptis của Tú</div></a>
+        <div class="header-center">Time remaining: <span id="timer-display">35:00</span></div>
+        <div class="header-right">Reading</div>
+    </header>
+
+    <main class="test-container" id="main-container">
+        <!-- Giao diện làm bài -->
+        <div id="test-screen">
+            <h2 id="question-title"></h2>
+            <p id="question-instruction"></p>
+            <div id="question-content"></div>
+        </div>
+        
+        <!-- Giao diện kết quả ban đầu -->
+        <div id="results-screen" style="display: none;">
+            <h1>Test Finished!</h1>
+            <div id="results-summary"></div>
+            <h3 id="total-score-display"></h3>
+              <!-- === DÒNG CHÚ THÍCH ĐÃ ĐƯỢC THÊM VÀO === -->
+            <p id="disclaimer-text">* Điểm và xếp hạng chỉ mang tính chất tham khảo.</p>
+            <!-- === CONTAINER MỚI CHO CÁC NÚT BẤM === -->
+            <div id="results-screen-actions">
+                <button id="review-btn" class="nav-btn submit-btn">Review Answers</button>
+                <a href="index.html" class="nav-btn home-btn">Back to Home</a>
+            </div>
+        </div>
+
+        <!-- Giao diện xem lại chi tiết (MỚI) -->
+        <div id="review-page" style="display: none;">
+            <div class="review-header">
+                <h2 id="review-title">Test and Answer Review</h2>
+                <div class="review-summary">
+                    <span id="review-total-score"></span>
+                    <span id="review-grade"></span>
+                </div>
+                <div class="review-pagination" id="review-pagination"></div>
+            </div>
+            <div class="review-content" id="review-content"></div>
+        </div>
+    </main>
+
+    <footer class="test-footer" id="test-footer">
+        <button id="back-btn" class="nav-btn back-btn">Back</button>
+        <div id="footer-right-buttons">
+            <button id="next-btn" class="nav-btn next-btn">Next</button>
+            <button id="submit-btn" class="nav-btn submit-btn" style="display: none;">Finish & Submit</button>
+        </div>
+    </footer>
+
+    <script src="js/data-reading-test.js"></script>
+    <script src="js/reading-test.js"></script>
+</body>
+</html>

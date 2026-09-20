@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta name="description" content="Luyện tập kỹ năng Speaking Aptis: Speaking - Part 4. Kho câu hỏi, bài mẫu và các tip để tự tin trả lời phần thi nói.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking - Part 4</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- 1. Tích hợp CSS của Driver.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
+    <style>
+        /* CSS cho nút Help/Tour */
+        .tour-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-size: 24px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .tour-btn:hover {
+            transform: scale(1.1);
+            background-color: #f8f9fa;
+        }
+
+        /* Tùy chỉnh giao diện Popover của Driver.js */
+        .driver-popover.driverjs-theme {
+            background-color: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-width: 300px;
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-blue, #007bff);
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .driver-popover.driverjs-theme button {
+            background-color: var(--primary-blue, #007bff);
+            color: #fff;
+            text-shadow: none;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header-placeholder"></header>
+    
+    <!-- 2. Nút kích hoạt lại Tour -->
+    <div class="tour-btn" id="restart-tour" title="Hướng dẫn sử dụng">❓</div>
+
+    <div class="content-pusher">
+        <div class="container">
+            <div class="page-intro">
+                <h1>Speaking - Part 4</h1>
+                <p>Thảo luận chủ đề (Độc thoại)</p>
+            </div>
+            <div class="explanation-box">
+                <h3>💡 Phương pháp luyện tập hiệu quả</h3>
+                <p>Trang web này mô phỏng điều kiện thi bằng cách cung cấp câu hỏi và đồng hồ đếm ngược. Vì trình duyệt
+                    chưa hỗ trợ ghi âm trực tiếp, hãy làm theo các bước sau:</p>
+                <ul>
+                    <li><strong>Bước 1:</strong> Mở ứng dụng ghi âm trên điện thoại của bạn.</li>
+                    <li><strong>Bước 2:</strong> Trên trang web, nhấn nút "▶️ Bắt đầu trả lời" và bắt đầu ghi âm trên
+                        điện thoại cùng lúc.</li>
+                    <li><strong>Bước 3:</strong> Trả lời câu hỏi trong khoảng thời gian cho phép. Đồng hồ sẽ giúp bạn
+                        kiểm soát độ dài câu trả lời.</li>
+                    <li><strong>Bước 4:</strong> Sau khi hoàn thành, bạn có thể tải file ghi âm (MP3) lên các công cụ AI
+                        như Google Studio, ChatGPT-4o, hoặc các dịch vụ sửa bài nói chuyên dụng để nhận feedback.</li>
+                </ul>
+            </div>
+            <!-- THÊM CẨM NANG HƯỚNG DẪN VÀO ĐÂY -->
+            <div class="method-guide-card" style="margin-bottom: 30px;">
+                <h2>Cẩm nang trả lời Part 4</h2>
+                <div class="method-step">
+                    <h4>Chiến lược chung</h4>
+                    <p>Bạn có <strong>1 phút</strong> để chuẩn bị và <strong>2 phút</strong> để trả lời 3 câu hỏi. Mục
+                        tiêu là tạo ra một bài độc thoại liền mạch. Hãy sử dụng các cấu trúc câu mẫu để dẫn dắt ý một
+                        cách logic.</p>
+                </div>
+                <div class="method-step">
+                    <h4>Cấu trúc câu mẫu (Học thuộc lòng)</h4>
+                    <ul>
+                        <li>
+                            <strong>Mở đầu & Trả lời câu hỏi 1 (Q1):</strong>
+                            <ul>
+                                <li><code>Regarding the first question...</code></li>
+                                <li><code>Today, I'll tell you about the time...</code></li>
+                                <li><code>I'd like to talk about...</code></li>
+                                <li><code>I'll never forget the time when...</code></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Chuyển ý & Trả lời câu hỏi 2 (Q2):</strong>
+                            <ul>
+                                <li><code><strong>Moving on to the second question...</strong></code></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Kết luận & Trả lời câu hỏi 3 (Q3):</strong>
+                            <ul>
+                                <li><code><strong>And finally, I think that...</strong></code> /
+                                    <code>As for the final question, I believe that...</code></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Câu kết thúc (Tùy chọn):</strong>
+                            <ul>
+                                <li><code>I know my speaking skills are not good. I will try to learn more.</code></li>
+                                <li><code>Thank you for listening.</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="topic-selector-grid" class="topic-grid">
+                <!-- Các nút chọn chủ đề -->
+            </div>
+
+            <main id="speaking-container">
+                <!-- Chỉ một bài tập được hiển thị -->
+            </main>
+        </div>
+        <footer id="footer-placeholder"></footer>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/data-speaking-part4.js"></script>
+    
+    <!-- 3. Tích hợp Script của Driver.js -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectorContainer = document.getElementById('topic-selector-grid');
+            const contentContainer = document.getElementById('speaking-container');
+            const topics = speakingPart4Data;
+            let prepTimer, speakingTimer;
+
+            if (!topics || topics.length === 0) {
+                contentContainer.innerHTML = `<p class="error">Không có dữ liệu cho Speaking Part 4.</p>`;
+                return;
+            }
+
+            topics.forEach((topic, index) => {
+                const button = document.createElement('button');
+                button.className = 'topic-selector-btn';
+                button.textContent = `Chủ đề ${index + 1}`;
+                button.dataset.target = `#${topic.id}`;
+                selectorContainer.appendChild(button);
+
+                const card = document.createElement('div');
+                card.className = 'quiz-card speaking-part4-card';
+                card.id = topic.id;
+
+                let questionsHTML = '';
+                topic.tasks.forEach((task, i) => {
+                    questionsHTML += `<li class="prompt-question">${i + 1}. ${task.question}</li>`;
+                });
+
+                let sampleAnswersHTML = '<h4>Câu trả lời mẫu:</h4>';
+                topic.tasks.forEach((task, i) => {
+                    sampleAnswersHTML += `<div class="sample-answer"><p><strong>Câu ${i + 1}:</strong> ${task.sampleAnswer}</p></div>`;
+                });
+
+                card.innerHTML = `
+                    <div class="card-header"><h2>${topic.title}</h2></div>
+                    <div class="part4-questions">
+                        <h4>Bạn sẽ trả lời 3 câu hỏi sau:</h4>
+                        <ul>${questionsHTML}</ul>
+                    </div>
+                    <div class="part4-timers">
+                        <div class="timer-section" data-type="prep">
+                            <h4>Thời gian chuẩn bị</h4>
+                            <div class="timer-controls">
+                                <button class="action-btn start-timer-btn" data-duration="60">Bắt đầu (1 phút)</button>
+                                <div class="timer-display">01:00</div>
+                            </div>
+                        </div>
+                        <div class="timer-section" data-type="speak">
+                            <h4>Thời gian trả lời</h4>
+                            <div class="timer-controls">
+                                <button class="action-btn start-timer-btn" data-duration="120">Bắt đầu (2 phút)</button>
+                                <div class="timer-display">02:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn show-sample-btn">📖 Xem câu trả lời mẫu</button>
+                    </div>
+                    <div class="sample-answer-wrapper" style="display: none;">
+                        <div class="audio-player-container"><audio controls class="custom-audio-player" src="${topic.audioSrc}"></audio></div>
+                        ${sampleAnswersHTML}
+                    </div>
+                `;
+                contentContainer.appendChild(card);
+            });
+
+            // --- LOGIC HOÀN CHỈNH ---
+            const allButtons = selectorContainer.querySelectorAll('.topic-selector-btn');
+            const allCards = contentContainer.querySelectorAll('.speaking-part4-card');
+
+            function showTopic(targetId) {
+                allCards.forEach(card => card.classList.remove('active'));
+                allButtons.forEach(btn => btn.classList.remove('active'));
+
+                const targetCard = document.querySelector(targetId);
+                const targetButton = selectorContainer.querySelector(`[data-target='${targetId}']`);
+
+                if (targetCard) targetCard.classList.add('active');
+                if (targetButton) targetButton.classList.add('active');
+
+                // Dừng tất cả các timer đang chạy
+                if (prepTimer) clearInterval(prepTimer);
+                if (speakingTimer) clearInterval(speakingTimer);
+
+                // Reset giao diện của tất cả các timer bar
+                allCards.forEach(c => {
+                    c.querySelectorAll('.timer-section').forEach(ts => {
+                        const btn = ts.querySelector('.start-timer-btn');
+                        const display = ts.querySelector('.timer-display');
+                        const duration = parseInt(btn.dataset.duration, 10);
+                        const minutes = Math.floor(duration / 60);
+                        const originalText = `Bắt đầu (${minutes} phút)`;
+
+                        btn.disabled = false;
+                        btn.textContent = originalText;
+                        display.textContent = `${minutes.toString().padStart(2, '0')}:00`;
+                    });
+                });
+            }
+
+            function startTimer(button) {
+                const timerSection = button.closest('.timer-section');
+                const type = timerSection.dataset.type;
+
+                // Dừng timer CÙNG LOẠI nếu đang chạy
+                const timerToClear = type === 'prep' ? prepTimer : speakingTimer;
+                if (timerToClear) clearInterval(timerToClear);
+
+                const timerDisplay = button.nextElementSibling;
+                button.disabled = true;
+                button.textContent = 'Đang đếm ngược...';
+                let timeInSeconds = parseInt(button.dataset.duration, 10);
+
+                const timerInterval = setInterval(() => {
+                    timeInSeconds--;
+                    const minutes = Math.floor(timeInSeconds / 60);
+                    const seconds = timeInSeconds % 60;
+                    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                    if (timeInSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        timerDisplay.textContent = "Hết giờ!";
+                        alert("Hết giờ!");
+                        button.disabled = false;
+                        const originalText = type === 'prep' ? 'Bắt đầu (1 phút)' : 'Bắt đầu (2 phút)';
+                        button.textContent = originalText;
+                    }
+                }, 1000);
+
+                if (type === 'prep') prepTimer = timerInterval;
+                else speakingTimer = timerInterval;
+            }
+
+            selectorContainer.addEventListener('click', function (e) {
+                if (e.target.classList.contains('topic-selector-btn')) {
+                    showTopic(e.target.dataset.target);
+                }
+            });
+
+            contentContainer.addEventListener('click', function (e) {
+                if (e.target.classList.contains('start-timer-btn')) {
+                    startTimer(e.target);
+                }
+                if (e.target.classList.contains('show-sample-btn')) {
+                    const wrapper = e.target.closest('.card-actions').nextElementSibling;
+                    const isVisible = wrapper.style.display === 'block';
+                    wrapper.style.display = isVisible ? 'none' : 'block';
+                    e.target.textContent = isVisible ? '📖 Xem câu trả lời mẫu' : '🙈 Ẩn câu trả lời mẫu';
+                }
+            });
+
+            // Hiển thị chủ đề đầu tiên khi tải trang
+            if (allButtons.length > 0) {
+                showTopic(allButtons[0].dataset.target);
+            }
+
+            // --- KÍCH HOẠT TOUR HƯỚNG DẪN ---
+            setTimeout(initSpeakingPart4Tour, 800);
+        });
+
+        // HÀM KHỞI TẠO TOUR CHO PART 4
+        function initSpeakingPart4Tour() {
+            const driver = window.driver.js.driver;
+            
+            const driverObj = driver({
+                showProgress: true,
+                animate: true,
+                doneBtnText: 'Đã hiểu',
+                nextBtnText: 'Tiếp theo',
+                prevBtnText: 'Quay lại',
+                popoverClass: 'driverjs-theme',
+                steps: [
+                    { 
+                        element: '.method-guide-card', 
+                        popover: { 
+                            title: 'Cẩm nang Part 4', 
+                            description: 'Quy trình thi Part 4: 1 phút chuẩn bị và 2 phút nói liên tục. Hãy sử dụng các mẫu câu chuyển ý để bài nói mạch lạc hơn.', 
+                            side: "bottom", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#topic-selector-grid', 
+                        popover: { 
+                            title: 'Chọn chủ đề', 
+                            description: 'Danh sách các chủ đề thảo luận.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.speaking-part4-card.active .part4-questions', 
+                        popover: { 
+                            title: '3 Câu hỏi', 
+                            description: 'Bạn phải trả lời hết cả 3 câu hỏi này trong một bài nói duy nhất. Đừng trả lời tách rời từng câu.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.speaking-part4-card.active .part4-timers', 
+                        popover: { 
+                            title: 'Đồng hồ kép', 
+                            description: 'Bấm nút bên trái để đếm 1 phút chuẩn bị (viết nháp). Bấm nút bên phải để đếm 2 phút trả lời.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.speaking-part4-card.active .show-sample-btn', 
+                        popover: { 
+                            title: 'Bài mẫu', 
+                            description: 'Tham khảo bài nói mẫu hoàn chỉnh để học cách liên kết các ý.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#restart-tour', 
+                        popover: { 
+                            title: 'Hỗ trợ', 
+                            description: 'Bấm vào đây để xem lại hướng dẫn.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    }
+                ]
+            });
+
+            // Logic tự động chạy lần đầu
+            showTourHint('hasSeenSpeakingPart4Tour', () => driverObj.drive());
+
+            // Gán sự kiện cho nút ?
+            document.getElementById('restart-tour').addEventListener('click', () => {
+                driverObj.drive();
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta name="description" content="Luyện tập kỹ năng Speaking Aptis: Speaking - Part 2. Kho câu hỏi, bài mẫu và các tip để tự tin trả lời phần thi nói.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking - Part 2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- 1. Tích hợp CSS của Driver.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
+    <style>
+        /* CSS cho nút Help/Tour */
+        .tour-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-size: 24px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .tour-btn:hover {
+            transform: scale(1.1);
+            background-color: #f8f9fa;
+        }
+
+        /* Tùy chỉnh giao diện Popover của Driver.js */
+        .driver-popover.driverjs-theme {
+            background-color: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-width: 300px;
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-blue, #007bff);
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .driver-popover.driverjs-theme button {
+            background-color: var(--primary-blue, #007bff);
+            color: #fff;
+            text-shadow: none;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header-placeholder"></header>
+    
+    <!-- 2. Nút kích hoạt lại Tour -->
+    <div class="tour-btn" id="restart-tour" title="Hướng dẫn sử dụng">❓</div>
+
+    <div class="content-pusher">
+        <div class="container">
+            <div class="page-intro">
+                <h1>Speaking - Part 2</h1>
+                <p>Miêu tả tranh và trả lời câu hỏi</p>
+            </div>
+            <div class="explanation-box">
+                <h3>💡 Phương pháp luyện tập hiệu quả</h3>
+                <p>Trang web này mô phỏng điều kiện thi bằng cách cung cấp câu hỏi và đồng hồ đếm ngược. Vì trình duyệt
+                    chưa hỗ trợ ghi âm trực tiếp, hãy làm theo các bước sau:</p>
+                <ul>
+                    <li><strong>Bước 1:</strong> Mở ứng dụng ghi âm trên điện thoại của bạn.</li>
+                    <li><strong>Bước 2:</strong> Trên trang web, nhấn nút "▶️ Bắt đầu trả lời" và bắt đầu ghi âm trên
+                        điện thoại cùng lúc.</li>
+                    <li><strong>Bước 3:</strong> Trả lời câu hỏi trong khoảng thời gian cho phép. Đồng hồ sẽ giúp bạn
+                        kiểm soát độ dài câu trả lời.</li>
+                    <li><strong>Bước 4:</strong> Sau khi hoàn thành, bạn có thể tải file ghi âm (MP3) lên các công cụ AI
+                        như Google Studio, ChatGPT-4o, hoặc các dịch vụ sửa bài nói chuyên dụng để nhận feedback.</li>
+                </ul>
+            </div>
+            <!-- KHU VỰC PHƯƠNG PHÁP -->
+            <div class="method-guide-card">
+                <h2>Cẩm nang trả lời Part 2</h2>
+                <div class="method-step">
+                    <h4>B1: Tổng quan bức tranh</h4>
+                    <p>Mở đầu bằng một câu chung. Ví dụ:</p>
+                    <ul>
+                        <li>Look at the picture/ In the picture, I can see ...</li>
+                        <li>There is/ There are ... (including...) (place) Eg: room, supermarket</li>
+                    </ul>
+                </div>
+                <div class="method-step">
+                    <h4>B2: Miêu tả chi tiết về con người</h4>
+                    <ul>
+                        <li><strong>Kiểu tóc, Tuổi tác:</strong> Tóc dài/ngắn, trẻ/già...</li>
+                        <li><strong>Trang phục:</strong> a blue shirt, a white dress...</li>
+                        <li><strong>Hành động (Quan trọng nhất):</strong> <code>The man/woman is V-ing...</code>,
+                            <code>The people are V-ing...</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="method-step">
+                    <h4>B3: Đưa ra dự đoán về nhân vật</h4>
+                    <p>Sử dụng các cấu trúc phỏng đoán:</p>
+                    <ul>
+                        <li><code>I guess/ suppose/ reckon...</code></li>
+                        <li><code>It looks as if... + a sentence</code></li>
+                        <li><code>He/She looks like + a noun/adjective</code></li>
+                        <li><code>They seem to be...</code> / <code>They might be...</code></li>
+                    </ul>
+                </div>
+                <div class="method-step">
+                    <h4>B4: Miêu tả đối tượng phụ & vị trí</h4>
+                    <ul>
+                        <li><strong>Phía trên/dưới/trái/phải:</strong> At the top/bottom left/right side of this
+                            picture...</li>
+                        <li><strong>Ở giữa:</strong> In the middle...</li>
+                        <li><strong>Tiền cảnh/Hậu cảnh:</strong> In the foreground/ In the background...</li>
+                    </ul>
+                </div>
+                <div class="method-step">
+                    <h4>B5: Nêu suy nghĩ cá nhân / Bình luận</h4>
+                    <p>Kết thúc bằng một câu cảm nhận. Ví dụ:</p>
+                    <ul>
+                        <li><code>I like this picture because it reminds me of...</code></li>
+                        <li><code>It looks like a typical day in a marketplace.</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-intro">
+                <p>Chọn một chủ đề để bắt đầu luyện tập</p>
+            </div>
+
+            <!-- BẢNG ĐIỀU KHIỂN CHỌN CHỦ ĐỀ -->
+            <div id="topic-selector-grid" class="topic-grid">
+                <!-- Các nút chọn chủ đề sẽ được chèn vào đây -->
+            </div>
+
+            <main id="speaking-container">
+                <!-- Khu vực luyện tập sẽ được chèn vào đây -->
+            </main>
+
+        </div>
+        <footer id="footer-placeholder"></footer>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/data-speaking-part2.js"></script>
+    
+    <!-- 3. Tích hợp Script của Driver.js -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectorContainer = document.getElementById('topic-selector-grid');
+            const contentContainer = document.getElementById('speaking-container');
+            const topics = speakingPart2Data;
+
+            if (!topics || topics.length === 0) {
+                contentContainer.innerHTML = `<p class="error">Không có dữ liệu cho Speaking Part 2.</p>`;
+                return;
+            }
+
+            topics.forEach((topic, index) => {
+                // Tạo nút chọn
+                const button = document.createElement('button');
+                button.className = 'topic-selector-btn';
+                button.textContent = `Chủ đề ${index + 1}`;
+                button.dataset.target = `#${topic.id}`;
+
+                if (topic.quality === 'low') {
+                    button.innerHTML += ` <i class="fas fa-exclamation-triangle" title="Chủ đề luyện tập thêm, ảnh chất lượng thấp"></i>`;
+                    button.classList.add('low-quality-btn');
+                }
+
+                selectorContainer.appendChild(button);
+
+                const card = document.createElement('div');
+                card.className = 'quiz-card speaking-part2-card';
+                card.id = topic.id;
+                
+                const qualityWarning = topic.quality === 'low'
+                    ? `<div class="image-quality-warning">Lưu ý: Hình ảnh cho chủ đề này có chất lượng thấp, chỉ dùng để tham khảo.</div>`
+                    : '';
+
+                let tasksHTML = '';
+                topic.tasks.forEach((task, i) => {
+                    tasksHTML += `
+                        <div class="speaking-task-container">
+                            <p class="prompt-question"><strong>Nhiệm vụ ${i + 1}:</strong> ${task.question}</p>
+                            <div class="timer-controls">
+                                <button class="action-btn start-timer-btn" data-duration="${task.duration}">▶️ Bắt đầu trả lời (Bấm giờ)</button>
+                                <div class="timer-display"><span class="time-left">${task.duration}</span>s</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                const sampleAnswersText = topic.tasks
+                    .filter(t => t.sampleAnswer)
+                    .map(t => {
+                        const taskIndex = topic.tasks.findIndex(original => original === t) + 1;
+                        return `<div class="sample-answer"><p><strong>Câu trả lời mẫu (Nhiệm vụ ${taskIndex}):</strong> ${t.sampleAnswer}</p></div>`;
+                    }).join('');
+
+                let singleAudioPlayer = '';
+                if (topic.audioSrc) {
+                    singleAudioPlayer = `
+                        <h4>Nghe câu trả lời mẫu:</h4>
+                        <div class="audio-player-container" style="margin-bottom: 15px;">
+                            <audio controls class="custom-audio-player" src="${topic.audioSrc}"></audio>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="card-header"><h2>${topic.title}</h2></div>
+                    ${qualityWarning}
+                    <div class="image-container-wrapper"> 
+                        <img class="speaking-part2-image" src="${topic.imageSrc}" alt="${topic.title}">
+                    </div>
+                    <div class="tasks-wrapper">${tasksHTML}</div>
+                    <div class="card-actions" style="margin-top: 25px; border-top: 1px dashed var(--border-color); padding-top: 25px;">
+                        <button class="action-btn show-sample-btn">📖 Xem câu trả lời mẫu</button>
+                    </div>
+                    <div class="sample-answer-wrapper" style="display: none;">
+                        ${singleAudioPlayer}
+                        <h4>Đọc câu trả lời mẫu:</h4>
+                        ${sampleAnswersText}
+                    </div>
+                `;
+                contentContainer.appendChild(card);
+            });
+
+            // Logic hiển thị card
+            const allButtons = selectorContainer.querySelectorAll('.topic-selector-btn');
+            const allCards = contentContainer.querySelectorAll('.speaking-part2-card');
+
+            function showTopic(targetId) {
+                allCards.forEach(card => card.classList.remove('active'));
+                allButtons.forEach(btn => btn.classList.remove('active'));
+                
+                const targetCard = document.querySelector(targetId);
+                const targetButton = selectorContainer.querySelector(`[data-target='${targetId}']`);
+                
+                if (targetCard) targetCard.classList.add('active');
+                if (targetButton) targetButton.classList.add('active');
+            }
+
+            selectorContainer.addEventListener('click', function (e) {
+                // Sửa lỗi click vào icon trong nút
+                const btn = e.target.closest('.topic-selector-btn');
+                if (btn) {
+                    showTopic(btn.dataset.target);
+                }
+            });
+
+            if (allButtons.length > 0) {
+                showTopic(allButtons[0].dataset.target);
+            }
+
+            // --- KÍCH HOẠT TOUR HƯỚNG DẪN ---
+            // Gọi sau khi UI đã được render
+            setTimeout(initSpeakingPart2Tour, 800);
+
+            // Logic Timer và Show/Hide Answer
+            let activeTimer = null;
+            contentContainer.addEventListener('click', function (e) {
+                if (e.target.classList.contains('start-timer-btn')) {
+                    if (activeTimer) {
+                        clearInterval(activeTimer.intervalId);
+                        activeTimer.button.textContent = '▶️ Bắt đầu trả lời (Bấm giờ)';
+                        activeTimer.button.disabled = false;
+                        activeTimer.timeLeftEl.textContent = activeTimer.button.dataset.duration;
+                        if (activeTimer.button === e.target) {
+                            activeTimer = null;
+                            return;
+                        }
+                    }
+                    const button = e.target;
+                    const duration = parseInt(button.dataset.duration, 10);
+                    const timerDisplay = button.nextElementSibling;
+                    const timeLeftEl = timerDisplay.querySelector('.time-left');
+                    let timeLeft = duration;
+                    timeLeftEl.textContent = timeLeft;
+                    button.textContent = '⏱️ Đang đếm ngược...';
+                    button.disabled = true;
+                    const intervalId = setInterval(() => {
+                        timeLeft--;
+                        timeLeftEl.textContent = timeLeft;
+                        if (timeLeft <= 0) {
+                            clearInterval(intervalId);
+                            button.textContent = 'Hết giờ! Bắt đầu lại';
+                            button.disabled = false;
+                            activeTimer = null;
+                        }
+                    }, 1000);
+                    activeTimer = { button, intervalId, timeLeftEl };
+                }
+                if (e.target.classList.contains('show-sample-btn')) {
+                    const button = e.target;
+                    const wrapper = button.closest('.card-actions').nextElementSibling;
+                    const isVisible = wrapper.style.display === 'block';
+                    wrapper.style.display = isVisible ? 'none' : 'block';
+                    button.textContent = isVisible ? '📖 Xem câu trả lời mẫu' : '🙈 Ẩn câu trả lời mẫu';
+                }
+            });
+        });
+
+        // HÀM KHỞI TẠO TOUR CHO PART 2
+        function initSpeakingPart2Tour() {
+            const driver = window.driver.js.driver;
+            
+            const driverObj = driver({
+                showProgress: true,
+                animate: true,
+                doneBtnText: 'Đã hiểu',
+                nextBtnText: 'Tiếp theo',
+                prevBtnText: 'Quay lại',
+                popoverClass: 'driverjs-theme',
+                steps: [
+                    { 
+                        element: '.method-guide-card', 
+                        popover: { 
+                            title: 'Cẩm nang Part 2', 
+                            description: 'Quy trình 5 bước để mô tả tranh đầy đủ và chi tiết. Hãy đọc kỹ trước khi bắt đầu!', 
+                            side: "bottom", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#topic-selector-grid', 
+                        popover: { 
+                            title: 'Chọn đề bài', 
+                            description: 'Danh sách các bức tranh để luyện tập.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.speaking-part2-card.active .speaking-part2-image', 
+                        popover: { 
+                            title: 'Quan sát tranh', 
+                            description: 'Khi luyện tập bạn có thể dành thời gian quan sát. Lưu ý: Khi thi thật bạn phải nói ngay lập tức. Hãy quan sát: Ai? Làm gì? Ở đâu?', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.speaking-part2-card.active .tasks-wrapper', 
+                        popover: { 
+                            title: 'Nhiệm vụ', 
+                            description: 'Bao gồm 1 phần mô tả tranh (45s) và 2 câu hỏi liên quan (45s mỗi câu). Hãy bấm nút để bắt đầu tính giờ cho từng phần.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.speaking-part2-card.active .show-sample-btn', 
+                        popover: { 
+                            title: 'Bài mẫu', 
+                            description: 'Tham khảo cách người bản xứ mô tả bức tranh này để học thêm từ vựng.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#restart-tour', 
+                        popover: { 
+                            title: 'Hỗ trợ', 
+                            description: 'Bấm vào đây để xem lại hướng dẫn.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    }
+                ]
+            });
+
+            // Logic tự động chạy lần đầu
+            showTourHint('hasSeenSpeakingPart2Tour', () => driverObj.drive());
+
+            // Gán sự kiện cho nút ?
+            document.getElementById('restart-tour').addEventListener('click', () => {
+                driverObj.drive();
+            });
+        }
+    </script>
+</body>
+
+</html>

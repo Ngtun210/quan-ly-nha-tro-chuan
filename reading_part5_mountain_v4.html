@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta name="description" content="Luyện tập Reading Part 5: Mountain (Version 4) - Chọn tiêu đề cho đoạn văn (Drop-down list).">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain (Version 4) - Reading Part 5</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f3f3f3;
+            color: #1f2937;
+            padding-bottom: 80px;
+        }
+        .top-purple-bar { background-color: #24085a; height: 38px; width: 100%; }
+        .exam-header {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .exam-header-left h2 { font-size: 22px; font-weight: 700; color: #111827; margin-bottom: 2px; }
+        .exam-header-left .sub-info { font-size: 13px; color: #6b7280; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .back-btn-link { display: inline-flex; align-items: center; gap: 5px; color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 13px; }
+        .back-btn-link:hover { color: #3730a3; text-decoration: underline; }
+        .exam-header-right { display: flex; align-items: center; gap: 18px; }
+        .icon-pill-btn {
+            background: #fff; border: 1px solid #d1d5db; border-radius: 20px; padding: 7px 16px;
+            font-size: 13px; font-weight: 500; color: #374151; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;
+        }
+        .icon-pill-btn:hover { background: #f9fafb; }
+        .icon-pill-btn.bookmarked { background: #fef3c7; border-color: #f59e0b; color: #b45309; }
+        .icon-circle-btn {
+            background: #fff; border: 1px solid #d1d5db; border-radius: 50%; width: 36px; height: 36px;
+            display: flex; justify-content: center; align-items: center; cursor: pointer; color: #4b5563; font-size: 14px; transition: all 0.2s;
+        }
+        .icon-circle-btn:hover { background: #f9fafb; }
+        .timer-container { display: flex; flex-direction: column; align-items: center; min-width: 100px; }
+        .timer-display { font-size: 24px; font-weight: 700; color: #111827; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; line-height: 1.1; }
+        .timer-label { font-size: 11px; color: #6b7280; margin-top: 2px; }
+        .timer-bar { width: 100%; height: 3px; background-color: #5b21b6; margin-top: 4px; border-radius: 2px; }
+
+        .exam-container { max-width: 1100px; margin: 25px auto; padding: 0 20px; }
+        .instruction-box {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 24px;
+            margin-bottom: 24px; color: #374151; font-size: 14.5px; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .passage-title-row {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 15px;
+        }
+        .passage-title { font-size: 26px; font-weight: 700; color: #111827; }
+        .version-switcher { display: flex; gap: 8px; flex-wrap: wrap; }
+        .version-btn {
+            padding: 6px 14px; border-radius: 20px; border: 1.5px solid #24085a; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s;
+        }
+        .version-btn.active { background-color: #24085a; color: #fff; }
+        .version-btn:not(.active) { background-color: #fff; color: #24085a; }
+        .version-btn:not(.active):hover { background-color: #f3f4f6; }
+
+        .paragraph-card {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px 28px;
+            margin-bottom: 20px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .paragraph-index { font-size: 18px; font-weight: 700; color: #111827; min-width: 24px; padding-top: 7px; }
+        .paragraph-body { flex: 1; display: flex; flex-direction: column; position: relative; }
+
+        .custom-select-wrapper { position: relative; width: fit-content; max-width: 100%; min-width: 340px; margin-bottom: 6px; }
+        .custom-select-trigger {
+            border: 1.5px solid #d1d5db; border-radius: 22px; padding: 9px 20px; background: #fff;
+            font-size: 14px; font-weight: 500; color: #374151; display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; gap: 16px; user-select: none; transition: all 0.2s ease;
+        }
+        .custom-select-trigger:hover { border-color: #9ca3af; }
+        .custom-select-trigger .chevron-icon { font-size: 12px; color: #6b7280; transition: transform 0.2s ease; }
+        .custom-select-wrapper.open .custom-select-trigger { border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
+        .custom-select-wrapper.open .chevron-icon { transform: rotate(180deg); }
+
+        .custom-options-list {
+            position: absolute; top: calc(100% + 6px); left: 0; right: 0; min-width: 370px; background: #fff;
+            border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            z-index: 100; overflow: hidden; display: none;
+        }
+        .custom-select-wrapper.open .custom-options-list { display: block; }
+        .custom-option { padding: 11px 18px; font-size: 14px; color: #374151; cursor: pointer; transition: background 0.15s; }
+        .custom-option:hover { background-color: #f3f4f6; color: #111827; }
+        .custom-option.selected { background-color: #eff6ff; color: #1d4ed8; font-weight: 600; }
+
+        .custom-select-wrapper.is-correct .custom-select-trigger { border-color: #10b981 !important; color: #047857 !important; font-weight: 600; background-color: #f0fdf4; }
+        .custom-select-wrapper.is-correct .chevron-icon { color: #10b981 !important; }
+        .custom-select-wrapper.is-incorrect .custom-select-trigger { border-color: #ef4444 !important; color: #b91c1c !important; font-weight: 600; background-color: #fef2f2; }
+        .custom-select-wrapper.is-incorrect .chevron-icon { color: #ef4444 !important; }
+
+        .correct-answer-hint { display: none; color: #059669; font-size: 13.5px; font-weight: 600; margin: 8px 0 4px 4px; align-items: center; gap: 6px; }
+        .correct-answer-hint.visible { display: flex; }
+        .explanation-card {
+            display: none; background-color: #eff6ff; border: 1px solid #dbeafe; border-radius: 10px;
+            padding: 12px 18px; margin: 10px 0 12px 0; font-size: 13.5px; line-height: 1.6; color: #1d4ed8;
+        }
+        .explanation-card.visible { display: block; }
+        .explanation-title { font-weight: 700; margin-bottom: 4px; color: #1e40af; }
+        .passage-paragraph-text { font-size: 15px; line-height: 1.75; color: #374151; margin-top: 10px; }
+
+        .exam-footer-actions {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 20px 25px;
+            margin-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .score-box { font-size: 16px; font-weight: 700; color: #111827; display: flex; align-items: center; gap: 8px; }
+        .score-tag { background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 15px; }
+        .action-buttons-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-submit { background-color: #24085a; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-size: 14.5px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-submit:hover { background-color: #3b1285; }
+        .btn-secondary { background-color: #f3f4f6; color: #374151; border: 1px solid #d1d5db; padding: 10px 20px; border-radius: 8px; font-size: 14.5px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-secondary:hover { background-color: #e5e7eb; color: #111827; }
+
+        @media (max-width: 768px) {
+            .exam-header { padding: 15px 20px; flex-direction: column; align-items: flex-start; gap: 15px; }
+            .exam-header-right { width: 100%; justify-content: space-between; }
+            .paragraph-card { padding: 18px; gap: 12px; }
+            .custom-select-wrapper { min-width: 100%; width: 100%; }
+            .custom-options-list { min-width: 100%; }
+            .exam-footer-actions { flex-direction: column; align-items: stretch; }
+            .action-buttons-group { flex-direction: column; }
+            .btn-submit, .btn-secondary { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-purple-bar"></div>
+
+    <header class="exam-header">
+        <div class="exam-header-left">
+            <h2>Reading</h2>
+            <div class="sub-info">
+                <span>7 paragraphs · 7 headings</span>
+                <a href="reading_part5.html" class="back-btn-link"><i class="fas fa-arrow-left"></i> Về Part 5</a>
+            </div>
+        </div>
+
+        <div class="exam-header-right">
+            <button class="icon-pill-btn" id="bookmark-btn">
+                <i class="far fa-bookmark" id="bookmark-icon"></i> Bookmark
+            </button>
+            <button class="icon-circle-btn" id="pause-btn" title="Tạm dừng">
+                <i class="fas fa-pause" id="pause-icon"></i>
+            </button>
+            <div class="timer-container">
+                <div class="timer-display" id="timer-display">00:08:03</div>
+                <div class="timer-label">Time remaining</div>
+                <div class="timer-bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="exam-container">
+        <div class="instruction-box">
+            Read the passage quickly. Choose a heading for each numbered paragraph from the drop-down list.
+        </div>
+
+        <div class="passage-title-row">
+            <h1 class="passage-title">Mountain (Version 4)</h1>
+            <div class="version-switcher">
+                <a href="reading_part5_mountain.html" class="version-btn">Đề 1 (v2)</a>
+                <a href="reading_part5_mountain_v3.html" class="version-btn">Đề 2 (v3)</a>
+                <a href="reading_part5_mountain_v4.html" class="version-btn active">Đề 3 (v4)</a>
+                <a href="reading_part5_mountain_v5.html" class="version-btn">Đề 4 (v5)</a>
+            </div>
+        </div>
+
+        <div id="paragraphs-container"></div>
+
+        <div class="exam-footer-actions">
+            <div class="score-box" id="score-box" style="display: none;">
+                <span>Điểm số của bạn:</span>
+                <span class="score-tag" id="score-text">0 / 7</span>
+            </div>
+
+            <div class="action-buttons-group">
+                <button class="btn-submit" id="check-answers-btn"><i class="fas fa-check-circle"></i> Kiểm tra đáp án</button>
+                <button class="btn-secondary" id="show-explanations-btn"><i class="fas fa-lightbulb"></i> Xem đáp án & Giải thích</button>
+                <button class="btn-secondary" id="reset-btn"><i class="fas fa-redo"></i> Làm lại</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const mountainV4Data = {
+            title: "Mountain (Version 4)",
+            headings: [
+                "Changing the perspective towards mountains",
+                "Unique sense of achievement",
+                "Publicising of achievement",
+                "A worrying priority",
+                "The disturbing revelation",
+                "More focus on sustainability",
+                "A new intimate relationship"
+            ],
+            paragraphs: [
+                {
+                    number: 1,
+                    correctHeading: "Changing the perspective towards mountains",
+                    meaningVN: "Thay đổi góc nhìn về núi non",
+                    explanation: "Chọn tiêu đề này vì đoạn văn nói cách nhìn về núi đã thay đổi: đầu những năm 1800 người ta cho là không thích leo núi, nay ai cũng tập trung lên đỉnh để ngắm cảnh hùng vĩ thay vì khám phá cả ngọn núi.",
+                    text: "In the early 1800s, people were believed not to enjoy climbing mountains. Later, as mountain climbing became a popular trend, interest grew rapidly. However, there is evidence that humans have always been fascinated by mountains. The difference now is that people focus mainly on reaching the summit to admire the majestic views rather than simply exploring the mountain itself."
+                },
+                {
+                    number: 2,
+                    correctHeading: "Unique sense of achievement",
+                    meaningVN: "Cảm giác thành tựu độc đáo",
+                    explanation: "Chọn tiêu đề này vì đoạn văn nói leo núi tạo cảm giác adrenaline như thể thao mạo hiểm nhưng còn hơn thế — trở thành ẩn dụ mạnh mẽ, gây cảm hứng sâu sắc và thậm chí gây \"nghiện\" muốn lên đỉnh mãi.",
+                    text: "Climbing to the top of a mountain creates the same adrenaline rush as other extreme sports. But it goes far beyond that. Because of the sheer size and grandeur of the mountains, the experience becomes a powerful metaphor, making climbers feel deeply inspired. This intense feeling can even become addictive, as people unconsciously develop a strong desire to keep reaching the peak."
+                },
+                {
+                    number: 3,
+                    correctHeading: "Publicising of achievement",
+                    meaningVN: "Công khai thành tích",
+                    explanation: "Chọn tiêu đề này vì đoạn văn nói việc ghi lại và chia sẻ khoảnh khắc trên đỉnh núi đã có từ trước mạng xã hội, và nay gần như ai cũng chụp selfie rồi đăng cho bạn bè, gia đình xem.",
+                    text: "People have always enjoyed capturing and sharing the moment of standing on a mountaintop. This practice existed even before social media, as climbers admired the view or described their experiences to others. With the rise of social media, this trend has become even more common. Now, almost everyone takes selfies and posts them online for friends and family to see after reaching the summit."
+                },
+                {
+                    number: 4,
+                    correctHeading: "A worrying priority",
+                    meaningVN: "Một ưu tiên đáng lo ngại",
+                    explanation: "Chọn tiêu đề này vì đoạn văn nêu lo ngại về ưu tiên: một số người bắt đầu tự hỏi việc chỉ chú trọng lên đỉnh có thực sự ý nghĩa, vì cảnh đẹp nhất có thể không ở đỉnh và cách này loại nhiều người ra khỏi trải nghiệm.",
+                    text: "Recently, some climbers have begun questioning whether this focus on the summit is truly meaningful. The most beautiful views might not be from the peak itself, and the path to the summit is often exhausting, requiring great physical strength. This approach excludes many people and overlooks the beauty found all along the mountain, not just at the top."
+                },
+                {
+                    number: 5,
+                    correctHeading: "The disturbing revelation",
+                    meaningVN: "Tiết lộ gây xôn xao",
+                    explanation: "Chọn tiêu đề này vì đoạn văn kể bức ảnh \"traffic jam\" trên Everest năm 2020 gây sốc toàn thế giới — hé lộ tình trạng quá tải và áp lực môi trường ở nơi từng được coi là đỉnh núi xa xôi.",
+                    text: "A photo taken on Mount Everest in 2020, showing a \"traffic jam\" of climbers, shocked the world. It revealed how many climbers were rushing to reach the summit during the short window of good weather. This image raised concerns about overcrowding and highlighted how Everest, once seen as a remote and unreachable peak, has now become a site of intense competition and environmental strain."
+                },
+                {
+                    number: 6,
+                    correctHeading: "More focus on sustainability",
+                    meaningVN: "Tập trung hơn vào sự bền vững",
+                    explanation: "Chọn tiêu đề này vì đoạn văn nói người leo cần suy nghĩ lại mục tiêu và thói quen, bảo đảm du lịch toàn cầu trong tương lai không gây hại môi trường — tức chú trọng hơn vào tính bền vững.",
+                    text: "The viral photo made some people feel that climbing Everest had lost its charm. However, mountain climbing itself is not the problem. Instead, climbers must carefully reflect on their goals and habits, ensuring that future global tourism does not negatively impact the environment. A more mindful approach can protect mountains for generations to come."
+                },
+                {
+                    number: 7,
+                    correctHeading: "A new intimate relationship",
+                    meaningVN: "Mối quan hệ thân mật mới",
+                    explanation: "Chọn tiêu đề này vì đoạn văn đề xuất tiếp cận núi bằng tâm thế nhẹ nhàng, coi núi là người đồng hành; dẫn sách The Living Mountain (Shepherd, 1940) khi tác giả lang thang trên núi như đến thăm những người bạn cũ.",
+                    text: "Perhaps we should approach mountains with a gentle mindset, seeing them as companions rather than challenges to conquer. In the 1940 book The Living Mountain by Shepherd, the author describes climbing near her family farm. She wandered the mountains without specific goals, treating each climb as a visit to old friends instead of a mission to claim victory over nature."
+                }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('paragraphs-container');
+            const checkBtn = document.getElementById('check-answers-btn');
+            const showExplanationsBtn = document.getElementById('show-explanations-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const scoreBox = document.getElementById('score-box');
+            const scoreText = document.getElementById('score-text');
+            const userSelections = {};
+
+            mountainV4Data.paragraphs.forEach((p) => {
+                const card = document.createElement('div');
+                card.className = 'paragraph-card';
+                card.id = `para-card-${p.number}`;
+
+                let optionsHtml = '';
+                mountainV4Data.headings.forEach(h => {
+                    optionsHtml += `<div class="custom-option" data-value="${h}">${h}</div>`;
+                });
+
+                card.innerHTML = `
+                    <div class="paragraph-index">${p.number}.</div>
+                    <div class="paragraph-body">
+                        <div class="custom-select-wrapper" id="select-wrapper-${p.number}">
+                            <div class="custom-select-trigger" id="select-trigger-${p.number}">
+                                <span class="selected-value-text">Choose a heading...</span>
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </div>
+                            <div class="custom-options-list">
+                                ${optionsHtml}
+                            </div>
+                        </div>
+
+                        <div class="correct-answer-hint" id="hint-${p.number}">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="hint-text">${p.correctHeading} (${p.meaningVN})</span>
+                        </div>
+
+                        <div class="explanation-card" id="explanation-${p.number}">
+                            <div class="explanation-title">💡 Giải nghĩa: ${p.meaningVN}</div>
+                            <div>${p.explanation}</div>
+                        </div>
+
+                        <div class="passage-paragraph-text">
+                            ${p.text}
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            document.querySelectorAll('.custom-select-trigger').forEach(trigger => {
+                trigger.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const wrapper = this.closest('.custom-select-wrapper');
+                    const isOpen = wrapper.classList.contains('open');
+
+                    document.querySelectorAll('.custom-select-wrapper.open').forEach(w => {
+                        if (w !== wrapper) w.classList.remove('open');
+                    });
+
+                    wrapper.classList.toggle('open', !isOpen);
+                });
+            });
+
+            document.querySelectorAll('.custom-option').forEach(option => {
+                option.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const wrapper = this.closest('.custom-select-wrapper');
+                    const paraNum = wrapper.id.replace('select-wrapper-', '');
+                    const selectedVal = this.dataset.value;
+
+                    wrapper.querySelector('.selected-value-text').textContent = selectedVal;
+                    wrapper.querySelectorAll('.custom-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+
+                    userSelections[paraNum] = selectedVal;
+                    wrapper.classList.remove('open');
+
+                    wrapper.classList.remove('is-correct', 'is-incorrect');
+                    document.getElementById(`hint-${paraNum}`).classList.remove('visible');
+                    document.getElementById(`explanation-${paraNum}`).classList.remove('visible');
+                });
+            });
+
+            document.addEventListener('click', function () {
+                document.querySelectorAll('.custom-select-wrapper.open').forEach(w => {
+                    w.classList.remove('open');
+                });
+            });
+
+            function checkAnswers() {
+                let correctCount = 0;
+                mountainV4Data.paragraphs.forEach(p => {
+                    const wrapper = document.getElementById(`select-wrapper-${p.number}`);
+                    const hintDiv = document.getElementById(`hint-${p.number}`);
+                    const expDiv = document.getElementById(`explanation-${p.number}`);
+                    const userVal = userSelections[p.number];
+
+                    wrapper.classList.remove('is-correct', 'is-incorrect');
+                    hintDiv.classList.remove('visible');
+                    expDiv.classList.remove('visible');
+
+                    if (userVal === p.correctHeading) {
+                        correctCount++;
+                        wrapper.classList.add('is-correct');
+                        expDiv.classList.add('visible');
+                    } else {
+                        wrapper.classList.add('is-incorrect');
+                        hintDiv.classList.add('visible');
+                        expDiv.classList.add('visible');
+                    }
+                });
+
+                scoreBox.style.display = 'flex';
+                scoreText.textContent = `${correctCount} / ${mountainV4Data.paragraphs.length}`;
+            }
+
+            function showAllExplanations() {
+                mountainV4Data.paragraphs.forEach(p => {
+                    const wrapper = document.getElementById(`select-wrapper-${p.number}`);
+                    const triggerText = wrapper.querySelector('.selected-value-text');
+                    const hintDiv = document.getElementById(`hint-${p.number}`);
+                    const expDiv = document.getElementById(`explanation-${p.number}`);
+
+                    triggerText.textContent = p.correctHeading;
+                    wrapper.classList.remove('is-incorrect');
+                    wrapper.classList.add('is-correct');
+                    hintDiv.classList.remove('visible');
+                    expDiv.classList.add('visible');
+                    userSelections[p.number] = p.correctHeading;
+                });
+
+                scoreBox.style.display = 'flex';
+                scoreText.textContent = `7 / 7 (Đã mở đáp án)`;
+            }
+
+            function resetQuiz() {
+                mountainV4Data.paragraphs.forEach(p => {
+                    const wrapper = document.getElementById(`select-wrapper-${p.number}`);
+                    wrapper.querySelector('.selected-value-text').textContent = "Choose a heading...";
+                    wrapper.classList.remove('is-correct', 'is-incorrect', 'open');
+                    wrapper.querySelectorAll('.custom-option').forEach(opt => opt.classList.remove('selected'));
+                    document.getElementById(`hint-${p.number}`).classList.remove('visible');
+                    document.getElementById(`explanation-${p.number}`).classList.remove('visible');
+                    delete userSelections[p.number];
+                });
+
+                scoreBox.style.display = 'none';
+                resetTimer();
+            }
+
+            checkBtn.addEventListener('click', checkAnswers);
+            showExplanationsBtn.addEventListener('click', showAllExplanations);
+            resetBtn.addEventListener('click', resetQuiz);
+
+            let totalSeconds = 8 * 60 + 3;
+            let isPaused = false;
+            let timerInterval;
+
+            const timerDisplay = document.getElementById('timer-display');
+            const pauseBtn = document.getElementById('pause-btn');
+            const pauseIcon = document.getElementById('pause-icon');
+            const bookmarkBtn = document.getElementById('bookmark-btn');
+            const bookmarkIcon = document.getElementById('bookmark-icon');
+
+            function formatTime(sec) {
+                const m = Math.floor(sec / 60);
+                const s = sec % 60;
+                return `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }
+
+            function startTimer() {
+                if (timerInterval) clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    if (!isPaused && totalSeconds > 0) {
+                        totalSeconds--;
+                        timerDisplay.textContent = formatTime(totalSeconds);
+                        if (totalSeconds <= 0) {
+                            clearInterval(timerInterval);
+                            alert('Hết giờ làm bài!');
+                            checkAnswers();
+                        }
+                    }
+                }, 1000);
+            }
+
+            function resetTimer() {
+                totalSeconds = 8 * 60 + 3;
+                isPaused = false;
+                pauseIcon.className = 'fas fa-pause';
+                timerDisplay.textContent = formatTime(totalSeconds);
+                startTimer();
+            }
+
+            pauseBtn.addEventListener('click', () => {
+                isPaused = !isPaused;
+                pauseIcon.className = isPaused ? 'fas fa-play' : 'fas fa-pause';
+            });
+
+            bookmarkBtn.addEventListener('click', () => {
+                bookmarkBtn.classList.toggle('bookmarked');
+                bookmarkIcon.className = bookmarkBtn.classList.contains('bookmarked') ? 'fas fa-bookmark' : 'far fa-bookmark';
+            });
+
+            startTimer();
+        });
+    </script>
+</body>
+</html>

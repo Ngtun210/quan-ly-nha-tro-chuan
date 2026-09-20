@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta name="description" content="Luyện tập kỹ năng Speaking Aptis: Speaking - Part 1. Kho câu hỏi, bài mẫu và các tip để tự tin trả lời phần thi nói.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking - Part 1</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- 1. Tích hợp CSS của Driver.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
+    <style>
+        /* CSS cho nút Help/Tour */
+        .tour-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-size: 24px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .tour-btn:hover {
+            transform: scale(1.1);
+            background-color: #f8f9fa;
+        }
+
+        /* Tùy chỉnh giao diện Popover của Driver.js */
+        .driver-popover.driverjs-theme {
+            background-color: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-width: 300px;
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-blue, #007bff);
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .driver-popover.driverjs-theme button {
+            background-color: var(--primary-blue, #007bff);
+            color: #fff;
+            text-shadow: none;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header-placeholder"></header>
+
+    <!-- 2. Nút kích hoạt lại Tour -->
+    <div class="tour-btn" id="restart-tour" title="Hướng dẫn sử dụng">❓</div>
+
+    <div class="content-pusher">
+        <div class="container">
+            <div class="page-intro">
+                <h1>Speaking - Part 1</h1>
+                <p>Luyện tập trả lời câu hỏi với đồng hồ bấm giờ</p>
+            </div>
+            <div class="explanation-box">
+                <h3>💡 Phương pháp luyện tập hiệu quả</h3>
+                <p>Trang web này mô phỏng điều kiện thi bằng cách cung cấp câu hỏi và đồng hồ đếm ngược. Vì trình duyệt
+                    chưa hỗ trợ ghi âm trực tiếp, hãy làm theo các bước sau:</p>
+                <ul>
+                    <li><strong>Bước 1:</strong> Mở ứng dụng ghi âm trên điện thoại của bạn.</li>
+                    <li><strong>Bước 2:</strong> Trên trang web, nhấn nút "▶️ Bắt đầu trả lời" và bắt đầu ghi âm trên
+                        điện thoại cùng lúc.</li>
+                    <li><strong>Bước 3:</strong> Trả lời câu hỏi trong khoảng thời gian cho phép. Đồng hồ sẽ giúp bạn
+                        kiểm soát độ dài câu trả lời.</li>
+                    <li><strong>Bước 4:</strong> Sau khi hoàn thành, bạn có thể tải file ghi âm (MP3) lên các công cụ AI
+                        như Google Studio, ChatGPT-4o, hoặc các dịch vụ sửa bài nói chuyên dụng để nhận feedback.</li>
+                </ul>
+            </div>
+            
+            <div class="method-guide-card" style="margin-bottom: 30px;">
+                <h2>Chiến lược thi Part 1</h2>
+                <p>Bạn sẽ trả lời 3 câu hỏi cá nhân, mỗi câu trong 30 giây. Mục tiêu là trả lời trôi chảy và phát triển
+                    ý một cách tự nhiên.</p>
+
+                <h4>Chiến lược trong phòng thi:</h4>
+                <ul>
+                    <li><strong>Đừng lo lắng về thời gian:</strong> 30 giây là đủ dài. Khi thấy đồng hồ đếm ngược, hãy
+                        giữ bình tĩnh, hít thở sâu và tập trung vào câu hỏi.</li>
+                    <li><strong>Sử dụng "Bàn tay 5W1H":</strong> Nếu "bí" ý, hãy xòe bàn tay ra và tự hỏi:
+                        <ul>
+                            <li><strong>What?</strong> (Cái gì?)</li>
+                            <li><strong>Where?</strong> (Ở đâu?)</li>
+                            <li><strong>When?</strong> (Khi nào?)</li>
+                            <li><strong>Who?</strong> (Với ai?)</li>
+                            <li><strong>Why?</strong> (Tại sao?)</li>
+                            <li><strong>How?</strong> (Như thế nào?)</li>
+                        </ul>
+                        Chỉ cần trả lời 2-3 trong số các câu hỏi này là bạn đã có một câu trả lời đầy đủ.
+                    </li>
+                    <li><strong>Đừng cố nhớ, hãy sáng tạo:</strong> Bạn không cần phải kể đúng 100% sự thật.</li>
+                    <li> Hãy thoải mái <strong>"bịa" ra một câu chuyện ngắn</strong> sao cho nó phù hợp và dễ trả lời
+                        nhất với câu hỏi được đề ra. Giám khảo chỉ quan tâm đến khả năng sử dụng tiếng Anh của bạn,
+                        không phải tính xác thực của câu chuyện.</li>
+                </ul>
+            </div>
+
+            <div class="page-intro">
+                <p>Chọn một chủ đề để bắt đầu luyện tập</p>
+            </div>
+
+            <!-- BẢNG ĐIỀU KHIỂN CHỌN CHỦ ĐỀ -->
+            <div id="topic-selector-grid" class="topic-grid">
+                <!-- 37 nút sẽ được tự động chèn vào đây -->
+            </div>
+
+            <main id="speaking-container">
+                <!-- Chỉ một bài tập được hiển thị tại một thời điểm -->
+            </main>
+        </div>
+        <footer id="footer-placeholder"></footer>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/data-speaking-part1.js"></script>
+
+    <!-- 3. Tích hợp Script của Driver.js -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectorContainer = document.getElementById('topic-selector-grid');
+            const contentContainer = document.getElementById('speaking-container');
+            const topics = speakingPart1Data;
+
+            if (!topics || topics.length === 0) {
+                contentContainer.innerHTML = `<p class="error">Không có dữ liệu cho Speaking Part 1.</p>`;
+                return;
+            }
+
+            // --- GIAI ĐOẠN 1: CHỈ TẠO CÁC NÚT BẤM ---
+            topics.forEach((topic, index) => {
+                const button = document.createElement('button');
+                button.className = 'topic-selector-btn';
+                button.textContent = `Chủ đề ${index + 1}`;
+                button.dataset.index = index; // Lưu trữ chỉ số của chủ đề
+                selectorContainer.appendChild(button);
+            });
+
+            const allButtons = selectorContainer.querySelectorAll('.topic-selector-btn');
+            let activeTimer = null;
+
+            // --- GIAI ĐOẠN 2: HÀM TẠO CARD "THEO YÊU CẦU" ---
+            function renderTopicCard(index) {
+                // Xóa nội dung cũ trong container
+                contentContainer.innerHTML = '';
+                
+                // Lấy dữ liệu của chủ đề được chọn
+                const topic = topics[index];
+                if (!topic) return;
+
+                // Tạo card nội dung
+                const card = document.createElement('div');
+                card.className = 'quiz-card speaking-card active'; // Thêm active để nó hiện ra ngay
+                // Thêm ID cho card để Driver.js có thể target chính xác
+                card.id = 'active-speaking-card';
+                
+                const prompt = topic.prompt;
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2>${topic.title}</h2>
+                    </div>
+                    <div class="prompt-container">
+                        <p class="prompt-question"><strong>Câu hỏi:</strong> ${prompt.question}</p>
+                        <h4>Tự luyện tập:</h4>
+                        <div class="timer-controls" id="timer-area">
+                            <button class="action-btn start-timer-btn" data-duration="${prompt.duration}">▶️ Bắt đầu trả lời (Bấm giờ)</button>
+                            <div class="timer-display"><span class="time-left">${prompt.duration}</span>s</div>
+                        </div>
+                        <div class="card-actions" style="margin-top: 25px; border-top: 1px dashed var(--border-color); padding-top: 25px;">
+                            <button class="action-btn show-sample-btn" id="sample-btn">📖 Xem câu trả lời mẫu</button>
+                        </div>
+                        <div class="sample-answer-wrapper" style="display: none;">
+                            <div class="sample-answer-container">
+                                <h4>Nghe & Đọc câu trả lời mẫu:</h4>
+                                <div class="audio-player-container"><audio controls class="custom-audio-player" src="${topic.audioSrc}"></audio></div>
+                                <div class="sample-answer"><p>${prompt.sampleAnswer}</p></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                // Chèn card vừa tạo vào container
+                contentContainer.appendChild(card);
+            }
+
+            // GÁN SỰ KIỆN CLICK CHO CÁC NÚT
+            selectorContainer.addEventListener('click', function (e) {
+                if (e.target.classList.contains('topic-selector-btn')) {
+                    // Bỏ active ở tất cả các nút
+                    allButtons.forEach(btn => btn.classList.remove('active'));
+                    // Thêm active cho nút được nhấn
+                    e.target.classList.add('active');
+                    // Lấy index và render card tương ứng
+                    const topicIndex = parseInt(e.target.dataset.index, 10);
+                    renderTopicCard(topicIndex);
+                }
+            });
+
+            // MẶC ĐỊNH HIỂN THỊ CHỦ ĐỀ ĐẦU TIÊN KHI TẢI TRANG
+            if (allButtons.length > 0) {
+                allButtons[0].classList.add('active');
+                renderTopicCard(0);
+            }
+
+            // --- KÍCH HOẠT TOUR HƯỚNG DẪN (Sau khi đã render card đầu tiên) ---
+            initSpeakingTour();
+
+            // LOGIC CHO TIMER VÀ NÚT XEM ĐÁP ÁN (hoạt động bên trong card)
+            contentContainer.addEventListener('click', function (e) {
+                if (e.target.classList.contains('start-timer-btn')) {
+                    if (activeTimer) {
+                        clearInterval(activeTimer.intervalId);
+                        activeTimer.button.textContent = '▶️ Bắt đầu trả lời (Bấm giờ)';
+                        activeTimer.button.disabled = false;
+                        activeTimer.timeLeftEl.textContent = activeTimer.button.dataset.duration;
+                        if (activeTimer.button === e.target) {
+                            activeTimer = null;
+                            return;
+                        }
+                    }
+                    const button = e.target;
+                    const duration = parseInt(button.dataset.duration, 10);
+                    const timerDisplay = button.nextElementSibling;
+                    const timeLeftEl = timerDisplay.querySelector('.time-left');
+                    let timeLeft = duration;
+                    timeLeftEl.textContent = timeLeft;
+                    button.textContent = '⏱️ Đang đếm ngược...';
+                    button.disabled = true;
+                    const intervalId = setInterval(() => {
+                        timeLeft--;
+                        timeLeftEl.textContent = timeLeft;
+                        if (timeLeft <= 0) {
+                            clearInterval(intervalId);
+                            button.textContent = 'Hết giờ! Bắt đầu lại';
+                            button.disabled = false;
+                            activeTimer = null;
+                        }
+                    }, 1000);
+                    activeTimer = { button, intervalId, timeLeftEl };
+                }
+                if (e.target.classList.contains('show-sample-btn')) {
+                    const button = e.target;
+                    const wrapper = button.closest('.card-actions').nextElementSibling;
+                    const isVisible = wrapper.style.display === 'block';
+                    wrapper.style.display = isVisible ? 'none' : 'block';
+                    button.textContent = isVisible ? '📖 Xem câu trả lời mẫu' : '🙈 Ẩn câu trả lời mẫu';
+                }
+            });
+        });
+
+        // HÀM KHỞI TẠO TOUR
+        function initSpeakingTour() {
+            const driver = window.driver.js.driver;
+            
+            const driverObj = driver({
+                showProgress: true,
+                animate: true,
+                doneBtnText: 'Đã hiểu',
+                nextBtnText: 'Tiếp theo',
+                prevBtnText: 'Quay lại',
+                popoverClass: 'driverjs-theme',
+                steps: [
+                    { 
+                        element: '.method-guide-card', 
+                        popover: { 
+                            title: 'Chiến thuật thi', 
+                            description: 'Đừng bỏ qua phần này! Đây là các mẹo (như phương pháp 5W1H) giúp bạn không bị bí ý tưởng khi thi thật.', 
+                            side: "bottom", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#topic-selector-grid', 
+                        popover: { 
+                            title: 'Chọn chủ đề', 
+                            description: 'Danh sách 37 chủ đề phổ biến nhất. Bạn có thể chọn bất kỳ số nào để luyện tập ngẫu nhiên.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#active-speaking-card', 
+                        popover: { 
+                            title: 'Khu vực luyện tập', 
+                            description: 'Đây là câu hỏi chính. Hãy đọc kỹ câu hỏi trước khi bắt đầu.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#timer-area', 
+                        popover: { 
+                            title: 'Đồng hồ bấm giờ', 
+                            description: 'Bấm nút này để bắt đầu đếm ngược 30 giây. Hãy cố gắng nói liên tục cho đến khi hết giờ.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#sample-btn', 
+                        popover: { 
+                            title: 'Tham khảo', 
+                            description: 'Sau khi tự trả lời xong, hãy bấm vào đây để nghe và đọc bài mẫu Band điểm cao.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#restart-tour', 
+                        popover: { 
+                            title: 'Hỗ trợ', 
+                            description: 'Bấm vào dấu hỏi này nếu bạn muốn xem lại hướng dẫn.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    }
+                ]
+            });
+
+            // Logic tự động chạy lần đầu
+            showTourHint('SpeakingPart1Tour', () => driverObj.drive());
+
+            // Gán sự kiện cho nút ?
+            document.getElementById('restart-tour').addEventListener('click', () => {
+                driverObj.drive();
+            });
+        }
+    </script>
+</body>
+
+</html>

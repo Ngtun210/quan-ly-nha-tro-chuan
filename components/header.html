@@ -1,0 +1,169 @@
+<!-- components/header.html (FINAL) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <!-- <img src="img/favicon.png" alt="Aptis Practice Logo"> -->
+            <span style="padding-left: 10px;">Aptis của Tú</span>
+        </a>
+
+        <!-- Menu cho Desktop (ĐÃ THÊM LẠI DROPDOWN) -->
+        <nav class="main-nav desktop-nav">
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="about.html">Giới thiệu</a></li>
+                <li><a href="vocabulary.html">Từ vựng</a></li>
+                <li class="dropdown">
+                    <a href="reading.html">Reading</a>
+                    <div class="dropdown-content">
+                        <a href="reading_part1.html">Part 1</a>
+                        <a href="reading_part2.html">Part 2</a>
+                        <a href="reading_part3.html">Part 3</a>
+                        <a href="reading_part4.html">Part 4</a>
+                        <a href="reading_part5.html">Part 5 (Đề Mountain mới)</a>
+                        <a href="reading_part5_mountain.html">Part 5: Mountain (v2) 🏔️</a>
+                        <a href="reading_part5_mountain_v3.html">Part 5: Mountain (v3) 🏔️</a>
+                        <a href="reading_part5_mountain_v4.html">Part 5: Mountain (v4) 🏔️</a>
+                        <a href="reading_part5_mountain_v5.html">Part 5: Mountain (v5) ✨</a>
+                        <a href="select-test.html">Thi thử Reading</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="listening.html">Listening</a>
+                    <div class="dropdown-content">
+                        <a href="listening_part1.html">Part 1 (1-13)</a>
+                        <a href="listening_part14.html">Part 2 (Câu 14)</a>
+                        <a href="listening_part15.html">Part 3 (Câu 15)</a>
+                        <a href="listening_part1617.html">Part 4 (Câu 16-17)</a>
+                        <a href="listening_cheatsheet.html">Bảng Key Tổng hợp</a>
+                        <a href="listening_part1_test.html">Làm bài Part 1 </a>
+                        <a href="listening_part1617_test.html">Làm bài Part 4 </a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="writing.html">Writing</a>
+                    <div class="dropdown-content">
+                        <a href="writing_part1.html">Part 1</a>
+                        <a href="writing_part2.html">Part 2</a>
+                        <a href="writing_part3.html">Part 3</a>
+                        <a href="writing_part4.html">Part 4</a>
+                        <a href="writing_errors.html">Các lỗi sai thường gặp</a> <!-- THÊM DÒNG NÀY -->
+                        <a href="grammar_errors.html">Các lỗi sai ngữ pháp</a> <!-- THÊM DÒNG NÀY -->
+                        <a href="writing_club_errors.html">Lỗi sai câu trả lời</a>
+                        <a href="writing-structure-quiz.html">Part 4 Structure Quiz </a>
+                        <a href="writing-prompt-quiz.html">Phân Tích Đề Bài </a>
+                        <a href="writing-typing-practice.html">Typing </a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="speaking.html">Speaking</a>
+                    <div class="dropdown-content">
+                        <a href="speaking_part1.html">Part 1</a>
+                        <a href="speaking_part2.html">Part 2</a>
+                        <a href="speaking_part3.html">Part 3</a>
+                        <a href="speaking_part4.html">Part 4</a>
+                        <a href="speaking_ideas.html">Dạng câu hỏi quan điểm (lên ý tưởng)</a>
+                        <a href="speaking_peel.html">Dạng câu hỏi quan điểm (dùng công thức)</a>
+                        <a href="speaking-structure-quiz.html">Prepare to Test </a>
+                        <a href="speaking_test.html">Thi thử Speaking</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="hamburger-btn" id="hamburger-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu Sidebar cho Mobile (ĐÃ THÊM DROPDOWN) -->
+    <nav class="mobile-side-menu" id="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="menu-title">Aptis của Tú</span>
+            <button class="close-btn" id="close-btn">×</button>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
+            <li><a href="about.html"><i class="fas fa-chalkboard-teacher"></i> Giới thiệu</a></li>
+            <li><a href="vocabulary.html"><i class="fas fa-book"></i> Từ vựng</a></li>
+
+            <li class="menu-divider"><span>Kỹ năng</span></li>
+
+            <!-- DROPDOWN CHO READING -->
+            <li class="mobile-dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-book-open"></i> Reading <span>›</span></a>
+                <div class="mobile-dropdown-content">
+                    <a href="reading.html">- Tổng quan</a>
+                    <a href="reading_part1.html">- Part 1</a>
+                    <a href="reading_part2.html">- Part 2</a> <!-- SỬA Ở ĐÂY -->
+                    <a href="reading_part3.html">- Part 3</a> <!-- SỬA Ở ĐÂY -->
+                    <a href="reading_part4.html">- Part 4</a>
+                    <a href="reading_part5.html">- Part 5 (Đề Mountain mới)</a>
+                    <a href="reading_part5_mountain.html">- Part 5: Mountain (v2) 🏔️</a>
+                    <a href="reading_part5_mountain_v3.html">- Part 5: Mountain (v3) 🏔️</a>
+                    <a href="reading_part5_mountain_v4.html">- Part 5: Mountain (v4) 🏔️</a>
+                    <a href="reading_part5_mountain_v5.html">- Part 5: Mountain (v5) ✨</a>
+                    <a href="select-test.html">- Thi thử Reading</a>
+                </div>
+            </li>
+
+            <!-- DROPDOWN CHO LISTENING -->
+            <li class="mobile-dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-headphones"></i> Listening <span>›</span></a>
+                <div class="mobile-dropdown-content">
+                    <a href="listening.html">- Tổng quan</a>
+                    <a href="listening_part1.html">- Part 1 (1-13)</a>
+                    <a href="listening_part14.html">- Part 2 (Câu 14)</a>
+                    <a href="listening_part15.html">- Part 3 (Câu 15)</a>
+                    <a href="listening_part1617.html">- Part 4 (Câu 16-17)</a>
+                    <a href="listening_cheatsheet.html">- Bảng Key Tổng hợp</a>
+                    <a href="listening_part1_test.html">- Làm bài Part 1 </a>
+                    <a href="listening_part1617_test.html">- Làm bài Part 4 </a>
+                </div>
+            </li>
+
+            <!-- DROPDOWN CHO WRITING -->
+            <li class="mobile-dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-pen-alt"></i> Writing <span>›</span></a>
+                <div class="mobile-dropdown-content">
+                    <a href="writing.html">- Tổng quan</a>
+                    <a href="writing_part1.html">- Part 1</a>
+                    <a href="writing_part2.html">- Part 2</a>
+                    <a href="writing_part3.html">- Part 3</a>
+                    <a href="writing_part4.html">- Part 4</a>
+                    <a href="writing_errors.html">- Các lỗi sai thường gặp</a> <!-- THÊM DÒNG NÀY -->
+                    <a href="grammar_errors.html">- Các lỗi sai ngữ pháp</a> <!-- THÊM DÒNG NÀY -->
+                    <a href="writing_club_errors.html">- Lỗi sai câu trả lời</a>
+                    <a href="writing-structure-quiz.html">- Part 4 Structure Quiz </a>
+                    <a href="writing-prompt-quiz.html">- Phân Tích Đề Bài </a>
+                    <a href="writing-typing-practice.html">- Typing </a>
+                </div>
+            </li>
+
+            <!-- DROPDOWN CHO SPEAKING -->
+            <li class="mobile-dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-microphone"></i> Speaking <span>›</span></a>
+                <div class="mobile-dropdown-content">
+                    <a href="speaking.html">- Tổng quan</a>
+                    <a href="speaking_part1.html">- Part 1</a>
+                    <a href="speaking_part2.html">- Part 2</a>
+                    <a href="speaking_part3.html">- Part 3 </a>
+                    <a href="speaking_part4.html">- Part 4 </a>
+                    <a href="speaking_ideas.html">- Dạng câu hỏi quan điểm (lên ý tưởng) </a>
+                    <a href="speaking_peel.html">- Dạng câu hỏi quan điểm (dùng công thức)</a>
+                    <a href="speaking-structure-quiz.html">Prepare to Test </a>
+                    <a href="speaking_test.html">Thi thử Speaking</a>
+                </div>
+            </li>
+        </ul>
+        <div class="mobile-nav-footer">
+        </div>
+    </nav>
+</header>

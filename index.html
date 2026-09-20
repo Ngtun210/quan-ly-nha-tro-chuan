@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta name="description" content="Trang bị kiến thức và luyện tập Aptis Practice Hub cho kỳ thi Aptis. Tài liệu hướng dẫn chi tiết, bài tập thực hành hiệu quả và mẹo thi đạt điểm cao miễn phí.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptis của Tú</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- Tích hợp CSS của Driver.js (Thư viện tạo tour hướng dẫn) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css" />
+    <link rel="stylesheet" href="css/components/popup.css">
+</head>
+<style>
+    /* === CSS MỚI CHO GIAO DIỆN TAB VÀ CARD === */
+    :root {
+        --primary-blue: #007bff;
+        --primary-red: #d9534f;
+        --light-grey-bg: #f8f9fa;
+        --border-color: #dee2e6;
+        --text-color: #212529;
+        --text-muted: #6c757d;
+    }
+
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Be Vietnam Pro', sans-serif;
+        background-color: #f0f2f5;
+        color: var(--text-color);
+    }
+
+    .container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        /* Để định vị nút tour */
+    }
+
+    /* Tab Styles */
+    .skill-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-bottom: 2px solid var(--border-color);
+        margin-bottom: 30px;
+        gap: 10px;
+    }
+
+    .tab-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 25px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        font-size: 1.1em;
+        font-weight: 500;
+        color: var(--text-muted);
+        border-bottom: 3px solid transparent;
+        /* Tạo không gian cho border active */
+        transition: all 0.2s ease-in-out;
+    }
+
+    .tab-link i {
+        margin-right: 8px;
+    }
+
+    .tab-link:hover {
+        color: var(--primary-blue);
+    }
+
+    .tab-link.active {
+        color: var(--primary-blue);
+        font-weight: 700;
+        border-bottom-color: var(--primary-blue);
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Card Styles */
+    .part-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .part-card {
+        background-color: #fff;
+        border: 1px solid var(--border-color);
+        border-left: 4px solid var(--primary-blue);
+        /* Thêm viền xanh bên trái */
+        border-radius: 8px;
+        padding: 20px;
+        text-decoration: none;
+        color: var(--text-color);
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .part-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-blue);
+    }
+
+    .part-card h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: var(--primary-blue);
+        /* Màu tiêu đề xanh */
+        font-size: 1.2em;
+    }
+
+    .part-card p,
+    .part-card strong {
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+
+    .important-card h3 {
+        color: var(--primary-red);
+    }
+
+    .important-card {
+        border-left-color: var(--primary-red);
+    }
+
+    /* Nút kích hoạt tour thủ công */
+    .tour-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #fff;
+        border: 1px solid var(--primary-blue);
+        color: var(--primary-blue);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        font-size: 24px;
+        transition: transform 0.2s;
+    }
+
+    .tour-btn:hover {
+        transform: scale(1.1);
+        background-color: var(--primary-blue);
+        color: #fff;
+    }
+
+    /* Tùy chỉnh giao diện Driver.js cho đẹp hơn */
+    .driver-popover.driverjs-theme {
+        background-color: #fff;
+        color: #333;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .driver-popover.driverjs-theme .driver-popover-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--primary-blue);
+    }
+
+    .driver-popover.driverjs-theme .driver-popover-description {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-top: 5px;
+    }
+
+    .driver-popover.driverjs-theme button {
+        background-color: var(--primary-blue);
+        color: #fff;
+        border-radius: 4px;
+        text-shadow: none;
+        border: none;
+    }
+
+    .driver-popover.driverjs-theme button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+    <header id="header-placeholder"></header>
+
+    <!-- Nút để mở lại hướng dẫn -->
+    <div class="tour-btn" id="restart-tour" title="Xem hướng dẫn">
+        ❓
+    </div>
+
+    <div class="content-pusher" id="content-pusher">
+        <div class="container">
+
+            <h1 style="text-align: center;" id="main-title">Aptis của Tú</h1>
+            <p style="text-align: center;">Chọn một kỹ năng để bắt đầu luyện tập</p>
+
+            <!-- === GIAO DIỆN TAB MỚI === -->
+            <div class="skill-tabs" id="skill-tabs-tour">
+                <button class="tab-link active" data-tab="tab-guidance">📖 Hướng dẫn chung</button>
+                <button class="tab-link" data-tab="tab-speaking">🗣️ Speaking</button>
+                <button class="tab-link" data-tab="tab-listening">🎧 Listening</button>
+                <button class="tab-link" data-tab="tab-reading">📖 Reading</button>
+                <button class="tab-link" data-tab="tab-writing">✍️ Writing</button>
+            </div>
+
+            <main class="skill-content-container" id="content-area-tour">
+                <!-- Tab 1: Hướng dẫn chung -->
+                <div id="tab-guidance" class="tab-content active">
+                    <section class="skill-section">
+                        <div class="part-grid">
+                            <a href="structure.html" class="part-card">
+                                <h3>Giới thiệu</h3>
+                                <p>Cấu trúc bài thi Aptis ESOL</p>
+                            </a>
+                            <a href="about.html" class="part-card">
+                                <h3>Giới thiệu trang web</h3>
+                                <p>Hướng dẫn sử dụng web ôn tập</p>
+                            </a>
+                            <a href="vocabulary.html" class="part-card">
+                                <h3>Tổng hợp Từ vựng</h3>
+                                <p>Từ vựng theo chủ đề Nơi chốn và Con người</p>
+                            </a>
+
+
+                            <a href="exam_tips.html" class="part-card">
+                                <h3>Những điều cần nhớ</h3>
+                                <p>Lời khuyên giúp bạn tự tin và làm bài tốt</p>
+                            </a>
+                            <a href="reference.html" class="part-card">
+                                <h3>Tài liệu tham khảo </h3>
+                                <p>Nguồn tài liệu chính và tài liệu tham khảo thêm</p>
+                            </a>
+                            <a href="faq.html" class="part-card">
+                                <h3>Câu hỏi thường gặp </h3>
+                                <p>Giúp bạn hiểu hơn ý nghĩa của trang web này</p>
+                            </a>
+                            <a href="behind-the-scenes.html" class="part-card">
+                                <h3>Câu chuyện đằng sau <br> (Tùy chọn)</h3>
+                                <p>Một công cụ được tạo ra từ chính trải nghiệm của một người ôn thi.</p>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Tab 2: Speaking -->
+                <div id="tab-speaking" class="tab-content">
+                    <section class="skill-section">
+                        <div class="part-grid">
+                            <a href="speaking.html" class="part-card">
+                                <h3>Giới thiệu</h3>
+                                <p>Tổng quan về Kỹ năng Nói</p>
+                            </a>
+                            <a href="speaking_part1.html" class="part-card">
+                                <h3>Part 1</h3>
+                                <p>Personal Questions</p>
+                            </a>
+                            <a href="speaking_part2.html" class="part-card">
+                                <h3>Part 2</h3>
+                                <p>Describe a Picture</p>
+                            </a>
+                            <a href="speaking_part3.html" class="part-card">
+                                <h3>Part 3</h3>
+                                <p>Compare Pictures</p>
+                            </a>
+                            <a href="speaking_part4.html" class="part-card">
+                                <h3>Part 4</h3>
+                                <p>Discuss a Topic</p>
+                            </a>
+                            <a href="speaking_ideas.html" class="part-card">
+                                <h3>Ngân hàng ý tưởng</h3>
+                                <p>Lên ý tưởng cho các câu hỏi quan điểm</p>
+                            </a>
+                            <a href="speaking_peel.html" class="part-card">
+                                <h3>Phương pháp PEEL</h3>
+                                <p>Cấu trúc trả lời câu hỏi Speaking</p>
+                            </a>
+                            <a href="speaking-structure-quiz.html" class="part-card">
+                                <h3>Prepare to Test</h3>
+                                <p>Kiểm tra ghi nhớ sườn bài & mẹo.</p>
+                            </a>
+                            <a href="speaking_test.html" class="part-card important-card">
+                                <h3>Thi thử Speaking</h3><strong>Mô phỏng bài thi thật</strong>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Tab 3: Listening -->
+                <div id="tab-listening" class="tab-content">
+                    <section class="skill-section">
+                        <div class="part-grid">
+                            <a href="listening.html" class="part-card">
+                                <h3>Giới thiệu</h3>
+                                <p>Tổng quan về Kỹ năng Nghe</p>
+                            </a>
+                            <a href="listening_part1.html" class="part-card">
+                                <h3>Part 1 (Câu 1-13)</h3>
+                                <p>Nhận biết thông tin</p>
+                            </a>
+                            <a href="listening_part14.html" class="part-card">
+                                <h3>Part 2 (Câu 14)</h3>
+                                <p>Nối thông tin</p>
+                            </a>
+                            <a href="listening_part15.html" class="part-card">
+                                <h3>Part 3 (Câu 15)</h3>
+                                <p>Xác định quan điểm</p>
+                            </a>
+                            <a href="listening_part1617.html" class="part-card">
+                                <h3>Part 4 (Câu 16-17)</h3>
+                                <p>Nghe hiểu & Suy luận</p>
+                            </a>
+                            <a href="listening_cheatsheet.html" class="part-card">
+                                <h3>Cheatsheet</h3>
+                                <p>Bảng tổng hợp Key</p>
+                            </a>
+                            <a href="listening_part1_test.html" class="part-card important-card">
+                                <h3>Làm bài Part 1</h3><strong>Kiểm tra ghi nhớ key</strong>
+                            </a>
+                            <a href="listening-part1617.html" class="part-card important-card">
+                                <h3>Làm bài Part 4</h3><strong>Kiểm tra ghi nhớ key</strong>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Tab 4: Reading -->
+                <div id="tab-reading" class="tab-content">
+                    <section class="skill-section">
+                        <div class="part-grid">
+                            <a href="reading.html" class="part-card">
+                                <h3>Giới thiệu</h3>
+                                <p>Tổng quan về kỹ năng đọc</p>
+                            </a>
+                            <a href="reading_part1.html" class="part-card">
+                                <h3>Part 1</h3>
+                                <p>Word Matching</p>
+                            </a>
+                            <a href="reading_part2.html" class="part-card">
+                                <h3>Part 2</h3>
+                                <p>Sentence Jumble</p>
+                            </a>
+                            <a href="reading_part3.html" class="part-card">
+                                <h3>Part 3</h3>
+                                <p>Sentence Jumble (Advanced)</p>
+                            </a>
+                            <a href="reading_part4.html" class="part-card">
+                                <h3>Part 4</h3>
+                                <p>Opinion Matching</p>
+                            </a>
+                            <a href="reading_part5.html" class="part-card">
+                                <h3>Part 5</h3>
+                                <p>Matching Headings (20 Đề luyện tập)</p>
+                            </a>
+                            <a href="reading_part5_mountain.html" class="part-card important-card">
+                                <h3>Part 5: Mountain (v2) 🏔️</h3>
+                                <p><strong>Đề 1 chuẩn phòng thi Drop-down list</strong></p>
+                            </a>
+                            <a href="reading_part5_mountain_v3.html" class="part-card important-card">
+                                <h3>Part 5: Mountain (v3) 🏔️</h3>
+                                <p><strong>Đề 2 chuẩn phòng thi Drop-down list</strong></p>
+                            </a>
+                            <a href="reading_part5_mountain_v4.html" class="part-card important-card">
+                                <h3>Part 5: Mountain (v4) 🏔️</h3>
+                                <p><strong>Đề 3 chuẩn phòng thi Drop-down list</strong></p>
+                            </a>
+                            <a href="reading_part5_mountain_v5.html" class="part-card important-card">
+                                <h3>Part 5: Mountain (v5) ✨</h3>
+                                <p><strong>Đề 4 chuẩn phòng thi Drop-down list</strong></p>
+                            </a>
+                            <a href="select-test.html" class="part-card important-card">
+                                <h3>Thi thử Reading</h3><strong>Mô phỏng bài thi thật</strong>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Tab 5: Writing -->
+                <div id="tab-writing" class="tab-content">
+                    <section class="skill-section">
+                        <div class="part-grid">
+                            <a href="writing.html" class="part-card">
+                                <h3>Giới thiệu</h3>
+                                <p>Tổng quan về kỹ năng viết</p>
+                            </a>
+                            <!-- <a href="writing_part1_bank.html" class="part-card">
+                                <h3>Ngân hàng câu hỏi Part 1</h3>
+                                <p>Xem câu hỏi và câu trả lời mẫu</p>
+                            </a> -->
+                            <a href="writing_part1.html" class="part-card">
+                                <h3>Part 1</h3>
+                                <p>Trả lời câu hỏi cá nhân</p>
+                            </a>
+                            <a href="writing_part2.html" class="part-card">
+                                <h3>Part 2</h3>
+                                <p>Điền đơn & Trả lời câu hỏi</p>
+                            </a>
+                            <a href="writing_part3.html" class="part-card">
+                                <h3>Part 3</h3>
+                                <p>Trò chuyện trong Chat Room</p>
+                            </a>
+                            <a href="writing_part4.html" class="part-card">
+                                <h3>Part 4</h3>
+                                <p>Viết Email</p>
+                            </a>
+                            <a href="writing_errors.html" class="part-card">
+                                <h3>Các lỗi sai khi viết email</h3>
+                                <p>Sửa lỗi một vài chủ đề</p>
+                            </a>
+                            <a href="grammar_errors.html" class="part-card">
+                                <h3>Các lỗi sai ngữ pháp</h3>
+                                <p>Tổng hợp các lỗi sai cơ bản</p>
+                            </a>
+                            <a href="writing_club_errors.html" class="part-card">
+                                <h3>Lỗi sai câu trả lời ngắn</h3>
+                                <p>Tổng hợp các câu trả lời CLB</p>
+                            </a>
+                            <a href="writing-typing-practice.html" class="part-card important-card">
+                                <h3>Typing</h3><strong>Luyện tốc độ đánh máy</strong>
+                            </a>
+                            <a href="writing-structure-quiz.html" class="part-card important-card">
+                                <h3>Part 4 Structure Quiz</h3><strong>Kiểm tra ghi nhớ câu mẫu</strong>
+                            </a>
+                            <a href="writing-prompt-quiz.html" class="part-card important-card">
+                                <h3>Phân Tích Đề Bài</h3><strong>Kiểm tra đọc hiểu yêu cầu</strong>
+                            </a>
+
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <footer id="footer-placeholder"></footer>
+    </div>
+    <script src="js/main.js"></script>
+
+    <!-- Tích hợp Script của Driver.js -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <script>
+        // === LOGIC MỚI CHO GIAO DIỆN TAB TRÊN TRANG INDEX ===
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function showTab(tabId) {
+                tabLinks.forEach(item => item.classList.remove('active'));
+                tabContents.forEach(item => item.classList.remove('active'));
+                
+                const activeLink = document.querySelector(`.tab-link[data-tab='${tabId}']`);
+                const activeContent = document.getElementById(tabId);
+                
+                if(activeLink) activeLink.classList.add('active');
+                if(activeContent) activeContent.classList.add('active');
+            }
+
+            if (tabLinks.length > 0) {
+                tabLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        showTab(link.dataset.tab);
+                    });
+                });
+            }
+
+            // === CẤU HÌNH TOUR HƯỚ- DẪN (DRIVER.JS) ===
+            const driver = window.driver.js.driver;
+
+            const driverObj = driver({
+                showProgress: true,
+                animate: true,
+                doneBtnText: 'Hoàn thành',
+                nextBtnText: 'Tiếp theo',
+                prevBtnText: 'Quay lại',
+                popoverClass: 'driverjs-theme',
+                steps: [
+                    {
+                        element: '#main-title',
+                        popover: {
+                            title: 'Chào mừng bạn! 👋',
+                            description: 'Chào mừng đến với Aptis của Tú. Hãy để mình hướng dẫn bạn cách sử dụng trang web này nhé.',
+                            side: "bottom",
+                            align: 'center'
+                        }
+                    },
+                    {
+                        element: '#skill-tabs-tour',
+                        popover: {
+                            title: 'Chọn kỹ năng',
+                            description: 'Đây là nơi bạn chọn kỹ năng muốn ôn tập: Speaking, Listening, Reading hoặc Writing.',
+                            side: "bottom",
+                            align: 'center'
+                        }
+                    },
+                    {
+                        element: '#content-area-tour',
+                        popover: {
+                            title: 'Danh sách bài học',
+                            description: 'Các bài học, mẹo và bài thi thử tương ứng với kỹ năng bạn chọn sẽ hiện ở khu vực này.',
+                            side: "top",
+                            align: 'center'
+                        },
+                        // Tự động chuyển tab khi đến bước này
+                        onNextClick: () => {
+                           showTab('tab-guidance');
+                           driverObj.moveNext();
+                        }
+                    },
+                    {
+                        element: '#restart-tour',
+                        popover: {
+                            title: 'Cần trợ giúp?',
+                            // === THÊM NÚT Q&A VÀO ĐÂY ===
+                            description: `Bất cứ khi nào bạn quên cách sử dụng, hãy bấm vào nút dấu hỏi này nhé!
+                                          <br><br>
+                                          <button id="faq-tour-btn" class="action-btn" style="background-color: #28a745;">Q&A - Câu hỏi thường gặp</button>`,
+                            side: "left",
+                            align: 'center'
+                        },
+                        onHighlighted: (element) => {
+                            // Gắn sự kiện click cho nút Q&A chỉ khi popover này xuất hiện
+                            const faqBtn = document.getElementById('faq-tour-btn');
+                            if (faqBtn) {
+                                faqBtn.onclick = () => {
+                                    window.location.href = 'faq.html'; // Đổi tên file nếu cần
+                                }
+                            }
+                        }
+                    }
+                ]
+            });
+
+            // Logic tự động chạy lần đầu
+            showTourHint('AptisTour', () => driverObj.drive());
+
+            document.getElementById('restart-tour').addEventListener('click', () => {
+                driverObj.drive();
+            });
+        });
+    </script>
+</body>
+
+</html>

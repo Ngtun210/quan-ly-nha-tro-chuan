@@ -1,0 +1,20 @@
+/* css/style.css */
+
+@import url('base.css');
+
+/* Components */
+@import url('components/header.css');
+@import url('components/common.css');
+@import url('components/misc.css');
+@import url('components/popup.css');
+
+/* Pages */
+@import url('pages/dashboard.css');
+@import url('pages/practice.css');
+@import url('pages/reading.css');
+@import url('pages/speaking.css');
+@import url('pages/listening.css');
+@import url('pages/writing.css');
+@import url('pages/structure.css');
+@import url('pages/tips.css');
+@import url('pages/vocabulary.css');
