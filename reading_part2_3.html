@@ -637,7 +637,10 @@
                 <i class="fas fa-film"></i> Đề 1: Films & Family sports day
             </button>
             <button class="pkg-tab-btn" id="tab-pkg-de2" onclick="switchPackage('de2')">
-                <i class="fas fa-coffee"></i> Đề 2: Movies then and now & A new coffee shop ✨
+                <i class="fas fa-coffee"></i> Đề 2: Movies & A new coffee shop
+            </button>
+            <button class="pkg-tab-btn" id="tab-pkg-de3" onclick="switchPackage('de3')">
+                <i class="fas fa-music"></i> Đề 3: Movies & A successful singer ✨
             </button>
         </div>
 
@@ -657,7 +660,7 @@
         </div>
 
         <!-- Hướng dẫn bài thi -->
-        <div class="instruction-box">
+        <div class="instruction-box" id="instruction-box">
             The sentences below make a complete text. Put them in the correct order.
         </div>
 
@@ -887,6 +890,92 @@
                                   "• <strong>Câu 5:</strong> Cảm nhận món ăn và lời khen: <em>'It tasted really good with melted cheese... I’ll definitely come back.'</em>"
                     }
                 }
+            },
+            "de3": {
+                name: "Đề 3: Movies then and now & A successful singer",
+                timeSeconds: 6 * 60 + 55, // 00:06:55
+                questions: {
+                    1: {
+                        title: "Movies then and now",
+                        subTitleBtn: "Question 1: Movies then and now (Part 2)",
+                        headerTitle: "Question 1 of 2",
+                        instruction: "The sentences below are from some instructions. Put the sentences in the right order.",
+                        fixedFirst: true, // Câu 1 cho sẵn
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "Movies today are very different from movies in the past.",
+                                vn: "Phim ảnh ngày nay rất khác so với phim ảnh trong quá khứ."
+                            },
+                            {
+                                number: 2,
+                                en: "In the old days, films were only in black and white, and sometimes even without sound.",
+                                vn: "Ngày xưa, phim chỉ có màu đen trắng, và đôi khi còn không có tiếng."
+                            },
+                            {
+                                number: 3,
+                                en: "In addition to these technological limits, producers had very low budgets.",
+                                vn: "Ngoài những hạn chế về công nghệ này, các nhà sản xuất còn có ngân sách rất thấp."
+                            },
+                            {
+                                number: 4,
+                                en: "Because of the lack of money, actors also earned little money from acting.",
+                                vn: "Vì thiếu tiền, các diễn viên cũng kiếm được rất ít tiền từ việc diễn xuất."
+                            },
+                            {
+                                number: 5,
+                                en: "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films.",
+                                vn: "Ngày nay, mọi thứ đã thay đổi: diễn viên và nhà sản xuất có thể kiếm được rất nhiều tiền từ việc làm phim."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề: phim ảnh ngày nay rất khác phim ảnh trong quá khứ.<br>" +
+                                  "• <strong>Câu 2:</strong> Bắt đầu bằng <em>'In the old days...'</em> giải thích đặc điểm phim ngày xưa (đen trắng, không tiếng).<br>" +
+                                  "• <strong>Câu 3:</strong> Móc xích tiếp theo: <em>'In addition to these technological limits...'</em> bổ sung hạn chế ngân sách rất thấp.<br>" +
+                                  "• <strong>Câu 4:</strong> Nối tiếp từ kinh phí thấp: <em>'Because of the lack of money...'</em> dẫn đến diễn viên kiếm được ít tiền.<br>" +
+                                  "• <strong>Câu 5:</strong> Kết bài tương phản hiện tại: <em>'Nowadays, everything has changed...'</em> diễn viên và nhà sản xuất kiếm được nhiều tiền từ làm phim."
+                    },
+                    2: {
+                        title: "A successful singer",
+                        subTitleBtn: "Question 2: A successful singer (Part 3)",
+                        headerTitle: "Question 2 of 2",
+                        instruction: "The sentences below are from some instructions. Put the sentences in the right order.",
+                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "He is a successful singer with many fans.",
+                                vn: "Anh ấy là một ca sĩ thành công với nhiều người hâm mộ."
+                            },
+                            {
+                                number: 2,
+                                en: "Before becoming famous, he studied music at school when he was 15.",
+                                vn: "Trước khi trở nên nổi tiếng, anh ấy đã học nhạc ở trường khi anh ấy 15 tuổi."
+                            },
+                            {
+                                number: 3,
+                                en: "His unique way of dressing and performing made him stand out from others.",
+                                vn: "Phong cách ăn mặc và biểu diễn độc đáo của anh ấy đã làm anh ấy nổi bật so với những người khác."
+                            },
+                            {
+                                number: 4,
+                                en: "This helped him receive many invitations for collaborations and performances.",
+                                vn: "Điều này đã giúp anh ấy nhận được nhiều lời mời hợp tác và biểu diễn."
+                            },
+                            {
+                                number: 5,
+                                en: "He eventually became famous among audiences around the world.",
+                                vn: "Cuối cùng anh ấy đã trở nên nổi tiếng với khán giả khắp thế giới."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1:</strong> Mở đầu giới thiệu nhân vật: <em>'He is a successful singer with many fans.'</em> (Anh ấy là một ca sĩ thành công với nhiều người hâm mộ).<br>" +
+                                  "• <strong>Câu 2:</strong> Dòng thời gian thuở ban đầu: <em>'Before becoming famous, he studied music at school when he was 15.'</em> (Trước khi nổi tiếng, anh học nhạc ở trường lúc 15 tuổi).<br>" +
+                                  "• <strong>Câu 3:</strong> Yếu tố tạo sự đột phá: <em>'His unique way of dressing and performing made him stand out from others.'</em> (Phong cách độc đáo giúp nổi bật).<br>" +
+                                  "• <strong>Câu 4:</strong> Hệ quả của việc nổi bật: <em>'This helped him receive many invitations for collaborations and performances.'</em> (Giúp nhận nhiều lời mời hợp tác, biểu diễn).<br>" +
+                                  "• <strong>Câu 5:</strong> Đỉnh cao danh tiếng: <em>'He eventually became famous among audiences around the world.'</em> (Cuối cùng trở nên nổi tiếng toàn cầu)."
+                    }
+                }
             }
         };
 
@@ -896,13 +985,15 @@
         // Lưu trữ vị trí đặt câu của người dùng: { packageKey: { 1: { slotNum: sentenceObj }, 2: { ... } } }
         let userPlacements = {
             "de1": { 1: {}, 2: {} },
-            "de2": { 1: {}, 2: {} }
+            "de2": { 1: {}, 2: {} },
+            "de3": { 1: {}, 2: {} }
         };
 
         // Lưu trữ danh sách câu trong Pool của từng đề: { packageKey: { 1: [], 2: [] } }
         let poolItems = {
             "de1": { 1: [], 2: [] },
-            "de2": { 1: [], 2: [] }
+            "de2": { 1: [], 2: [] },
+            "de3": { 1: [], 2: [] }
         };
 
         // Hàm xáo trộn mảng Fisher-Yates (đảm bảo câu hỏi LUÔN BỊ ĐẢO NGẪU NHIÊN)
@@ -941,8 +1032,12 @@
             currentPackageKey = pkgKey;
             currentQIndex = 1;
 
-            document.getElementById('tab-pkg-de1').className = (pkgKey === 'de1') ? 'pkg-tab-btn active' : 'pkg-tab-btn';
-            document.getElementById('tab-pkg-de2').className = (pkgKey === 'de2') ? 'pkg-tab-btn active' : 'pkg-tab-btn';
+            document.querySelectorAll('.pkg-tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.id === `tab-pkg-${pkgKey}`);
+            });
+
+            if (!userPlacements[pkgKey]) userPlacements[pkgKey] = { 1: {}, 2: {} };
+            if (!poolItems[pkgKey]) poolItems[pkgKey] = { 1: [], 2: [] };
 
             // Nếu chưa khởi tạo pool cho đề này
             if (!poolItems[pkgKey][1] || poolItems[pkgKey][1].length === 0) {
@@ -958,9 +1053,13 @@
             currentQIndex = qIndex;
             const qData = examPackages[currentPackageKey].questions[qIndex];
 
-            // Cập nhật Header
+            // Cập nhật Header & Hướng dẫn
             document.getElementById('header-question-title').textContent = qData.headerTitle;
             document.getElementById('passage-title').textContent = qData.title;
+            const instBox = document.getElementById('instruction-box');
+            if (instBox) {
+                instBox.textContent = qData.instruction || "The sentences below make a complete text. Put them in the correct order.";
+            }
 
             // Cập nhật text nút chuyển câu
             document.getElementById('btn-q1').textContent = examPackages[currentPackageKey].questions[1].subTitleBtn;
@@ -1268,7 +1367,8 @@
         }
 
         function resetTimer() {
-            totalSeconds = 6 * 60 + 20;
+            const pkg = examPackages[currentPackageKey];
+            totalSeconds = (pkg && pkg.timeSeconds) ? pkg.timeSeconds : (6 * 60 + 20);
             isPaused = false;
             document.getElementById('pause-icon').className = 'fas fa-pause';
             document.getElementById('timer-display').textContent = formatTime(totalSeconds);
@@ -1290,16 +1390,20 @@
         document.addEventListener('DOMContentLoaded', () => {
             initPoolsForPackage("de1");
             initPoolsForPackage("de2");
+            initPoolsForPackage("de3");
 
-            // Kiểm tra URL param ?pkg=de2 hoặc ?de=2
+            // Kiểm tra URL param ?pkg=de3 hoặc ?de=3
             const urlParams = new URLSearchParams(window.location.search);
-            const requestedPkg = urlParams.get('pkg') || (urlParams.get('de') === '2' ? 'de2' : 'de1');
-
-            if (requestedPkg === 'de2') {
-                switchPackage('de2');
-            } else {
-                switchPackage('de1');
+            const deParam = urlParams.get('de');
+            const pkgParam = urlParams.get('pkg');
+            let requestedPkg = "de1";
+            if (pkgParam && examPackages[pkgParam]) {
+                requestedPkg = pkgParam;
+            } else if (deParam && examPackages[`de${deParam}`]) {
+                requestedPkg = `de${deParam}`;
             }
+
+            switchPackage(requestedPkg);
         });
     </script>
 </body>
