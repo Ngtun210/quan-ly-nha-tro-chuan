@@ -634,13 +634,16 @@
         <!-- THANH CHỌN BỘ ĐỀ THI: ĐỀ 1 / ĐỀ 2 -->
         <div class="package-switch-bar">
             <button class="pkg-tab-btn active" id="tab-pkg-de1" onclick="switchPackage('de1')">
-                <i class="fas fa-film"></i> Đề 1: Films & Family sports day
+                <i class="fas fa-film"></i> Đề 1: Films & Sports day
             </button>
             <button class="pkg-tab-btn" id="tab-pkg-de2" onclick="switchPackage('de2')">
-                <i class="fas fa-coffee"></i> Đề 2: Movies & A new coffee shop
+                <i class="fas fa-coffee"></i> Đề 2: Movies & Coffee shop
             </button>
             <button class="pkg-tab-btn" id="tab-pkg-de3" onclick="switchPackage('de3')">
-                <i class="fas fa-music"></i> Đề 3: Movies & A successful singer ✨
+                <i class="fas fa-music"></i> Đề 3: Movies & Singer
+            </button>
+            <button class="pkg-tab-btn" id="tab-pkg-de4" onclick="switchPackage('de4')">
+                <i class="fas fa-utensils"></i> Đề 4: Cafe & Project ✨
             </button>
         </div>
 
@@ -654,8 +657,8 @@
                     Question 2 (Part 3)
                 </button>
             </div>
-            <a href="reading_part2.html" class="back-link-btn">
-                <i class="fas fa-arrow-left"></i> Về danh sách Part 2
+            <a href="index.html" class="back-link-btn">
+                <i class="fas fa-arrow-left"></i> Về Trang chủ
             </a>
         </div>
 
@@ -976,6 +979,92 @@
                                   "• <strong>Câu 5:</strong> Đỉnh cao danh tiếng: <em>'He eventually became famous among audiences around the world.'</em> (Cuối cùng trở nên nổi tiếng toàn cầu)."
                     }
                 }
+            },
+            "de4": {
+                name: "Đề 4: Eating at a cafe & End-of-term project",
+                timeSeconds: 4 * 60 + 42, // 00:04:42
+                questions: {
+                    1: {
+                        title: "Eating at a cafe",
+                        subTitleBtn: "Question 1: Eating at a cafe (Part 2)",
+                        headerTitle: "Question 1 of 2",
+                        instruction: "The sentences below make a complete text. Put them in the correct order.",
+                        fixedFirst: true, // Câu 1 cho sẵn
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "I decided to try a new café located at the end of the street.",
+                                vn: "Tôi quyết định thử một quán cà phê mới nằm ở cuối đường."
+                            },
+                            {
+                                number: 2,
+                                en: "The place was quite busy, with a lively atmosphere.",
+                                vn: "Quán khá đông đúc, với không khí sôi động."
+                            },
+                            {
+                                number: 3,
+                                en: "Even so, a staff member quickly noticed me and brought over the menu.",
+                                vn: "Mặc dù vậy, một nhân viên nhanh chóng nhận ra tôi và mang thực đơn đến."
+                            },
+                            {
+                                number: 4,
+                                en: "I was a bit surprised to see that there were only a few items to choose from.",
+                                vn: "Tôi hơi ngạc nhiên khi thấy chỉ có một vài món để chọn."
+                            },
+                            {
+                                number: 5,
+                                en: "In the end, I went for the most expensive salad on the menu.",
+                                vn: "Cuối cùng, tôi đã chọn món salad đắt nhất trong thực đơn."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1 (Cho sẵn):</strong> Mở đầu hành động: Quyết định ghé thử quán cà phê mới ở cuối đường.<br>" +
+                                  "• <strong>Câu 2:</strong> Miêu tả ấn tượng đầu tiên: <em>'The place was quite busy, with a lively atmosphere.'</em> (Quán đông đúc, náo nhiệt).<br>" +
+                                  "• <strong>Câu 3:</strong> Móc xích tương phản: Dù quán đông đúc nhưng <em>'Even so, a staff member quickly noticed me...'</em> nhân viên vẫn nhanh nhẹn mang thực đơn ra.<br>" +
+                                  "• <strong>Câu 4:</strong> Cảm nhận khi mở thực đơn: <em>'I was a bit surprised...'</em> ngạc nhiên vì có quá ít món để lựa chọn.<br>" +
+                                  "• <strong>Câu 5:</strong> Quyết định chốt món: <em>'In the end, I went for the most expensive salad on the menu.'</em> (Cuối cùng chọn món salad đắt nhất)."
+                    },
+                    2: {
+                        title: "End-of-term project",
+                        subTitleBtn: "Question 2: End-of-term project (Part 3)",
+                        headerTitle: "Question 2 of 2",
+                        instruction: "The sentences below make a complete text. Put them in the correct order.",
+                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "Your end-of-term project should focus on at least two of the given topics.",
+                                vn: "Dự án cuối kỳ của bạn nên tập trung vào ít nhất hai trong số các chủ đề đã cho."
+                            },
+                            {
+                                number: 2,
+                                en: "It must include relevant pictures along with your own written text about the subject.",
+                                vn: "Bài thuyết trình phải có hình ảnh phù hợp cùng với phần văn bản viết của riêng bạn về chủ đề đó."
+                            },
+                            {
+                                number: 3,
+                                en: "You will then use these pictures and your written work to create a class presentation.",
+                                vn: "Sau đó, bạn sẽ sử dụng những hình ảnh này và bài viết của mình để tạo một bài thuyết trình trên lớp."
+                            },
+                            {
+                                number: 4,
+                                en: "During the presentation, you should summarize your main points, and it should last about five minutes.",
+                                vn: "Trong buổi thuyết trình, bạn nên tóm tắt các ý chính của mình và thời lượng khoảng năm phút."
+                            },
+                            {
+                                number: 5,
+                                en: "Afterward, your classmates will have the opportunity to ask questions, and you will respond to them.",
+                                vn: "Sau đó, các bạn cùng lớp của bạn sẽ có cơ hội đặt câu hỏi và bạn sẽ trả lời."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1:</strong> Giới thiệu yêu cầu tổng quát: <em>'Your end-of-term project should focus on...'</em> (Dự án tập trung vào ít nhất 2 chủ đề).<br>" +
+                                  "• <strong>Câu 2:</strong> Yêu cầu thành phần bài làm: <em>'It must include relevant pictures along with your own written text...'</em> (Hình ảnh và bài viết tự sáng tác).<br>" +
+                                  "• <strong>Câu 3:</strong> Chuyển sang giai đoạn làm slide/thuyết trình: <em>'You will then use these pictures and your written work to create a class presentation.'</em><br>" +
+                                  "• <strong>Câu 4:</strong> Diễn biến buổi thuyết trình: <em>'During the presentation, you should summarize your main points...'</em> (Thuyết trình tóm tắt ý trong khoảng 5 phút).<br>" +
+                                  "• <strong>Câu 5:</strong> Phần Q&A kết thúc: <em>'Afterward, your classmates will have the opportunity to ask questions...'</em> (Sau đó các bạn đặt câu hỏi và trả lời)."
+                    }
+                }
             }
         };
 
@@ -986,14 +1075,16 @@
         let userPlacements = {
             "de1": { 1: {}, 2: {} },
             "de2": { 1: {}, 2: {} },
-            "de3": { 1: {}, 2: {} }
+            "de3": { 1: {}, 2: {} },
+            "de4": { 1: {}, 2: {} }
         };
 
         // Lưu trữ danh sách câu trong Pool của từng đề: { packageKey: { 1: [], 2: [] } }
         let poolItems = {
             "de1": { 1: [], 2: [] },
             "de2": { 1: [], 2: [] },
-            "de3": { 1: [], 2: [] }
+            "de3": { 1: [], 2: [] },
+            "de4": { 1: [], 2: [] }
         };
 
         // Hàm xáo trộn mảng Fisher-Yates (đảm bảo câu hỏi LUÔN BỊ ĐẢO NGẪU NHIÊN)
@@ -1391,6 +1482,7 @@
             initPoolsForPackage("de1");
             initPoolsForPackage("de2");
             initPoolsForPackage("de3");
+            initPoolsForPackage("de4");
 
             // Kiểm tra URL param ?pkg=de3 hoặc ?de=3
             const urlParams = new URLSearchParams(window.location.search);
