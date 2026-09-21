@@ -724,5 +724,27 @@ const listeningPart2Exams = [
             "D": "I'm getting on a bit now, so I can't do the things I used to. Climbing and cycling are far too much for my knees these days. Jogging isn't a bad idea, I suppose, but I need something slower. So what I do is go for a walk every day in the late afternoon. I follow the path by the river, enjoy the scenery, and by that time of day it's not too hot. It's gentle, but it keeps me fit and happy."
         },
         "explanation": "A – going for a run: 'every morning before work I put on my trainers and run for about forty minutes'. Bẫy: ngựa (đã bỏ vì ngã), climbing (sợ độ cao).\nB – horse riding: 'there are several riding stables near my home... riding out through the fields'. Bẫy: skiing/snow sports là sở thích của BẠN cô ấy.\nC – mountain biking: 'I love riding my bike up there... the ride down is fast and exciting'. Bẫy: jogging là việc người khác làm trên bãi biển.\nD – walking: 'I go for a walk every day in the late afternoon'. Bẫy: climbing, cycling (quá sức), jogging (cần chậm hơn).\nKhông ai chọn: snow sports, climbing — đều được nhắc như thứ KHÔNG làm.\n👉 Mẹo: mỗi người nhắc 2–3 môn nhưng chỉ 1 môn đi với 'I do / I go / I love'; các môn khác đi với 'gave up', 'out of the question', 'my friends'."
+    },
+    {
+        "id": 34,
+        "name": "Đề 34: Shopping online (Delivery van, Bargains, Taxi between shifts, Vinyl records)",
+        "prompt": "Four people are talking about shopping online. Match each person to the correct information.",
+        "speakers": {
+            "A": "products are delivered",
+            "B": "it is cheaper",
+            "C": "it saves time",
+            "D": "it has more choices"
+        },
+        "distractors": [
+            "easy to return",
+            "safer than cash"
+        ],
+        "script": {
+            "A": "My little village has one bus a day and no real shops, so the delivery van has changed my life. Whatever I order appears at my gate within the week — garden tools, birthday presents, even my dog's special food. The driver knows my house so well he waves at my kitchen window. That magic trick of things simply arriving at my door is the whole reason I shop this way.",
+            "B": "I refuse to pay full price for anything, and the internet is where the bargains live. Every evening I check three comparison sites the way other people check the news. The same television my brother bought in town cost me eighty pounds less, delivered. Add the voucher codes and the end-of-season sales, and my yearly savings would pay for a small holiday. My motto is simple: whoever pays the shop price simply has not looked.",
+            "C": "I manage a restaurant, which means my days off are rare and short. Shopping in town would eat those precious hours — instead I clear my whole list in the taxi between shifts. Groceries ordered at midnight, shoes chosen while the pasta boils. What used to cost me an afternoon now costs minutes squeezed into the gaps of my day. Those saved hours go to my daughter, and no shop window could compete with that.",
+            "D": "I collect vinyl records, and no town on earth stocks what I am hunting for. Online, I wander through shops in Tokyo, Berlin and Chicago without leaving my chair — pressings I had only read about, colours and editions I never knew existed. Last month I finally found a Brazilian record I had chased for nine years. When the hunt matters, the endless online catalogue beats every physical shelf in the country."
+        },
+        "explanation": "A = products are delivered (keyword \"delivery van... arriving at my door\"). B = it is cheaper (keyword \"bargains... eighty pounds less\"). C = it saves time (PARAPHRASE: \"costs minutes squeezed into the gaps... saved hours\"). D = it has more choices (PARAPHRASE: \"shops in Tokyo, Berlin and Chicago... editions I never knew existed\"). Nhiễu: easy to return, safer than cash."
     }
 ];
