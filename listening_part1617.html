@@ -1,291 +1,1924 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta name="description" content="Luyện tập kỹ năng Listening Aptis: Listening - Part 4 (Câu 16 & 17). Cải thiện kỹ năng nghe với các bài test thực tế và hướng dẫn chi tiết.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listening - Part 4 (Câu 16 & 17)</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Listening – Part 4: Monologues (32 Bộ Đề Thi Thật Aptis ESOL)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
 
-    <!-- 1. Tích hợp CSS của Driver.js -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
-
     <style>
-        strong {
-            font-weight: 700;
-            color: #007bff;
-        }
-
-        /* CSS cho nút Help/Tour */
-        .tour-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            color: #333;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 999;
-            font-size: 24px;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .tour-btn:hover {
-            transform: scale(1.1);
-            background-color: #f8f9fa;
-        }
-
-        /* Tùy chỉnh giao diện Driver.js */
-        .driver-popover.driverjs-theme {
-            background-color: #fff;
-            color: #333;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            max-width: 350px;
-        }
-        
-        .driver-popover.driverjs-theme .driver-popover-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--primary-blue, #007bff);
-        }
-        
-        .driver-popover.driverjs-theme .driver-popover-description {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .driver-popover.driverjs-theme button {
-            background-color: var(--primary-blue, #007bff);
-            color: #fff;
-            text-shadow: none;
-            border: none;
-            border-radius: 4px;
-            padding: 6px 12px;
-        }
-
-        /* Style cho danh sách Key */
-        .key-list {
-            list-style: none;
-            padding: 0;
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
         }
-        .key-list li {
+
+        :root {
+            --primary-purple: #24085a;
+            --primary-purple-hover: #371085;
+            --primary-purple-light: #f5f3ff;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-green-bg: #ecfdf5;
+            --accent-red: #ef4444;
+            --accent-red-bg: #fef2f2;
+            --text-dark: #0f172a;
+            --text-slate: #475569;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --bg-page: #f8fafc;
+            --card-bg: #ffffff;
+            --font-base-size: 15px;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 85px;
+            font-size: var(--font-base-size);
+            line-height: 1.5;
+        }
+
+        /* Top Purple Bar */
+        .top-purple-bar {
+            background-color: var(--primary-purple);
+            color: #ffffff;
+            height: 58px;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(36, 8, 90, 0.25);
+        }
+
+        .top-bar-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar-sub {
+            font-size: 11.5px;
+            color: #c7d2fe;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .top-bar-title {
+            font-size: 17.5px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .btn-exit {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(255, 255, 255, 0.45);
+            background: transparent;
+            color: #ffffff;
+            font-size: 13.5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-exit:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: #ffffff;
+            transform: translateX(-2px);
+        }
+
+        /* Main Container */
+        .exam-container {
+            max-width: 980px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 20px 40px 20px;
+            flex: 1;
+        }
+
+        /* Exam Switcher Card */
+        .pkg-switcher-card {
+            background: #ffffff;
+            border: 1.5px solid #e0e7ff;
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(36, 8, 90, 0.05);
+        }
+
+        .pkg-switcher-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .pkg-switcher-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: var(--primary-purple);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pkg-select-dropdown {
+            padding: 7px 14px;
+            border: 2px solid var(--primary-purple);
+            border-radius: 25px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            background-color: #f8fafc;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+            max-width: 480px;
+        }
+
+        .pkg-select-dropdown:hover, .pkg-select-dropdown:focus {
+            border-color: #4338ca;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15);
+        }
+
+        .package-switch-bar {
+            display: flex;
+            justify-content: flex-start;
+            gap: 6px;
+            flex-wrap: wrap;
+            max-height: 120px;
+            overflow-y: auto;
+            padding: 4px 2px;
+        }
+
+        .pkg-tab-btn {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1.5px solid #cbd5e1;
+            background-color: #ffffff;
+            color: #334155;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            user-select: none;
+        }
+
+        .pkg-tab-btn:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+            color: #0f172a;
+        }
+
+        .pkg-tab-btn.active {
+            background-color: var(--primary-purple) !important;
+            border-color: var(--primary-purple) !important;
+            color: #ffffff !important;
+            box-shadow: 0 3px 10px rgba(36, 8, 90, 0.3);
+            transform: scale(1.04);
+        }
+
+        .pkg-tab-btn.has-done {
+            border-color: #10b981;
+        }
+
+        /* Recording Tabs Switcher */
+        .recording-switcher-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .rec-pill-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 20px;
+            border-radius: 20px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rec-pill-btn:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .rec-pill-btn.active {
+            background: #4338ca;
+            border-color: #4338ca;
+            color: #ffffff;
+            box-shadow: 0 3px 8px rgba(67, 56, 202, 0.3);
+        }
+
+        /* Exam Card (Aptis ESOL Official Interface) */
+        .official-exam-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px 36px 36px 36px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+            position: relative;
+        }
+
+        /* Subheader */
+        .sub-header-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+
+        .sub-header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .skill-tag {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-slate);
+        }
+
+        .recording-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .recording-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .btn-bookmark {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            border-radius: 18px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #475569;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-bookmark:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn-bookmark.active {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #b45309;
+            font-weight: 700;
+        }
+
+        .btn-pause-timer {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #475569;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-pause-timer:hover {
+            border-color: #94a3b8;
+            background: #f8fafc;
+        }
+
+        .sub-header-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .timer-display {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.5px;
+        }
+
+        .timer-label {
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 600;
+            margin-top: -2px;
+        }
+
+        .timer-bar {
+            width: 100px;
+            height: 3px;
+            background: var(--primary-purple);
+            border-radius: 2px;
+            margin-top: 4px;
+        }
+
+        /* Audio Play/Stop Box */
+        .audio-control-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 26px;
+        }
+
+        .btn-play-stop {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1.5px solid var(--primary-purple);
+            background: #ffffff;
+            color: var(--primary-purple);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(36, 8, 90, 0.08);
+        }
+
+        .btn-play-stop:hover {
+            background: var(--primary-purple);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .btn-play-stop.playing {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: #ffffff;
+            animation: pulse-red 1.5s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .audio-status-indicator {
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sound-wave {
+            display: none;
+            align-items: center;
+            gap: 3px;
+            height: 16px;
+        }
+
+        .sound-wave.active {
+            display: inline-flex;
+        }
+
+        .sound-bar {
+            width: 3px;
+            height: 100%;
+            background: var(--primary-purple);
+            border-radius: 2px;
+            animation: wave 1s infinite ease-in-out;
+        }
+
+        .sound-bar:nth-child(2) { animation-delay: 0.15s; }
+        .sound-bar:nth-child(3) { animation-delay: 0.3s; }
+        .sound-bar:nth-child(4) { animation-delay: 0.45s; }
+
+        @keyframes wave {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
+
+        /* Question Block */
+        .question-block {
+            margin-bottom: 28px;
+        }
+
+        .question-prompt {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        /* Options Card (matches Aptis ESOL UI exactly) */
+        .options-card {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .option-row {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            min-height: 52px;
+        }
+
+        .option-row:last-child {
+            border-bottom: none;
+        }
+
+        .option-row:hover {
+            background-color: #f8fafc;
+        }
+
+        .option-letter-col {
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #334155;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .option-text-col {
+            flex: 1;
+            padding: 12px 20px 12px 8px;
+            font-size: 14.5px;
+            color: #1e293b;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+        /* Selected State */
+        .option-row.selected {
+            background-color: #f5f3ff;
+        }
+
+        .option-row.selected .option-letter-col {
+            color: var(--primary-purple);
+            font-weight: 800;
+        }
+
+        .option-row.selected .option-text-col {
+            color: var(--primary-purple);
+            font-weight: 600;
+        }
+
+        /* Evaluated Correct State */
+        .option-row.is-correct {
+            background-color: #ecfdf5 !important;
+        }
+
+        .option-row.is-correct .option-letter-col {
+            color: #059669 !important;
+            font-weight: 800;
+        }
+
+        .option-row.is-correct .option-text-col {
+            color: #065f46 !important;
+            font-weight: 600;
+        }
+
+        .option-row.is-correct::after {
+            content: "✓ ĐÚNG";
+            margin-right: 16px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #059669;
+            background: #d1fae5;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        /* Evaluated Wrong State */
+        .option-row.is-wrong {
+            background-color: #fef2f2 !important;
+        }
+
+        .option-row.is-wrong .option-letter-col {
+            color: #dc2626 !important;
+            font-weight: 800;
+        }
+
+        .option-row.is-wrong .option-text-col {
+            color: #991b1b !important;
+            font-weight: 600;
+        }
+
+        .option-row.is-wrong::after {
+            content: "✗ BẠN ĐÃ CHỌN";
+            margin-right: 16px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        /* Floating Actions on the Left */
+        .floating-actions-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .btn-action-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 16px;
+            border-radius: 20px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #475569;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: fit-content;
+        }
+
+        .btn-action-pill:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            color: #0f172a;
+        }
+
+        .btn-action-pill.active {
+            background: var(--primary-purple);
+            border-color: var(--primary-purple);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(36, 8, 90, 0.25);
+        }
+
+        /* Explanation & Script Area */
+        .explanation-card {
+            margin-top: 28px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+            display: none;
+        }
+
+        .explanation-card.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-section-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary-purple);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1.5px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .script-block {
+            background: #f8fafc;
+            border-left: 4px solid #6366f1;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: #334155;
+        }
+
+        .script-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .btn-copy-script {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: #475569;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-copy-script:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .analysis-block {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #334155;
+            white-space: pre-line;
+            background: #fdf4ff;
+            border-left: 4px solid #d946ef;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Fixed Bottom Docked Bar */
+        .bottom-docked-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 1000;
+            box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .docked-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-circle-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #475569;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .icon-circle-btn:hover {
+            border-color: var(--primary-purple);
+            color: var(--primary-purple);
+            background: #f8fafc;
+        }
+
+        .docked-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-nav-prev {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 22px;
+            border-radius: 20px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #1e293b;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav-prev:hover:not(:disabled) {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        .btn-nav-prev:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-nav-next {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 24px;
+            border-radius: 20px;
+            border: 1.5px solid var(--primary-purple);
+            background: var(--primary-purple);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 10px rgba(36, 8, 90, 0.25);
+        }
+
+        .btn-nav-next:hover:not(:disabled) {
+            background: #371085;
+            border-color: #371085;
+            transform: translateX(2px);
+        }
+
+        .btn-nav-next:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Drawer / Modal Danh sách Bộ đề (Menu ☰) */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.5);
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .drawer-content {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            max-width: 85vw;
+            background: #ffffff;
+            z-index: 100000;
+            box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .drawer-overlay.active .drawer-content {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            padding: 18px 24px;
+            background: var(--primary-purple);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .drawer-header h3 {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .btn-close-drawer {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .drawer-body {
+            padding: 16px;
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .drawer-exam-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .drawer-exam-card:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+
+        .drawer-exam-card.active-exam {
+            border-color: var(--primary-purple);
+            background: #faf5ff;
+        }
+
+        .drawer-exam-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
             display: flex;
             justify-content: space-between;
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
             align-items: center;
         }
-        .key-list li:last-child { border-bottom: none; }
-        .key-number {
-            font-weight: bold;
-            color: #6c757d;
-            width: 40px;
+
+        .drawer-rec-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
         }
-        .answer-text {
-            flex-grow: 1;
-            font-weight: 500;
-            color: #2c3e50;
+
+        .drawer-rec-btn {
+            flex: 1;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .drawer-rec-btn:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        .drawer-rec-btn.active {
+            background: var(--primary-purple);
+            border-color: var(--primary-purple);
+            color: #ffffff;
+        }
+
+        .drawer-rec-btn.done {
+            border-color: #10b981;
+            color: #059669;
+        }
+
+        .drawer-rec-btn.active.done {
+            background: var(--primary-purple);
+            color: #ffffff;
+        }
+
+        /* Generic Modals (Info / Report) */
+        .generic-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.5);
+            z-index: 100001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .generic-modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .generic-modal-card {
+            background: #ffffff;
+            border-radius: 14px;
+            max-width: 520px;
+            width: 100%;
+            padding: 24px 28px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .modal-header h4 {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--primary-purple);
+        }
+
+        .btn-modal-close {
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            font-size: 14px;
+            line-height: 1.65;
+            color: #334155;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+        }
+
+        .modal-body li {
+            margin-bottom: 6px;
+        }
+
+        /* Toast notifications */
+        .app-toast {
+            position: fixed;
+            top: 70px;
+            right: 24px;
+            background: #1e293b;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            z-index: 999999;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.25s ease;
+            pointer-events: none;
+        }
+
+        .app-toast.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-purple-bar {
+                padding: 0 16px;
+            }
+            .exam-container {
+                padding: 14px 12px 30px 12px;
+            }
+            .official-exam-card {
+                padding: 20px 16px;
+            }
+            .bottom-docked-bar {
+                padding: 0 16px;
+            }
+            .sub-header-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .sub-header-right {
+                align-items: flex-start;
+                text-align: left;
+            }
+            .timer-bar {
+                margin-left: 0;
+            }
+            .option-letter-col {
+                width: 48px;
+            }
+            .option-text-col {
+                padding: 10px 12px 10px 4px;
+                font-size: 13.5px;
+            }
         }
     </style>
 </head>
-
 <body>
-    <header id="header-placeholder"></header>
-    
-    <!-- 2. Nút kích hoạt lại Tour -->
-    <div class="tour-btn" id="restart-tour" title="Hướng dẫn sử dụng">❓</div>
 
-    <div class="content-pusher">
-        <div class="container">
-            <div class="page-intro">
-                <h1>Listening - Part 4 (Câu 16 & 17)</h1>
-                <p>Luyện tập ghi nhớ cặp key đáp án</p>
-            </div>
-            
-            <div class="explanation-box">
-                <h3>💡 Phương pháp học</h3>
-                <p>Phần thi này bao gồm 2 đoạn độc thoại, mỗi đoạn có 2 câu hỏi. Mỗi câu hỏi có 3 lựa chọn, trong đó có 2 lựa chọn đúng. Nhiệm vụ của bạn là chọn đúng 2 đáp án đó. Hãy "nhận diện mặt chữ" của các cặp đáp án này.</p>
-                <ul>
-                    <li>Phần tô đậm <strong>(strong)</strong> là những cụm từ quan trọng nhất cần ghi nhớ.</li>
-                    <li>Lướt qua các trang và đọc to các cặp đáp án để quen mặt chữ.</li>
-                </ul>
-            </div>
-
-            <!-- SECTION MỚI: TÀI LIỆU BỔ TRỢ -->
-            <div class="explanation-box" style="margin-top: 20px; background-color: #e3f2fd; border-left: 4px solid #2196f3;">
-                <h3>📚 Tài liệu gốc</h3>
-                <p>Nếu bạn muốn xem file gốc để đối chiếu, hãy truy cập link bên dưới:</p>
-                <ul>
-                    <li>📂 <a href="https://drive.google.com/drive/folders/15lR8CosejfYo3rO1y_d_NujHSq-wh0cW?usp=drive_link" target="_blank" style="color: #0056b3; font-weight: 500;">Kho tài liệu Drive (Part 16 & 17)</a></li>
-                </ul>
-            </div>
-
-            <main id="listening-container" class="quiz-card">
-                <div class="card-header">
-                    <h2 id="page-title-indicator">Đáp án 1 - 20</h2>
-                    <button class="action-btn" id="toggle-all-btn">👁️ Hiển thị tất cả</button>
-                </div>
-                <ul id="answer-list" class="key-list">
-                    <!-- Đáp án sẽ được chèn vào đây -->
-                </ul>
-                <div class="pagination-controls">
-                    <button class="action-btn" id="prev-page-btn" disabled>⬅️ Trang trước</button>
-                    <span id="page-number-indicator">Trang 1 / 2</span>
-                    <button class="action-btn" id="next-page-btn">Trang sau ➡️</button>
-                </div>
-            </main>
+    <!-- Top Purple Bar -->
+    <header class="top-purple-bar">
+        <div class="top-bar-left">
+            <span class="top-bar-sub">Listening</span>
+            <span class="top-bar-title">Part 4 – Monologues</span>
         </div>
-        <footer id="footer-placeholder"></footer>
+        <a href="index.html" class="btn-exit" title="Quay lại trang chủ">
+            <span>Thoát</span>
+            <i class="fas fa-arrow-right-from-bracket"></i>
+        </a>
+    </header>
+
+    <!-- Main Container -->
+    <main class="exam-container">
+
+        <!-- Exam Switcher Card -->
+        <div class="pkg-switcher-card">
+            <div class="pkg-switcher-header">
+                <div class="pkg-switcher-title">
+                    <i class="fas fa-layer-group text-purple"></i>
+                    <span>32 BỘ ĐỀ THI THẬT LISTENING PART 4</span>
+                </div>
+                <select id="exam-select-dropdown" class="pkg-select-dropdown" aria-label="Chọn bộ đề">
+                    <!-- Dynamic Options -->
+                </select>
+            </div>
+
+            <!-- 32 Tabs -->
+            <div class="package-switch-bar" id="exam-tabs-container">
+                <!-- Dynamic Pill Tabs -->
+            </div>
+
+            <!-- Recording Sub-tabs Switcher -->
+            <div class="recording-switcher-row">
+                <button class="rec-pill-btn active" id="rec-tab-1" data-rec="1">
+                    <i class="fas fa-microphone"></i>
+                    <span>Recording 1 of 2</span>
+                </button>
+                <button class="rec-pill-btn" id="rec-tab-2" data-rec="2">
+                    <i class="fas fa-microphone"></i>
+                    <span>Recording 2 of 2</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Official Aptis ESOL Exam Card -->
+        <div class="official-exam-card">
+            
+            <!-- Subheader Row -->
+            <div class="sub-header-row">
+                <div class="sub-header-left">
+                    <span class="skill-tag">Listening – Part 4</span>
+                    <div class="recording-title-wrap">
+                        <h2 class="recording-title" id="current-recording-label">Recording 1 of 2</h2>
+                        <button class="btn-bookmark" id="btn-bookmark-toggle">
+                            <i class="far fa-bookmark" id="bookmark-icon"></i>
+                            <span id="bookmark-text">Bookmark</span>
+                        </button>
+                        <button class="btn-pause-timer" id="btn-pause-toggle" title="Tạm dừng / Tiếp tục đếm thời gian">
+                            <i class="fas fa-pause" id="pause-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sub-header-right">
+                    <div class="timer-display" id="timer-display">00:11:59</div>
+                    <div class="timer-label">Time remaining</div>
+                    <div class="timer-bar"></div>
+                </div>
+            </div>
+
+            <!-- Audio Control Box -->
+            <div class="audio-control-box">
+                <button class="btn-play-stop" id="btn-play-stop">
+                    <i class="fas fa-play" id="play-stop-icon"></i>
+                    <span id="play-stop-text">Play/Stop</span>
+                </button>
+                <div class="sound-wave" id="sound-wave-anim">
+                    <div class="sound-bar"></div>
+                    <div class="sound-bar"></div>
+                    <div class="sound-bar"></div>
+                    <div class="sound-bar"></div>
+                </div>
+                <span class="audio-status-indicator" id="audio-status-text">Sẵn sàng nghe</span>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="question-block" id="block-q1">
+                <h3 class="question-prompt" id="q1-prompt">1. What does the announcer say about the new novel?</h3>
+                <div class="options-card" id="q1-options-box">
+                    <div class="option-row" data-option="A">
+                        <div class="option-letter-col">A</div>
+                        <div class="option-text-col" id="q1-opt-A">It is different from his earlier works</div>
+                    </div>
+                    <div class="option-row" data-option="B">
+                        <div class="option-letter-col">B</div>
+                        <div class="option-text-col" id="q1-opt-B">It is romantic and soft</div>
+                    </div>
+                    <div class="option-row" data-option="C">
+                        <div class="option-letter-col">C</div>
+                        <div class="option-text-col" id="q1-opt-C">It is less famous than his earlier works</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block" id="block-q2">
+                <h3 class="question-prompt" id="q2-prompt">2. What does the announcer say the writer should do in the future?</h3>
+                <div class="options-card" id="q2-options-box">
+                    <div class="option-row" data-option="A">
+                        <div class="option-letter-col">A</div>
+                        <div class="option-text-col" id="q2-opt-A">The writer should continue to write this genre</div>
+                    </div>
+                    <div class="option-row" data-option="B">
+                        <div class="option-letter-col">B</div>
+                        <div class="option-text-col" id="q2-opt-B">The writer should go back to his original genre</div>
+                    </div>
+                    <div class="option-row" data-option="C">
+                        <div class="option-letter-col">C</div>
+                        <div class="option-text-col" id="q2-opt-C">He should listen to critics before writing his next work</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Action Buttons on Left -->
+            <div class="floating-actions-left">
+                <button class="btn-action-pill" id="btn-toggle-answer">
+                    <i class="far fa-eye" id="answer-eye-icon"></i>
+                    <span id="btn-answer-text">Hiện đáp án</span>
+                </button>
+                <button class="btn-action-pill" id="btn-open-report">
+                    <i class="far fa-flag"></i>
+                    <span>Báo lỗi</span>
+                </button>
+            </div>
+
+            <!-- Explanation & Script Container -->
+            <div class="explanation-card" id="explanation-container">
+                <div class="exp-section-title">
+                    <i class="fas fa-file-lines text-indigo"></i>
+                    <span>Script / Lời thoại độc thoại (Monologue Transcript)</span>
+                </div>
+                <div class="script-block" id="script-content-display">
+                    <!-- Script Text -->
+                </div>
+                <div class="script-actions">
+                    <button class="btn-copy-script" id="btn-copy-script">
+                        <i class="far fa-copy"></i>
+                        <span>Sao chép Script</span>
+                    </button>
+                </div>
+
+                <div class="exp-section-title" style="margin-top: 24px;">
+                    <i class="fas fa-lightbulb text-fuchsia"></i>
+                    <span>Giải thích đáp án & Phân tích bẫy chi tiết</span>
+                </div>
+                <div class="analysis-block" id="analysis-content-display">
+                    <!-- Explanation Text -->
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Fixed Bottom Docked Bar -->
+    <footer class="bottom-docked-bar">
+        <div class="docked-left">
+            <button class="icon-circle-btn" id="btn-open-drawer" title="Danh sách 32 đề thi & bài nghe">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button class="icon-circle-btn" id="btn-open-info" title="Hướng dẫn làm bài Part 4">
+                <i class="fas fa-info"></i>
+            </button>
+            <button class="icon-circle-btn" id="btn-toggle-font" title="Cỡ chữ">
+                <i class="fas fa-font"></i>
+            </button>
+        </div>
+
+        <div class="docked-right">
+            <button class="icon-circle-btn" id="btn-reset-current" title="Làm lại bài nghe này">
+                <i class="fas fa-rotate-left"></i>
+            </button>
+            <button class="btn-nav-prev" id="btn-nav-prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>Previous</span>
+            </button>
+            <button class="btn-nav-next" id="btn-nav-next">
+                <span>Next</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Slide Drawer Menu (All 32 Exams) -->
+    <div class="drawer-overlay" id="drawer-overlay">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h3>Danh sách 32 Bộ Đề Part 4</h3>
+                <button class="btn-close-drawer" id="btn-close-drawer">&times;</button>
+            </div>
+            <div class="drawer-body" id="drawer-exams-list">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
     </div>
-    
-    <script src="js/main.js?v=20260921_0916"></script>
-    <script src="js/data-listening-part1617.js"></script>
-    
-    <!-- 3. Tích hợp Script của Driver.js -->
-    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <!-- Info Guide Modal -->
+    <div class="generic-modal-overlay" id="info-modal-overlay">
+        <div class="generic-modal-card">
+            <div class="modal-header">
+                <h4><i class="fas fa-info-circle text-purple"></i> Hướng dẫn Listening Part 4</h4>
+                <button class="btn-modal-close" id="btn-close-info">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Cấu trúc phần thi Listening Part 4 (Monologues):</strong></p>
+                <ul>
+                    <li>Gồm <strong>2 bài nói độc thoại (Recording 1 & 2)</strong>.</li>
+                    <li>Mỗi đoạn độc thoại có <strong>2 câu hỏi trắc nghiệm (Q1 & Q2)</strong> với 3 lựa chọn (A, B, C).</li>
+                    <li>Nội dung bài nói thường là bài phát biểu, đánh giá sách/phim, tư vấn nghề nghiệp, chuyên đề sức khỏe, bài giảng học thuật.</li>
+                </ul>
+                <p><strong>Chiến thuật làm bài:</strong></p>
+                <ul>
+                    <li>Đọc kỹ câu hỏi và các phương án trước khi đoạn băng bắt đầu nói.</li>
+                    <li>Chú ý các liên từ tương phản (<em>However, Instead, Rather, The opposite has happened...</em>) vì đây là nơi bộc lộ bẫy và đáp án thực sự.</li>
+                    <li>Nhấn nút <strong>Hiện đáp án</strong> để xem phân tích bẫy chi tiết và đối chiếu Script.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div class="generic-modal-overlay" id="report-modal-overlay">
+        <div class="generic-modal-card">
+            <div class="modal-header">
+                <h4><i class="fas fa-flag text-red"></i> Báo lỗi nội dung câu hỏi</h4>
+                <button class="btn-modal-close" id="btn-close-report">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn phát hiện sai sót về câu hỏi, đáp án hoặc lời thoại trong bài này?</p>
+                <textarea id="report-text" style="width: 100%; height: 90px; margin-top: 10px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; font-family: inherit; font-size: 13.5px;" placeholder="Mô tả lỗi phát hiện được..."></textarea>
+                <div style="text-align: right; margin-top: 14px;">
+                    <button class="btn-nav-next" id="btn-submit-report" style="padding: 7px 18px; font-size: 13px;">Gửi báo lỗi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Toast -->
+    <div class="app-toast" id="app-toast">Thông báo</div>
+
+    <!-- Data Script -->
+    <script src="js/data-listening-part4-exams.js?v=final"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const answerList = document.getElementById('answer-list');
-            const prevBtn = document.getElementById('prev-page-btn');
-            const nextBtn = document.getElementById('next-page-btn');
-            const pageTitle = document.getElementById('page-title-indicator');
-            const pageNumber = document.getElementById('page-number-indicator');
-            const toggleAllBtn = document.getElementById('toggle-all-btn');
+    (function () {
+        'use strict';
 
-            // Kiểm tra dữ liệu
-            if (typeof listeningPart1617Data === 'undefined') {
-                answerList.innerHTML = '<p class="error">Không tìm thấy dữ liệu (listeningPart1617Data).</p>';
+        const exams = window.LISTENING_PART4_EXAMS || [];
+        if (!exams.length) {
+            console.error('Data LISTENING_PART4_EXAMS is empty or not loaded!');
+            return;
+        }
+
+        // State variables
+        let currentExamIndex = 0;       // 0 to 31
+        let currentRecIndex = 0;        // 0 or 1
+        let answersState = {};          // Key format: `ex_${examId}_rec_${recId}` -> { q1: 'A', q2: 'B', isEvaluated: false }
+        let bookmarksState = {};        // Key: `ex_${examId}_rec_${recId}` -> true/false
+        let isAudioPlaying = false;
+        let speechUtterance = null;
+        let timerSeconds = 11 * 60 + 59; // 11:59 countdown
+        let isTimerPaused = false;
+        let timerInterval = null;
+        let fontSizeLevel = 1;          // 0: 14px, 1: 15px, 2: 17px
+
+        // DOM elements
+        const examSelectDropdown = document.getElementById('exam-select-dropdown');
+        const examTabsContainer = document.getElementById('exam-tabs-container');
+        const recTab1 = document.getElementById('rec-tab-1');
+        const recTab2 = document.getElementById('rec-tab-2');
+        const currentRecordingLabel = document.getElementById('current-recording-label');
+        const btnBookmarkToggle = document.getElementById('btn-bookmark-toggle');
+        const bookmarkIcon = document.getElementById('bookmark-icon');
+        const btnPauseToggle = document.getElementById('btn-pause-toggle');
+        const pauseIcon = document.getElementById('pause-icon');
+        const timerDisplay = document.getElementById('timer-display');
+        const btnPlayStop = document.getElementById('btn-play-stop');
+        const playStopIcon = document.getElementById('play-stop-icon');
+        const playStopText = document.getElementById('play-stop-text');
+        const soundWaveAnim = document.getElementById('sound-wave-anim');
+        const audioStatusText = document.getElementById('audio-status-text');
+
+        // Questions
+        const q1Prompt = document.getElementById('q1-prompt');
+        const q1OptionsBox = document.getElementById('q1-options-box');
+        const q1OptA = document.getElementById('q1-opt-A');
+        const q1OptB = document.getElementById('q1-opt-B');
+        const q1OptC = document.getElementById('q1-opt-C');
+
+        const q2Prompt = document.getElementById('q2-prompt');
+        const q2OptionsBox = document.getElementById('q2-options-box');
+        const q2OptA = document.getElementById('q2-opt-A');
+        const q2OptB = document.getElementById('q2-opt-B');
+        const q2OptC = document.getElementById('q2-opt-C');
+
+        // Actions & Explanation
+        const btnToggleAnswer = document.getElementById('btn-toggle-answer');
+        const answerEyeIcon = document.getElementById('answer-eye-icon');
+        const btnAnswerText = document.getElementById('btn-answer-text');
+        const explanationContainer = document.getElementById('explanation-container');
+        const scriptContentDisplay = document.getElementById('script-content-display');
+        const analysisContentDisplay = document.getElementById('analysis-content-display');
+        const btnCopyScript = document.getElementById('btn-copy-script');
+
+        // Bottom Bar
+        const btnOpenDrawer = document.getElementById('btn-open-drawer');
+        const btnOpenInfo = document.getElementById('btn-open-info');
+        const btnToggleFont = document.getElementById('btn-toggle-font');
+        const btnResetCurrent = document.getElementById('btn-reset-current');
+        const btnNavPrev = document.getElementById('btn-nav-prev');
+        const btnNavNext = document.getElementById('btn-nav-next');
+
+        // Modals & Drawer
+        const drawerOverlay = document.getElementById('drawer-overlay');
+        const btnCloseDrawer = document.getElementById('btn-close-drawer');
+        const drawerExamsList = document.getElementById('drawer-exams-list');
+        const infoModalOverlay = document.getElementById('info-modal-overlay');
+        const btnCloseInfo = document.getElementById('btn-close-info');
+        const reportModalOverlay = document.getElementById('report-modal-overlay');
+        const btnOpenReport = document.getElementById('btn-open-report');
+        const btnCloseReport = document.getElementById('btn-close-report');
+        const btnSubmitReport = document.getElementById('btn-submit-report');
+        const reportText = document.getElementById('report-text');
+        const appToast = document.getElementById('app-toast');
+
+        // Load saved state from localStorage
+        try {
+            const savedState = localStorage.getItem('aptis_listening_part4_state');
+            if (savedState) {
+                const parsed = JSON.parse(savedState);
+                answersState = parsed.answers || {};
+                bookmarksState = parsed.bookmarks || {};
+            }
+        } catch (e) {
+            console.warn('LocalStorage error:', e);
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem('aptis_listening_part4_state', JSON.stringify({
+                    answers: answersState,
+                    bookmarks: bookmarksState
+                }));
+            } catch (e) {}
+        }
+
+        function showToast(msg) {
+            appToast.textContent = msg;
+            appToast.classList.add('visible');
+            setTimeout(() => {
+                appToast.classList.remove('visible');
+            }, 2500);
+        }
+
+        // Initialize Exam Dropdown & Tabs
+        function initExamControls() {
+            examSelectDropdown.innerHTML = '';
+            examTabsContainer.innerHTML = '';
+
+            exams.forEach((ex, idx) => {
+                // Dropdown option
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = `${ex.name} - ${ex.subtitle}`;
+                examSelectDropdown.appendChild(opt);
+
+                // Tab button
+                const btn = document.createElement('button');
+                btn.className = 'pkg-tab-btn' + (idx === currentExamIndex ? ' active' : '');
+                btn.dataset.index = idx;
+                btn.textContent = ex.name;
+                btn.addEventListener('click', () => switchExam(idx, 0));
+                examTabsContainer.appendChild(btn);
+            });
+
+            examSelectDropdown.addEventListener('change', (e) => {
+                switchExam(parseInt(e.target.value, 10), 0);
+            });
+
+            recTab1.addEventListener('click', () => switchRecording(0));
+            recTab2.addEventListener('click', () => switchRecording(1));
+        }
+
+        function getCurrentKey() {
+            const curEx = exams[currentExamIndex];
+            const curRec = curEx.recordings[currentRecIndex];
+            return `ex_${curEx.id}_rec_${curRec.recId}`;
+        }
+
+        // Render current recording
+        function renderCurrentRecording() {
+            stopAudio();
+
+            const curEx = exams[currentExamIndex];
+            const curRec = curEx.recordings[currentRecIndex];
+            const key = getCurrentKey();
+            const recState = answersState[key] || { q1: null, q2: null, isEvaluated: false };
+            const isBookmarked = !!bookmarksState[key];
+
+            // Update Header & Titles
+            currentRecordingLabel.textContent = curRec.title;
+            examSelectDropdown.value = currentExamIndex;
+
+            // Update Tabs Active state
+            const tabButtons = examTabsContainer.querySelectorAll('.pkg-tab-btn');
+            tabButtons.forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === currentExamIndex);
+                // check if both recordings completed
+                const k1 = `ex_${exams[idx].id}_rec_1`;
+                const k2 = `ex_${exams[idx].id}_rec_2`;
+                const hasDone = (answersState[k1] && answersState[k1].isEvaluated) || (answersState[k2] && answersState[k2].isEvaluated);
+                btn.classList.toggle('has-done', !!hasDone);
+            });
+
+            // Update Recording Pills
+            recTab1.classList.toggle('active', currentRecIndex === 0);
+            recTab2.classList.toggle('active', currentRecIndex === 1);
+
+            // Update Bookmark Button
+            btnBookmarkToggle.classList.toggle('active', isBookmarked);
+            if (isBookmarked) {
+                bookmarkIcon.className = 'fas fa-bookmark';
+            } else {
+                bookmarkIcon.className = 'far fa-bookmark';
+            }
+
+            // Update Audio Status
+            audioStatusText.textContent = 'Sẵn sàng nghe';
+            btnPlayStop.classList.remove('playing');
+            playStopIcon.className = 'fas fa-play';
+
+            // Populate Questions
+            // Q1
+            q1Prompt.textContent = `${curRec.q1.number}. ${curRec.q1.question}`;
+            q1OptA.textContent = curRec.q1.options.A;
+            q1OptB.textContent = curRec.q1.options.B;
+            q1OptC.textContent = curRec.q1.options.C;
+
+            // Q2
+            q2Prompt.textContent = `${curRec.q2.number}. ${curRec.q2.question}`;
+            q2OptA.textContent = curRec.q2.options.A;
+            q2OptB.textContent = curRec.q2.options.B;
+            q2OptC.textContent = curRec.q2.options.C;
+
+            // Apply selected & evaluated styles
+            renderOptionStates('q1', q1OptionsBox, recState.q1, curRec.q1.answer, recState.isEvaluated);
+            renderOptionStates('q2', q2OptionsBox, recState.q2, curRec.q2.answer, recState.isEvaluated);
+
+            // Populate Explanation & Script
+            scriptContentDisplay.textContent = curRec.script;
+            analysisContentDisplay.textContent = curRec.explanation;
+
+            // Show or hide explanation card
+            if (recState.isEvaluated) {
+                explanationContainer.classList.add('visible');
+                btnToggleAnswer.classList.add('active');
+                answerEyeIcon.className = 'far fa-eye-slash';
+                btnAnswerText.textContent = 'Ẩn đáp án';
+            } else {
+                explanationContainer.classList.remove('visible');
+                btnToggleAnswer.classList.remove('active');
+                answerEyeIcon.className = 'far fa-eye';
+                btnAnswerText.textContent = 'Hiện đáp án';
+            }
+
+            // Update Nav buttons
+            btnNavPrev.disabled = (currentExamIndex === 0 && currentRecIndex === 0);
+            btnNavNext.disabled = (currentExamIndex === exams.length - 1 && currentRecIndex === 1);
+
+            // Sync URL parameters
+            try {
+                const newUrl = `${window.location.pathname}?de=${currentExamIndex + 1}&rec=${currentRecIndex + 1}`;
+                window.history.replaceState(null, '', newUrl);
+            } catch (e) {}
+
+            renderDrawerList();
+        }
+
+        function renderOptionStates(qKey, boxEl, userSelected, correctAnswer, isEvaluated) {
+            const rows = boxEl.querySelectorAll('.option-row');
+            rows.forEach(row => {
+                const opt = row.dataset.option;
+                row.className = 'option-row';
+
+                if (userSelected === opt) {
+                    row.classList.add('selected');
+                }
+
+                if (isEvaluated) {
+                    if (opt === correctAnswer) {
+                        row.classList.add('is-correct');
+                    } else if (userSelected === opt && userSelected !== correctAnswer) {
+                        row.classList.add('is-wrong');
+                    }
+                }
+            });
+        }
+
+        // Option Click Handlers
+        function setupOptionClickHandlers() {
+            [
+                { box: q1OptionsBox, qKey: 'q1' },
+                { box: q2OptionsBox, qKey: 'q2' }
+            ].forEach(item => {
+                item.box.querySelectorAll('.option-row').forEach(row => {
+                    row.addEventListener('click', () => {
+                        const opt = row.dataset.option;
+                        const key = getCurrentKey();
+                        if (!answersState[key]) {
+                            answersState[key] = { q1: null, q2: null, isEvaluated: false };
+                        }
+                        answersState[key][item.qKey] = opt;
+                        saveState();
+
+                        const curRec = exams[currentExamIndex].recordings[currentRecIndex];
+                        const corrAns = curRec[item.qKey].answer;
+                        renderOptionStates(item.qKey, item.box, opt, corrAns, answersState[key].isEvaluated);
+                    });
+                });
+            });
+        }
+
+        // Answer Toggle Button
+        btnToggleAnswer.addEventListener('click', () => {
+            const key = getCurrentKey();
+            if (!answersState[key]) {
+                answersState[key] = { q1: null, q2: null, isEvaluated: false };
+            }
+            answersState[key].isEvaluated = !answersState[key].isEvaluated;
+            saveState();
+
+            const curRec = exams[currentExamIndex].recordings[currentRecIndex];
+            renderOptionStates('q1', q1OptionsBox, answersState[key].q1, curRec.q1.answer, answersState[key].isEvaluated);
+            renderOptionStates('q2', q2OptionsBox, answersState[key].q2, curRec.q2.answer, answersState[key].isEvaluated);
+
+            if (answersState[key].isEvaluated) {
+                explanationContainer.classList.add('visible');
+                btnToggleAnswer.classList.add('active');
+                answerEyeIcon.className = 'far fa-eye-slash';
+                btnAnswerText.textContent = 'Ẩn đáp án';
+                showToast('Đã hiển thị đáp án và lời thoại!');
+            } else {
+                explanationContainer.classList.remove('visible');
+                btnToggleAnswer.classList.remove('active');
+                answerEyeIcon.className = 'far fa-eye';
+                btnAnswerText.textContent = 'Hiện đáp án';
+            }
+        });
+
+        // Bookmark toggle
+        btnBookmarkToggle.addEventListener('click', () => {
+            const key = getCurrentKey();
+            bookmarksState[key] = !bookmarksState[key];
+            saveState();
+
+            if (bookmarksState[key]) {
+                btnBookmarkToggle.classList.add('active');
+                bookmarkIcon.className = 'fas fa-bookmark';
+                showToast('Đã đánh dấu (Bookmark) bài nghe này!');
+            } else {
+                btnBookmarkToggle.classList.remove('active');
+                bookmarkIcon.className = 'far fa-bookmark';
+                showToast('Đã bỏ đánh dấu bài nghe.');
+            }
+            renderDrawerList();
+        });
+
+        // Reset Current Recording
+        btnResetCurrent.addEventListener('click', () => {
+            if (confirm('Bạn có muốn đặt lại câu trả lời cho bài nghe này không?')) {
+                const key = getCurrentKey();
+                answersState[key] = { q1: null, q2: null, isEvaluated: false };
+                saveState();
+                renderCurrentRecording();
+                showToast('Đã làm mới lựa chọn!');
+            }
+        });
+
+        // Navigation Next / Prev
+        btnNavPrev.addEventListener('click', () => {
+            if (currentRecIndex > 0) {
+                switchRecording(0);
+            } else if (currentExamIndex > 0) {
+                switchExam(currentExamIndex - 1, 1);
+            }
+        });
+
+        btnNavNext.addEventListener('click', () => {
+            if (currentRecIndex < 1) {
+                switchRecording(1);
+            } else if (currentExamIndex < exams.length - 1) {
+                switchExam(currentExamIndex + 1, 0);
+            }
+        });
+
+        function switchExam(examIdx, recIdx = 0) {
+            currentExamIndex = Math.max(0, Math.min(exams.length - 1, examIdx));
+            currentRecIndex = Math.max(0, Math.min(1, recIdx));
+            renderCurrentRecording();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchRecording(recIdx) {
+            currentRecIndex = Math.max(0, Math.min(1, recIdx));
+            renderCurrentRecording();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Web Speech API Audio Simulation
+        function stopAudio() {
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+            isAudioPlaying = false;
+            btnPlayStop.classList.remove('playing');
+            playStopIcon.className = 'fas fa-play';
+            soundWaveAnim.classList.remove('active');
+            audioStatusText.textContent = 'Sẵn sàng nghe';
+        }
+
+        function playAudio() {
+            const curRec = exams[currentExamIndex].recordings[currentRecIndex];
+            if (!curRec.script) return;
+
+            if (!('speechSynthesis' in window)) {
+                alert('Trình duyệt của bạn không hỗ trợ tính năng Web Speech API phát âm thanh.');
                 return;
             }
 
-            const allAnswers = listeningPart1617Data;
-            const itemsPerPage = 10;
-            const totalPages = Math.ceil(allAnswers.length / itemsPerPage);
-            let currentPage = 1;
+            window.speechSynthesis.cancel();
 
-            function renderPage(page) {
-                answerList.innerHTML = '';
-                const start = (page - 1) * itemsPerPage;
-                const end = start + itemsPerPage;
-                const pageItems = allAnswers.slice(start, end);
+            speechUtterance = new SpeechSynthesisUtterance(curRec.script);
+            speechUtterance.lang = 'en-US';
+            speechUtterance.rate = 0.94;
+            speechUtterance.pitch = 1.0;
 
-                pageItems.forEach((item) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <span class="key-number">${item.number}</span>
-                        <span class="answer-text">${item.answer}</span>
-                    `;
-                    answerList.appendChild(li);
-                });
+            const voices = window.speechSynthesis.getVoices();
+            const enVoice = voices.find(v => v.lang.startsWith('en-GB') || v.lang.startsWith('en-US'));
+            if (enVoice) speechUtterance.voice = enVoice;
 
-                pageTitle.textContent = `Đáp án ${start + 1} - ${Math.min(end, allAnswers.length)}`;
-                pageNumber.textContent = `Trang ${page} / ${totalPages}`;
-                prevBtn.disabled = page === 1;
-                nextBtn.disabled = page === totalPages;
+            speechUtterance.onstart = function () {
+                isAudioPlaying = true;
+                btnPlayStop.classList.add('playing');
+                playStopIcon.className = 'fas fa-stop';
+                soundWaveAnim.classList.add('active');
+                audioStatusText.textContent = 'Đang phát lời thoại độc thoại...';
+            };
+
+            speechUtterance.onend = function () {
+                stopAudio();
+                audioStatusText.textContent = 'Đã nghe xong đoạn độc thoại.';
+            };
+
+            speechUtterance.onerror = function (e) {
+                console.warn('TTS error:', e);
+                stopAudio();
+            };
+
+            window.speechSynthesis.speak(speechUtterance);
+        }
+
+        btnPlayStop.addEventListener('click', () => {
+            if (isAudioPlaying) {
+                stopAudio();
+            } else {
+                playAudio();
             }
-
-            prevBtn.addEventListener('click', () => { 
-                if (currentPage > 1) { currentPage--; renderPage(currentPage); } 
-            });
-            
-            nextBtn.addEventListener('click', () => { 
-                if (currentPage < totalPages) { currentPage++; renderPage(currentPage); } 
-            });
-            
-            toggleAllBtn.addEventListener('click', () => { 
-                const isVisible = answerList.classList.toggle('answers-visible'); 
-                toggleAllBtn.textContent = isVisible ? '🙈 Ẩn tất cả' : '👁️ Hiển thị tất cả'; 
-            });
-
-            // Render trang đầu
-            renderPage(currentPage);
-
-            // --- KÍCH HOẠT TOUR HƯỚNG DẪN ---
-            setTimeout(initListeningPart1617Tour, 800);
         });
 
-        // HÀM KHỞI TẠO TOUR
-        function initListeningPart1617Tour() {
-            const driver = window.driver.js.driver;
-            
-            const driverObj = driver({
-                showProgress: true,
-                animate: true,
-                doneBtnText: 'Đã hiểu',
-                nextBtnText: 'Tiếp theo',
-                prevBtnText: 'Quay lại',
-                popoverClass: 'driverjs-theme',
-                steps: [
-                    { 
-                        element: '.explanation-box', 
-                        popover: { 
-                            title: 'Listening Part 4 (Q16-17)', 
-                            description: 'Nhiệm vụ: Tìm <strong>2 ý kiến đúng</strong> trong mỗi đoạn văn. Hãy tập trung học thuộc các cặp đáp án này.', 
-                            side: "bottom", 
-                            align: 'center' 
-                        } 
-                    },
-                    { 
-                        element: '#answer-list', 
-                        popover: { 
-                            title: 'Danh sách cặp Key', 
-                            description: 'Các từ được in đậm màu xanh (strong) là những từ khóa quan trọng nhất giúp bạn nhận diện đáp án nhanh.', 
-                            side: "top", 
-                            align: 'center' 
-                        } 
-                    },
-                    { 
-                        element: '#toggle-all-btn', 
-                        popover: { 
-                            title: 'Tự kiểm tra', 
-                            description: 'Bấm nút này để che bớt đáp án, sau đó nhìn số câu hỏi và tự nhẩm lại xem mình có nhớ cặp Key không.', 
-                            side: "left", 
-                            align: 'center' 
-                        } 
-                    },
-                    { 
-                        element: '.explanation-box[style*="background-color: #e3f2fd"]', 
-                        popover: { 
-                            title: 'Tài liệu gốc', 
-                            description: 'Nếu cần đối chiếu với file gốc, hãy truy cập link Google Drive tại đây.', 
-                            side: "top", 
-                            align: 'center' 
-                        } 
-                    },
-                    { 
-                        element: '#restart-tour', 
-                        popover: { 
-                            title: 'Hỗ trợ', 
-                            description: 'Bấm vào đây để xem lại hướng dẫn.', 
-                            side: "left", 
-                            align: 'center' 
-                        } 
+        // Copy Script
+        btnCopyScript.addEventListener('click', () => {
+            const curRec = exams[currentExamIndex].recordings[currentRecIndex];
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(curRec.script).then(() => {
+                    showToast('Đã sao chép nội dung Script vào clipboard!');
+                });
+            } else {
+                showToast('Không hỗ trợ sao chép tự động.');
+            }
+        });
+
+        // Timer Countdown
+        function updateTimerUI() {
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            timerDisplay.textContent = `00:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!isTimerPaused && timerSeconds > 0) {
+                    timerSeconds--;
+                    updateTimerUI();
+                    if (timerSeconds === 0) {
+                        clearInterval(timerInterval);
+                        showToast('Hết thời gian làm bài!');
                     }
-                ]
-            });
+                }
+            }, 1000);
+        }
 
-            showTourHint('hasSeenListeningPart1617Tour', () => driverObj.drive());
+        btnPauseToggle.addEventListener('click', () => {
+            isTimerPaused = !isTimerPaused;
+            if (isTimerPaused) {
+                pauseIcon.className = 'fas fa-play';
+                btnPauseToggle.style.color = '#ef4444';
+                showToast('Đã tạm dừng đếm thời gian');
+            } else {
+                pauseIcon.className = 'fas fa-pause';
+                btnPauseToggle.style.color = '';
+                showToast('Tiếp tục đếm thời gian');
+            }
+        });
 
-            document.getElementById('restart-tour').addEventListener('click', () => {
-                driverObj.drive();
+        // Font Size Switcher
+        const fontSizes = ['14px', '15px', '17px'];
+        btnToggleFont.addEventListener('click', () => {
+            fontSizeLevel = (fontSizeLevel + 1) % 3;
+            document.documentElement.style.setProperty('--font-base-size', fontSizes[fontSizeLevel]);
+            showToast(`Cỡ chữ: ${fontSizeLevel === 0 ? 'Nhỏ' : fontSizeLevel === 1 ? 'Chuẩn' : 'Lớn'}`);
+        });
+
+        // Slide Drawer Menu (All 32 Exams)
+        function renderDrawerList() {
+            drawerExamsList.innerHTML = '';
+            exams.forEach((ex, exIdx) => {
+                const card = document.createElement('div');
+                card.className = 'drawer-exam-card' + (exIdx === currentExamIndex ? ' active-exam' : '');
+
+                const titleRow = document.createElement('div');
+                titleRow.className = 'drawer-exam-title';
+                titleRow.innerHTML = `<span><strong>${ex.name}</strong> - ${ex.subtitle}</span>`;
+                card.appendChild(titleRow);
+
+                const recRow = document.createElement('div');
+                recRow.className = 'drawer-rec-row';
+
+                ex.recordings.forEach((r, rIdx) => {
+                    const k = `ex_${ex.id}_rec_${r.recId}`;
+                    const rState = answersState[k];
+                    const isBm = bookmarksState[k];
+
+                    const btn = document.createElement('button');
+                    btn.className = 'drawer-rec-btn';
+                    if (exIdx === currentExamIndex && rIdx === currentRecIndex) {
+                        btn.classList.add('active');
+                    }
+                    if (rState && rState.isEvaluated) {
+                        btn.classList.add('done');
+                    }
+
+                    let iconHtml = '';
+                    if (isBm) iconHtml += '<i class="fas fa-bookmark" style="color: #f59e0b; margin-left: 4px;"></i>';
+                    if (rState && rState.isEvaluated) iconHtml += '<i class="fas fa-check-circle" style="color: #10b981; margin-left: 4px;"></i>';
+
+                    btn.innerHTML = `<span>Rec ${r.recId}</span><span>${iconHtml}</span>`;
+                    btn.addEventListener('click', () => {
+                        drawerOverlay.classList.remove('active');
+                        switchExam(exIdx, rIdx);
+                    });
+                    recRow.appendChild(btn);
+                });
+
+                card.appendChild(recRow);
+                drawerExamsList.appendChild(card);
             });
         }
+
+        btnOpenDrawer.addEventListener('click', () => {
+            renderDrawerList();
+            drawerOverlay.classList.add('active');
+        });
+
+        btnCloseDrawer.addEventListener('click', () => {
+            drawerOverlay.classList.remove('active');
+        });
+
+        drawerOverlay.addEventListener('click', (e) => {
+            if (e.target === drawerOverlay) {
+                drawerOverlay.classList.remove('active');
+            }
+        });
+
+        // Guide Modal
+        btnOpenInfo.addEventListener('click', () => {
+            infoModalOverlay.classList.add('active');
+        });
+
+        btnCloseInfo.addEventListener('click', () => {
+            infoModalOverlay.classList.remove('active');
+        });
+
+        infoModalOverlay.addEventListener('click', (e) => {
+            if (e.target === infoModalOverlay) infoModalOverlay.classList.remove('active');
+        });
+
+        // Report Modal
+        btnOpenReport.addEventListener('click', () => {
+            reportModalOverlay.classList.add('active');
+        });
+
+        btnCloseReport.addEventListener('click', () => {
+            reportModalOverlay.classList.remove('active');
+        });
+
+        reportModalOverlay.addEventListener('click', (e) => {
+            if (e.target === reportModalOverlay) reportModalOverlay.classList.remove('active');
+        });
+
+        btnSubmitReport.addEventListener('click', () => {
+            if (!reportText.value.trim()) {
+                alert('Vui lòng nhập nội dung phản ánh lỗi!');
+                return;
+            }
+            reportModalOverlay.classList.remove('active');
+            reportText.value = '';
+            showToast('Cảm ơn bạn! Báo cáo lỗi đã được ghi nhận.');
+        });
+
+        // Handle URL Query Params on Load
+        function parseQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const deParam = parseInt(params.get('de'), 10);
+            const recParam = parseInt(params.get('rec'), 10);
+
+            if (!isNaN(deParam) && deParam >= 1 && deParam <= exams.length) {
+                currentExamIndex = deParam - 1;
+            }
+            if (!isNaN(recParam) && (recParam === 1 || recParam === 2)) {
+                currentRecIndex = recParam - 1;
+            }
+        }
+
+        // Initialize App
+        parseQueryParams();
+        initExamControls();
+        setupOptionClickHandlers();
+        renderCurrentRecording();
+        startTimer();
+
+    })();
     </script>
 </body>
 </html>
