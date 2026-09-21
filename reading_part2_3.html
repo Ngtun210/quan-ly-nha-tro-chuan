@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading Part 2 & 3 - Đề 1 chuẩn phòng thi (Films & Family sports day)</title>
+    <title>Reading Part 2 & 3 - Bộ đề chuẩn phòng thi (Aptis ESOL)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -144,8 +144,46 @@
         /* Container chính */
         .exam-container {
             max-width: 1220px;
-            margin: 28px auto 0 auto;
+            margin: 24px auto 0 auto;
             padding: 0 25px;
+        }
+
+        /* Thanh chuyển đổi bộ đề (Đề 1 / Đề 2) */
+        .package-switch-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .pkg-tab-btn {
+            padding: 11px 22px;
+            border-radius: 26px;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: 2px solid var(--primary-blue, #007bff);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pkg-tab-btn.active {
+            background-color: var(--primary-blue, #007bff);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+        }
+
+        .pkg-tab-btn:not(.active) {
+            background-color: #ffffff;
+            color: var(--primary-blue, #007bff);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+        }
+
+        .pkg-tab-btn:not(.active):hover {
+            background-color: #f0f7ff;
         }
 
         /* Top Nav Selector (Part 2 / Part 3) */
@@ -153,7 +191,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
             gap: 12px;
         }
@@ -161,12 +199,13 @@
         .question-switch-group {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .q-switch-btn {
-            padding: 9px 20px;
-            border-radius: 24px;
-            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 22px;
+            font-size: 13.5px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
@@ -176,7 +215,7 @@
         .q-switch-btn.active {
             background-color: #24085a;
             color: #ffffff;
-            box-shadow: 0 3px 10px rgba(36, 8, 90, 0.25);
+            box-shadow: 0 3px 8px rgba(36, 8, 90, 0.25);
         }
 
         .q-switch-btn:not(.active) {
@@ -195,7 +234,7 @@
             color: #4f46e5;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13.5px;
             padding: 8px 16px;
             background: #fff;
             border: 1px solid #e5e7eb;
@@ -592,14 +631,24 @@
     </header>
 
     <main class="exam-container">
+        <!-- THANH CHỌN BỘ ĐỀ THI: ĐỀ 1 / ĐỀ 2 -->
+        <div class="package-switch-bar">
+            <button class="pkg-tab-btn active" id="tab-pkg-de1" onclick="switchPackage('de1')">
+                <i class="fas fa-film"></i> Đề 1: Films & Family sports day
+            </button>
+            <button class="pkg-tab-btn" id="tab-pkg-de2" onclick="switchPackage('de2')">
+                <i class="fas fa-coffee"></i> Đề 2: Movies then and now & A new coffee shop ✨
+            </button>
+        </div>
+
         <!-- Thanh chuyển câu hỏi Question 1 / Question 2 & Quay về -->
         <div class="exam-nav-bar">
             <div class="question-switch-group">
                 <button class="q-switch-btn active" id="btn-q1" onclick="switchQuestion(1)">
-                    Question 1: Films (Part 2)
+                    Question 1 (Part 2)
                 </button>
                 <button class="q-switch-btn" id="btn-q2" onclick="switchQuestion(2)">
-                    Question 2: Family sports day (Part 3)
+                    Question 2 (Part 3)
                 </button>
             </div>
             <a href="reading_part2.html" class="back-link-btn">
@@ -671,96 +720,189 @@
     </main>
 
     <script>
-        // Dữ liệu chuẩn của 2 câu hỏi theo đúng đề của User
-        const examQuestions = {
-            1: {
-                title: "Films",
-                headerTitle: "Question 1 of 2",
-                fixedFirst: true, // Câu 1 cho sẵn (Part 2)
-                sentences: [
-                    {
-                        number: 1,
-                        en: "Old movies were very different from today's movies.",
-                        vn: "Phim cũ rất khác so với phim ngày nay."
+        // Dữ liệu trọn vẹn cả 2 Bộ đề thi chuẩn Aptis ESOL Part 2 + Part 3
+        const examPackages = {
+            "de1": {
+                name: "Đề 1: Films & Family sports day",
+                questions: {
+                    1: {
+                        title: "Films",
+                        subTitleBtn: "Question 1: Films (Part 2)",
+                        headerTitle: "Question 1 of 2",
+                        fixedFirst: true, // Câu 1 cho sẵn
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "Old movies were very different from today's movies.",
+                                vn: "Phim cũ rất khác so với phim ngày nay."
+                            },
+                            {
+                                number: 2,
+                                en: "That's because the movies were only in black and white, and sometimes without sound.",
+                                vn: "Đó là vì phim chỉ có màu đen trắng, và đôi khi không có tiếng."
+                            },
+                            {
+                                number: 3,
+                                en: "Not only did these technological limitations exist, the movies were also low budget.",
+                                vn: "Không chỉ có những hạn chế về công nghệ này, các bộ phim còn có kinh phí thấp."
+                            },
+                            {
+                                number: 4,
+                                en: "Due to the lack of money, actors also had few opportunities to earn money through acting.",
+                                vn: "Vì thiếu tiền, diễn viên cũng có ít cơ hội kiếm tiền bằng nghề diễn."
+                            },
+                            {
+                                number: 5,
+                                en: "Now things have changed, actors and filmmakers can earn thousands of dollars from film production.",
+                                vn: "Giờ đây mọi thứ đã thay đổi, diễn viên và nhà làm phim có thể kiếm hàng ngàn đô la từ việc sản xuất phim."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề phim cũ rất khác phim ngày nay.<br>" +
+                                  "• <strong>Câu 2:</strong> Bắt đầu bằng <em>'That\'s because...'</em> để giải thích nguyên nhân khác biệt (đen trắng, không tiếng).<br>" +
+                                  "• <strong>Câu 3:</strong> Móc xích tiếp theo <em>'Not only did these technological limitations exist...'</em> và bổ sung thêm ý <em>'low budget'</em> (kinh phí thấp).<br>" +
+                                  "• <strong>Câu 4:</strong> Nối tiếp từ kinh phí thấp -> <em>'Due to the lack of money'</em> (diễn viên ít cơ hội kiếm tiền).<br>" +
+                                  "• <strong>Câu 5:</strong> Kết bài tương phản giữa xưa và nay: <em>'Now things have changed...'</em> (ngày nay kiếm được hàng ngàn đô la)."
                     },
-                    {
-                        number: 2,
-                        en: "That's because the movies were only in black and white, and sometimes without sound.",
-                        vn: "Đó là vì phim chỉ có màu đen trắng, và đôi khi không có tiếng."
-                    },
-                    {
-                        number: 3,
-                        en: "Not only did these technological limitations exist, the movies were also low budget.",
-                        vn: "Không chỉ có những hạn chế về công nghệ này, các bộ phim còn có kinh phí thấp."
-                    },
-                    {
-                        number: 4,
-                        en: "Due to the lack of money, actors also had few opportunities to earn money through acting.",
-                        vn: "Vì thiếu tiền, diễn viên cũng có ít cơ hội kiếm tiền bằng nghề diễn."
-                    },
-                    {
-                        number: 5,
-                        en: "Now things have changed, actors and filmmakers can earn thousands of dollars from film production.",
-                        vn: "Giờ đây mọi thứ đã thay đổi, diễn viên và nhà làm phim có thể kiếm hàng ngàn đô la từ việc sản xuất phim."
+                    2: {
+                        title: "Family sports day",
+                        subTitleBtn: "Question 2: Family sports day (Part 3)",
+                        headerTitle: "Question 2 of 2",
+                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "The family sports day was held on Saturday morning, and there was a 10 km race for adults.",
+                                vn: "Ngày hội thể thao gia đình được tổ chức vào sáng thứ Bảy, và có một cuộc đua 10 km dành cho người lớn."
+                            },
+                            {
+                                number: 2,
+                                en: "There were 60 participants, in which Ms. Kamus kept the fastest speed and won.",
+                                vn: "Có 60 người tham gia, trong đó cô Kamus đã giữ tốc độ nhanh nhất và giành chiến thắng."
+                            },
+                            {
+                                number: 3,
+                                en: "After she received the prize, the following time was for children's activities.",
+                                vn: "Sau khi cô ấy nhận giải, thời gian sau đó là dành cho các hoạt động của trẻ em."
+                            },
+                            {
+                                number: 4,
+                                en: "Activities included football, swimming, skipping rope, and the children played together very happily.",
+                                vn: "Các hoạt động bao gồm bóng đá, bơi lội, nhảy dây, và các em nhỏ chơi đùa với nhau rất vui vẻ."
+                            },
+                            {
+                                number: 5,
+                                en: "After playing, the children were very hungry and ate with their parents.",
+                                vn: "Sau khi chơi, các em nhỏ rất đói và đã ăn cùng bố mẹ."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1:</strong> Mở đầu sự kiện: Giới thiệu ngày hội thể thao gia đình sáng thứ Bảy và cuộc đua 10 km cho người lớn.<br>" +
+                                  "• <strong>Câu 2:</strong> Chi tiết về cuộc đua: 60 người tham gia, cô Kamus chạy nhanh nhất và chiến thắng.<br>" +
+                                  "• <strong>Câu 3:</strong> Chuyển ý thời gian: <em>'After she received the prize...'</em> (sau khi cô Kamus nhận giải) thì chuyển sang phần hoạt động cho trẻ em.<br>" +
+                                  "• <strong>Câu 4:</strong> Liệt kê cụ thể: <em>'Activities included...'</em> (bóng đá, bơi, nhảy dây vui vẻ).<br>" +
+                                  "• <strong>Câu 5:</strong> Kết thúc sự kiện: <em>'After playing...'</em> (chơi xong các bé đói và ăn cùng bố mẹ)."
                     }
-                ],
-                logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                          "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề phim cũ rất khác phim ngày nay.<br>" +
-                          "• <strong>Câu 2:</strong> Bắt đầu bằng <em>'That\'s because...'</em> để giải thích nguyên nhân khác biệt (đen trắng, không tiếng).<br>" +
-                          "• <strong>Câu 3:</strong> Móc xích tiếp theo <em>'Not only did these technological limitations exist...'</em> và bổ sung thêm ý <em>'low budget'</em> (kinh phí thấp).<br>" +
-                          "• <strong>Câu 4:</strong> Nối tiếp từ kinh phí thấp -> <em>'Due to the lack of money'</em> (diễn viên ít cơ hội kiếm tiền).<br>" +
-                          "• <strong>Câu 5:</strong> Kết bài tương phản giữa xưa và nay: <em>'Now things have changed...'</em> (ngày nay kiếm được hàng ngàn đô la)."
+                }
             },
-            2: {
-                title: "Family sports day",
-                headerTitle: "Question 2 of 2",
-                fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp (Part 3)
-                sentences: [
-                    {
-                        number: 1,
-                        en: "The family sports day was held on Saturday morning, and there was a 10 km race for adults.",
-                        vn: "Ngày hội thể thao gia đình được tổ chức vào sáng thứ Bảy, và có một cuộc đua 10 km dành cho người lớn."
+            "de2": {
+                name: "Đề 2: Movies then and now & A new coffee shop",
+                questions: {
+                    1: {
+                        title: "Movies then and now",
+                        subTitleBtn: "Question 1: Movies then and now (Part 2)",
+                        headerTitle: "Question 1 of 2",
+                        fixedFirst: true, // Câu 1 cho sẵn
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "Movies today are very different from movies in the past.",
+                                vn: "Phim ảnh ngày nay rất khác so với phim ảnh trong quá khứ."
+                            },
+                            {
+                                number: 2,
+                                en: "In the old days, films were only in black and white, and sometimes even without sound.",
+                                vn: "Ngày xưa, phim chỉ có đen trắng, và đôi khi còn không có âm thanh."
+                            },
+                            {
+                                number: 3,
+                                en: "In addition to these technological limits, producers had very low budgets.",
+                                vn: "Ngoài những giới hạn công nghệ này, các nhà sản xuất còn có ngân sách rất thấp."
+                            },
+                            {
+                                number: 4,
+                                en: "Because of the lack of money, actors also earned little money from acting.",
+                                vn: "Vì thiếu tiền, các diễn viên cũng kiếm được ít tiền từ việc diễn xuất."
+                            },
+                            {
+                                number: 5,
+                                en: "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films.",
+                                vn: "Ngày nay, mọi thứ đã thay đổi: diễn viên và nhà sản xuất có thể kiếm được rất nhiều tiền từ việc làm phim."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề: phim ảnh ngày nay rất khác phim ảnh trong quá khứ.<br>" +
+                                  "• <strong>Câu 2:</strong> Giải thích quá khứ: <em>'In the old days...'</em> phim chỉ có đen trắng và đôi khi không có tiếng.<br>" +
+                                  "• <strong>Câu 3:</strong> Móc xích tiếp theo: <em>'In addition to these technological limits...'</em> bổ sung thêm khó khăn về ngân sách thấp (<em>'very low budgets'</em>).<br>" +
+                                  "• <strong>Câu 4:</strong> Nối tiếp từ ngân sách thấp: <em>'Because of the lack of money...'</em> các diễn viên cũng kiếm được ít tiền.<br>" +
+                                  "• <strong>Câu 5:</strong> Kết bài tương phản hiện tại: <em>'Nowadays, everything has changed...'</em> diễn viên và nhà sản xuất kiếm được rất nhiều tiền."
                     },
-                    {
-                        number: 2,
-                        en: "There were 60 participants, in which Ms. Kamus kept the fastest speed and won.",
-                        vn: "Có 60 người tham gia, trong đó cô Kamus đã giữ tốc độ nhanh nhất và giành chiến thắng."
-                    },
-                    {
-                        number: 3,
-                        en: "After she received the prize, the following time was for children's activities.",
-                        vn: "Sau khi cô ấy nhận giải, thời gian sau đó là dành cho các hoạt động của trẻ em."
-                    },
-                    {
-                        number: 4,
-                        en: "Activities included football, swimming, skipping rope, and the children played together very happily.",
-                        vn: "Các hoạt động bao gồm bóng đá, bơi lội, nhảy dây, và các em nhỏ chơi đùa với nhau rất vui vẻ."
-                    },
-                    {
-                        number: 5,
-                        en: "After playing, the children were very hungry and ate with their parents.",
-                        vn: "Sau khi chơi, các em nhỏ rất đói và đã ăn cùng bố mẹ."
+                    2: {
+                        title: "A new coffee shop",
+                        subTitleBtn: "Question 2: A new coffee shop (Part 3)",
+                        headerTitle: "Question 2 of 2",
+                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
+                        sentences: [
+                            {
+                                number: 1,
+                                en: "When I arrived, the place was very crowded, and the staff were extremely busy on the first day.",
+                                vn: "Khi tôi đến, nơi này rất đông đúc, và nhân viên cực kỳ bận rộn ngay ngày đầu tiên."
+                            },
+                            {
+                                number: 2,
+                                en: "Even though it was crowded, the staff still managed to find a table for me.",
+                                vn: "Mặc dù rất đông, nhân viên vẫn xoay sở tìm được một bàn cho tôi."
+                            },
+                            {
+                                number: 3,
+                                en: "They handed me the menu, and when I looked through it, I saw quite a variety of dishes.",
+                                vn: "Họ đưa cho tôi thực đơn, và khi tôi xem qua, tôi thấy khá nhiều món ăn đa dạng."
+                            },
+                            {
+                                number: 4,
+                                en: "After checking them all, I decided to order the most expensive sandwich.",
+                                vn: "Sau khi xem tất cả, tôi quyết định gọi món bánh sandwich đắt nhất."
+                            },
+                            {
+                                number: 5,
+                                en: "It tasted really good with melted cheese on top, and I’ll definitely come back to this place again.",
+                                vn: "Nó thực sự rất ngon với phô mai chảy bên trên, và tôi chắc chắn sẽ quay lại nơi này lần nữa."
+                            }
+                        ],
+                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                                  "• <strong>Câu 1:</strong> Mở đầu dòng thời gian khi đến quán: <em>'When I arrived...'</em> nơi này rất đông đúc và nhân viên cực kỳ bận rộn.<br>" +
+                                  "• <strong>Câu 2:</strong> Móc xích tiếp theo: <em>'Even though it was crowded...'</em> nhân viên vẫn xoay sở tìm được bàn cho tôi.<br>" +
+                                  "• <strong>Câu 3:</strong> Khi đã có bàn: <em>'They handed me the menu...'</em> xem qua thực đơn thấy nhiều món đa dạng.<br>" +
+                                  "• <strong>Câu 4:</strong> Sau khi xem thực đơn: <em>'After checking them all, I decided to order the most expensive sandwich.'</em><br>" +
+                                  "• <strong>Câu 5:</strong> Cảm nhận món ăn và lời khen: <em>'It tasted really good with melted cheese... I’ll definitely come back.'</em>"
                     }
-                ],
-                logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                          "• <strong>Câu 1:</strong> Mở đầu sự kiện: Giới thiệu ngày hội thể thao gia đình sáng thứ Bảy và cuộc đua 10 km cho người lớn.<br>" +
-                          "• <strong>Câu 2:</strong> Chi tiết về cuộc đua: 60 người tham gia, cô Kamus chạy nhanh nhất và chiến thắng.<br>" +
-                          "• <strong>Câu 3:</strong> Chuyển ý thời gian: <em>'After she received the prize...'</em> (sau khi cô Kamus nhận giải) thì chuyển sang phần hoạt động cho trẻ em.<br>" +
-                          "• <strong>Câu 4:</strong> Liệt kê cụ thể: <em>'Activities included...'</em> (bóng đá, bơi, nhảy dây vui vẻ).<br>" +
-                          "• <strong>Câu 5:</strong> Kết thúc sự kiện: <em>'After playing...'</em> (chơi xong các bé đói và ăn cùng bố mẹ)."
+                }
             }
         };
 
+        let currentPackageKey = "de1";
         let currentQIndex = 1;
-        // Lưu trữ vị trí đặt câu của người dùng cho từng câu hỏi: { 1: { slotNum: sentenceObj }, 2: { ... } }
+
+        // Lưu trữ vị trí đặt câu của người dùng: { packageKey: { 1: { slotNum: sentenceObj }, 2: { ... } } }
         let userPlacements = {
-            1: {},
-            2: {}
+            "de1": { 1: {}, 2: {} },
+            "de2": { 1: {}, 2: {} }
         };
-        // Lưu trữ danh sách câu trong Pool của từng câu hỏi
+
+        // Lưu trữ danh sách câu trong Pool của từng đề: { packageKey: { 1: [], 2: [] } }
         let poolItems = {
-            1: [],
-            2: []
+            "de1": { 1: [], 2: [] },
+            "de2": { 1: [], 2: [] }
         };
 
         // Hàm xáo trộn mảng Fisher-Yates (đảm bảo câu hỏi LUÔN BỊ ĐẢO NGẪU NHIÊN)
@@ -770,7 +912,6 @@
                 const j = Math.floor(Math.random() * (i + 1));
                 [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-            // Đảm bảo không trùng 100% với thứ tự gốc
             let isIdentical = true;
             for (let i = 0; i < arr.length; i++) {
                 if (arr[i].number !== array[i].number) {
@@ -784,26 +925,47 @@
             return arr;
         }
 
-        // Khởi tạo pool bị đảo cho cả 2 câu
-        function initPools() {
-            // Câu 1: Bỏ câu 1 vì câu 1 cho sẵn, chỉ đảo câu 2, 3, 4, 5
-            const q1Draggables = examQuestions[1].sentences.filter(s => s.number > 1);
-            poolItems[1] = shuffle(q1Draggables);
+        // Khởi tạo pool cho một bộ đề
+        function initPoolsForPackage(pkgKey) {
+            const pkg = examPackages[pkgKey];
+            // Câu 1: Bỏ câu 1 vì câu 1 cho sẵn, chỉ đảo câu 2..5
+            const q1Draggables = pkg.questions[1].sentences.filter(s => s.number > 1);
+            poolItems[pkgKey][1] = shuffle(q1Draggables);
 
-            // Câu 2: Đảo cả 5 câu 1, 2, 3, 4, 5
-            poolItems[2] = shuffle(examQuestions[2].sentences);
+            // Câu 2: Đảo cả 5 câu 1..5
+            poolItems[pkgKey][2] = shuffle(pkg.questions[2].sentences);
+        }
+
+        // Chuyển đổi bộ đề (Đề 1 / Đề 2)
+        function switchPackage(pkgKey) {
+            currentPackageKey = pkgKey;
+            currentQIndex = 1;
+
+            document.getElementById('tab-pkg-de1').className = (pkgKey === 'de1') ? 'pkg-tab-btn active' : 'pkg-tab-btn';
+            document.getElementById('tab-pkg-de2').className = (pkgKey === 'de2') ? 'pkg-tab-btn active' : 'pkg-tab-btn';
+
+            // Nếu chưa khởi tạo pool cho đề này
+            if (!poolItems[pkgKey][1] || poolItems[pkgKey][1].length === 0) {
+                initPoolsForPackage(pkgKey);
+            }
+
+            renderQuestion(1);
+            resetTimer();
         }
 
         // Render giao diện câu hỏi hiện tại
         function renderQuestion(qIndex) {
             currentQIndex = qIndex;
-            const qData = examQuestions[qIndex];
+            const qData = examPackages[currentPackageKey].questions[qIndex];
 
             // Cập nhật Header
             document.getElementById('header-question-title').textContent = qData.headerTitle;
             document.getElementById('passage-title').textContent = qData.title;
 
-            // Cập nhật trạng thái nút chuyển câu
+            // Cập nhật text nút chuyển câu
+            document.getElementById('btn-q1').textContent = examPackages[currentPackageKey].questions[1].subTitleBtn;
+            document.getElementById('btn-q2').textContent = examPackages[currentPackageKey].questions[2].subTitleBtn;
+
             document.getElementById('btn-q1').className = (qIndex === 1) ? 'q-switch-btn active' : 'q-switch-btn';
             document.getElementById('btn-q2').className = (qIndex === 2) ? 'q-switch-btn active' : 'q-switch-btn';
 
@@ -837,17 +999,16 @@
                     // Slot trống nhận câu kéo thả
                     const dropSlot = document.createElement('div');
                     dropSlot.className = 'drop-slot';
-                    dropSlot.id = `slot-${qIndex}-${s.number}`;
+                    dropSlot.id = `slot-${currentPackageKey}-${qIndex}-${s.number}`;
                     dropSlot.dataset.slotNumber = s.number;
 
-                    // Nếu người dùng đã đặt câu vào slot này trước đó
-                    const placedItem = userPlacements[qIndex][s.number];
+                    // Nếu người dùng đã đặt câu vào slot này
+                    const placedItem = userPlacements[currentPackageKey][qIndex][s.number];
                     if (placedItem) {
                         dropSlot.classList.add('slot-filled');
                         dropSlot.appendChild(createDraggableCard(placedItem, true, s.number));
                     }
 
-                    // Gán sự kiện Drag & Drop cho slot
                     setupSlotEvents(dropSlot);
                     slotRow.appendChild(dropSlot);
                 }
@@ -889,10 +1050,8 @@
             // Sự kiện Click để di chuyển nhanh (Click-to-place / Click-to-return)
             card.addEventListener('click', function() {
                 if (isPlaced) {
-                    // Bấm vào câu trong slot -> Trả về pool
                     removeCardFromSlot(inSlotNumber);
                 } else {
-                    // Bấm vào câu trong pool -> Đặt vào slot trống đầu tiên
                     placeCardIntoFirstEmptySlot(sentenceObj);
                 }
             });
@@ -923,45 +1082,38 @@
                 const fromSlot = dragData.fromSlot;
                 const targetSlotNum = parseInt(slotEl.dataset.slotNumber, 10);
 
-                const sentenceObj = examQuestions[currentQIndex].sentences.find(s => s.number === sentenceNum);
+                const sentenceObj = examPackages[currentPackageKey].questions[currentQIndex].sentences.find(s => s.number === sentenceNum);
                 if (!sentenceObj) return;
 
-                // Nếu trong slot đích đã có 1 câu khác
-                const existingCardInSlot = userPlacements[currentQIndex][targetSlotNum];
+                const existingCardInSlot = userPlacements[currentPackageKey][currentQIndex][targetSlotNum];
 
                 if (fromSlot) {
-                    // Kéo từ slot này sang slot khác
                     if (existingCardInSlot) {
-                        // Hoán đổi 2 slot
-                        userPlacements[currentQIndex][fromSlot] = existingCardInSlot;
+                        userPlacements[currentPackageKey][currentQIndex][fromSlot] = existingCardInSlot;
                     } else {
-                        delete userPlacements[currentQIndex][fromSlot];
+                        delete userPlacements[currentPackageKey][currentQIndex][fromSlot];
                     }
                 } else {
-                    // Kéo từ Pool vào slot
-                    // Xóa khỏi Pool
-                    poolItems[currentQIndex] = poolItems[currentQIndex].filter(s => s.number !== sentenceNum);
+                    poolItems[currentPackageKey][currentQIndex] = poolItems[currentPackageKey][currentQIndex].filter(s => s.number !== sentenceNum);
                     if (existingCardInSlot) {
-                        // Trả câu cũ về pool
-                        poolItems[currentQIndex].push(existingCardInSlot);
+                        poolItems[currentPackageKey][currentQIndex].push(existingCardInSlot);
                     }
                 }
 
-                userPlacements[currentQIndex][targetSlotNum] = sentenceObj;
-
+                userPlacements[currentPackageKey][currentQIndex][targetSlotNum] = sentenceObj;
                 renderQuestion(currentQIndex);
             });
         }
 
         // Bấm câu trong pool để tự động cho vào slot trống đầu tiên
         function placeCardIntoFirstEmptySlot(sentenceObj) {
-            const qData = examQuestions[currentQIndex];
+            const qData = examPackages[currentPackageKey].questions[currentQIndex];
             const startNum = qData.fixedFirst ? 2 : 1;
 
             for (let num = startNum; num <= 5; num++) {
-                if (!userPlacements[currentQIndex][num]) {
-                    userPlacements[currentQIndex][num] = sentenceObj;
-                    poolItems[currentQIndex] = poolItems[currentQIndex].filter(s => s.number !== sentenceObj.number);
+                if (!userPlacements[currentPackageKey][currentQIndex][num]) {
+                    userPlacements[currentPackageKey][currentQIndex][num] = sentenceObj;
+                    poolItems[currentPackageKey][currentQIndex] = poolItems[currentPackageKey][currentQIndex].filter(s => s.number !== sentenceObj.number);
                     renderQuestion(currentQIndex);
                     return;
                 }
@@ -970,10 +1122,10 @@
 
         // Bấm câu trong slot để trả về pool
         function removeCardFromSlot(slotNum) {
-            const sentenceObj = userPlacements[currentQIndex][slotNum];
+            const sentenceObj = userPlacements[currentPackageKey][currentQIndex][slotNum];
             if (sentenceObj) {
-                delete userPlacements[currentQIndex][slotNum];
-                poolItems[currentQIndex].push(sentenceObj);
+                delete userPlacements[currentPackageKey][currentQIndex][slotNum];
+                poolItems[currentPackageKey][currentQIndex].push(sentenceObj);
                 renderQuestion(currentQIndex);
             }
         }
@@ -982,7 +1134,7 @@
         function renderPool() {
             const poolList = document.getElementById('pool-list');
             poolList.innerHTML = '';
-            const items = poolItems[currentQIndex] || [];
+            const items = poolItems[currentPackageKey][currentQIndex] || [];
 
             document.getElementById('pool-count-text').textContent = `(Còn ${items.length} câu)`;
 
@@ -1016,16 +1168,16 @@
 
         // Kiểm tra đáp án
         function checkCurrentAnswers() {
-            const qData = examQuestions[currentQIndex];
+            const qData = examPackages[currentPackageKey].questions[currentQIndex];
             const startNum = qData.fixedFirst ? 2 : 1;
-            const totalToCheck = 6 - startNum; // 4 câu với Question 1, 5 câu với Question 2
+            const totalToCheck = 6 - startNum;
             let correctCount = 0;
 
             for (let num = startNum; num <= 5; num++) {
-                const slotEl = document.getElementById(`slot-${currentQIndex}-${num}`);
+                const slotEl = document.getElementById(`slot-${currentPackageKey}-${currentQIndex}-${num}`);
                 if (!slotEl) continue;
                 const cardEl = slotEl.querySelector('.draggable-sentence-card');
-                const userChoice = userPlacements[currentQIndex][num];
+                const userChoice = userPlacements[currentPackageKey][currentQIndex][num];
 
                 if (cardEl) {
                     cardEl.classList.remove('is-correct', 'is-incorrect');
@@ -1042,11 +1194,9 @@
             scoreBox.style.display = 'flex';
             document.getElementById('score-text').textContent = `${correctCount} / ${totalToCheck} câu đúng`;
 
-            // Tự động mở khung giải thích nếu làm xong
             showExplanations();
         }
 
-        // Cập nhật hiển thị Score Box
         function updateScoreBox() {
             document.getElementById('score-box').style.display = 'none';
         }
@@ -1054,7 +1204,7 @@
         // Hiển thị phần giải thích & Dịch nghĩa
         function showExplanations() {
             const panel = document.getElementById('explanation-panel');
-            const qData = examQuestions[currentQIndex];
+            const qData = examPackages[currentPackageKey].questions[currentQIndex];
             document.getElementById('explain-title').innerHTML = `<i class="fas fa-book-open"></i> Thứ tự đúng & Dịch nghĩa - ${qData.title}`;
 
             let html = '';
@@ -1085,11 +1235,12 @@
 
         // Làm lại (Reset & Đảo đề)
         function resetCurrentQuiz() {
-            userPlacements[currentQIndex] = {};
-            if (currentQIndex === 1) {
-                poolItems[1] = shuffle(examQuestions[1].sentences.filter(s => s.number > 1));
+            userPlacements[currentPackageKey][currentQIndex] = {};
+            const qData = examPackages[currentPackageKey].questions[currentQIndex];
+            if (qData.fixedFirst) {
+                poolItems[currentPackageKey][currentQIndex] = shuffle(qData.sentences.filter(s => s.number > 1));
             } else {
-                poolItems[2] = shuffle(examQuestions[2].sentences);
+                poolItems[currentPackageKey][currentQIndex] = shuffle(qData.sentences);
             }
             renderQuestion(currentQIndex);
             resetTimer();
@@ -1137,9 +1288,18 @@
 
         // Khởi động khi tải trang
         document.addEventListener('DOMContentLoaded', () => {
-            initPools();
-            renderQuestion(1);
-            startTimer();
+            initPoolsForPackage("de1");
+            initPoolsForPackage("de2");
+
+            // Kiểm tra URL param ?pkg=de2 hoặc ?de=2
+            const urlParams = new URLSearchParams(window.location.search);
+            const requestedPkg = urlParams.get('pkg') || (urlParams.get('de') === '2' ? 'de2' : 'de1');
+
+            if (requestedPkg === 'de2') {
+                switchPackage('de2');
+            } else {
+                switchPackage('de1');
+            }
         });
     </script>
 </body>
