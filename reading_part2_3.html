@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>Reading Part 2 & 3 - Bộ đề chuẩn phòng thi (Aptis ESOL)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,39 +152,128 @@
             padding: 0 25px;
         }
 
-        /* Thanh chuyển đổi bộ đề (Đề 1 -> Đề 10) gọn gàng */
+        /* Khung chọn bộ đề trực quan & sang trọng */
+        .pkg-switcher-card {
+            background: #ffffff;
+            border: 1.5px solid #e0e7ff;
+            border-radius: 14px;
+            padding: 14px 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 16px rgba(36, 8, 90, 0.06);
+        }
+
+        .pkg-switcher-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .pkg-switcher-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #24085a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pkg-select-dropdown {
+            padding: 7px 14px;
+            border: 2px solid #24085a;
+            border-radius: 25px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #24085a;
+            background-color: #f8fafc;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .pkg-select-dropdown:hover, .pkg-select-dropdown:focus {
+            border-color: #4338ca;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15);
+        }
+
         .package-switch-bar {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 12px;
             flex-wrap: wrap;
         }
 
         .pkg-tab-btn {
-            padding: 7px 16px;
+            padding: 7px 15px;
             border-radius: 20px;
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
-            border: 2px solid var(--primary-blue, #007bff);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 2px solid #3b82f6;
             background-color: #ffffff;
-            color: var(--primary-blue, #007bff);
+            color: #1d4ed8;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            user-select: none;
+        }
+
+        .pkg-tab-btn:hover {
+            background-color: #eff6ff;
+            transform: translateY(-1px);
         }
 
         .pkg-tab-btn.active {
-            background-color: var(--primary-blue, #007bff);
-            color: #ffffff;
-            box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
+            background-color: #24085a !important;
+            border-color: #24085a !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(36, 8, 90, 0.35);
+            transform: scale(1.06);
         }
 
-        .pkg-tab-btn:not(.active):hover {
-            background-color: #f0f7ff;
-            transform: translateY(-1px);
+        /* Hiệu ứng nhấp nháy chuyển đề thành công */
+        @keyframes highlightPulse {
+            0% { transform: scale(1); background-color: #eef2ff; }
+            50% { transform: scale(1.02); background-color: #c7d2fe; color: #1e1b4b; box-shadow: 0 0 15px rgba(99, 102, 241, 0.4); }
+            100% { transform: scale(1); background-color: #eef2ff; }
+        }
+
+        .highlight-pulse {
+            animation: highlightPulse 0.6s ease;
+        }
+
+        /* Toast thông báo chuyển đề */
+        .exam-switch-toast {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: #1e1b4b;
+            color: #ffffff;
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 999999;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            border-left: 5px solid #10b981;
+        }
+
+        .exam-switch-toast.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .current-pkg-banner {
@@ -644,25 +737,54 @@
 
     <main class="exam-container">
         <!-- THANH CHỌN BỘ ĐỀ THI: ĐỀ 1 / ĐỀ 2 -->
-        <div class="package-switch-bar">
-    <button class="pkg-tab-btn active" id="tab-pkg-de1" onclick="switchPackage('de1')">Đề 1</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de2" onclick="switchPackage('de2')">Đề 2</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de3" onclick="switchPackage('de3')">Đề 3</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de4" onclick="switchPackage('de4')">Đề 4</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de5" onclick="switchPackage('de5')">Đề 5</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de6" onclick="switchPackage('de6')">Đề 6</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de7" onclick="switchPackage('de7')">Đề 7</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de8" onclick="switchPackage('de8')">Đề 8</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de9" onclick="switchPackage('de9')">Đề 9</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de10" onclick="switchPackage('de10')">Đề 10</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de11" onclick="switchPackage('de11')">Đề 11</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de12" onclick="switchPackage('de12')">Đề 12</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de13" onclick="switchPackage('de13')">Đề 13</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de14" onclick="switchPackage('de14')">Đề 14</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de15" onclick="switchPackage('de15')">Đề 15</button>
-    <button class="pkg-tab-btn" id="tab-pkg-de16" onclick="switchPackage('de16')">Đề 16</button>
-</div>
-<div class="current-pkg-banner" id="current-pkg-banner">📍 Đang làm: <strong id="current-pkg-name">Đề 1: Films & Family sports day</strong></div>
+        <div class="pkg-switcher-card">
+            <div class="pkg-switcher-header">
+                <div class="pkg-switcher-title">
+                    <i class="fas fa-layer-group"></i> <span>16 BỘ ĐỀ THI THẬT APTIS ESOL (Part 2 & 3)</span>
+                </div>
+                <div>
+                    <select id="pkg-select-dropdown" class="pkg-select-dropdown" onchange="switchPackage(this.value, true, true)" title="Chọn nhanh bộ đề">
+                        <option value="de1">Đề 1: Films & Family sports day</option>
+                        <option value="de2">Đề 2: Movies then and now & A new coffee shop</option>
+                        <option value="de3">Đề 3: Movies then and now & A successful singer</option>
+                        <option value="de4">Đề 4: Eating at a cafe & End-of-term project</option>
+                        <option value="de5">Đề 5: New coffee shop & A famous singer</option>
+                        <option value="de6">Đề 6: Weekend activities & The first American woman in space</option>
+                        <option value="de7">Đề 7: New coffee shop & Flexible working</option>
+                        <option value="de8">Đề 8: A famous singer (Version 1 & 2)</option>
+                        <option value="de9">Đề 9: Family sports day & Films</option>
+                        <option value="de10">Đề 10: College welcoming day & Mae the astronaut</option>
+                        <option value="de11">Đề 11: Writing about a place & Group presentation</option>
+                        <option value="de12">Đề 12: Writing about a place (v2) & A busy cafe</option>
+                        <option value="de13">Đề 13: History of transport & New coffee shop</option>
+                        <option value="de14">Đề 14: Hand in assignment & Car park</option>
+                        <option value="de15">Đề 15: Key card & How Jay became an actor</option>
+                        <option value="de16">Đề 16: University open day & The workplace</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="package-switch-bar">
+                <button class="pkg-tab-btn active" id="tab-pkg-de1" onclick="switchPackage('de1', true, true)">Đề 1</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de2" onclick="switchPackage('de2', true, true)">Đề 2</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de3" onclick="switchPackage('de3', true, true)">Đề 3</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de4" onclick="switchPackage('de4', true, true)">Đề 4</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de5" onclick="switchPackage('de5', true, true)">Đề 5</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de6" onclick="switchPackage('de6', true, true)">Đề 6</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de7" onclick="switchPackage('de7', true, true)">Đề 7</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de8" onclick="switchPackage('de8', true, true)">Đề 8</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de9" onclick="switchPackage('de9', true, true)">Đề 9</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de10" onclick="switchPackage('de10', true, true)">Đề 10</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de11" onclick="switchPackage('de11', true, true)">Đề 11</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de12" onclick="switchPackage('de12', true, true)">Đề 12</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de13" onclick="switchPackage('de13', true, true)">Đề 13</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de14" onclick="switchPackage('de14', true, true)">Đề 14</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de15" onclick="switchPackage('de15', true, true)">Đề 15</button>
+                <button class="pkg-tab-btn" id="tab-pkg-de16" onclick="switchPackage('de16', true, true)">Đề 16</button>
+            </div>
+        </div>
+
+        <div class="current-pkg-banner" id="current-pkg-banner"> id="current-pkg-banner">📍 Đang làm: <strong id="current-pkg-name">Đề 1: Films & Family sports day</strong></div>
 
         <!-- Thanh chuyển câu hỏi Question 1 / Question 2 & Quay về -->
         <div class="exam-nav-bar">
@@ -2019,21 +2141,68 @@
             }
         }
 
+        // Hiển thị thông báo Toast khi chuyển đề thành công
+        function showNotificationToast(msg) {
+            let toast = document.getElementById('exam-switch-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'exam-switch-toast';
+                toast.className = 'exam-switch-toast';
+                document.body.appendChild(toast);
+            }
+            toast.innerHTML = `<i class="fas fa-check-circle" style="color: #34d399; font-size: 16px;"></i> <span>${msg}</span>`;
+            toast.classList.add('show');
+            clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2400);
+        }
+
         // Chuyển đổi bộ đề (Đề 1 -> Đề 16)
-        function switchPackage(pkgKey) {
-            if (!examPackages[pkgKey]) return;
+        function switchPackage(pkgKey, updateHistory = true, scrollOnSwitch = false) {
+            if (!examPackages[pkgKey]) {
+                console.warn("Không tìm thấy bộ đề:", pkgKey);
+                return;
+            }
             currentPackageKey = pkgKey;
             currentQIndex = 1;
             selectedPoolCard = null;
 
+            // 1. Cập nhật Tab Buttons
             document.querySelectorAll('.pkg-tab-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.id === `tab-pkg-${pkgKey}`);
+                const isActive = (btn.id === `tab-pkg-${pkgKey}`);
+                btn.classList.toggle('active', isActive);
+                if (isActive) {
+                    try {
+                        btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+                    } catch(e) {}
+                }
             });
+
+            // 2. Cập nhật Dropdown Select
+            const dropdown = document.getElementById('pkg-select-dropdown');
+            if (dropdown && dropdown.value !== pkgKey) {
+                dropdown.value = pkgKey;
+            }
+
+            // 3. Cập nhật Banner tên đề
             const bannerName = document.getElementById('current-pkg-name');
             if (bannerName && examPackages[pkgKey]) {
                 bannerName.textContent = examPackages[pkgKey].name;
             }
 
+            // 4. Cập nhật URL trình duyệt (pushState)
+            if (updateHistory && window.history && window.history.pushState) {
+                try {
+                    const deNum = pkgKey.replace('de', '');
+                    const newUrl = window.location.pathname + '?de=' + deNum;
+                    if (window.location.search !== '?de=' + deNum) {
+                        window.history.pushState({ pkg: pkgKey }, '', newUrl);
+                    }
+                } catch(e) {}
+            }
+
+            // 5. Khởi tạo dữ liệu người dùng & pool nếu chưa có
             if (!userPlacements[pkgKey]) userPlacements[pkgKey] = { 1: {}, 2: {} };
             if (!poolItems[pkgKey]) poolItems[pkgKey] = { 1: [], 2: [] };
 
@@ -2041,8 +2210,33 @@
                 initPoolsForPackage(pkgKey);
             }
 
+            // 6. Render câu hỏi số 1
             renderQuestion(1);
             resetTimer();
+
+            // 7. Hiệu ứng Toast & Pulse
+            showNotificationToast(`Đang làm ${examPackages[pkgKey].name}`);
+
+            const banner = document.getElementById('current-pkg-banner');
+            if (banner) {
+                banner.classList.remove('highlight-pulse');
+                void banner.offsetWidth;
+                banner.classList.add('highlight-pulse');
+            }
+            const passageTitle = document.getElementById('passage-title');
+            if (passageTitle) {
+                passageTitle.classList.remove('highlight-pulse');
+                void passageTitle.offsetWidth;
+                passageTitle.classList.add('highlight-pulse');
+            }
+
+            // 8. Cuộn mượt đến bảng làm bài nếu người dùng bấm chuyển
+            if (scrollOnSwitch) {
+                const target = document.getElementById('current-pkg-banner');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
         }
 
         // Render giao diện câu hỏi hiện tại
@@ -2475,10 +2669,34 @@
             icon.className = this.classList.contains('bookmarked') ? 'fas fa-bookmark' : 'far fa-bookmark';
         });
 
+        // Bắt sự kiện nút Back/Forward trên trình duyệt
+        window.addEventListener('popstate', (e) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const deParam = urlParams.get('de');
+            const pkgParam = urlParams.get('pkg');
+            let requestedPkg = "de1";
+            if (pkgParam && examPackages[pkgParam]) {
+                requestedPkg = pkgParam;
+            } else if (deParam && examPackages[`de${deParam}`]) {
+                requestedPkg = `de${deParam}`;
+            }
+            if (requestedPkg !== currentPackageKey) {
+                switchPackage(requestedPkg, false, false);
+            }
+        });
+
         // Khởi động khi tải trang
         document.addEventListener('DOMContentLoaded', () => {
             Object.keys(examPackages).forEach(k => {
                 initPoolsForPackage(k);
+            });
+
+            // Gán sự kiện click tường minh cho tất cả nút bộ đề
+            document.querySelectorAll('.pkg-tab-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const id = this.id.replace('tab-pkg-', '');
+                    switchPackage(id, true, true);
+                });
             });
 
             // Kiểm tra URL param ?de=X hoặc ?pkg=deX
@@ -2492,7 +2710,7 @@
                 requestedPkg = `de${deParam}`;
             }
 
-            switchPackage(requestedPkg);
+            switchPackage(requestedPkg, false, false);
         });
     </script>
 </body>
