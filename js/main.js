@@ -3,7 +3,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     
     const loadComponent = (selector, url) => {
-        return fetch(url)
+        const fetchUrl = url + (url.includes('?') ? '&' : '?') + 't=' + Date.now();
+        return fetch(fetchUrl, { cache: 'no-store' })
             .then(response => {
                 if (!response.ok) throw new Error(`Could not load ${url}`);
                 return response.text();
