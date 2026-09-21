@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Part 2 & 3 - Đề 1 chuẩn phòng thi (Films & Family sports day)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f3f4f6;
+            color: #111827;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        /* Top Purple Bar chuẩn Aptis */
+        .top-purple-bar {
+            background-color: #24085a;
+            height: 38px;
+            width: 100%;
+        }
+
+        /* Exam Header */
+        .exam-header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .exam-header-left .skill-name {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: capitalize;
+            letter-spacing: 0.3px;
+        }
+
+        .exam-header-left .question-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #111827;
+            margin-top: 2px;
+            letter-spacing: -0.5px;
+        }
+
+        .exam-header-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .icon-pill-btn {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 20px;
+            padding: 7px 16px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.2s;
+        }
+
+        .icon-pill-btn:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        .icon-pill-btn.bookmarked {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #b45309;
+        }
+
+        .icon-circle-btn {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: #4b5563;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .icon-circle-btn:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        .timer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 105px;
+        }
+
+        .timer-display {
+            font-size: 25px;
+            font-weight: 800;
+            color: #111827;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            line-height: 1.1;
+        }
+
+        .timer-label {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .timer-bar {
+            width: 100%;
+            height: 3.5px;
+            background-color: #5b21b6;
+            margin-top: 4px;
+            border-radius: 2px;
+        }
+
+        /* Container chính */
+        .exam-container {
+            max-width: 1220px;
+            margin: 28px auto 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Top Nav Selector (Part 2 / Part 3) */
+        .exam-nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .question-switch-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .q-switch-btn {
+            padding: 9px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid #24085a;
+        }
+
+        .q-switch-btn.active {
+            background-color: #24085a;
+            color: #ffffff;
+            box-shadow: 0 3px 10px rgba(36, 8, 90, 0.25);
+        }
+
+        .q-switch-btn:not(.active) {
+            background-color: #ffffff;
+            color: #24085a;
+        }
+
+        .q-switch-btn:not(.active):hover {
+            background-color: #f3f0fa;
+        }
+
+        .back-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 16px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .back-link-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        /* Hộp hướng dẫn */
+        .instruction-box {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 22px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        /* Khung bài tập chính 2 cột */
+        .quiz-board-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 32px 36px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .quiz-board-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            align-items: start;
+        }
+
+        /* Cột bên trái: Tiêu đề & Các Slots */
+        .passage-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 22px;
+            letter-spacing: -0.3px;
+        }
+
+        .slots-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .slot-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-height: 64px;
+        }
+
+        .slot-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+            min-width: 22px;
+            text-align: center;
+        }
+
+        /* Ô drop target bên trái */
+        .drop-slot {
+            flex: 1;
+            min-height: 64px;
+            border: 1.5px dashed #cbd5e1;
+            border-radius: 12px;
+            background-color: #fafbfc;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .drop-slot.drag-over {
+            border-color: #4f46e5;
+            background-color: #eef2ff;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+
+        .drop-slot.slot-filled {
+            border: none;
+            background: transparent;
+            padding: 0;
+        }
+
+        /* Câu cho sẵn (Fixed câu 1 của Part 2) */
+        .fixed-sentence-card {
+            flex: 1;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 15px;
+            line-height: 1.55;
+            color: #111827;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        /* Cột bên phải: Pool các câu kéo thả */
+        .pool-header-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #6b7280;
+            margin-bottom: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pool-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            min-height: 250px;
+            padding-bottom: 10px;
+        }
+
+        /* Thẻ câu hỏi kéo thả (Draggable Card) */
+        .draggable-sentence-card {
+            background: #ffffff;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 15px;
+            line-height: 1.55;
+            color: #111827;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            cursor: grab;
+            user-select: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            width: 100%;
+        }
+
+        .draggable-sentence-card:hover {
+            border-color: #94a3b8;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+            transform: translateY(-1px);
+        }
+
+        .draggable-sentence-card:active {
+            cursor: grabbing;
+        }
+
+        .draggable-sentence-card.dragging {
+            opacity: 0.45;
+            border: 2px dashed #4f46e5;
+            background: #f5f3ff;
+        }
+
+        /* Icon 6 chấm drag handle */
+        .grip-handle {
+            color: #9ca3af;
+            font-size: 14px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            cursor: grab;
+        }
+
+        .sentence-text {
+            flex: 1;
+        }
+
+        /* Trạng thái đúng / sai khi kiểm tra đáp án */
+        .draggable-sentence-card.is-correct {
+            border-color: #10b981 !important;
+            background-color: #f0fdf4 !important;
+            color: #065f46 !important;
+        }
+
+        .draggable-sentence-card.is-correct .grip-handle {
+            color: #10b981 !important;
+        }
+
+        .draggable-sentence-card.is-incorrect {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+            color: #991b1b !important;
+        }
+
+        .draggable-sentence-card.is-incorrect .grip-handle {
+            color: #ef4444 !important;
+        }
+
+        /* Thanh điều khiển dưới cùng */
+        .quiz-footer-actions {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 20px 28px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .score-display-box {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .score-pill {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-main-primary {
+            background-color: #24085a;
+            color: #ffffff;
+            border: none;
+            padding: 11px 24px;
+            border-radius: 9px;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(36, 8, 90, 0.2);
+        }
+
+        .btn-main-primary:hover {
+            background-color: #3b1285;
+            transform: translateY(-1px);
+        }
+
+        .btn-main-secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+            border: 1px solid #d1d5db;
+            padding: 11px 20px;
+            border-radius: 9px;
+            font-size: 14.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-main-secondary:hover {
+            background-color: #e5e7eb;
+            color: #111827;
+        }
+
+        /* Hộp giải thích & dịch nghĩa chi tiết */
+        .explanation-panel {
+            display: none;
+            background: #ffffff;
+            border: 1px solid #dbeafe;
+            border-left: 5px solid #2563eb;
+            border-radius: 14px;
+            padding: 24px 30px;
+            margin-top: 25px;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.06);
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .explanation-panel.visible {
+            display: block;
+        }
+
+        .explanation-panel h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e40af;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .explanation-sentence-item {
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .explanation-sentence-item .en-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .explanation-sentence-item .vn-text {
+            font-size: 14px;
+            color: #0369a1;
+            font-style: italic;
+        }
+
+        .logic-tip-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #854d0e;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .quiz-board-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .exam-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            .exam-header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .quiz-board-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dải tím chuẩn phòng thi Aptis -->
+    <div class="top-purple-bar"></div>
+
+    <!-- Thanh tiêu đề bài thi chuẩn -->
+    <header class="exam-header">
+        <div class="exam-header-left">
+            <div class="skill-name">Reading</div>
+            <h1 class="question-title" id="header-question-title">Question 1 of 2</h1>
+        </div>
+
+        <div class="exam-header-right">
+            <button class="icon-pill-btn" id="bookmark-btn">
+                <i class="far fa-bookmark" id="bookmark-icon"></i> Bookmark
+            </button>
+
+            <button class="icon-circle-btn" id="pause-btn" title="Tạm dừng / Tiếp tục">
+                <i class="fas fa-pause" id="pause-icon"></i>
+            </button>
+
+            <div class="timer-container">
+                <div class="timer-display" id="timer-display">00:06:20</div>
+                <div class="timer-label">Time remaining</div>
+                <div class="timer-bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="exam-container">
+        <!-- Thanh chuyển câu hỏi Question 1 / Question 2 & Quay về -->
+        <div class="exam-nav-bar">
+            <div class="question-switch-group">
+                <button class="q-switch-btn active" id="btn-q1" onclick="switchQuestion(1)">
+                    Question 1: Films (Part 2)
+                </button>
+                <button class="q-switch-btn" id="btn-q2" onclick="switchQuestion(2)">
+                    Question 2: Family sports day (Part 3)
+                </button>
+            </div>
+            <a href="reading_part2.html" class="back-link-btn">
+                <i class="fas fa-arrow-left"></i> Về danh sách Part 2
+            </a>
+        </div>
+
+        <!-- Hướng dẫn bài thi -->
+        <div class="instruction-box">
+            The sentences below make a complete text. Put them in the correct order.
+        </div>
+
+        <!-- Khung làm bài kéo thả 2 cột -->
+        <div class="quiz-board-card">
+            <div class="quiz-board-grid">
+                <!-- Cột trái: Tiêu đề & Danh sách 5 vị trí câu -->
+                <div class="slots-column">
+                    <h2 class="passage-title" id="passage-title">Films</h2>
+                    <div class="slots-list" id="slots-container">
+                        <!-- Sinh ra bởi JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Cột phải: Pool chứa các câu đảo lộn ngẫu nhiên để kéo thả -->
+                <div class="pool-column">
+                    <div class="pool-header-title">
+                        <span><i class="fas fa-hand-pointer"></i> Kéo thẻ vào ô trống hoặc bấm để chọn:</span>
+                        <span id="pool-count-text" style="font-weight: 500;"></span>
+                    </div>
+                    <div class="pool-list" id="pool-list">
+                        <!-- Sinh ra bởi JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thanh hành động & Kết quả -->
+        <div class="quiz-footer-actions">
+            <div class="score-display-box" id="score-box" style="display: none;">
+                <span>Điểm số:</span>
+                <span class="score-pill" id="score-text">0 / 4</span>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-main-secondary" id="prev-btn" onclick="prevQuestion()" style="display: none;">
+                    <i class="fas fa-chevron-left"></i> Câu trước
+                </button>
+                <button class="btn-main-secondary" id="next-btn" onclick="nextQuestion()">
+                    Câu tiếp theo <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="btn-main-primary" id="check-btn" onclick="checkCurrentAnswers()">
+                    <i class="fas fa-check-circle"></i> Kiểm tra đáp án
+                </button>
+                <button class="btn-main-secondary" id="show-explain-btn" onclick="toggleExplanations()">
+                    <i class="fas fa-lightbulb"></i> Xem đáp án & Dịch nghĩa
+                </button>
+                <button class="btn-main-secondary" id="reset-btn" onclick="resetCurrentQuiz()">
+                    <i class="fas fa-redo"></i> Làm lại (Đảo câu hỏi)
+                </button>
+            </div>
+        </div>
+
+        <!-- Khung giải thích & Dịch nghĩa chi tiết -->
+        <div class="explanation-panel" id="explanation-panel">
+            <h3 id="explain-title"><i class="fas fa-book-open"></i> Thứ tự đúng & Dịch nghĩa chi tiết</h3>
+            <div id="explain-content"></div>
+            <div class="logic-tip-box" id="logic-tip-content"></div>
+        </div>
+    </main>
+
+    <script>
+        // Dữ liệu chuẩn của 2 câu hỏi theo đúng đề của User
+        const examQuestions = {
+            1: {
+                title: "Films",
+                headerTitle: "Question 1 of 2",
+                fixedFirst: true, // Câu 1 cho sẵn (Part 2)
+                sentences: [
+                    {
+                        number: 1,
+                        en: "Old movies were very different from today's movies.",
+                        vn: "Phim cũ rất khác so với phim ngày nay."
+                    },
+                    {
+                        number: 2,
+                        en: "That's because the movies were only in black and white, and sometimes without sound.",
+                        vn: "Đó là vì phim chỉ có màu đen trắng, và đôi khi không có tiếng."
+                    },
+                    {
+                        number: 3,
+                        en: "Not only did these technological limitations exist, the movies were also low budget.",
+                        vn: "Không chỉ có những hạn chế về công nghệ này, các bộ phim còn có kinh phí thấp."
+                    },
+                    {
+                        number: 4,
+                        en: "Due to the lack of money, actors also had few opportunities to earn money through acting.",
+                        vn: "Vì thiếu tiền, diễn viên cũng có ít cơ hội kiếm tiền bằng nghề diễn."
+                    },
+                    {
+                        number: 5,
+                        en: "Now things have changed, actors and filmmakers can earn thousands of dollars from film production.",
+                        vn: "Giờ đây mọi thứ đã thay đổi, diễn viên và nhà làm phim có thể kiếm hàng ngàn đô la từ việc sản xuất phim."
+                    }
+                ],
+                logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                          "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề phim cũ rất khác phim ngày nay.<br>" +
+                          "• <strong>Câu 2:</strong> Bắt đầu bằng <em>'That\'s because...'</em> để giải thích nguyên nhân khác biệt (đen trắng, không tiếng).<br>" +
+                          "• <strong>Câu 3:</strong> Móc xích tiếp theo <em>'Not only did these technological limitations exist...'</em> và bổ sung thêm ý <em>'low budget'</em> (kinh phí thấp).<br>" +
+                          "• <strong>Câu 4:</strong> Nối tiếp từ kinh phí thấp -> <em>'Due to the lack of money'</em> (diễn viên ít cơ hội kiếm tiền).<br>" +
+                          "• <strong>Câu 5:</strong> Kết bài tương phản giữa xưa và nay: <em>'Now things have changed...'</em> (ngày nay kiếm được hàng ngàn đô la)."
+            },
+            2: {
+                title: "Family sports day",
+                headerTitle: "Question 2 of 2",
+                fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp (Part 3)
+                sentences: [
+                    {
+                        number: 1,
+                        en: "The family sports day was held on Saturday morning, and there was a 10 km race for adults.",
+                        vn: "Ngày hội thể thao gia đình được tổ chức vào sáng thứ Bảy, và có một cuộc đua 10 km dành cho người lớn."
+                    },
+                    {
+                        number: 2,
+                        en: "There were 60 participants, in which Ms. Kamus kept the fastest speed and won.",
+                        vn: "Có 60 người tham gia, trong đó cô Kamus đã giữ tốc độ nhanh nhất và giành chiến thắng."
+                    },
+                    {
+                        number: 3,
+                        en: "After she received the prize, the following time was for children's activities.",
+                        vn: "Sau khi cô ấy nhận giải, thời gian sau đó là dành cho các hoạt động của trẻ em."
+                    },
+                    {
+                        number: 4,
+                        en: "Activities included football, swimming, skipping rope, and the children played together very happily.",
+                        vn: "Các hoạt động bao gồm bóng đá, bơi lội, nhảy dây, và các em nhỏ chơi đùa với nhau rất vui vẻ."
+                    },
+                    {
+                        number: 5,
+                        en: "After playing, the children were very hungry and ate with their parents.",
+                        vn: "Sau khi chơi, các em nhỏ rất đói và đã ăn cùng bố mẹ."
+                    }
+                ],
+                logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
+                          "• <strong>Câu 1:</strong> Mở đầu sự kiện: Giới thiệu ngày hội thể thao gia đình sáng thứ Bảy và cuộc đua 10 km cho người lớn.<br>" +
+                          "• <strong>Câu 2:</strong> Chi tiết về cuộc đua: 60 người tham gia, cô Kamus chạy nhanh nhất và chiến thắng.<br>" +
+                          "• <strong>Câu 3:</strong> Chuyển ý thời gian: <em>'After she received the prize...'</em> (sau khi cô Kamus nhận giải) thì chuyển sang phần hoạt động cho trẻ em.<br>" +
+                          "• <strong>Câu 4:</strong> Liệt kê cụ thể: <em>'Activities included...'</em> (bóng đá, bơi, nhảy dây vui vẻ).<br>" +
+                          "• <strong>Câu 5:</strong> Kết thúc sự kiện: <em>'After playing...'</em> (chơi xong các bé đói và ăn cùng bố mẹ)."
+            }
+        };
+
+        let currentQIndex = 1;
+        // Lưu trữ vị trí đặt câu của người dùng cho từng câu hỏi: { 1: { slotNum: sentenceObj }, 2: { ... } }
+        let userPlacements = {
+            1: {},
+            2: {}
+        };
+        // Lưu trữ danh sách câu trong Pool của từng câu hỏi
+        let poolItems = {
+            1: [],
+            2: []
+        };
+
+        // Hàm xáo trộn mảng Fisher-Yates (đảm bảo câu hỏi LUÔN BỊ ĐẢO NGẪU NHIÊN)
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            // Đảm bảo không trùng 100% với thứ tự gốc
+            let isIdentical = true;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].number !== array[i].number) {
+                    isIdentical = false;
+                    break;
+                }
+            }
+            if (isIdentical && arr.length > 1) {
+                [arr[0], arr[1]] = [arr[1], arr[0]];
+            }
+            return arr;
+        }
+
+        // Khởi tạo pool bị đảo cho cả 2 câu
+        function initPools() {
+            // Câu 1: Bỏ câu 1 vì câu 1 cho sẵn, chỉ đảo câu 2, 3, 4, 5
+            const q1Draggables = examQuestions[1].sentences.filter(s => s.number > 1);
+            poolItems[1] = shuffle(q1Draggables);
+
+            // Câu 2: Đảo cả 5 câu 1, 2, 3, 4, 5
+            poolItems[2] = shuffle(examQuestions[2].sentences);
+        }
+
+        // Render giao diện câu hỏi hiện tại
+        function renderQuestion(qIndex) {
+            currentQIndex = qIndex;
+            const qData = examQuestions[qIndex];
+
+            // Cập nhật Header
+            document.getElementById('header-question-title').textContent = qData.headerTitle;
+            document.getElementById('passage-title').textContent = qData.title;
+
+            // Cập nhật trạng thái nút chuyển câu
+            document.getElementById('btn-q1').className = (qIndex === 1) ? 'q-switch-btn active' : 'q-switch-btn';
+            document.getElementById('btn-q2').className = (qIndex === 2) ? 'q-switch-btn active' : 'q-switch-btn';
+
+            // Nút Prev/Next
+            document.getElementById('prev-btn').style.display = (qIndex === 1) ? 'none' : 'inline-flex';
+            document.getElementById('next-btn').style.display = (qIndex === 2) ? 'none' : 'inline-flex';
+
+            // Ẩn panel giải thích khi chuyển câu
+            document.getElementById('explanation-panel').classList.remove('visible');
+
+            // 1. Render các Slot bên trái
+            const slotsContainer = document.getElementById('slots-container');
+            slotsContainer.innerHTML = '';
+
+            qData.sentences.forEach(s => {
+                const slotRow = document.createElement('div');
+                slotRow.className = 'slot-row';
+
+                const numberBadge = document.createElement('div');
+                numberBadge.className = 'slot-number';
+                numberBadge.textContent = s.number;
+                slotRow.appendChild(numberBadge);
+
+                if (qData.fixedFirst && s.number === 1) {
+                    // Câu 1 cho sẵn (Part 2)
+                    const fixedCard = document.createElement('div');
+                    fixedCard.className = 'fixed-sentence-card';
+                    fixedCard.textContent = s.en;
+                    slotRow.appendChild(fixedCard);
+                } else {
+                    // Slot trống nhận câu kéo thả
+                    const dropSlot = document.createElement('div');
+                    dropSlot.className = 'drop-slot';
+                    dropSlot.id = `slot-${qIndex}-${s.number}`;
+                    dropSlot.dataset.slotNumber = s.number;
+
+                    // Nếu người dùng đã đặt câu vào slot này trước đó
+                    const placedItem = userPlacements[qIndex][s.number];
+                    if (placedItem) {
+                        dropSlot.classList.add('slot-filled');
+                        dropSlot.appendChild(createDraggableCard(placedItem, true, s.number));
+                    }
+
+                    // Gán sự kiện Drag & Drop cho slot
+                    setupSlotEvents(dropSlot);
+                    slotRow.appendChild(dropSlot);
+                }
+
+                slotsContainer.appendChild(slotRow);
+            });
+
+            // 2. Render Pool bên phải
+            renderPool();
+            updateScoreBox();
+        }
+
+        // Tạo thẻ câu hỏi Draggable
+        function createDraggableCard(sentenceObj, isPlaced = false, inSlotNumber = null) {
+            const card = document.createElement('div');
+            card.className = 'draggable-sentence-card';
+            card.draggable = true;
+            card.dataset.sentenceNumber = sentenceObj.number;
+
+            card.innerHTML = `
+                <i class="fas fa-grip-vertical grip-handle" title="Kéo hoặc bấm để di chuyển"></i>
+                <div class="sentence-text">${sentenceObj.en}</div>
+            `;
+
+            // Sự kiện kéo
+            card.addEventListener('dragstart', function(e) {
+                card.classList.add('dragging');
+                e.dataTransfer.setData('text/plain', JSON.stringify({
+                    sentenceNumber: sentenceObj.number,
+                    fromSlot: inSlotNumber
+                }));
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            card.addEventListener('dragend', function() {
+                card.classList.remove('dragging');
+            });
+
+            // Sự kiện Click để di chuyển nhanh (Click-to-place / Click-to-return)
+            card.addEventListener('click', function() {
+                if (isPlaced) {
+                    // Bấm vào câu trong slot -> Trả về pool
+                    removeCardFromSlot(inSlotNumber);
+                } else {
+                    // Bấm vào câu trong pool -> Đặt vào slot trống đầu tiên
+                    placeCardIntoFirstEmptySlot(sentenceObj);
+                }
+            });
+
+            return card;
+        }
+
+        // Gán sự kiện Drop cho Slot
+        function setupSlotEvents(slotEl) {
+            slotEl.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                slotEl.classList.add('drag-over');
+            });
+
+            slotEl.addEventListener('dragleave', function() {
+                slotEl.classList.remove('drag-over');
+            });
+
+            slotEl.addEventListener('drop', function(e) {
+                e.preventDefault();
+                slotEl.classList.remove('drag-over');
+
+                const dataStr = e.dataTransfer.getData('text/plain');
+                if (!dataStr) return;
+                const dragData = JSON.parse(dataStr);
+                const sentenceNum = dragData.sentenceNumber;
+                const fromSlot = dragData.fromSlot;
+                const targetSlotNum = parseInt(slotEl.dataset.slotNumber, 10);
+
+                const sentenceObj = examQuestions[currentQIndex].sentences.find(s => s.number === sentenceNum);
+                if (!sentenceObj) return;
+
+                // Nếu trong slot đích đã có 1 câu khác
+                const existingCardInSlot = userPlacements[currentQIndex][targetSlotNum];
+
+                if (fromSlot) {
+                    // Kéo từ slot này sang slot khác
+                    if (existingCardInSlot) {
+                        // Hoán đổi 2 slot
+                        userPlacements[currentQIndex][fromSlot] = existingCardInSlot;
+                    } else {
+                        delete userPlacements[currentQIndex][fromSlot];
+                    }
+                } else {
+                    // Kéo từ Pool vào slot
+                    // Xóa khỏi Pool
+                    poolItems[currentQIndex] = poolItems[currentQIndex].filter(s => s.number !== sentenceNum);
+                    if (existingCardInSlot) {
+                        // Trả câu cũ về pool
+                        poolItems[currentQIndex].push(existingCardInSlot);
+                    }
+                }
+
+                userPlacements[currentQIndex][targetSlotNum] = sentenceObj;
+
+                renderQuestion(currentQIndex);
+            });
+        }
+
+        // Bấm câu trong pool để tự động cho vào slot trống đầu tiên
+        function placeCardIntoFirstEmptySlot(sentenceObj) {
+            const qData = examQuestions[currentQIndex];
+            const startNum = qData.fixedFirst ? 2 : 1;
+
+            for (let num = startNum; num <= 5; num++) {
+                if (!userPlacements[currentQIndex][num]) {
+                    userPlacements[currentQIndex][num] = sentenceObj;
+                    poolItems[currentQIndex] = poolItems[currentQIndex].filter(s => s.number !== sentenceObj.number);
+                    renderQuestion(currentQIndex);
+                    return;
+                }
+            }
+        }
+
+        // Bấm câu trong slot để trả về pool
+        function removeCardFromSlot(slotNum) {
+            const sentenceObj = userPlacements[currentQIndex][slotNum];
+            if (sentenceObj) {
+                delete userPlacements[currentQIndex][slotNum];
+                poolItems[currentQIndex].push(sentenceObj);
+                renderQuestion(currentQIndex);
+            }
+        }
+
+        // Render danh sách câu còn lại trong pool bên phải
+        function renderPool() {
+            const poolList = document.getElementById('pool-list');
+            poolList.innerHTML = '';
+            const items = poolItems[currentQIndex] || [];
+
+            document.getElementById('pool-count-text').textContent = `(Còn ${items.length} câu)`;
+
+            if (items.length === 0) {
+                poolList.innerHTML = `
+                    <div style="padding: 24px; text-align: center; color: #10b981; font-weight: 600; background: #f0fdf4; border-radius: 12px; border: 1.5px dashed #86efac;">
+                        <i class="fas fa-check-circle" style="font-size: 24px; margin-bottom: 8px; display: block;"></i>
+                        Bạn đã xếp hết tất cả các câu vào bài đọc! Hãy bấm "Kiểm tra đáp án".
+                    </div>
+                `;
+                return;
+            }
+
+            items.forEach(s => {
+                poolList.appendChild(createDraggableCard(s, false));
+            });
+        }
+
+        // Chuyển câu hỏi 1 / 2
+        function switchQuestion(qIndex) {
+            renderQuestion(qIndex);
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 1) switchQuestion(currentQIndex - 1);
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < 2) switchQuestion(currentQIndex + 1);
+        }
+
+        // Kiểm tra đáp án
+        function checkCurrentAnswers() {
+            const qData = examQuestions[currentQIndex];
+            const startNum = qData.fixedFirst ? 2 : 1;
+            const totalToCheck = 6 - startNum; // 4 câu với Question 1, 5 câu với Question 2
+            let correctCount = 0;
+
+            for (let num = startNum; num <= 5; num++) {
+                const slotEl = document.getElementById(`slot-${currentQIndex}-${num}`);
+                if (!slotEl) continue;
+                const cardEl = slotEl.querySelector('.draggable-sentence-card');
+                const userChoice = userPlacements[currentQIndex][num];
+
+                if (cardEl) {
+                    cardEl.classList.remove('is-correct', 'is-incorrect');
+                    if (userChoice && userChoice.number === num) {
+                        correctCount++;
+                        cardEl.classList.add('is-correct');
+                    } else {
+                        cardEl.classList.add('is-incorrect');
+                    }
+                }
+            }
+
+            const scoreBox = document.getElementById('score-box');
+            scoreBox.style.display = 'flex';
+            document.getElementById('score-text').textContent = `${correctCount} / ${totalToCheck} câu đúng`;
+
+            // Tự động mở khung giải thích nếu làm xong
+            showExplanations();
+        }
+
+        // Cập nhật hiển thị Score Box
+        function updateScoreBox() {
+            document.getElementById('score-box').style.display = 'none';
+        }
+
+        // Hiển thị phần giải thích & Dịch nghĩa
+        function showExplanations() {
+            const panel = document.getElementById('explanation-panel');
+            const qData = examQuestions[currentQIndex];
+            document.getElementById('explain-title').innerHTML = `<i class="fas fa-book-open"></i> Thứ tự đúng & Dịch nghĩa - ${qData.title}`;
+
+            let html = '';
+            qData.sentences.forEach(s => {
+                html += `
+                    <div class="explanation-sentence-item">
+                        <div class="en-text"><strong>${s.number}.</strong> ${s.en}</div>
+                        <div class="vn-text"><i class="fas fa-language"></i> ${s.vn}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('explain-content').innerHTML = html;
+            document.getElementById('logic-tip-content').innerHTML = qData.logicTip;
+            panel.classList.add('visible');
+
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function toggleExplanations() {
+            const panel = document.getElementById('explanation-panel');
+            if (panel.classList.contains('visible')) {
+                panel.classList.remove('visible');
+            } else {
+                showExplanations();
+            }
+        }
+
+        // Làm lại (Reset & Đảo đề)
+        function resetCurrentQuiz() {
+            userPlacements[currentQIndex] = {};
+            if (currentQIndex === 1) {
+                poolItems[1] = shuffle(examQuestions[1].sentences.filter(s => s.number > 1));
+            } else {
+                poolItems[2] = shuffle(examQuestions[2].sentences);
+            }
+            renderQuestion(currentQIndex);
+            resetTimer();
+        }
+
+        // Đồng hồ đếm ngược 00:06:20 chuẩn Aptis
+        let totalSeconds = 6 * 60 + 20;
+        let isPaused = false;
+        let timerInterval;
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            return `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!isPaused && totalSeconds > 0) {
+                    totalSeconds--;
+                    document.getElementById('timer-display').textContent = formatTime(totalSeconds);
+                }
+            }, 1000);
+        }
+
+        function resetTimer() {
+            totalSeconds = 6 * 60 + 20;
+            isPaused = false;
+            document.getElementById('pause-icon').className = 'fas fa-pause';
+            document.getElementById('timer-display').textContent = formatTime(totalSeconds);
+            startTimer();
+        }
+
+        document.getElementById('pause-btn').addEventListener('click', () => {
+            isPaused = !isPaused;
+            document.getElementById('pause-icon').className = isPaused ? 'fas fa-play' : 'fas fa-pause';
+        });
+
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            this.classList.toggle('bookmarked');
+            const icon = document.getElementById('bookmark-icon');
+            icon.className = this.classList.contains('bookmarked') ? 'fas fa-bookmark' : 'far fa-bookmark';
+        });
+
+        // Khởi động khi tải trang
+        document.addEventListener('DOMContentLoaded', () => {
+            initPools();
+            renderQuestion(1);
+            startTimer();
+        });
+    </script>
+</body>
+</html>
