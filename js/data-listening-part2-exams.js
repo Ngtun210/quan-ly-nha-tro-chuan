@@ -328,27 +328,5 @@ const listeningPart2Exams = [
             "D": "My daughter has unusual feet — one size larger than the other, if you can believe it. Every shoe shop in our city offers the same fifteen models and shrugs. Online, I found a maker who sells single shoes in mixed sizes, three colours, her exact fit. The same story repeats with everything unusual we need: left-handed scissors, extra-long trousers, that discontinued ink my husband swears by. The high street stocks the middle of the road; the internet stocks everyone else."
         },
         "explanation": "A = The products are delivered (PARAPHRASE: 'simply appeared... courier... doorbell became my favourite sound').\nB = It is cheaper (PARAPHRASE: 'less than half the shop price... different receipt').\nC = It saves time (PARAPHRASE: 'stolen minutes... hours other people spend pushing trolleys').\nD = There are more choices (PARAPHRASE: 'single shoes in mixed sizes... stocks everyone else').\nNhiễu: easy to return, safe to pay."
-    },
-    {
-        "id": 16,
-        "name": "Đề 16: Using the internet (Travel routes, Messaging friends, Homework research, Streaming films)",
-        "prompt": "Four people are talking about using the internet. Match each person to the correct information.",
-        "speakers": {
-            "A": "Finds transport information",
-            "B": "Communicates with friends",
-            "C": "Completes assignments",
-            "D": "Watches films"
-        },
-        "distractors": [
-            "Plays online games",
-            "Reads latest news"
-        ],
-        "script": {
-            "A": "Whenever I need to plan a trip or get somewhere, I always use the internet to find transportation details. I can check train schedules, bus routes, and even look up flights. It helps me figure out the best way to travel without getting lost.",
-            "B": "The main reason I use the internet is to stay in touch with my friends. It's great because I can talk to people who live far away without any issues. Whether it's through social media, video calls, or messaging apps, the internet allows me to communicate easily and quickly.",
-            "C": "For me, the internet is an essential tool for completing my school assignments. I use it to research information, find articles, and access educational websites that help me understand my subjects better. I also use it to download notes and submit my homework.",
-            "D": "I spend quite a bit of my free time online, mostly because I love watching movies. The internet makes it so easy to find a wide variety of films, from the latest releases to old classics. I can stream them directly on my laptop or TV without needing to go out."
-        },
-        "explanation": "A = Finds transport information (keyword 'transportation details... train schedules, bus routes').\nB = Communicates with friends (keyword 'stay in touch with my friends... talk to people').\nC = Completes assignments (keyword 'completing my school assignments... research, submit homework').\nD = Watches films (keyword 'watching movies... wide variety of films').\nNhiễu: Plays online games, Reads latest news."
     }
 ];
