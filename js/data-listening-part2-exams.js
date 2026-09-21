@@ -328,5 +328,401 @@ const listeningPart2Exams = [
             "D": "My daughter has unusual feet — one size larger than the other, if you can believe it. Every shoe shop in our city offers the same fifteen models and shrugs. Online, I found a maker who sells single shoes in mixed sizes, three colours, her exact fit. The same story repeats with everything unusual we need: left-handed scissors, extra-long trousers, that discontinued ink my husband swears by. The high street stocks the middle of the road; the internet stocks everyone else."
         },
         "explanation": "A = The products are delivered (PARAPHRASE: 'simply appeared... courier... doorbell became my favourite sound').\nB = It is cheaper (PARAPHRASE: 'less than half the shop price... different receipt').\nC = It saves time (PARAPHRASE: 'stolen minutes... hours other people spend pushing trolleys').\nD = There are more choices (PARAPHRASE: 'single shoes in mixed sizes... stocks everyone else').\nNhiễu: easy to return, safe to pay."
+    },
+    {
+        "id": 16,
+        "name": "Đề 16: Using the Internet (Watch films, Communicate friends, Assignments, Transport)",
+        "prompt": "Four people are talking about using the Internet. Match each person to the correct information.",
+        "speakers": {
+            "A": "watch films",
+            "B": "communicate with friends",
+            "C": "complete assignments",
+            "D": "find transport information"
+        },
+        "distractors": [
+            "read news",
+            "play online games"
+        ],
+        "script": {
+            "A": "My travel budget is small, so the world comes to me through my screen instead. Friday nights are for cinema at home — I work through the classics one director at a time, and my watchlist currently holds two hundred titles. Last month it was old Japanese films; this month, French comedies with subtitles. My local cinema shows six films; my laptop shows sixty thousand. For the price of one ticket a month, I have the largest screen-room in history.",
+            "B": "When my best friend moved to Australia, I thought our friendship would shrink to birthday messages. Instead, we talk more now than when she lived two streets away. Sunday morning calls over breakfast — her dinner time — the running joke chat that never sleeps, photos of everything from her new beach to my old dog. The distance is nine thousand kilometres; the conversation has never been closer. The connection is what keeps us next-door neighbours.",
+            "C": "My degree happens as much online as in the lecture hall. The reading lists live on the portal, my group project shares one document across five laptops, and the deadline uploads happen at two minutes to midnight, always. When the statistics module nearly defeated me, a professor in another country rescued my grade through a free video series. Ask what the internet is to me and I will answer honestly: it is where my homework gets done.",
+            "D": "I refuse to stand at a bus stop hoping anymore. Before my shoes are on, the app has told me which line is running late, where my bus is on the map, and whether the trains are behaving. When the bridge closed last month, my phone had redrawn my whole route before the radio mentioned it. My colleagues arrive complaining about their journeys. I arrive having read a book, xactly on time."
+        },
+        "explanation": "A = watch films (PARAPHRASE: 'cinema at home... watchlist... largest screen-room').\nB = communicate with friends (PARAPHRASE: 'we talk more now... conversation has never been closer').\nC = complete assignments (keyword 'homework gets done... deadline uploads').\nD = find transport information (keyword-lite 'which line is running late... redrawn my route').\nNhiễu: news, games. (Variant khác lời Đề 10/12.)"
+    },
+    {
+        "id": 17,
+        "name": "Đề 17: Using the Internet (Check transport, Friends, School assignments, Watch films)",
+        "prompt": "Four people are talking about using the Internet. Match each person to the correct information.",
+        "speakers": {
+            "A": "check the transportation information",
+            "B": "communicate with friends",
+            "C": "complete school assignments",
+            "D": "watch films"
+        },
+        "distractors": [
+            "play online games",
+            "shop online"
+        ],
+        "script": {
+            "A": "I'm not really a fan of talking to people online, so I usually prefer to communicate with my friends face to face, especially when we study together. However, most of my friends live quite far away from me, so I normally travel by bus when I want to meet them. When I'm on the bus, I often use the Internet to check transportation information, especially bus routes and directions. It's really useful because I can find the best route and make sure I don't get lost. I also check the estimated travel time before I leave home, so I know when I'm likely to arrive.",
+            "B": "I have quite a lot of friends, and one of the most convenient ways for me to keep in touch with them is through the Internet. Some of my friends live in different countries, so meeting them in person isn't always possible. For example, one of my close friends lives in Sydney. She takes cookery classes there, and we often have online calls to talk about what she has learned. Sometimes, we exchange recipes and discuss different ways of preparing food. I really enjoy these conversations because social media and other online platforms make it easy for us to stay connected, even though we live far apart.",
+            "C": "I use the Internet a lot for my schoolwork. At the moment, I'm working on a big assignment about different airlines. I have to collect information about several companies, including their services, prices and destinations. Without the Internet, I would have to ask lots of different people or visit different places to find all this information. Fortunately, I can search for most of what I need online. I can also compare information from different websites and find useful pictures and statistics for my assignment. It saves me a lot of time and makes doing a big project much easier.",
+            "D": "I used to spend a lot of time playing computer games, but I think I've grown out of it now. These days, I mainly use the Internet for entertainment, especially for watching films. I don't really need a television because I can watch films on my computer whenever I want. If there's a film I really like, I can download it and watch it later when I have some free time. I usually watch films in the evening, especially at weekends. It's much more convenient for me because I can choose what I want to watch instead of waiting for something interesting to be shown on TV."
+        },
+        "explanation": "LƯU Ý: Đây là bản ĐẢO SPEAKER của Đề 25 - The Internet (cùng 4 mục thông tin nhưng người nói khác nhau). Đề thi thật 25/8 ra bản này.\nA = check transportation information (tra routes trên xe buýt). Bẫy: A nhắc 'communication' nhưng là nói chuyện TRỰC TIẾP khi học nhóm, không phải qua mạng.\nB = communicate with friends (gọi điện trao đổi công thức với bạn ở Sydney).\nC = complete school assignments (bài tập lớn về airlines).\nD = watch films (tải phim về máy tính). Bẫy: D nhắc games nhưng đã BỎ ('grown out of it').\n'play online games' và 'shop online' là 2 mục nhiễu — không ai dùng."
+    },
+    {
+        "id": 18,
+        "name": "Đề 18: Journey to work (Walk friends, Go bus, Walk alone, Drive car)",
+        "prompt": "Four people are talking about their journey to work. Match each person to the correct information.",
+        "speakers": {
+            "A": "Walk with friends",
+            "B": "Go by bus",
+            "C": "Walk alone",
+            "D": "Drive car"
+        },
+        "distractors": [
+            "Ride a bike",
+            "Go by train"
+        ],
+        "script": {
+            "A": "My office is twenty-five minutes from home on foot, and my neighbour Marta works in the same building, so every morning at eight we set off together. We solve the world's problems before nine — her divorce, my roses, everyone's politics. Honestly, the conversation is better exercise than the walking. On days she is ill, the same pavement feels twice as long, and I arrive at my desk with nobody's opinions but my own.",
+            "B": "I am a devoted passenger of the seven-forty. Top deck, second row, window seat — my little office in the sky. While the traffic crawls underneath, I read my novel or answer messages, and somebody else worries about the driving. A monthly ticket costs less than a week of parking in my part of town. Colleagues complain about their steering wheels; I turn pages. I know who wins.",
+            "C": "My commute is my meditation, and it only works because I do it with nobody. Thirty-five minutes on foot, headphones optional, thoughts wandering where they like. I rehearse difficult conversations, plan the weekend, sometimes just count magpies. People offer me lifts constantly and I refuse them all — those solitary steps between home and work are where I become ready for other humans.",
+            "D": "I resisted for years, but the school run defeated me: two children, two schools, one office, three different directions. So now it is the family wagon every morning — bags in the boot, arguments about the radio station, goodbye kisses at two different gates, then the ring road to work. Parking costs a fortune and the traffic tests my soul. But with our timetable, four wheels are not a choice; they are survival."
+        },
+        "explanation": "A = Walk with friends (PARAPHRASE: 'set off together... conversation is better exercise').\nB = Go by bus (PARAPHRASE: 'passenger of the seven-forty... top deck... monthly ticket').\nC = Walk alone (PARAPHRASE: 'on foot... with nobody... solitary steps').\nD = Drive car (keyword-lite 'family wagon... parking... four wheels').\nNhiễu: bike, train."
+    },
+    {
+        "id": 19,
+        "name": "Đề 19: Travelling to work (Travel bus, Travel car, Walk alone, Walk friend)",
+        "prompt": "Four people are talking about travelling to work. Match each person to the correct information.",
+        "speakers": {
+            "A": "travel by bus",
+            "B": "travel by car",
+            "C": "walk alone",
+            "D": "walk with a friend"
+        },
+        "distractors": [
+            "ride a bicycle",
+            "ride a motorbike"
+        ],
+        "script": {
+            "A": "My mornings start at the stop outside the flower shop, seven-fifteen sharp. The number twelve carries me and my thoughts across town while somebody else handles the gears and the traffic lights. I have a regular seat, a regular crossword, and a nodding acquaintance with the whole upper deck. Driving would save me ten minutes, my brother insists. Those ten minutes would cost me my crossword and my calm, so the twelve keeps winning.",
+            "B": "Our house runs on a military timetable — two school drop-offs, then my clinic across town by eight-thirty. Only the family car makes that mathematics work. The children argue over the radio in the back, I drink my coffee at red lights, and the parking bill at the end of each month makes my eyes water. Friends preach about buses and bicycles. With our mornings, I would need three of each.",
+            "C": "Between my front door and the office lie two parks and one bridge, and I cross them all on foot, by myself, every day. Those forty minutes are the only true silence I get — no passengers, no colleagues, just my own footsteps sorting out my thoughts. Offers of lifts come daily and I decline them all politely. By the time I reach my desk, the day's problems have already been walked into order.",
+            "D": "My commute doubles as my social hour. My colleague Anh lives three doors down, so we cover the thirty minutes to the office side by side, on foot, dissecting yesterday's meetings and planning our lunches. When she is away I genuinely feel the difference — the same streets, half the fun. Our boss says he can hear us laughing from his window before we reach the gate. Best part of the working day, both of us agree."
+        },
+        "explanation": "A = travel by bus (PARAPHRASE: 'the number twelve carries me... upper deck').\nB = travel by car (PARAPHRASE: 'family car... parking bill... red lights').\nC = walk alone (PARAPHRASE: 'on foot, by myself... own footsteps').\nD = walk with a friend (PARAPHRASE: 'cover the thirty minutes side by side, on foot').\nNhiễu: bicycle, motorbike. (Variant khác lời Đề 17.)"
+    },
+    {
+        "id": 20,
+        "name": "Đề 20: Where they like to run (Fitness centre, Seaside, Street, Running track)",
+        "prompt": "Four people are talking about where they like to run. Match each person to the correct information.",
+        "speakers": {
+            "A": "in the fitness centre",
+            "B": "at the seaside",
+            "C": "in the street",
+            "D": "on the running track"
+        },
+        "distractors": [
+            "in the park",
+            "in the forest"
+        ],
+        "script": {
+            "A": "Rain, snow, heatwave — none of it matters to me anymore, because my kilometres happen indoors at the sports club. The machines measure everything, the physio works two doors down, and after my knee operation last year that safety means a lot. I book the same treadmill by the window every morning at six. My running friends call indoor running fake running. I call it running that my surgeon approves of.",
+            "B": "I moved to the coast three years ago, and now I cannot imagine training anywhere else. Low tide gives me two kilometres of firm, flat sand, the salt air fills my lungs, and the sound of the water sets my rhythm better than any playlist. Some mornings I share the beach with nobody but the gulls and one old fisherman. My city friends visit, run one sunrise with me, and start checking property prices by lunchtime.",
+            "C": "Give me the pavements, the crossings, the crowds — my route cuts straight through the busiest part of town. I time my runs by the bakery smells and wave at the flower seller setting up her stall. Yes, I stop for traffic lights, and yes, the ground is hard. But a city waking up around you is the best film ever made, and I get a free showing every single morning.",
+            "D": "I train with a club, and we are spoiled: our sessions happen at the athletics stadium, on the proper red surface, under the floodlights. Marked lanes, exact distances, a coach with a whistle and no mercy. Interval nights are brutal — sprint, recover, sprint again, all measured to the metre. But when race day comes, I know my pace to the second, and that certainty was built lap by counted lap."
+        },
+        "explanation": "A = in the fitness centre (PARAPHRASE: 'indoors at the sports club... treadmill').\nB = at the seaside (PARAPHRASE: 'the coast... firm flat sand... gulls').\nC = in the street (keyword 'pavements... through the busiest part of town').\nD = on the running track (keyword 'athletics stadium... red surface... lanes').\nNhiễu: park, forest."
+    },
+    {
+        "id": 21,
+        "name": "Đề 21: Running locations (Street, Seaside, Running track, Fitness center)",
+        "prompt": "Four people are talking about running. Match each person to the correct information.",
+        "speakers": {
+            "A": "prefer running in the street",
+            "B": "at the seaside",
+            "C": "on the running track",
+            "D": "in the fitness center"
+        },
+        "distractors": [
+            "in the park",
+            "mountain trail"
+        ],
+        "script": {
+            "A": "Call me odd, but I do my kilometres right through the middle of town, on the pavements, dodging lamp posts and prams. I love running in the street — the shop windows, the smells from the bakeries, the little nods from the regulars I pass at the same corner every morning. Friends warn me about the traffic and the hard ground, and fair enough. But out there among the crowds and the noise, I never once feel bored.",
+            "B": "I am lucky enough to live ten minutes from the coast, and that decides everything. Every morning I jog along the sand with the waves on one side and the cliffs on the other, gulls complaining overhead. When the tide is out I run on the firm wet sand, which is kind to the ankles. In winter the wind can be brutal, but watching the sun climb out of the water makes every frozen ear worth it.",
+            "C": "I train for competitions, so guesswork is not good enough for me — I need exact distances and a clock I can trust. That is why you will find me at the stadium oval three evenings a week, counting laps on the rubber surface with my stopwatch. Four hundred metres, no surprises, no puddles, no dogs. My friends call it running in circles. I call it knowing precisely how fast I am getting.",
+            "D": "I gave up on outdoor jogging the winter I turned forty — the dark evenings and icy paths defeated me. Now I do my five kilometres on the machine at the gym, warm and dry, with the television screens in front of me and a proper shower afterwards. The trainers there adjust my programme every month too. My friends tease me about running to nowhere, but nowhere has excellent air conditioning."
+        },
+        "explanation": "A = prefer running in the street (keyword 'running in the street').\nB = at the seaside (PARAPHRASE: 'along the sand... waves... tide' — không có chữ seaside).\nC = on the running track (PARAPHRASE: 'stadium oval... counting laps... four hundred metres').\nD = in the fitness center (keyword-lite: 'machine at the gym' — bắt được qua gym).\nNhiễu: in the park, mountain trail."
+    },
+    {
+        "id": 22,
+        "name": "Đề 22: Studying habits (Various places, Quiet place, With music, Late at night)",
+        "prompt": "Four people are talking about their studying habits. Match each person to the correct information.",
+        "speakers": {
+            "A": "At various places",
+            "B": "In a quiet place",
+            "C": "With music",
+            "D": "Late at night"
+        },
+        "distractors": [
+            "in a group",
+            "early morning"
+        ],
+        "script": {
+            "A": "People laugh when they see my rucksack — my books live in it because my study spot changes daily. Monday might be the kitchen table, Tuesday the bus, Wednesday a café, Thursday the steps outside the lecture hall if the sun is out. Staying in one seat makes my brain fall asleep; a fresh background keeps the material fresh too. My record is five different spots in a single day of revision, and that was my best exam ever.",
+            "B": "For me, the enemy is sound. One conversation through the wall, one motorbike outside, and the sentence I was holding shatters. So I have built myself a little fortress: the back corner of the top floor of the library, behind the old journals nobody touches. Not a whisper reaches there. My friends know that between two and six I simply disappear from the world — that silence is where my concentration lives.",
+            "C": "My housemates find it strange, but I cannot open a textbook without my headphones on. Soft piano for reading, something with a beat for writing notes — the melodies wrap around me like a wall and the hours slide by. In a silent room my thoughts wander everywhere; give them a soundtrack and they march in line. My playlist for the final exams lasted nine hours, and I knew every note by the end.",
+            "D": "My day belongs to everyone else — work, family, dinner, dishes. My books only get me after the house goes quiet, usually from eleven until two in the morning. There is something magical about being the only mind awake on the street: no messages, no doorbells, just me and the pages in a pool of lamplight. My mother worries about the dark circles under my eyes. I tell her that is when my brain finally switches on."
+        },
+        "explanation": "A = At various places (PARAPHRASE: 'study spot changes daily... five different spots').\nB = In a quiet place (PARAPHRASE: 'little fortress... Not a whisper reaches there').\nC = With music (keyword 'headphones... melodies... playlist').\nD = Late at night (keyword 'from eleven until two in the morning').\nNhiễu: in a group, early morning."
+    },
+    {
+        "id": 23,
+        "name": "Đề 23: Studying habits (Late at night, Various places, With music, Quiet place)",
+        "prompt": "Four people are talking about their studying habits. Match each person to the correct information.",
+        "speakers": {
+            "A": "Prefer to study late at night",
+            "B": "Prefer to study at various places",
+            "C": "Prefer to study with music",
+            "D": "Prefer to study in a quiet place"
+        },
+        "distractors": [
+            "in a group",
+            "early morning"
+        ],
+        "script": {
+            "A": "The house is chaos until about ten — children, dishes, doorbells. So my textbooks wait, and they know they will get me when everyone else has surrendered to sleep. Between eleven and two, the flat is mine: no interruptions, no noise, just the desk lamp and my notes. My friends call those hours unnatural. I call them the only hours the world agrees to leave me alone, and my best marks were all born in them.",
+            "B": "Ask my friends where I revise and they will laugh: everywhere. The train into college, the bench outside the sports hall, my aunt's kitchen, the launderette while my clothes spin. I have finished essays in waiting rooms and memorised vocabulary in a queue. One fixed desk makes my mind stiff; carrying my notes through the day keeps them alive. My record is studying in six locations before dinner — and remembering every page of it.",
+            "C": "My secret weapon has wires: nothing enters my head without a soundtrack. Gentle jazz for heavy reading, film scores for essays, and one particular symphony that has carried me through every exam since I was sixteen. The melodies build a wall between me and the world, and inside that wall everything sticks. Silence, strangely, is what distracts me — my thoughts scatter without a rhythm to hold them in line.",
+            "D": "I have one requirement, and it is absolute: no sound. I revise in the reading room where even a cough draws stares, or at home with everyone out and the windows shut. One barking dog can cost me a whole paragraph. My sister studies happily in noisy cafés and I genuinely do not understand how. For my brain, stillness is not a preference — it is the on switch."
+        },
+        "explanation": "A = study late at night (PARAPHRASE: 'between eleven and two... hours the world leaves me alone').\nB = at various places (PARAPHRASE: 'everywhere... six locations before dinner').\nC = with music (keyword 'soundtrack... melodies').\nD = in a quiet place (keyword-lite 'no sound... stillness').\nNhiễu: in a group, early morning."
+    },
+    {
+        "id": 24,
+        "name": "Đề 24: Using the Internet (Watch film, Friends, School assignments, Transport)",
+        "prompt": "Four people are talking about using the Internet. Match each person to the correct information.",
+        "speakers": {
+            "A": "watch film",
+            "B": "communicate with friends",
+            "C": "complete school assignments",
+            "D": "find transport information"
+        },
+        "distractors": [
+            "take online courses",
+            "play online games"
+        ],
+        "script": {
+            "A": "My evenings have one ritual: lights off, snacks ready, and something good on the screen. The internet has turned my little bedroom into a cinema — old classics, new releases, series from Korea and Spain with subtitles. I have not bought a cinema ticket in two years, because why queue when the whole film library of the world sits behind my login? Saturday nights, my sister joins me and we argue for twenty minutes about what to watch.",
+            "B": "Half the people I love live in other time zones now — university scattered us across three continents. So my internet hours are spent talking: video calls with my best friend in Toronto every Sunday, voice messages to the group that never sleeps, long chats with my old roommate about nothing. Without the connection, those friendships would have faded into birthday texts. With it, we still finish each other's sentences from opposite sides of the planet.",
+            "C": "For me the internet is basically a homework machine. Every essay starts with the online library, every presentation leans on the journals my university subscribes to, and when the deadline panics arrive, the tutorial videos save my grade. Last term I wrote my entire dissertation without borrowing a single paper book. My classmates use it the same way — the night before submission, you can feel the whole class online, typing.",
+            "D": "I check one thing before leaving the house, always: which bus is actually coming, and when. The app knows about the roadworks before the radio does, shows me where my bus is crawling on the map, and reroutes me when the trains misbehave. Since I started trusting it, I have stopped standing at stops in the rain guessing. My whole journey to work is planned by my phone before I finish my coffee."
+        },
+        "explanation": "A = watch film (keyword 'cinema... film library').\nB = communicate with friends (PARAPHRASE: 'spent talking... video calls... friendships').\nC = complete school assignments (PARAPHRASE: 'homework machine... essay... dissertation').\nD = find transport information (keyword 'which bus is coming... journey planned').\nNhiễu: online courses, games."
+    },
+    {
+        "id": 25,
+        "name": "Đề 25: Using the Internet (Watch movies, Assignments, Family, Transport)",
+        "prompt": "Four people are talking about using the Internet. Match each person to the correct information.",
+        "speakers": {
+            "A": "Watch movies",
+            "B": "Complete assignments",
+            "C": "Stay in touch with family",
+            "D": "Find transport information"
+        },
+        "distractors": [
+            "read news",
+            "play games"
+        ],
+        "script": {
+            "A": "After a long shift, my routine never changes: dinner, sofa, screen. The internet replaced my television years ago — I follow three series at once and pick films by mood, from black-and-white classics to last month's releases. My flatmate and I have a Friday tradition of choosing the worst-reviewed film we can find and enjoying every terrible minute. Without the streaming sites, my evenings would be a lot quieter and a lot duller.",
+            "B": "University turned me into a night-time typist. Every project, every essay, every group presentation runs through the online portal — I download the readings, join the shared documents, and submit everything before the midnight deadline. When I got stuck on statistics last term, a tutorial video explained in nine minutes what the lecture had failed to explain in ninety. My grades genuinely live or die by my connection.",
+            "C": "My parents are back in the countryside and my brother works abroad, so the internet is really our dinner table now. Sunday evening video calls with the whole family, my mother showing me her garden through the camera, my father asking if I am eating properly. In between there are voice messages and photos of everything from new haircuts to burnt pancakes. Distance used to mean silence; now it just means a screen between us.",
+            "D": "Before I even brush my teeth, I check the transport app. It tells me whether my usual bus is on time, which platform the train leaves from, and how the traffic is moving on the ring road. Twice last month it warned me about strikes before my colleagues had heard a word. Planning my route used to be guesswork and luck. Now the whole journey is arranged while the kettle boils."
+        },
+        "explanation": "A = Watch movies (keyword 'films by mood... streaming').\nB = Complete assignments (keyword 'essay... submit').\nC = Stay in touch with family (PARAPHRASE: 'our dinner table now... Distance used to mean silence').\nD = Find transport information (PARAPHRASE: 'whether my usual bus is on time... journey arranged').\nNhiễu: news, games."
+    },
+    {
+        "id": 26,
+        "name": "Đề 26: Listening to music (To relax, While studying, While singing, After waking up)",
+        "prompt": "Four people are talking about listening to music. Match each person to the correct information.",
+        "speakers": {
+            "A": "To relax",
+            "B": "While studying",
+            "C": "While singing",
+            "D": "After waking up"
+        },
+        "distractors": [
+            "While driving",
+            "Before bed"
+        ],
+        "script": {
+            "A": "My job empties me — eight hours of phone calls and complaints. So the first thing I do at home is drop onto the sofa, close my eyes, and let my favourite slow album wash the day away. Twenty minutes of those warm melodies and my shoulders finally come down from my ears. No wine, no television — just the speakers doing their quiet repair work. My wife says she can tell which song is playing by the look on my face.",
+            "B": "My flatmates think I am strange, but my headphones go on the moment my books open. Instrumental only — words in songs fight with the words on the page. With the right quiet piano behind me, three hours of revision pass like one; without it, I check my phone every four minutes. I even match albums to subjects now: strings for history, soft electronic for maths. My exam playlist is basically a study partner.",
+            "C": "In my family, music is not for listening — it is for joining in. The moment a song I know starts, my voice is already in it, harmonies and all. In the shower, over the cooking, in the car at full volume with the windows down. My neighbours have learned my entire repertoire through the walls, poor people. A song without my voice on top feels unfinished; that is simply how I enjoy music.",
+            "D": "My alarm is set to silence — what actually starts my day is pressing play. Before my eyes fully open, the first song of my morning playlist is filling the bedroom, and by track three I am upright and human. Coffee, shower, dressing: all of it happens to music, every single morning. On the rare day the speaker battery dies, the whole house feels wrong until noon. Waking up without songs, to me, is only half waking up."
+        },
+        "explanation": "A = To relax (PARAPHRASE: 'wash the day away... shoulders come down... quiet repair work').\nB = While studying (keyword 'books open... revision').\nC = While singing (PARAPHRASE: 'my voice is already in it... my entire repertoire').\nD = After waking up (keyword-lite 'starts my day... morning playlist... waking up').\nNhiễu: while driving, before bed."
+    },
+    {
+        "id": 27,
+        "name": "Đề 27: Listening to music (To relax, While studying, While singing, After waking up)",
+        "prompt": "Four people are talking about listening to music. Match each person to the correct information.",
+        "speakers": {
+            "A": "To relax",
+            "B": "While studying",
+            "C": "While singing",
+            "D": "After waking up"
+        },
+        "distractors": [
+            "While driving",
+            "Before bed"
+        ],
+        "script": {
+            "A": "Sunday evenings are sacred in my flat: phone in the drawer, lights low, and one full album from start to finish on the good speakers. That hour dissolves whatever the week left in my muscles — I can feel the tension draining somewhere around the third track. Doctors talk about massages and hot baths; my medicine has always been melodies and a closed door. By the final song I am a calmer, kinder version of myself.",
+            "B": "My study desk has three permanent residents: my laptop, my coffee, and my headphones. The moment revision starts, so does my instrumental playlist — nothing with lyrics, because sung words elbow the textbook words out of my memory. With the right background running, formulas settle in quietly and essays untangle themselves. My study group finds it funny that I refuse to revise in silence. Silence, for me, is where concentration goes to die.",
+            "C": "I cannot keep a tune to myself — the moment I recognise a song, I am part of it. Full performances happen in my shower, duets with the radio while I cook, and my long drives are basically concerts where I hold every part. My family bangs on the bathroom door; my colleagues have votes about my humming. I accept all criticism and change nothing. Music you only listen to is music half-enjoyed.",
+            "D": "The first thing my hand touches in the morning is not the snooze button — it is the play button. My wake-up playlist starts gentle and grows louder, and by the fourth song even my teenage son is vertical. Breakfast has a soundtrack, brushing teeth has a soundtrack, finding lost keys has a dramatic soundtrack. Mornings without that music feel like films with the sound off: technically functional, but joyless."
+        },
+        "explanation": "A = To relax (PARAPHRASE: 'dissolves whatever the week left... tension draining... calmer version').\nB = While studying (keyword 'revision... textbook... study group').\nC = While singing (PARAPHRASE: 'I am part of it... performances... hold every part').\nD = After waking up (PARAPHRASE: 'first thing my hand touches in the morning... wake-up playlist').\nNhiễu: while driving, before bed. (Variant khác lời Đề 16/22.)"
+    },
+    {
+        "id": 28,
+        "name": "Đề 28: Listening to music (To relax, After waking up, While singing, While studying)",
+        "prompt": "Four people are talking about listening to music. Match each person to the correct information.",
+        "speakers": {
+            "A": "To relax",
+            "B": "After waking up",
+            "C": "While singing",
+            "D": "While studying"
+        },
+        "distractors": [
+            "while exercising",
+            "before bed"
+        ],
+        "script": {
+            "A": "My nervous system has an off switch, and it is shaped like a record player. After the children are in bed, I pour a tea, lower the needle on something slow, and let the day's knots untie themselves one by one. No screens, no talking — just twenty quiet minutes while the melodies do their gentle housework inside my head. My husband says he can measure my week by which record I reach for on Friday night.",
+            "B": "I wake up before my alarm just to beat it to the speaker. The first song goes on while my eyes are still half closed, and it walks me through the whole morning — louder for the shower, brighter for breakfast, something cheerful for finding my keys. By the time I close the front door, side one is finished and I am fully human. A morning that starts in silence feels broken to me all day.",
+            "C": "My voice is not good, and I could not care less — every song I know is a duet the moment it starts. I harmonise with the kettle-side radio, perform full choruses into the hairbrush, and my car is a one-woman concert hall on the motorway. The neighbours applauded from their balcony once, only half joking. Listening quietly feels like watching a dance and refusing to move; joining in with my own voice is the entire pleasure.",
+            "D": "Exam season turned me into a musical creature. My revision only works with a instrumental stream in my ears — the notes hold my attention on the page the way a fence holds sheep. Lyrics ruin it: the words on the page and the words in the song start fighting. Four hours of formulas pass gently when the piano is playing. In silence, I last twenty minutes before my phone wins."
+        },
+        "explanation": "A = To relax (PARAPHRASE: 'off switch... knots untie themselves... gentle housework').\nB = After waking up (PARAPHRASE: 'wake up before my alarm... walks me through the morning').\nC = While singing (PARAPHRASE: 'every song is a duet... my own voice is the pleasure').\nD = While studying (keyword 'revision... formulas').\nNhiễu: while exercising, before bed. (Variant khác lời 16/18.)"
+    },
+    {
+        "id": 29,
+        "name": "Đề 29: Doing arts (Social activity, With children, Part of job, Alone)",
+        "prompt": "Four people are talking about doing arts. Match each person to the correct information.",
+        "speakers": {
+            "A": "Doing as a social activity",
+            "B": "Doing arts with children",
+            "C": "Doing arts as part of the job",
+            "D": "Doing arts alone"
+        },
+        "distractors": [
+            "Taking online classes",
+            "Joining art competitions"
+        ],
+        "script": {
+            "A": "Wednesday evening is the highlight of my week: eight of us meet above the bakery with our easels, paint for two hours, then argue about whose sunset is worse over tea and biscuits. Half of us have no talent whatsoever, and it truly does not matter. I joined to meet people after moving to this town, and the painting turned out to be the easiest doorway into friendship I have ever found. We are planning a little group show in the spring.",
+            "B": "Every Sunday morning my kitchen table disappears under glue, glitter and coloured card, because that is craft time with my two little ones. We make lopsided animals, potato-print wrapping paper, birthday cards for the grandparents. The floor suffers terribly. But watching a five-year-old concentrate on her wobbly giraffe is worth any mess, and the fridge door has become our family gallery. It is our time together, away from every screen in the house.",
+            "C": "People assume drawing is my hobby, but it is actually how I pay my rent. I illustrate children's books for two publishers, so from nine to five I am sketching dragons and checking colour proofs against deadlines. When your passion becomes your profession, it changes — some days the pencil feels heavy, like any tool. Still, I remind myself that plenty of people would trade their desk for mine, deadlines and all.",
+            "D": "My painting happens behind a closed door, and that is exactly how I like it. Sunday afternoons, the flat empty, the phone off — just me, the brushes and the radio. Nobody sees the results; most canvases end up stacked in the wardrobe. Friends keep telling me to join a class or share pictures online, and I always refuse. The whole point is that no one is watching. It is the only truly private hour I own."
+        },
+        "explanation": "A = social activity (PARAPHRASE: 'easiest doorway into friendship... meet people').\nB = with children (keyword 'craft time with my two little ones').\nC = part of the job (PARAPHRASE: 'how I pay my rent... profession... deadlines').\nD = alone (keyword 'behind a closed door... no one is watching').\nNhiễu: online classes, competitions."
+    },
+    {
+        "id": 30,
+        "name": "Đề 30: Reading books (Travelling to school, No time, Prefer other activity, In bed)",
+        "prompt": "Four people are talking about reading books. Match each person to the correct information.",
+        "speakers": {
+            "A": "read when travelling to school",
+            "B": "don't have time to read",
+            "C": "prefer another activity to reading books",
+            "D": "read on their beds"
+        },
+        "distractors": [
+            "read on phones",
+            "read in the library"
+        ],
+        "script": {
+            "A": "My reading happens between two train stations. Forty minutes into college, forty minutes home — that is a solid chapter and a half each day, bookmarked precisely as we pull into the platform. The carriage rocks, the pages turn, and the crowd around me disappears entirely. My friends complain the commute steals their day. Mine gave me back reading; I finished twenty-three books last year without ever sitting in an armchair.",
+            "B": "I keep buying books and life keeps cancelling them. Between the double shifts at the restaurant, the baby, and the house that never stays clean, my bedside pile has become furniture. I open a novel on my rare free evening and my eyes surrender within a page. My sister sends me her favourites with little notes inside, and I add them to the tower guiltily. One day the pile and I will have our year. Not this year.",
+            "C": "I've got shelves full of books at home — novels, biographies, travel writing, the lot — and for years I read every single evening. Then in January I joined the fitness club near my office, and everything changed. Now my evenings are spin classes and lengths in the pool, and honestly I'd rather be moving than sitting still with a paperback. The books are still there on the shelves, waiting. I just prefer doing something active these days.",
+            "D": "When I was small, my parents read to me every night — one story, then lights out — and the habit never left me. Even now I can't fall asleep without a chapter under the lamp, propped up on my pillows. And I've passed it on: every evening I sit on my daughter's bed and we read a book together, taking turns with the pages. Her teacher says it has helped her reading at school no end, and it's the best part of my day."
+        },
+        "explanation": "A = read when travelling to school ('between two train stations... into college').\nB = don't have time to read ('life keeps cancelling them... bedside pile has become furniture').\nC = prefer another activity to reading books ('joined the fitness club... I\\'d rather be moving than sitting still with a paperback').\nD = read on their beds ('can\\'t fall asleep without a chapter... propped up on my pillows', đọc cùng con gái trên giường).\nNhiễu: on phones, in the library.\n👉 Đề thật 16/9: C = thích hoạt động khác (fitness club), D = đọc trên giường (bố mẹ kể chuyện trước ngủ, giờ đọc cùng con)."
+    },
+    {
+        "id": 31,
+        "name": "Đề 31: Visiting a new museum (Finished quickly, Got lost, Use of technology, Visit again)",
+        "prompt": "Four people are talking about visiting a new museum. Match each person to the correct information.",
+        "speakers": {
+            "A": "Finished the visit quickly",
+            "B": "Got lost during the visit",
+            "C": "Enjoyed the use of technology",
+            "D": "Wants to visit again"
+        },
+        "distractors": [
+            "Bought souvenirs at the shop",
+            "Complained about ticket price"
+        ],
+        "script": {
+            "A": "I will be honest: museums are my wife's love, not mine, and Saturday was her birthday choice. I walked the halls at a polite pace, admired what required admiring, and was back at the entrance café within fifty minutes while she was still in the second room. The building is impressive, I suppose. But my legs were done, my interest was done, and the cake selection downstairs deserved serious attention.",
+            "B": "My visit turned into an accidental adventure — the place is a labyrinth. I followed the arrows to the Egyptian rooms and somehow surfaced among medieval armour, twice. The floor plan they hand out disagrees with the actual corridors, I swear. A kind guard finally walked me to the exhibition I had actually come for, one hour late. Beautiful collections, genuinely — but next time I am bringing breadcrumbs to drop behind me.",
+            "C": "What won me over completely were the screens. Point your phone at any exhibit and the app resurrects it — the broken temple rebuilds itself in front of you, the faded painting recovers its colours, and a soft voice tells the story at your own pace. My favourite was the interactive table where you could virtually unwrap a mummy, layer by layer. The objects are ancient; the experience is anything but. This is how history should be shown.",
+            "D": "One afternoon was criminal shortness for that collection — I saw perhaps a third before the closing bell chased us out. I have already booked the first Saturday of next month, and this time I am starting on the top floor where I never arrived. The membership card is under consideration too, since three visits pay for it. Places like that are not visits; they are relationships, and mine has only just begun."
+        },
+        "explanation": "A = Finished the visit quickly (PARAPHRASE: 'back at the entrance café within fifty minutes').\nB = Got lost during the visit (PARAPHRASE: 'labyrinth... surfaced among medieval armour... walked me to the exhibition').\nC = Enjoyed the use of technology (keyword-lite 'screens... app... interactive table').\nD = Wants to visit again (PARAPHRASE: 'already booked the first Saturday of next month').\nNhiễu: souvenirs, ticket price."
+    },
+    {
+        "id": 32,
+        "name": "Đề 32: Outdoor activities (Horse riding, Run, Climbing, Mountain biking)",
+        "prompt": "Four people are talking about outdoor activities. Match each person to the correct information.",
+        "speakers": {
+            "A": "horse riding",
+            "B": "going for a run",
+            "C": "climbing",
+            "D": "mountain biking"
+        },
+        "distractors": [
+            "swimming",
+            "camping"
+        ],
+        "script": {
+            "A": "My Saturdays begin at the stables before the mist lifts. Brushing her down, checking her hooves, then two hours through the fields with only hoofbeats for conversation — my mare knows the route better than I do by now. People ask if it frightens me, trusting an animal that size. It is the opposite: those two hours of moving together are the calmest partnership in my week. The saddle is my favourite chair in the world.",
+            "B": "Rain or shine, my trainers hit the path along the canal at seven. Nothing complicated — just me, my breathing, and five kilometres of towpath before the world wakes up properly. I started to lose my temper less, honestly, and kept going because the mornings felt unfinished without it. Last month I entered my first ten-kilometre race and finished grinning like a fool. Simple legs, simple happiness.",
+            "C": "My weekends are vertical. My club drives out to the crags every Sunday, ropes and helmets rattling in the boot, and we spend the day solving the rock face metre by metre. Fingertips ache, forearms burn, and the moment you pull over the top edge repays every scrape. People call it dangerous; done properly, it is chess with your whole body. I have never trusted people more than the ones holding my rope.",
+            "D": "Two wheels, fat tyres, forest trails — that is my religion. Saturday mornings I load the bike, drive to the hills, and spend four muddy hours flying down tracks and pushing back up them. The bruises are a fair tax on the joy. My wife inspects the scratches on my arms every weekend and sighs; I remind her the alternative was golf, and she agrees the mud is better."
+        },
+        "explanation": "A = horse riding (PARAPHRASE: 'stables... my mare... saddle').\nB = going for a run (PARAPHRASE: 'trainers hit the path... five kilometres... race').\nC = climbing (PARAPHRASE: 'vertical... crags... ropes and helmets... rock face').\nD = mountain biking (keyword-lite 'Two wheels... bike... forest trails').\nNhiễu: swimming, camping."
+    },
+    {
+        "id": 33,
+        "name": "Đề 33: Outdoor activities (Run, Horse riding, Mountain biking, Walking)",
+        "prompt": "Four people are talking about outdoor activities. Match each person to the correct information.",
+        "speakers": {
+            "A": "going for a run",
+            "B": "horse riding",
+            "C": "mountain biking",
+            "D": "walking"
+        },
+        "distractors": [
+            "snow sports",
+            "climbing"
+        ],
+        "script": {
+            "A": "I like sport because it keeps me active, but I've had to be careful about which one. Years ago I fell off a horse and broke my arm, so I gave up riding for good. And climbing is out of the question — I'm terrified of heights. Luckily, there's a forest just behind my house with wide, flat paths, and lots of people jog there. So every morning before work I put on my trainers and run for about forty minutes. It's simple, it's free, and it clears my head.",
+            "B": "I've loved horses since I was a little girl. Owning one is far too expensive, of course — the food and the vet bills would eat my whole salary. Many of my friends go skiing in winter, but I've never found snow sports very interesting; I hate the cold. What I'm lucky about is that there are several riding stables near my home, so I don't need a horse of my own. I still spend most weekends there, brushing the horses and riding out through the fields.",
+            "C": "Where I live there's a very long beach, and hundreds of people jog along it every morning. I go in the opposite direction. There's a mountain behind the town with steep, rocky trails, and I love riding my bike up there. Pushing up to the top is hard work, but then you get the view — and the ride down is fast and exciting. It's a real challenge every time, and my legs certainly know about it the next day.",
+            "D": "I'm getting on a bit now, so I can't do the things I used to. Climbing and cycling are far too much for my knees these days. Jogging isn't a bad idea, I suppose, but I need something slower. So what I do is go for a walk every day in the late afternoon. I follow the path by the river, enjoy the scenery, and by that time of day it's not too hot. It's gentle, but it keeps me fit and happy."
+        },
+        "explanation": "A – going for a run: 'every morning before work I put on my trainers and run for about forty minutes'. Bẫy: ngựa (đã bỏ vì ngã), climbing (sợ độ cao).\nB – horse riding: 'there are several riding stables near my home... riding out through the fields'. Bẫy: skiing/snow sports là sở thích của BẠN cô ấy.\nC – mountain biking: 'I love riding my bike up there... the ride down is fast and exciting'. Bẫy: jogging là việc người khác làm trên bãi biển.\nD – walking: 'I go for a walk every day in the late afternoon'. Bẫy: climbing, cycling (quá sức), jogging (cần chậm hơn).\nKhông ai chọn: snow sports, climbing — đều được nhắc như thứ KHÔNG làm.\n👉 Mẹo: mỗi người nhắc 2–3 môn nhưng chỉ 1 môn đi với 'I do / I go / I love'; các môn khác đi với 'gave up', 'out of the question', 'my friends'."
     }
 ];
