@@ -148,42 +148,54 @@
             padding: 0 25px;
         }
 
-        /* Thanh chuyển đổi bộ đề (Đề 1 / Đề 2) */
+        /* Thanh chuyển đổi bộ đề (Đề 1 -> Đề 10) gọn gàng */
         .package-switch-bar {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 8px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
         }
 
         .pkg-tab-btn {
-            padding: 11px 22px;
-            border-radius: 26px;
-            font-size: 14.5px;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 13.5px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             border: 2px solid var(--primary-blue, #007bff);
+            background-color: #ffffff;
+            color: var(--primary-blue, #007bff);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
         }
 
         .pkg-tab-btn.active {
             background-color: var(--primary-blue, #007bff);
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
-        }
-
-        .pkg-tab-btn:not(.active) {
-            background-color: #ffffff;
-            color: var(--primary-blue, #007bff);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
         }
 
         .pkg-tab-btn:not(.active):hover {
             background-color: #f0f7ff;
+            transform: translateY(-1px);
+        }
+
+        .current-pkg-banner {
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 14.5px;
+            color: #24085a;
+            background: #f8f6fc;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border-left: 4px solid #24085a;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
         }
 
         /* Top Nav Selector (Part 2 / Part 3) */
@@ -633,19 +645,18 @@
     <main class="exam-container">
         <!-- THANH CHỌN BỘ ĐỀ THI: ĐỀ 1 / ĐỀ 2 -->
         <div class="package-switch-bar">
-            <button class="pkg-tab-btn active" id="tab-pkg-de1" onclick="switchPackage('de1')">
-                <i class="fas fa-film"></i> Đề 1: Films & Sports day
-            </button>
-            <button class="pkg-tab-btn" id="tab-pkg-de2" onclick="switchPackage('de2')">
-                <i class="fas fa-coffee"></i> Đề 2: Movies & Coffee shop
-            </button>
-            <button class="pkg-tab-btn" id="tab-pkg-de3" onclick="switchPackage('de3')">
-                <i class="fas fa-music"></i> Đề 3: Movies & Singer
-            </button>
-            <button class="pkg-tab-btn" id="tab-pkg-de4" onclick="switchPackage('de4')">
-                <i class="fas fa-utensils"></i> Đề 4: Cafe & Project ✨
-            </button>
-        </div>
+    <button class="pkg-tab-btn active" id="tab-pkg-de1" onclick="switchPackage('de1')">Đề 1</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de2" onclick="switchPackage('de2')">Đề 2</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de3" onclick="switchPackage('de3')">Đề 3</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de4" onclick="switchPackage('de4')">Đề 4</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de5" onclick="switchPackage('de5')">Đề 5</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de6" onclick="switchPackage('de6')">Đề 6</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de7" onclick="switchPackage('de7')">Đề 7</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de8" onclick="switchPackage('de8')">Đề 8</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de9" onclick="switchPackage('de9')">Đề 9</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de10" onclick="switchPackage('de10')">Đề 10</button>
+</div>
+<div class="current-pkg-banner" id="current-pkg-banner">📍 Đang làm: <strong id="current-pkg-name">Đề 1: Films & Family sports day</strong></div>
 
         <!-- Thanh chuyển câu hỏi Question 1 / Question 2 & Quay về -->
         <div class="exam-nav-bar">
@@ -729,344 +740,766 @@
         // Dữ liệu trọn vẹn cả 2 Bộ đề thi chuẩn Aptis ESOL Part 2 + Part 3
         const examPackages = {
             "de1": {
-                name: "Đề 1: Films & Family sports day",
-                questions: {
-                    1: {
-                        title: "Films",
-                        subTitleBtn: "Question 1: Films (Part 2)",
-                        headerTitle: "Question 1 of 2",
-                        fixedFirst: true, // Câu 1 cho sẵn
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "Old movies were very different from today's movies.",
-                                vn: "Phim cũ rất khác so với phim ngày nay."
-                            },
-                            {
-                                number: 2,
-                                en: "That's because the movies were only in black and white, and sometimes without sound.",
-                                vn: "Đó là vì phim chỉ có màu đen trắng, và đôi khi không có tiếng."
-                            },
-                            {
-                                number: 3,
-                                en: "Not only did these technological limitations exist, the movies were also low budget.",
-                                vn: "Không chỉ có những hạn chế về công nghệ này, các bộ phim còn có kinh phí thấp."
-                            },
-                            {
-                                number: 4,
-                                en: "Due to the lack of money, actors also had few opportunities to earn money through acting.",
-                                vn: "Vì thiếu tiền, diễn viên cũng có ít cơ hội kiếm tiền bằng nghề diễn."
-                            },
-                            {
-                                number: 5,
-                                en: "Now things have changed, actors and filmmakers can earn thousands of dollars from film production.",
-                                vn: "Giờ đây mọi thứ đã thay đổi, diễn viên và nhà làm phim có thể kiếm hàng ngàn đô la từ việc sản xuất phim."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề phim cũ rất khác phim ngày nay.<br>" +
-                                  "• <strong>Câu 2:</strong> Bắt đầu bằng <em>'That\'s because...'</em> để giải thích nguyên nhân khác biệt (đen trắng, không tiếng).<br>" +
-                                  "• <strong>Câu 3:</strong> Móc xích tiếp theo <em>'Not only did these technological limitations exist...'</em> và bổ sung thêm ý <em>'low budget'</em> (kinh phí thấp).<br>" +
-                                  "• <strong>Câu 4:</strong> Nối tiếp từ kinh phí thấp -> <em>'Due to the lack of money'</em> (diễn viên ít cơ hội kiếm tiền).<br>" +
-                                  "• <strong>Câu 5:</strong> Kết bài tương phản giữa xưa và nay: <em>'Now things have changed...'</em> (ngày nay kiếm được hàng ngàn đô la)."
-                    },
-                    2: {
-                        title: "Family sports day",
-                        subTitleBtn: "Question 2: Family sports day (Part 3)",
-                        headerTitle: "Question 2 of 2",
-                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "The family sports day was held on Saturday morning, and there was a 10 km race for adults.",
-                                vn: "Ngày hội thể thao gia đình được tổ chức vào sáng thứ Bảy, và có một cuộc đua 10 km dành cho người lớn."
-                            },
-                            {
-                                number: 2,
-                                en: "There were 60 participants, in which Ms. Kamus kept the fastest speed and won.",
-                                vn: "Có 60 người tham gia, trong đó cô Kamus đã giữ tốc độ nhanh nhất và giành chiến thắng."
-                            },
-                            {
-                                number: 3,
-                                en: "After she received the prize, the following time was for children's activities.",
-                                vn: "Sau khi cô ấy nhận giải, thời gian sau đó là dành cho các hoạt động của trẻ em."
-                            },
-                            {
-                                number: 4,
-                                en: "Activities included football, swimming, skipping rope, and the children played together very happily.",
-                                vn: "Các hoạt động bao gồm bóng đá, bơi lội, nhảy dây, và các em nhỏ chơi đùa với nhau rất vui vẻ."
-                            },
-                            {
-                                number: 5,
-                                en: "After playing, the children were very hungry and ate with their parents.",
-                                vn: "Sau khi chơi, các em nhỏ rất đói và đã ăn cùng bố mẹ."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1:</strong> Mở đầu sự kiện: Giới thiệu ngày hội thể thao gia đình sáng thứ Bảy và cuộc đua 10 km cho người lớn.<br>" +
-                                  "• <strong>Câu 2:</strong> Chi tiết về cuộc đua: 60 người tham gia, cô Kamus chạy nhanh nhất và chiến thắng.<br>" +
-                                  "• <strong>Câu 3:</strong> Chuyển ý thời gian: <em>'After she received the prize...'</em> (sau khi cô Kamus nhận giải) thì chuyển sang phần hoạt động cho trẻ em.<br>" +
-                                  "• <strong>Câu 4:</strong> Liệt kê cụ thể: <em>'Activities included...'</em> (bóng đá, bơi, nhảy dây vui vẻ).<br>" +
-                                  "• <strong>Câu 5:</strong> Kết thúc sự kiện: <em>'After playing...'</em> (chơi xong các bé đói và ăn cùng bố mẹ)."
-                    }
-                }
+                        "name": "Đề 1: Films & Family sports day",
+                        "timeSeconds": 380,
+                        "questions": {
+                                    "1": {
+                                                "title": "Films",
+                                                "subTitleBtn": "Question 1: Films (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Old movies were very different from today's movies.",
+                                                                        "vn": "Phim cũ rất khác so với phim ngày nay."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "That's because the movies were only in black and white, and sometimes without sound.",
+                                                                        "vn": "Đó là vì phim chỉ có màu đen trắng, và đôi khi không có tiếng."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "Not only did these technological limitations exist, the movies were also low budget.",
+                                                                        "vn": "Không chỉ có những hạn chế về công nghệ này, các bộ phim còn có kinh phí thấp."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "Due to the lack of money, actors also had few opportunities to earn money through acting.",
+                                                                        "vn": "Vì thiếu tiền, diễn viên cũng có ít cơ hội kiếm tiền bằng nghề diễn."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Now things have changed, actors and filmmakers can earn thousands of dollars from film production.",
+                                                                        "vn": "Giờ đây mọi thứ đã thay đổi, diễn viên và nhà làm phim có thể kiếm hàng ngàn đô la từ việc sản xuất phim."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề phim cũ rất khác phim ngày nay.<br>• <strong>Câu 2:</strong> <em>'That\'s because...'</em> giải thích nguyên nhân khác biệt (đen trắng, không tiếng).<br>• <strong>Câu 3:</strong> <em>'Not only did these technological limitations exist...'</em> bổ sung thêm ý kinh phí thấp (<em>'low budget'</em>).<br>• <strong>Câu 4:</strong> Nối tiếp từ kinh phí thấp -> <em>'Due to the lack of money'</em> (ít cơ hội kiếm tiền).<br>• <strong>Câu 5:</strong> Kết bài tương phản: <em>'Now things have changed...'</em> (kiếm được hàng ngàn đô la)."
+                                    },
+                                    "2": {
+                                                "title": "Family sports day",
+                                                "subTitleBtn": "Question 2: Family sports day (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "The family sports day was held on Saturday morning, and there was a 10 km race for adults.",
+                                                                        "vn": "Ngày hội thể thao gia đình được tổ chức vào sáng thứ Bảy, và có một cuộc đua 10 km dành cho người lớn."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "There were 60 participants, in which Ms. Kamus kept the fastest speed and won.",
+                                                                        "vn": "Có 60 người tham gia, trong đó cô Kamus đã giữ tốc độ nhanh nhất và giành chiến thắng."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "After she received the prize, the following time was for children's activities.",
+                                                                        "vn": "Sau khi cô ấy nhận giải, thời gian sau đó là dành cho các hoạt động của trẻ em."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "Activities included football, swimming, skipping rope, and the children played together very happily.",
+                                                                        "vn": "Các hoạt động bao gồm bóng đá, bơi lội, nhảy dây, và các em nhỏ chơi đùa với nhau rất vui vẻ."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "After playing, the children were very hungry and ate with their parents.",
+                                                                        "vn": "Sau khi chơi, các em nhỏ rất đói và đã ăn cùng bố mẹ."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> Mở đầu sự kiện sáng thứ Bảy và cuộc đua 10 km cho người lớn.<br>• <strong>Câu 2:</strong> 60 người tham gia, cô Kamus chạy nhanh nhất và chiến thắng.<br>• <strong>Câu 3:</strong> <em>'After she received the prize...'</em> chuyển tiếp sang hoạt động của trẻ em.<br>• <strong>Câu 4:</strong> <em>'Activities included...'</em> liệt kê bóng đá, bơi, nhảy dây.<br>• <strong>Câu 5:</strong> <em>'After playing...'</em> kết thúc sự kiện, các em đói và ăn cùng bố mẹ."
+                                    }
+                        }
             },
             "de2": {
-                name: "Đề 2: Movies then and now & A new coffee shop",
-                questions: {
-                    1: {
-                        title: "Movies then and now",
-                        subTitleBtn: "Question 1: Movies then and now (Part 2)",
-                        headerTitle: "Question 1 of 2",
-                        fixedFirst: true, // Câu 1 cho sẵn
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "Movies today are very different from movies in the past.",
-                                vn: "Phim ảnh ngày nay rất khác so với phim ảnh trong quá khứ."
-                            },
-                            {
-                                number: 2,
-                                en: "In the old days, films were only in black and white, and sometimes even without sound.",
-                                vn: "Ngày xưa, phim chỉ có đen trắng, và đôi khi còn không có âm thanh."
-                            },
-                            {
-                                number: 3,
-                                en: "In addition to these technological limits, producers had very low budgets.",
-                                vn: "Ngoài những giới hạn công nghệ này, các nhà sản xuất còn có ngân sách rất thấp."
-                            },
-                            {
-                                number: 4,
-                                en: "Because of the lack of money, actors also earned little money from acting.",
-                                vn: "Vì thiếu tiền, các diễn viên cũng kiếm được ít tiền từ việc diễn xuất."
-                            },
-                            {
-                                number: 5,
-                                en: "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films.",
-                                vn: "Ngày nay, mọi thứ đã thay đổi: diễn viên và nhà sản xuất có thể kiếm được rất nhiều tiền từ việc làm phim."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề: phim ảnh ngày nay rất khác phim ảnh trong quá khứ.<br>" +
-                                  "• <strong>Câu 2:</strong> Giải thích quá khứ: <em>'In the old days...'</em> phim chỉ có đen trắng và đôi khi không có tiếng.<br>" +
-                                  "• <strong>Câu 3:</strong> Móc xích tiếp theo: <em>'In addition to these technological limits...'</em> bổ sung thêm khó khăn về ngân sách thấp (<em>'very low budgets'</em>).<br>" +
-                                  "• <strong>Câu 4:</strong> Nối tiếp từ ngân sách thấp: <em>'Because of the lack of money...'</em> các diễn viên cũng kiếm được ít tiền.<br>" +
-                                  "• <strong>Câu 5:</strong> Kết bài tương phản hiện tại: <em>'Nowadays, everything has changed...'</em> diễn viên và nhà sản xuất kiếm được rất nhiều tiền."
-                    },
-                    2: {
-                        title: "A new coffee shop",
-                        subTitleBtn: "Question 2: A new coffee shop (Part 3)",
-                        headerTitle: "Question 2 of 2",
-                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "When I arrived, the place was very crowded, and the staff were extremely busy on the first day.",
-                                vn: "Khi tôi đến, nơi này rất đông đúc, và nhân viên cực kỳ bận rộn ngay ngày đầu tiên."
-                            },
-                            {
-                                number: 2,
-                                en: "Even though it was crowded, the staff still managed to find a table for me.",
-                                vn: "Mặc dù rất đông, nhân viên vẫn xoay sở tìm được một bàn cho tôi."
-                            },
-                            {
-                                number: 3,
-                                en: "They handed me the menu, and when I looked through it, I saw quite a variety of dishes.",
-                                vn: "Họ đưa cho tôi thực đơn, và khi tôi xem qua, tôi thấy khá nhiều món ăn đa dạng."
-                            },
-                            {
-                                number: 4,
-                                en: "After checking them all, I decided to order the most expensive sandwich.",
-                                vn: "Sau khi xem tất cả, tôi quyết định gọi món bánh sandwich đắt nhất."
-                            },
-                            {
-                                number: 5,
-                                en: "It tasted really good with melted cheese on top, and I’ll definitely come back to this place again.",
-                                vn: "Nó thực sự rất ngon với phô mai chảy bên trên, và tôi chắc chắn sẽ quay lại nơi này lần nữa."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1:</strong> Mở đầu dòng thời gian khi đến quán: <em>'When I arrived...'</em> nơi này rất đông đúc và nhân viên cực kỳ bận rộn.<br>" +
-                                  "• <strong>Câu 2:</strong> Móc xích tiếp theo: <em>'Even though it was crowded...'</em> nhân viên vẫn xoay sở tìm được bàn cho tôi.<br>" +
-                                  "• <strong>Câu 3:</strong> Khi đã có bàn: <em>'They handed me the menu...'</em> xem qua thực đơn thấy nhiều món đa dạng.<br>" +
-                                  "• <strong>Câu 4:</strong> Sau khi xem thực đơn: <em>'After checking them all, I decided to order the most expensive sandwich.'</em><br>" +
-                                  "• <strong>Câu 5:</strong> Cảm nhận món ăn và lời khen: <em>'It tasted really good with melted cheese... I’ll definitely come back.'</em>"
-                    }
-                }
+                        "name": "Đề 2: Movies then and now & A new coffee shop",
+                        "timeSeconds": 380,
+                        "questions": {
+                                    "1": {
+                                                "title": "Movies then and now",
+                                                "subTitleBtn": "Question 1: Movies then and now (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Movies today are very different from movies in the past.",
+                                                                        "vn": "Phim ảnh ngày nay rất khác so với phim ảnh trong quá khứ."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "In the old days, films were only in black and white, and sometimes even without sound.",
+                                                                        "vn": "Ngày xưa, phim chỉ có đen trắng, và đôi khi còn không có âm thanh."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "In addition to these technological limits, producers had very low budgets.",
+                                                                        "vn": "Ngoài những giới hạn công nghệ này, các nhà sản xuất còn có ngân sách rất thấp."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "Because of the lack of money, actors also earned little money from acting.",
+                                                                        "vn": "Vì thiếu tiền, các diễn viên cũng kiếm được ít tiền từ việc diễn xuất."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films.",
+                                                                        "vn": "Ngày nay, mọi thứ đã thay đổi: diễn viên và nhà sản xuất có thể kiếm được rất nhiều tiền từ việc làm phim."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề: phim ảnh ngày nay rất khác phim ảnh trong quá khứ.<br>• <strong>Câu 2:</strong> <em>'In the old days...'</em> phim chỉ có đen trắng và đôi khi không có tiếng.<br>• <strong>Câu 3:</strong> <em>'In addition to these technological limits...'</em> bổ sung thêm khó khăn về ngân sách thấp.<br>• <strong>Câu 4:</strong> <em>'Because of the lack of money...'</em> các diễn viên cũng kiếm được ít tiền.<br>• <strong>Câu 5:</strong> <em>'Nowadays, everything has changed...'</em> diễn viên và nhà sản xuất kiếm được nhiều tiền."
+                                    },
+                                    "2": {
+                                                "title": "A new coffee shop",
+                                                "subTitleBtn": "Question 2: A new coffee shop (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "When I arrived, the place was very crowded, and the staff were extremely busy on the first day.",
+                                                                        "vn": "Khi tôi đến, nơi này rất đông đúc, và nhân viên cực kỳ bận rộn ngay ngày đầu tiên."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "Even though it was crowded, the staff still managed to find a table for me.",
+                                                                        "vn": "Mặc dù rất đông, nhân viên vẫn xoay sở tìm được một bàn cho tôi."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "They handed me the menu, and when I looked through it, I saw quite a variety of dishes.",
+                                                                        "vn": "Họ đưa cho tôi thực đơn, và khi tôi xem qua, tôi thấy khá nhiều món ăn đa dạng."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "After checking them all, I decided to order the most expensive sandwich.",
+                                                                        "vn": "Sau khi xem tất cả, tôi quyết định gọi món bánh sandwich đắt nhất."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "It tasted really good with melted cheese on top, and I’ll definitely come back to this place again.",
+                                                                        "vn": "Nó thực sự rất ngon với phô mai chảy bên trên, và tôi chắc chắn sẽ quay lại nơi này lần nữa."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> <em>'When I arrived...'</em> nơi này rất đông đúc và nhân viên cực kỳ bận rộn.<br>• <strong>Câu 2:</strong> <em>'Even though it was crowded...'</em> nhân viên vẫn xoay sở tìm được bàn cho tôi.<br>• <strong>Câu 3:</strong> <em>'They handed me the menu...'</em> xem qua thực đơn thấy nhiều món đa dạng.<br>• <strong>Câu 4:</strong> <em>'After checking them all...'</em> quyết định gọi món bánh sandwich đắt nhất.<br>• <strong>Câu 5:</strong> <em>'It tasted really good with melted cheese... definitely come back.'</em>"
+                                    }
+                        }
             },
             "de3": {
-                name: "Đề 3: Movies then and now & A successful singer",
-                timeSeconds: 6 * 60 + 55, // 00:06:55
-                questions: {
-                    1: {
-                        title: "Movies then and now",
-                        subTitleBtn: "Question 1: Movies then and now (Part 2)",
-                        headerTitle: "Question 1 of 2",
-                        instruction: "The sentences below are from some instructions. Put the sentences in the right order.",
-                        fixedFirst: true, // Câu 1 cho sẵn
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "Movies today are very different from movies in the past.",
-                                vn: "Phim ảnh ngày nay rất khác so với phim ảnh trong quá khứ."
-                            },
-                            {
-                                number: 2,
-                                en: "In the old days, films were only in black and white, and sometimes even without sound.",
-                                vn: "Ngày xưa, phim chỉ có màu đen trắng, và đôi khi còn không có tiếng."
-                            },
-                            {
-                                number: 3,
-                                en: "In addition to these technological limits, producers had very low budgets.",
-                                vn: "Ngoài những hạn chế về công nghệ này, các nhà sản xuất còn có ngân sách rất thấp."
-                            },
-                            {
-                                number: 4,
-                                en: "Because of the lack of money, actors also earned little money from acting.",
-                                vn: "Vì thiếu tiền, các diễn viên cũng kiếm được rất ít tiền từ việc diễn xuất."
-                            },
-                            {
-                                number: 5,
-                                en: "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films.",
-                                vn: "Ngày nay, mọi thứ đã thay đổi: diễn viên và nhà sản xuất có thể kiếm được rất nhiều tiền từ việc làm phim."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề: phim ảnh ngày nay rất khác phim ảnh trong quá khứ.<br>" +
-                                  "• <strong>Câu 2:</strong> Bắt đầu bằng <em>'In the old days...'</em> giải thích đặc điểm phim ngày xưa (đen trắng, không tiếng).<br>" +
-                                  "• <strong>Câu 3:</strong> Móc xích tiếp theo: <em>'In addition to these technological limits...'</em> bổ sung hạn chế ngân sách rất thấp.<br>" +
-                                  "• <strong>Câu 4:</strong> Nối tiếp từ kinh phí thấp: <em>'Because of the lack of money...'</em> dẫn đến diễn viên kiếm được ít tiền.<br>" +
-                                  "• <strong>Câu 5:</strong> Kết bài tương phản hiện tại: <em>'Nowadays, everything has changed...'</em> diễn viên và nhà sản xuất kiếm được nhiều tiền từ làm phim."
-                    },
-                    2: {
-                        title: "A successful singer",
-                        subTitleBtn: "Question 2: A successful singer (Part 3)",
-                        headerTitle: "Question 2 of 2",
-                        instruction: "The sentences below are from some instructions. Put the sentences in the right order.",
-                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "He is a successful singer with many fans.",
-                                vn: "Anh ấy là một ca sĩ thành công với nhiều người hâm mộ."
-                            },
-                            {
-                                number: 2,
-                                en: "Before becoming famous, he studied music at school when he was 15.",
-                                vn: "Trước khi trở nên nổi tiếng, anh ấy đã học nhạc ở trường khi anh ấy 15 tuổi."
-                            },
-                            {
-                                number: 3,
-                                en: "His unique way of dressing and performing made him stand out from others.",
-                                vn: "Phong cách ăn mặc và biểu diễn độc đáo của anh ấy đã làm anh ấy nổi bật so với những người khác."
-                            },
-                            {
-                                number: 4,
-                                en: "This helped him receive many invitations for collaborations and performances.",
-                                vn: "Điều này đã giúp anh ấy nhận được nhiều lời mời hợp tác và biểu diễn."
-                            },
-                            {
-                                number: 5,
-                                en: "He eventually became famous among audiences around the world.",
-                                vn: "Cuối cùng anh ấy đã trở nên nổi tiếng với khán giả khắp thế giới."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1:</strong> Mở đầu giới thiệu nhân vật: <em>'He is a successful singer with many fans.'</em> (Anh ấy là một ca sĩ thành công với nhiều người hâm mộ).<br>" +
-                                  "• <strong>Câu 2:</strong> Dòng thời gian thuở ban đầu: <em>'Before becoming famous, he studied music at school when he was 15.'</em> (Trước khi nổi tiếng, anh học nhạc ở trường lúc 15 tuổi).<br>" +
-                                  "• <strong>Câu 3:</strong> Yếu tố tạo sự đột phá: <em>'His unique way of dressing and performing made him stand out from others.'</em> (Phong cách độc đáo giúp nổi bật).<br>" +
-                                  "• <strong>Câu 4:</strong> Hệ quả của việc nổi bật: <em>'This helped him receive many invitations for collaborations and performances.'</em> (Giúp nhận nhiều lời mời hợp tác, biểu diễn).<br>" +
-                                  "• <strong>Câu 5:</strong> Đỉnh cao danh tiếng: <em>'He eventually became famous among audiences around the world.'</em> (Cuối cùng trở nên nổi tiếng toàn cầu)."
-                    }
-                }
+                        "name": "Đề 3: Movies then and now & A successful singer",
+                        "timeSeconds": 415,
+                        "questions": {
+                                    "1": {
+                                                "title": "Movies then and now",
+                                                "subTitleBtn": "Question 1: Movies then and now (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below are from some instructions. Put the sentences in the right order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Movies today are very different from movies in the past.",
+                                                                        "vn": "Phim ảnh ngày nay rất khác so với phim ảnh trong quá khứ."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "In the old days, films were only in black and white, and sometimes even without sound.",
+                                                                        "vn": "Ngày xưa, phim chỉ có màu đen trắng, và đôi khi còn không có tiếng."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "In addition to these technological limits, producers had very low budgets.",
+                                                                        "vn": "Ngoài những hạn chế về công nghệ này, các nhà sản xuất còn có ngân sách rất thấp."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "Because of the lack of money, actors also earned little money from acting.",
+                                                                        "vn": "Vì thiếu tiền, các diễn viên cũng kiếm được rất ít tiền từ việc diễn xuất."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films.",
+                                                                        "vn": "Ngày nay, mọi thứ đã thay đổi: diễn viên và nhà sản xuất có thể kiếm được rất nhiều tiền từ việc làm phim."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Nêu chủ đề: phim ảnh ngày nay rất khác phim ảnh trong quá khứ.<br>• <strong>Câu 2:</strong> <em>'In the old days...'</em> giải thích đặc điểm phim ngày xưa (đen trắng, không tiếng).<br>• <strong>Câu 3:</strong> <em>'In addition to these technological limits...'</em> bổ sung hạn chế ngân sách rất thấp.<br>• <strong>Câu 4:</strong> <em>'Because of the lack of money...'</em> diễn viên kiếm được ít tiền từ diễn xuất.<br>• <strong>Câu 5:</strong> <em>'Nowadays, everything has changed...'</em> diễn viên và nhà sản xuất kiếm được nhiều tiền."
+                                    },
+                                    "2": {
+                                                "title": "A successful singer",
+                                                "subTitleBtn": "Question 2: A successful singer (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below are from some instructions. Put the sentences in the right order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "He is a successful singer with many fans.",
+                                                                        "vn": "Anh ấy là một ca sĩ thành công với nhiều người hâm mộ."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "Before becoming famous, he studied music at school when he was 15.",
+                                                                        "vn": "Trước khi trở nên nổi tiếng, anh ấy đã học nhạc ở trường khi anh ấy 15 tuổi."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "His unique way of dressing and performing made him stand out from others.",
+                                                                        "vn": "Phong cách ăn mặc và biểu diễn độc đáo của anh ấy đã làm anh ấy nổi bật so với những người khác."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "This helped him receive many invitations for collaborations and performances.",
+                                                                        "vn": "Điều này đã giúp anh ấy nhận được nhiều lời mời hợp tác và biểu diễn."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "He eventually became famous among audiences around the world.",
+                                                                        "vn": "Cuối cùng anh ấy đã trở nên nổi tiếng với khán giả khắp thế giới."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> <em>'He is a successful singer with many fans.'</em> (Giới thiệu ca sĩ thành công).<br>• <strong>Câu 2:</strong> <em>'Before becoming famous, he studied music at school when he was 15.'</em> (Học nhạc lúc 15 tuổi).<br>• <strong>Câu 3:</strong> <em>'His unique way of dressing and performing made him stand out...'</em> (Phong cách độc đáo giúp nổi bật).<br>• <strong>Câu 4:</strong> <em>'This helped him receive many invitations...'</em> (Nhận nhiều lời mời hợp tác, biểu diễn).<br>• <strong>Câu 5:</strong> <em>'He eventually became famous among audiences around the world.'</em> (Nổi tiếng toàn cầu)."
+                                    }
+                        }
             },
             "de4": {
-                name: "Đề 4: Eating at a cafe & End-of-term project",
-                timeSeconds: 4 * 60 + 42, // 00:04:42
-                questions: {
-                    1: {
-                        title: "Eating at a cafe",
-                        subTitleBtn: "Question 1: Eating at a cafe (Part 2)",
-                        headerTitle: "Question 1 of 2",
-                        instruction: "The sentences below make a complete text. Put them in the correct order.",
-                        fixedFirst: true, // Câu 1 cho sẵn
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "I decided to try a new café located at the end of the street.",
-                                vn: "Tôi quyết định thử một quán cà phê mới nằm ở cuối đường."
-                            },
-                            {
-                                number: 2,
-                                en: "The place was quite busy, with a lively atmosphere.",
-                                vn: "Quán khá đông đúc, với không khí sôi động."
-                            },
-                            {
-                                number: 3,
-                                en: "Even so, a staff member quickly noticed me and brought over the menu.",
-                                vn: "Mặc dù vậy, một nhân viên nhanh chóng nhận ra tôi và mang thực đơn đến."
-                            },
-                            {
-                                number: 4,
-                                en: "I was a bit surprised to see that there were only a few items to choose from.",
-                                vn: "Tôi hơi ngạc nhiên khi thấy chỉ có một vài món để chọn."
-                            },
-                            {
-                                number: 5,
-                                en: "In the end, I went for the most expensive salad on the menu.",
-                                vn: "Cuối cùng, tôi đã chọn món salad đắt nhất trong thực đơn."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1 (Cho sẵn):</strong> Mở đầu hành động: Quyết định ghé thử quán cà phê mới ở cuối đường.<br>" +
-                                  "• <strong>Câu 2:</strong> Miêu tả ấn tượng đầu tiên: <em>'The place was quite busy, with a lively atmosphere.'</em> (Quán đông đúc, náo nhiệt).<br>" +
-                                  "• <strong>Câu 3:</strong> Móc xích tương phản: Dù quán đông đúc nhưng <em>'Even so, a staff member quickly noticed me...'</em> nhân viên vẫn nhanh nhẹn mang thực đơn ra.<br>" +
-                                  "• <strong>Câu 4:</strong> Cảm nhận khi mở thực đơn: <em>'I was a bit surprised...'</em> ngạc nhiên vì có quá ít món để lựa chọn.<br>" +
-                                  "• <strong>Câu 5:</strong> Quyết định chốt món: <em>'In the end, I went for the most expensive salad on the menu.'</em> (Cuối cùng chọn món salad đắt nhất)."
-                    },
-                    2: {
-                        title: "End-of-term project",
-                        subTitleBtn: "Question 2: End-of-term project (Part 3)",
-                        headerTitle: "Question 2 of 2",
-                        instruction: "The sentences below make a complete text. Put them in the correct order.",
-                        fixedFirst: false, // Cả 5 câu đều phải tự sắp xếp
-                        sentences: [
-                            {
-                                number: 1,
-                                en: "Your end-of-term project should focus on at least two of the given topics.",
-                                vn: "Dự án cuối kỳ của bạn nên tập trung vào ít nhất hai trong số các chủ đề đã cho."
-                            },
-                            {
-                                number: 2,
-                                en: "It must include relevant pictures along with your own written text about the subject.",
-                                vn: "Bài thuyết trình phải có hình ảnh phù hợp cùng với phần văn bản viết của riêng bạn về chủ đề đó."
-                            },
-                            {
-                                number: 3,
-                                en: "You will then use these pictures and your written work to create a class presentation.",
-                                vn: "Sau đó, bạn sẽ sử dụng những hình ảnh này và bài viết của mình để tạo một bài thuyết trình trên lớp."
-                            },
-                            {
-                                number: 4,
-                                en: "During the presentation, you should summarize your main points, and it should last about five minutes.",
-                                vn: "Trong buổi thuyết trình, bạn nên tóm tắt các ý chính của mình và thời lượng khoảng năm phút."
-                            },
-                            {
-                                number: 5,
-                                en: "Afterward, your classmates will have the opportunity to ask questions, and you will respond to them.",
-                                vn: "Sau đó, các bạn cùng lớp của bạn sẽ có cơ hội đặt câu hỏi và bạn sẽ trả lời."
-                            }
-                        ],
-                        logicTip: "💡 <strong>Mẹo liên kết logic câu:</strong><br>" +
-                                  "• <strong>Câu 1:</strong> Giới thiệu yêu cầu tổng quát: <em>'Your end-of-term project should focus on...'</em> (Dự án tập trung vào ít nhất 2 chủ đề).<br>" +
-                                  "• <strong>Câu 2:</strong> Yêu cầu thành phần bài làm: <em>'It must include relevant pictures along with your own written text...'</em> (Hình ảnh và bài viết tự sáng tác).<br>" +
-                                  "• <strong>Câu 3:</strong> Chuyển sang giai đoạn làm slide/thuyết trình: <em>'You will then use these pictures and your written work to create a class presentation.'</em><br>" +
-                                  "• <strong>Câu 4:</strong> Diễn biến buổi thuyết trình: <em>'During the presentation, you should summarize your main points...'</em> (Thuyết trình tóm tắt ý trong khoảng 5 phút).<br>" +
-                                  "• <strong>Câu 5:</strong> Phần Q&A kết thúc: <em>'Afterward, your classmates will have the opportunity to ask questions...'</em> (Sau đó các bạn đặt câu hỏi và trả lời)."
-                    }
-                }
+                        "name": "Đề 4: Eating at a cafe & End-of-term project",
+                        "timeSeconds": 282,
+                        "questions": {
+                                    "1": {
+                                                "title": "Eating at a cafe",
+                                                "subTitleBtn": "Question 1: Eating at a cafe (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "I decided to try a new café located at the end of the street.",
+                                                                        "vn": "Tôi quyết định thử một quán cà phê mới nằm ở cuối đường."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "The place was quite busy, with a lively atmosphere.",
+                                                                        "vn": "Quán khá đông đúc, với không khí sôi động."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "Even so, a staff member quickly noticed me and brought over the menu.",
+                                                                        "vn": "Mặc dù vậy, một nhân viên nhanh chóng nhận ra tôi và mang thực đơn đến."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "I was a bit surprised to see that there were only a few items to choose from.",
+                                                                        "vn": "Tôi hơi ngạc nhiên khi thấy chỉ có một vài món để chọn."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "In the end, I went for the most expensive salad on the menu.",
+                                                                        "vn": "Cuối cùng, tôi đã chọn món salad đắt nhất trong thực đơn."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Quyết định ghé thử quán cà phê mới ở cuối đường.<br>• <strong>Câu 2:</strong> <em>'The place was quite busy...'</em> (Quán đông đúc, náo nhiệt).<br>• <strong>Câu 3:</strong> <em>'Even so, a staff member quickly noticed me...'</em> (Nhân viên nhanh nhẹn mang menu ra).<br>• <strong>Câu 4:</strong> <em>'I was a bit surprised...'</em> (Ngạc nhiên vì có quá ít món để chọn).<br>• <strong>Câu 5:</strong> <em>'In the end, I went for the most expensive salad...'</em> (Cuối cùng chọn món salad đắt nhất)."
+                                    },
+                                    "2": {
+                                                "title": "End-of-term project",
+                                                "subTitleBtn": "Question 2: End-of-term project (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Your end-of-term project should focus on at least two of the given topics.",
+                                                                        "vn": "Dự án cuối kỳ của bạn nên tập trung vào ít nhất hai trong số các chủ đề đã cho."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "It must include relevant pictures along with your own written text about the subject.",
+                                                                        "vn": "Bài thuyết trình phải có hình ảnh phù hợp cùng với phần văn bản viết của riêng bạn về chủ đề đó."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "You will then use these pictures and your written work to create a class presentation.",
+                                                                        "vn": "Sau đó, bạn sẽ sử dụng những hình ảnh này và bài viết của mình để tạo một bài thuyết trình trên lớp."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "During the presentation, you should summarize your main points, and it should last about five minutes.",
+                                                                        "vn": "Trong buổi thuyết trình, bạn nên tóm tắt các ý chính của mình và thời lượng khoảng năm phút."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Afterward, your classmates will have the opportunity to ask questions, and you will respond to them.",
+                                                                        "vn": "Sau đó, các bạn cùng lớp của bạn sẽ có cơ hội đặt câu hỏi và bạn sẽ trả lời."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> <em>'Your end-of-term project should focus on...'</em> (Dự án tập trung vào ít nhất 2 chủ đề).<br>• <strong>Câu 2:</strong> <em>'It must include relevant pictures...'</em> (Hình ảnh và bài viết tự biên soạn).<br>• <strong>Câu 3:</strong> <em>'You will then use these pictures and your written work...'</em> (Dùng để làm bài thuyết trình).<br>• <strong>Câu 4:</strong> <em>'During the presentation, you should summarize your main points...'</em> (Thuyết trình trong khoảng 5 phút).<br>• <strong>Câu 5:</strong> <em>'Afterward, your classmates will have the opportunity to ask questions...'</em> (Hỏi đáp kết thúc)."
+                                    }
+                        }
+            },
+            "de5": {
+                        "name": "Đề 5: New coffee shop & A famous singer",
+                        "timeSeconds": 417,
+                        "questions": {
+                                    "1": {
+                                                "title": "New coffee shop",
+                                                "subTitleBtn": "Question 1: New coffee shop (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "When I arrived, the place was very crowded, and the staff were extremely busy on the first day.",
+                                                                        "vn": "Khi tôi đến, quán rất đông đúc, và nhân viên cực kỳ bận rộn trong ngày đầu tiên."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "Even though it was crowded, the staff still managed to find a table for me.",
+                                                                        "vn": "Mặc dù rất đông khách, nhân viên vẫn cố gắng tìm một cái bàn cho tôi."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "They handed me the menu, and when I looked through it, I saw quite a variety of dishes.",
+                                                                        "vn": "Họ đưa tôi thực đơn, và khi tôi xem qua, tôi thấy có khá nhiều món ăn đa dạng."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "After checking them all, I decided to order the most expensive sandwich.",
+                                                                        "vn": "Sau khi xem xét tất cả, tôi quyết định gọi món bánh sandwich đắt nhất."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "It tasted really good with melted cheese on top, and I’ll definitely come back to this place again.",
+                                                                        "vn": "Nó có phô mai tan chảy bên trên ăn rất ngon, và tôi chắc chắn sẽ quay lại đây lần nữa."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Bước vào quán ngày khai trương: rất đông và nhân viên bận rộn.<br>• <strong>Câu 2:</strong> <em>'Even though it was crowded...'</em> nhân viên vẫn tìm được bàn cho tôi.<br>• <strong>Câu 3:</strong> <em>'They handed me the menu...'</em> xem qua thực đơn thấy nhiều món đa dạng.<br>• <strong>Câu 4:</strong> <em>'After checking them all...'</em> quyết định gọi món bánh sandwich đắt nhất.<br>• <strong>Câu 5:</strong> <em>'It tasted really good with melted cheese...'</em> khen ngon và chắc chắn quay lại."
+                                    },
+                                    "2": {
+                                                "title": "A famous singer",
+                                                "subTitleBtn": "Question 2: A famous singer (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Before becoming famous at a young age, he studied art and music in high school.",
+                                                                        "vn": "Trước khi trở nên nổi tiếng khi còn trẻ, anh ấy đã học nghệ thuật và âm nhạc ở trường trung học."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "During this time, he started performing on stage.",
+                                                                        "vn": "Trong thời gian này, anh ấy bắt đầu biểu diễn trên sân khấu."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "During his performances on stage, he liked wearing colorful clothes and painting his face.",
+                                                                        "vn": "Trong các buổi biểu diễn trên sân khấu, anh ấy thích mặc quần áo sặc sỡ và vẽ mặt."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "This unusual way of dressing and his songs attracted people’s attention.",
+                                                                        "vn": "Phong cách ăn mặc khác thường và các bài hát của anh ấy đã thu hút sự chú ý của mọi người."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "They then started following him on social media, and he is now very famous.",
+                                                                        "vn": "Sau đó, mọi người bắt đầu theo dõi anh ấy trên mạng xã hội, và giờ anh ấy rất nổi tiếng."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> <em>'Before becoming famous at a young age...'</em> học nghệ thuật và âm nhạc ở trường trung học.<br>• <strong>Câu 2:</strong> <em>'During this time...'</em> bắt đầu biểu diễn trên sân khấu.<br>• <strong>Câu 3:</strong> <em>'During his performances on stage...'</em> thích mặc quần áo sặc sỡ và vẽ mặt.<br>• <strong>Câu 4:</strong> <em>'This unusual way of dressing and his songs...'</em> thu hút sự chú ý của mọi người.<br>• <strong>Câu 5:</strong> <em>'They then started following him on social media...'</em> mọi người theo dõi và giờ rất nổi tiếng."
+                                    }
+                        }
+            },
+            "de6": {
+                        "name": "Đề 6: Weekend activities & The first American woman in space",
+                        "timeSeconds": 412,
+                        "questions": {
+                                    "1": {
+                                                "title": "Weekend activities",
+                                                "subTitleBtn": "Question 1: Weekend activities (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "The weekend sports event was held on Saturday morning, and there was a 10 km race for adults.",
+                                                                        "vn": "Sự kiện thể thao cuối tuần được tổ chức vào sáng thứ Bảy, và có một cuộc đua 10 km dành cho người lớn."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "There were 60 participants, and Ms. Kamus was the fastest and won.",
+                                                                        "vn": "Có 60 người tham gia, và cô Kamus là người nhanh nhất và đã thắng cuộc."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "After she received the prize, the next part of the event was for children's activities.",
+                                                                        "vn": "Sau khi cô ấy nhận giải, phần tiếp theo của sự kiện là các hoạt động dành cho trẻ em."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "These activities included football, swimming and skipping rope, and the children played together very happily.",
+                                                                        "vn": "Những hoạt động này bao gồm bóng đá, bơi lội và nhảy dây, và bọn trẻ đã chơi với nhau rất vui vẻ."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "After playing, the children were very hungry and ate lunch with their parents.",
+                                                                        "vn": "Sau khi chơi, bọn trẻ rất đói và đã ăn trưa cùng bố mẹ."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Sự kiện thể thao sáng thứ Bảy và cuộc đua 10 km cho người lớn.<br>• <strong>Câu 2:</strong> 60 người tham gia, cô Kamus chạy nhanh nhất và thắng cuộc.<br>• <strong>Câu 3:</strong> <em>'After she received the prize, the next part...'</em> cô Kamus nhận giải xong đến lượt hoạt động cho trẻ em.<br>• <strong>Câu 4:</strong> <em>'These activities included...'</em> bóng đá, bơi lội và nhảy dây.<br>• <strong>Câu 5:</strong> <em>'After playing...'</em> bọn trẻ đói và ăn trưa cùng bố mẹ."
+                                    },
+                                    "2": {
+                                                "title": "The first American woman in space",
+                                                "subTitleBtn": "Question 2: Woman in space (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Encouraged by her parents, Mae decided to study science at university.",
+                                                                        "vn": "Được cha mẹ khuyến khích, Mae quyết định học khoa học ở trường đại học."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "Her strong academic record earned her a place in a training program in the United States.",
+                                                                        "vn": "Hồ sơ học tập xuất sắc của cô đã giúp cô có được một suất trong chương trình đào tạo tại Hoa Kỳ."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "Her passion for space led Mae to join a dedicated research team.",
+                                                                        "vn": "Niềm đam mê không gian đã đưa Mae đến việc tham gia vào một đội nghiên cứu chuyên biệt."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "As a member of the team, she traveled into space and carried out numerous experiments.",
+                                                                        "vn": "Là một thành viên của đội, cô đã du hành vào không gian và thực hiện nhiều thí nghiệm."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Some of these experiments involved growing plants and observing animals aboard the spacecraft.",
+                                                                        "vn": "Một số thí nghiệm này bao gồm trồng cây và quan sát động vật trên tàu vũ trụ."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> Bắt đầu từ trường đại học: Cha mẹ khuyến khích Mae học khoa học.<br>• <strong>Câu 2:</strong> <em>'Her strong academic record earned her...'</em> thành tích tốt giúp vào chương trình đào tạo ở Mỹ.<br>• <strong>Câu 3:</strong> <em>'Her passion for space led Mae to join...'</em> tham gia đội nghiên cứu chuyên biệt.<br>• <strong>Câu 4:</strong> <em>'As a member of the team, she traveled into space...'</em> bay vào vũ trụ và làm thí nghiệm.<br>• <strong>Câu 5:</strong> <em>'Some of these experiments involved...'</em> trồng cây và quan sát động vật."
+                                    }
+                        }
+            },
+            "de7": {
+                        "name": "Đề 7: New coffee shop & Flexible working",
+                        "timeSeconds": 417,
+                        "questions": {
+                                    "1": {
+                                                "title": "New coffee shop",
+                                                "subTitleBtn": "Question 1: New coffee shop (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "It was my first time visiting a new local coffee shop.",
+                                                                        "vn": "Đó là lần đầu tiên tôi ghé thăm một quán cà phê địa phương mới."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "At first, I didn’t think it would be good, but I decided to give it a try.",
+                                                                        "vn": "Lúc đầu, tôi không nghĩ nó sẽ ngon, nhưng tôi quyết định thử."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "I looked at the menu and saw many different kinds of food and drinks.",
+                                                                        "vn": "Tôi nhìn vào thực đơn và thấy nhiều loại đồ ăn và thức uống khác nhau."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "I chose one dish to try for myself.",
+                                                                        "vn": "Tôi chọn một món để tự mình nếm thử."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "When I tasted it, I found it really delicious and knew I would come back again.",
+                                                                        "vn": "Khi nếm thử, tôi thấy nó thực sự ngon và biết mình sẽ quay lại lần nữa."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Lần đầu tiên ghé quán cà phê địa phương mới.<br>• <strong>Câu 2:</strong> <em>'At first, I didn’t think it would be good...'</em> lúc đầu nghĩ không ngon nhưng vẫn thử.<br>• <strong>Câu 3:</strong> <em>'I looked at the menu and saw...'</em> xem thực đơn thấy nhiều món ăn thức uống.<br>• <strong>Câu 4:</strong> <em>'I chose one dish to try for myself.'</em> chọn một món để thử.<br>• <strong>Câu 5:</strong> <em>'When I tasted it, I found it really delicious...'</em> nếm thử thấy rất ngon và biết sẽ quay lại."
+                                    },
+                                    "2": {
+                                                "title": "Flexible working",
+                                                "subTitleBtn": "Question 2: Flexible working (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "The company offers flexible working hours to better support employees’ schedules.",
+                                                                        "vn": "Công ty cung cấp giờ làm việc linh hoạt để hỗ trợ tốt hơn cho lịch trình của nhân viên."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "One employee uses a planner to organize her tasks throughout her flexible workweek.",
+                                                                        "vn": "Một nhân viên sử dụng sổ kế hoạch để sắp xếp các công việc trong suốt tuần làm việc linh hoạt của mình."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "Every morning, she works at a white desk in the shared open office.",
+                                                                        "vn": "Mỗi sáng, cô ấy làm việc tại một chiếc bàn trắng trong văn phòng mở chung."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "At lunchtime, she enjoys a homemade sandwich prepared with fresh ingredients.",
+                                                                        "vn": "Vào giờ ăn trưa, cô ấy thưởng thức một chiếc bánh sandwich tự làm với nguyên liệu tươi ngon."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "In the evening, she relaxes by reading books on productivity and well-being.",
+                                                                        "vn": "Vào buổi tối, cô ấy thư giãn bằng cách đọc sách về năng suất và sức khỏe."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> Chính sách công ty cung cấp giờ làm việc linh hoạt.<br>• <strong>Câu 2:</strong> <em>'One employee uses a planner...'</em> một nữ nhân viên dùng sổ kế hoạch để sắp xếp công việc.<br>• <strong>Câu 3:</strong> <em>'Every morning, she works at a white desk...'</em> mỗi sáng ngồi làm việc tại bàn trắng.<br>• <strong>Câu 4:</strong> <em>'At lunchtime, she enjoys a homemade sandwich...'</em> trưa ăn bánh sandwich tự làm.<br>• <strong>Câu 5:</strong> <em>'In the evening, she relaxes by reading books...'</em> tối thư giãn đọc sách."
+                                    }
+                        }
+            },
+            "de8": {
+                        "name": "Đề 8: A famous singer (Version 1 & 2)",
+                        "timeSeconds": 418,
+                        "questions": {
+                                    "1": {
+                                                "title": "A famous singer",
+                                                "subTitleBtn": "Question 1: A famous singer (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order. The first sentence is done for you.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Before becoming famous at such a young age, he studied music in high school.",
+                                                                        "vn": "Trước khi nổi tiếng khi còn rất trẻ, anh ấy đã học nhạc ở trường cấp ba."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "During his studies, he learnt how to be creative on stage.",
+                                                                        "vn": "Trong quá trình học, anh ấy đã học cách sáng tạo trên sân khấu."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "In his performances, he wore brightly coloured clothes and painted his face.",
+                                                                        "vn": "Trong các buổi biểu diễn của mình, anh ấy mặc quần áo sặc sỡ và vẽ mặt."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "This unique way of dressing and performing made people pay attention to him.",
+                                                                        "vn": "Cách ăn mặc và biểu diễn độc đáo này đã khiến mọi người chú ý đến anh ấy."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Many people started following him on social media and he became a famous singer.",
+                                                                        "vn": "Nhiều người bắt đầu theo dõi anh ấy trên mạng xã hội và anh ấy đã trở thành một ca sĩ nổi tiếng."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Thời cấp ba học nhạc trước khi nổi tiếng.<br>• <strong>Câu 2:</strong> <em>'During his studies, he learnt how to be creative on stage.'</em> (Học cách sáng tạo trên sân khấu).<br>• <strong>Câu 3:</strong> <em>'In his performances, he wore brightly coloured clothes...'</em> (Mặc đồ sặc sỡ và vẽ mặt).<br>• <strong>Câu 4:</strong> <em>'This unique way of dressing and performing made people pay attention...'</em> (Thu hút sự chú ý).<br>• <strong>Câu 5:</strong> <em>'Many people started following him on social media...'</em> (Mọi người theo dõi và trở thành ca sĩ nổi tiếng)."
+                                    },
+                                    "2": {
+                                                "title": "A famous singer (Version 2)",
+                                                "subTitleBtn": "Question 2: Famous singer v2 (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "He is a successful singer with many fans.",
+                                                                        "vn": "Anh ấy là một ca sĩ thành công với nhiều người hâm mộ."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "Before becoming famous, he studied music at school when he was 15.",
+                                                                        "vn": "Trước khi trở nên nổi tiếng, anh ấy đã học nhạc ở trường khi anh ấy 15 tuổi."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "His unique way of dressing and performing made him stand out from others.",
+                                                                        "vn": "Cách ăn mặc và biểu diễn độc đáo của anh ấy đã giúp anh ấy nổi bật so với những người khác."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "This helped him receive many invitations for collaborations and performances.",
+                                                                        "vn": "Điều này đã giúp anh ấy nhận được nhiều lời mời hợp tác và biểu diễn."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "He eventually became famous among audiences around the world.",
+                                                                        "vn": "Cuối cùng, anh ấy đã trở nên nổi tiếng với khán giả trên toàn thế giới."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> Giới thiệu: Là ca sĩ thành công có nhiều người hâm mộ.<br>• <strong>Câu 2:</strong> <em>'Before becoming famous, he studied music at school when he was 15.'</em> (Học nhạc lúc 15 tuổi).<br>• <strong>Câu 3:</strong> <em>'His unique way of dressing and performing made him stand out...'</em> (Nổi bật so với người khác).<br>• <strong>Câu 4:</strong> <em>'This helped him receive many invitations...'</em> (Nhận nhiều lời mời hợp tác, biểu diễn).<br>• <strong>Câu 5:</strong> <em>'He eventually became famous among audiences around the world.'</em> (Nổi tiếng toàn cầu)."
+                                    }
+                        }
+            },
+            "de9": {
+                        "name": "Đề 9: Family sports day & Films",
+                        "timeSeconds": 418,
+                        "questions": {
+                                    "1": {
+                                                "title": "Family sports day",
+                                                "subTitleBtn": "Question 1: Family sports day (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "The family sports day took place on Sunday morning in the park, and there was a race for adults.",
+                                                                        "vn": "Ngày hội thể thao gia đình diễn ra vào sáng Chủ Nhật tại công viên, và có một cuộc đua dành cho người lớn."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "Sixty people took part, and among them, Ms Kamus kept the fastest pace and won the race.",
+                                                                        "vn": "Sáu mươi người đã tham gia, và trong số đó, cô Kamus đã giữ tốc độ nhanh nhất và thắng cuộc đua."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "After she got her prize, the next part was for children's activities.",
+                                                                        "vn": "Sau khi cô ấy nhận giải, phần tiếp theo là các hoạt động cho trẻ em."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "The activities were football, swimming, skipping, and more, and the kids had fun playing together.",
+                                                                        "vn": "Các hoạt động gồm bóng đá, bơi lội, nhảy dây, và nhiều hơn nữa, và những đứa trẻ đã vui vẻ chơi cùng nhau."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "After the games, the kids were really hungry and ate with their parents.",
+                                                                        "vn": "Sau các trò chơi, những đứa trẻ rất đói và đã ăn cùng bố mẹ."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Ngày hội thể thao sáng Chủ Nhật và cuộc đua người lớn.<br>• <strong>Câu 2:</strong> 60 người tham gia, cô Kamus giữ tốc độ nhanh nhất và thắng cuộc.<br>• <strong>Câu 3:</strong> <em>'After she got her prize, the next part...'</em> cô Kamus nhận giải xong chuyển sang hoạt động trẻ em.<br>• <strong>Câu 4:</strong> <em>'The activities were football, swimming, skipping...'</em> bóng đá, bơi, nhảy dây.<br>• <strong>Câu 5:</strong> <em>'After the games, the kids were really hungry...'</em> các bé đói và ăn cùng bố mẹ."
+                                    },
+                                    "2": {
+                                                "title": "Films",
+                                                "subTitleBtn": "Question 2: Films (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Movies today are very different from movies in the past.",
+                                                                        "vn": "Phim ảnh ngày nay rất khác so với phim ảnh ngày xưa."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "In the old days, films were only in black and white, and sometimes even without sound.",
+                                                                        "vn": "Ngày xưa, phim chỉ có màu đen trắng, và đôi khi thậm chí không có tiếng."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "In addition to these technological limits, producers had very low budgets.",
+                                                                        "vn": "Ngoài những giới hạn công nghệ này, các nhà sản xuất còn có ngân sách rất thấp."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "Because of the lack of money, actors also earned little money from acting.",
+                                                                        "vn": "Do thiếu tiền, các diễn viên cũng kiếm được ít tiền từ việc diễn xuất."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films.",
+                                                                        "vn": "Ngày nay, mọi thứ đã thay đổi: diễn viên và nhà sản xuất có thể kiếm được rất nhiều tiền từ việc sản xuất phim."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> Mở bài so sánh: Phim ảnh ngày nay rất khác phim ngày xưa.<br>• <strong>Câu 2:</strong> <em>'In the old days...'</em> ngày xưa chỉ có đen trắng, không âm thanh.<br>• <strong>Câu 3:</strong> <em>'In addition to these technological limits, producers had very low budgets.'</em><br>• <strong>Câu 4:</strong> <em>'Because of the lack of money, actors also earned little money...'</em><br>• <strong>Câu 5:</strong> <em>'Nowadays, everything has changed...'</em> diễn viên và nhà sản xuất kiếm được nhiều tiền."
+                                    }
+                        }
+            },
+            "de10": {
+                        "name": "Đề 10: College welcoming day & Mae the astronaut",
+                        "timeSeconds": 418,
+                        "questions": {
+                                    "1": {
+                                                "title": "College welcoming day",
+                                                "subTitleBtn": "Question 1: College welcoming day (Part 2)",
+                                                "headerTitle": "Question 1 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": true,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Today will begin at 10 a.m. with a short presentation.",
+                                                                        "vn": "Hôm nay sẽ bắt đầu lúc 10 giờ sáng với một buổi thuyết trình ngắn."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "At the end of the presentation, you will meet the heads of departments and lecturers.",
+                                                                        "vn": "Sau buổi thuyết trình, bạn sẽ gặp các trưởng bộ môn và giảng viên."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "These staff members will then take you on a tour of the school's buildings and sports facilities in small groups.",
+                                                                        "vn": "Các cán bộ này sau đó sẽ chia thành nhóm nhỏ và dẫn bạn đi tham quan các tòa nhà và cơ sở thể thao của trường."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "During this tour, you will need to stay with these staff members until lunchtime.",
+                                                                        "vn": "Trong suốt chuyến tham quan này, bạn sẽ cần đi cùng các cán bộ này cho đến bữa trưa."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Lunch will be provided on the second floor of the engineering building.",
+                                                                        "vn": "Bữa trưa sẽ được phục vụ ở tầng hai của tòa nhà kỹ thuật."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1 (Cho sẵn):</strong> Bắt đầu lúc 10 giờ sáng với buổi thuyết trình ngắn.<br>• <strong>Câu 2:</strong> <em>'At the end of the presentation, you will meet...'</em> gặp trưởng bộ môn và giảng viên.<br>• <strong>Câu 3:</strong> <em>'These staff members will then take you on a tour...'</em> đi tour tham quan theo nhóm nhỏ.<br>• <strong>Câu 4:</strong> <em>'During this tour, you will need to stay with these staff members until lunchtime.'</em><br>• <strong>Câu 5:</strong> <em>'Lunch will be provided on the second floor of the engineering building.'</em>"
+                                    },
+                                    "2": {
+                                                "title": "Mae the astronaut",
+                                                "subTitleBtn": "Question 2: Mae the astronaut (Part 3)",
+                                                "headerTitle": "Question 2 of 2",
+                                                "instruction": "The sentences below make a complete text. Put them in the correct order.",
+                                                "fixedFirst": false,
+                                                "sentences": [
+                                                            {
+                                                                        "number": 1,
+                                                                        "en": "Encouraged by her parents, she decided to study science at university.",
+                                                                        "vn": "Được cha mẹ khuyến khích, cô quyết định học khoa học tại trường đại học."
+                                                            },
+                                                            {
+                                                                        "number": 2,
+                                                                        "en": "Her strong academic record earned her a place in a training program in the United States.",
+                                                                        "vn": "Thành tích học tập xuất sắc đã giúp cô có được một suất tham gia chương trình đào tạo tại Hoa Kỳ."
+                                                            },
+                                                            {
+                                                                        "number": 3,
+                                                                        "en": "Her passion for space led Mae to join a dedicated research team.",
+                                                                        "vn": "Niềm đam mê không gian đã đưa Mae gia nhập một nhóm nghiên cứu chuyên biệt."
+                                                            },
+                                                            {
+                                                                        "number": 4,
+                                                                        "en": "As a member of the team, she traveled into space and carried out numerous experiments.",
+                                                                        "vn": "Với tư cách là thành viên của nhóm, cô đã đi vào không gian và thực hiện nhiều thí nghiệm."
+                                                            },
+                                                            {
+                                                                        "number": 5,
+                                                                        "en": "Some of these experiments involved growing plants and observing animals aboard the spacecraft.",
+                                                                        "vn": "Một số thí nghiệm này bao gồm trồng cây và quan sát động vật trên tàu vũ trụ."
+                                                            }
+                                                ],
+                                                "logicTip": "💡 <strong>Mẹo liên kết logic câu:</strong><br>• <strong>Câu 1:</strong> Cha mẹ khuyến khích cô học khoa học tại đại học.<br>• <strong>Câu 2:</strong> <em>'Her strong academic record earned her a place...'</em> thành tích xuất sắc giúp có suất đào tạo ở Mỹ.<br>• <strong>Câu 3:</strong> <em>'Her passion for space led Mae to join a dedicated research team.'</em><br>• <strong>Câu 4:</strong> <em>'As a member of the team, she traveled into space...'</em> bay vào vũ trụ làm thí nghiệm.<br>• <strong>Câu 5:</strong> <em>'Some of these experiments involved growing plants and observing animals...'</em>"
+                                    }
+                        }
             }
-        };
+};
 
         let currentPackageKey = "de1";
         let currentQIndex = 1;
@@ -1126,6 +1559,10 @@
             document.querySelectorAll('.pkg-tab-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.id === `tab-pkg-${pkgKey}`);
             });
+            const bannerName = document.getElementById('current-pkg-name');
+            if (bannerName && examPackages[pkgKey]) {
+                bannerName.textContent = examPackages[pkgKey].name;
+            }
 
             if (!userPlacements[pkgKey]) userPlacements[pkgKey] = { 1: {}, 2: {} };
             if (!poolItems[pkgKey]) poolItems[pkgKey] = { 1: [], 2: [] };
@@ -1479,10 +1916,16 @@
 
         // Khởi động khi tải trang
         document.addEventListener('DOMContentLoaded', () => {
-            initPoolsForPackage("de1");
+                        initPoolsForPackage("de1");
             initPoolsForPackage("de2");
             initPoolsForPackage("de3");
             initPoolsForPackage("de4");
+            initPoolsForPackage("de5");
+            initPoolsForPackage("de6");
+            initPoolsForPackage("de7");
+            initPoolsForPackage("de8");
+            initPoolsForPackage("de9");
+            initPoolsForPackage("de10");
 
             // Kiểm tra URL param ?pkg=de3 hoặc ?de=3
             const urlParams = new URLSearchParams(window.location.search);
