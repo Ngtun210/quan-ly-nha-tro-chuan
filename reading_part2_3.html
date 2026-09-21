@@ -655,6 +655,12 @@
     <button class="pkg-tab-btn" id="tab-pkg-de8" onclick="switchPackage('de8')">Đề 8</button>
     <button class="pkg-tab-btn" id="tab-pkg-de9" onclick="switchPackage('de9')">Đề 9</button>
     <button class="pkg-tab-btn" id="tab-pkg-de10" onclick="switchPackage('de10')">Đề 10</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de11" onclick="switchPackage('de11')">Đề 11</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de12" onclick="switchPackage('de12')">Đề 12</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de13" onclick="switchPackage('de13')">Đề 13</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de14" onclick="switchPackage('de14')">Đề 14</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de15" onclick="switchPackage('de15')">Đề 15</button>
+    <button class="pkg-tab-btn" id="tab-pkg-de16" onclick="switchPackage('de16')">Đề 16</button>
 </div>
 <div class="current-pkg-banner" id="current-pkg-banner">📍 Đang làm: <strong id="current-pkg-name">Đề 1: Films & Family sports day</strong></div>
 
@@ -1916,7 +1922,7 @@
 
         // Khởi động khi tải trang
         document.addEventListener('DOMContentLoaded', () => {
-                        initPoolsForPackage("de1");
+                                    initPoolsForPackage("de1");
             initPoolsForPackage("de2");
             initPoolsForPackage("de3");
             initPoolsForPackage("de4");
@@ -1926,6 +1932,12 @@
             initPoolsForPackage("de8");
             initPoolsForPackage("de9");
             initPoolsForPackage("de10");
+            initPoolsForPackage("de11");
+            initPoolsForPackage("de12");
+            initPoolsForPackage("de13");
+            initPoolsForPackage("de14");
+            initPoolsForPackage("de15");
+            initPoolsForPackage("de16");
 
             // Kiểm tra URL param ?pkg=de3 hoặc ?de=3
             const urlParams = new URLSearchParams(window.location.search);
