@@ -108,6 +108,32 @@
             color: #ffffff;
         }
 
+        /* Đáp án đúng hiện ngay dưới câu sai */
+        .inline-correct-answer-li {
+            margin-top: 8px;
+            padding: 9px 14px;
+            background: #ecfdf5;
+            border: 1.5px solid #10b981;
+            border-radius: 6px;
+            color: #065f46;
+            font-size: 13.5px;
+            text-align: left;
+            animation: fadeIn 0.25s ease;
+        }
+        .inline-correct-header-li {
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #047857;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .inline-correct-text-li {
+            font-weight: 600;
+            color: #064e3b;
+            line-height: 1.45;
+        }
+
         /* Khung kết quả hiển thị bên dưới */
         .result-summary-box {
             padding: 16px 22px;
@@ -330,6 +356,8 @@
                             li.classList.remove('li-correct', 'li-incorrect');
                             const b = li.querySelector('.li-status-pill');
                             if (b) b.remove();
+                            const inline = li.querySelector('.inline-correct-answer-li');
+                            if (inline) inline.remove();
                         });
                         const fb = card.querySelector('.feedback-message');
                         if (fb) {
@@ -359,6 +387,8 @@
                         li.classList.remove('li-correct', 'li-incorrect');
                         const oldPill = li.querySelector('.li-status-pill');
                         if (oldPill) oldPill.remove();
+                        const oldInline = li.querySelector('.inline-correct-answer-li');
+                        if (oldInline) oldInline.remove();
 
                         const pill = document.createElement('span');
                         pill.className = 'li-status-pill';
@@ -368,12 +398,26 @@
                             li.classList.add('li-correct');
                             pill.classList.add('pill-correct');
                             pill.innerHTML = '<i class="fas fa-check"></i> Đúng';
+                            li.appendChild(pill);
                         } else {
                             li.classList.add('li-incorrect');
                             pill.classList.add('pill-incorrect');
-                            pill.innerHTML = `<i class="fas fa-times"></i> Sai (Đúng phải là câu ${expected})`;
+                            pill.innerHTML = `<i class="fas fa-times"></i> Sai`;
+                            li.appendChild(pill);
+
+                            // HIỆN CÂU ĐÚNG NGAY Ở DƯỚI CÂU SAI
+                            const expectedIdxNum = parseInt(expected);
+                            const expectedText = item.fragments[expectedIdxNum - 1];
+                            const inlineBox = document.createElement('div');
+                            inlineBox.className = 'inline-correct-answer-li';
+                            inlineBox.innerHTML = `
+                                <div class="inline-correct-header-li">
+                                    <i class="fas fa-check-circle"></i> <strong>Đáp án đúng tại vị trí ${idx + 1}:</strong>
+                                </div>
+                                <div class="inline-correct-text-li">(${expected}) ${expectedText}</div>
+                            `;
+                            li.appendChild(inlineBox);
                         }
-                        li.appendChild(pill);
                     });
 
                     card.classList.remove('correct', 'incorrect');

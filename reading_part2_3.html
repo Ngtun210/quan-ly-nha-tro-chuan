@@ -398,7 +398,7 @@
 
         .slot-row {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 16px;
             min-height: 64px;
         }
@@ -409,6 +409,7 @@
             color: #111827;
             min-width: 22px;
             text-align: center;
+            padding-top: 16px;
         }
 
         /* Ô drop target bên trái */
@@ -419,8 +420,11 @@
             border-radius: 12px;
             background-color: #fafbfc;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
             padding: 5px;
+            gap: 8px;
             transition: all 0.2s ease;
             position: relative;
         }
@@ -435,6 +439,50 @@
             border: none;
             background: transparent;
             padding: 0;
+            justify-content: flex-start;
+        }
+
+        /* Khung hiển thị đáp án đúng ngay dưới câu sai */
+        .inline-correct-answer {
+            margin-top: 6px;
+            padding: 12px 18px;
+            background: #ecfdf5;
+            border: 1.8px solid #10b981;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+            animation: fadeIn 0.25s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .inline-correct-header {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 5px;
+        }
+
+        .inline-correct-header i {
+            color: #10b981;
+            font-size: 15px;
+        }
+
+        .inline-correct-en {
+            font-size: 15px;
+            font-weight: 600;
+            color: #064e3b;
+            line-height: 1.5;
+        }
+
+        .inline-correct-vn {
+            font-size: 13.5px;
+            color: #047857;
+            margin-top: 4px;
+            font-style: italic;
+            line-height: 1.45;
         }
 
         /* Câu cho sẵn (Fixed câu 1 của Part 2) */
@@ -2816,11 +2864,13 @@
                 const card = slot ? slot.querySelector('.draggable-sentence-card') : null;
                 const placed = userPlacements[currentPackageKey][currentQIndex][s.number];
 
-                // Xóa các class trạng thái cũ
+                // Xóa các class trạng thái cũ và đáp án inline cũ
                 if (slot) {
                     slot.classList.remove('slot-correct', 'slot-incorrect');
                     const oldFeedback = slot.querySelector('.slot-feedback-msg');
                     if (oldFeedback) oldFeedback.remove();
+                    const oldInline = slot.querySelector('.inline-correct-answer');
+                    if (oldInline) oldInline.remove();
                 }
                 if (card) {
                     card.classList.remove('is-correct', 'card-correct', 'is-incorrect', 'card-incorrect');
@@ -2841,13 +2891,28 @@
                             card.appendChild(badge);
                         }
                     } else {
+                        // Câu sai: GIỮ NGUYÊN câu sai viền ĐỎ, VÀ HIỆN CÂU ĐÚNG NGAY Ở DƯỚI
                         if (slot) slot.classList.add('slot-incorrect');
                         if (card) {
                             card.classList.add('is-incorrect', 'card-incorrect');
                             const badge = document.createElement('span');
                             badge.className = 'answer-status-badge badge-incorrect';
-                            badge.innerHTML = `<i class="fas fa-times-circle"></i> Sai (Đúng phải là câu ${s.number})`;
+                            badge.innerHTML = `<i class="fas fa-times-circle"></i> Sai`;
                             card.appendChild(badge);
+                        }
+
+                        // Hiện đáp án đúng ngay dưới câu sai trong slot
+                        if (slot) {
+                            const inlineAnswer = document.createElement('div');
+                            inlineAnswer.className = 'inline-correct-answer';
+                            inlineAnswer.innerHTML = `
+                                <div class="inline-correct-header">
+                                    <i class="fas fa-check-circle"></i> <span>Đáp án đúng tại vị trí ${s.number}:</span>
+                                </div>
+                                <div class="inline-correct-en">${s.en}</div>
+                                <div class="inline-correct-vn">${s.vn}</div>
+                            `;
+                            slot.appendChild(inlineAnswer);
                         }
                     }
                     breakdownItems.push({
@@ -2860,13 +2925,24 @@
                         isEmpty: false
                     });
                 } else {
-                    // Ô chưa được xếp câu (Bỏ trống)
+                    // Ô chưa được xếp câu (Bỏ trống): Báo đỏ và hiện câu đúng ngay dưới
                     if (slot) {
                         slot.classList.add('slot-incorrect');
                         const emptyMsg = document.createElement('div');
                         emptyMsg.className = 'slot-feedback-msg empty-slot-msg';
                         emptyMsg.innerHTML = `<i class="fas fa-exclamation-circle"></i> Vị trí ${s.number}: Chưa điền câu`;
                         slot.appendChild(emptyMsg);
+
+                        const inlineAnswer = document.createElement('div');
+                        inlineAnswer.className = 'inline-correct-answer';
+                        inlineAnswer.innerHTML = `
+                            <div class="inline-correct-header">
+                                <i class="fas fa-check-circle"></i> <span>Đáp án đúng tại vị trí ${s.number}:</span>
+                            </div>
+                            <div class="inline-correct-en">${s.en}</div>
+                            <div class="inline-correct-vn">${s.vn}</div>
+                        `;
+                        slot.appendChild(inlineAnswer);
                     }
                     breakdownItems.push({
                         pos: s.number,
@@ -2879,24 +2955,20 @@
                 }
             });
 
-            // 1. Hiển thị điểm số nhỏ tại thanh điều khiển
+            // 1. Hiển thị điểm số tại thanh điều khiển
             const scoreBox = document.getElementById('score-box');
             if (scoreBox) {
                 scoreBox.style.display = 'inline-flex';
                 document.getElementById('score-text').textContent = `${correctCount} / ${totalToGrade}`;
             }
 
-            // 2. Hiển thị KHUNG KẾT QUẢ ĐÁNH GIÁ trực quan ngay bên dưới bài làm
+            // 2. Hiển thị Khung kết quả tổng hợp bên dưới
             renderResultSummaryCard(correctCount, totalToGrade, breakdownItems);
 
-            // 3. Tự động hiển thị phần thứ tự chuẩn và dịch nghĩa
+            // 3. Hiển thị bảng dịch nghĩa chi tiết ở dưới cùng
             showExplanations(false);
 
-            // 4. Cuộn mượt đến khung kết quả để người học nhìn thấy ngay
-            const resCard = document.getElementById('result-summary-card');
-            if (resCard) {
-                resCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            // Giữ màn hình tại chỗ để người dùng xem ngay đáp án đúng tại các câu vừa làm (không auto-scroll nhảy xuống đáy)
         }
 
         // Render bảng kết quả chi tiết
