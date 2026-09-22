@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reading Practice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +70,76 @@
         }
         .correct { color: #28a745; }
         .incorrect { color: #dc3545; }
+
+        /* Đáp án đúng (Xanh lá) và Đáp án sai (Đỏ) cho từng câu */
+        .sentence-list li.li-correct {
+            border: 2.5px solid #28a745 !important;
+            background-color: #d4edda !important;
+            color: #155724 !important;
+            box-shadow: 0 3px 8px rgba(40, 167, 69, 0.25) !important;
+        }
+
+        .sentence-list li.li-incorrect {
+            border: 2.5px solid #dc3545 !important;
+            background-color: #f8d7da !important;
+            color: #721c24 !important;
+            box-shadow: 0 3px 8px rgba(220, 53, 69, 0.25) !important;
+        }
+
+        .li-status-pill {
+            float: right;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 8px;
+        }
+
+        .li-status-pill.pill-correct {
+            background: #28a745;
+            color: #ffffff;
+        }
+
+        .li-status-pill.pill-incorrect {
+            background: #dc3545;
+            color: #ffffff;
+        }
+
+        /* Khung kết quả hiển thị bên dưới */
+        .result-summary-box {
+            padding: 16px 22px;
+            border-radius: 10px;
+            margin: 15px 0 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .result-summary-box.box-correct {
+            background: #d4edda;
+            border: 1.5px solid #28a745;
+            color: #155724;
+        }
+
+        .result-summary-box.box-incorrect {
+            background: #f8d7da;
+            border: 1.5px solid #dc3545;
+            color: #721c24;
+        }
+
+        .result-summary-box .res-score {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .result-summary-box .res-desc {
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
         .card-actions {
             display: flex;
@@ -297,7 +368,21 @@
                 // --- KÍCH HOẠT KÉO THẢ BẰNG SORTABLEJS ---
                 const sortableList = card.querySelector('.sortable-list');
                 new Sortable(sortableList, {
-                    animation: 150, // Hiệu ứng mượt mà khi sắp xếp
+                    animation: 150,
+                    onEnd: function() {
+                        // Reset màu sắc khi người dùng kéo thả lại
+                        Array.from(sortableList.querySelectorAll('li')).forEach(li => {
+                            li.classList.remove('li-correct', 'li-incorrect');
+                            const b = li.querySelector('.li-status-pill');
+                            if (b) b.remove();
+                        });
+                        const fb = card.querySelector('.feedback-message');
+                        if (fb) {
+                            fb.innerHTML = '';
+                            fb.className = 'feedback-message';
+                        }
+                        card.classList.remove('correct', 'incorrect');
+                    }, // Hiệu ứng mượt mà khi sắp xếp
                     ghostClass: 'sortable-ghost' // Class cho 'bóng' của mục đang kéo
                 });
             });
@@ -308,16 +393,55 @@
                     const list = card.querySelector('.sortable-list');
                     const feedbackDiv = card.querySelector('.feedback-message');
                     const correctKey = card.dataset.key;
-                    const currentOrder = Array.from(list.querySelectorAll('li')).map(li => li.dataset.originalIndex).join('-');
+                    const expectedKeys = correctKey.split('-');
+                    const items = Array.from(list.querySelectorAll('li'));
+                    let correctCount = 0;
+                    const totalCount = items.length;
+
+                    items.forEach((li, idx) => {
+                        const origIndex = li.dataset.originalIndex;
+                        const expected = expectedKeys[idx];
+                        li.classList.remove('li-correct', 'li-incorrect');
+                        const oldPill = li.querySelector('.li-status-pill');
+                        if (oldPill) oldPill.remove();
+
+                        const pill = document.createElement('span');
+                        pill.className = 'li-status-pill';
+
+                        if (origIndex === expected) {
+                            correctCount++;
+                            li.classList.add('li-correct');
+                            pill.classList.add('pill-correct');
+                            pill.innerHTML = '<i class="fas fa-check"></i> Đúng';
+                        } else {
+                            li.classList.add('li-incorrect');
+                            pill.classList.add('pill-incorrect');
+                            pill.innerHTML = `<i class="fas fa-times"></i> Sai (Đúng phải là câu ${expected})`;
+                        }
+                        li.appendChild(pill);
+                    });
+
                     card.classList.remove('correct', 'incorrect');
-                    if (currentOrder === correctKey) {
+                    const pct = Math.round((correctCount / totalCount) * 100);
+
+                    if (correctCount === totalCount) {
                         card.classList.add('correct');
-                        feedbackDiv.innerHTML = '🎉 Chính xác! Rất tốt!';
                         feedbackDiv.className = 'feedback-message correct';
+                        feedbackDiv.innerHTML = `
+                            <div class="result-summary-box box-correct">
+                                <div class="res-score"><i class="fas fa-trophy"></i> 🎉 Xuất sắc: ${correctCount}/${totalCount} câu đúng (100%)!</div>
+                                <div class="res-desc">Bạn đã sắp xếp chính xác toàn bộ thứ tự đoạn văn.</div>
+                            </div>
+                        `;
                     } else {
                         card.classList.add('incorrect');
-                        feedbackDiv.innerHTML = '❌ Sai rồi! Hãy thử sắp xếp lại.';
                         feedbackDiv.className = 'feedback-message incorrect';
+                        feedbackDiv.innerHTML = `
+                            <div class="result-summary-box box-incorrect">
+                                <div class="res-score"><i class="fas fa-clipboard-check"></i> 📊 Kết quả: ${correctCount}/${totalCount} câu đúng (${pct}%)</div>
+                                <div class="res-desc">Các câu viền <strong>xanh</strong> là đã đúng vị trí, câu viền <strong>đỏ</strong> là sai vị trí. Hãy kéo sắp xếp lại hoặc bấm nút <em>"Xem đáp án & câu chuyện"</em> bên dưới!</div>
+                            </div>
+                        `;
                     }
                 }
                 if (e.target.classList.contains('show-story-btn')) {
